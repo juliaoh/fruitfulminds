@@ -1,0 +1,8 @@
+- @subtitle = "Create New Administrator"
+
+%div{:class => "auth_container"}
+  %div{:class => "auth_form"}
+    =form_for @admin_fields, :url => {:action => :create} do |f|
+      = render :partial => "form", :locals => {:f => f}
+      #submit
+        =submit_tag "Create account"

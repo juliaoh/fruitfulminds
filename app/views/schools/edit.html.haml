@@ -1,0 +1,7 @@
+- @subtitle = "Edit School"
+
+%span
+  = form_for @school_fields, :url => {:action => :update} do |f|
+    = render :partial => "school", :locals => {:f => f}
+    #submit
+      = submit_tag 'Save Changes'

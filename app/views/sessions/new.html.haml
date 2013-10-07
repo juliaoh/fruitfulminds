@@ -1,0 +1,15 @@
+- @subtitle = "Login"
+
+%div{:class => "auth_container"}
+  %div{:class => "auth_form"}
+    =form_tag(sessions_path, {:class => "login_form"}) do
+      =label :user, :email, "Email"
+      =text_field :user, :email, {:class => "text_input"}
+      =label :user, :password, "Password"
+      =password_field :user, :password
+      %br
+      %div{ :style => "float: left; width: 100px;"}
+        =submit_tag "Sign In"
+      %div{ :stype => "float: right;"}
+        New User? 
+        =link_to "Register", signup_path

@@ -1,0 +1,132 @@
+
+%p{:style => "width: 100%; height: 60px; margin: 0 auto;"}
+  The following is a preview
+  %br
+  In order to generate a PDF report, add comments at the bottom of the page
+
+-# = render :partial => 'generate_report'
+
+
+
+%h2= @main_title
+%h4= @static_contents[:intro_title]
+%p= @static_contents[:introduction]
+%h4= @school_intro_title
+%p= @school_intro
+%p= @school_intro_second
+%p= @school_intro_third
+%h4= @static_contents[:objectives_title]
+
+%table
+  %tr
+    %th Lesson
+    %th Objective
+  - @objectives.each do |item1, item2|
+    %tr
+      %td= item1
+      %td= item2
+
+%h4= @static_contents[:eval_title]
+%p= @eval_intro_first
+%p= @eval_intro_second
+%p= @eval_intro_third
+%h4= image_tag @nutrition_chart
+%h4= image_tag @combined_chart
+%h4= @strength_weakness_title
+%p= @static_contents[:strength_weakness_intro]
+%h4= @static_contents[:strength_intro]
+
+%table
+  %tr
+  - @strengths.each do |key, strength|
+    %tr
+      %td= strength
+
+%h4= @static_contents[:weakness_intro]
+
+%table
+  %tr
+  - @weaknesses.each do |key, weakness|
+    %tr
+      %td= weakness
+%p
+%p= @static_contents[:summary]
+
+%h5= @static_contents[:behavior_title]
+%p= @static_contents[:behavior_intro]
+%h4= image_tag @efficacy_chart
+
+%p= @improvement_intro
+
+%table
+  %tr
+  - @sig_increase.each do |agree|
+    %tr
+      %td= agree
+
+%h5= @static_contents[:slight_increase_header]
+
+%table
+  %tr
+  - @slight_increase.each do |agree|
+    %tr
+      %td= agree
+
+%h5= @static_contents[:decrease_header]
+
+%table
+  %tr
+  - @sig_decrease.each do |disagree|
+    %tr
+      %td= disagree
+
+%h5= @static_contents[:slight_decrease_header]
+
+%table
+  %tr
+  - @slight_decrease.each do |disagree|
+    %tr
+      %td= disagree
+
+%h5= @static_contents[:summary_header]
+
+%table
+  %tr
+  - @sig_inc_map.each do |agree|
+    %tr
+      %td= agree
+
+%table
+  %tr
+  - @sig_dec_map.each do |disagree|
+    %tr
+      %td= disagree
+
+%h5= @static_contents[:food_journal_header]
+%p= @static_contents[:food_journal_intro]
+
+%h5= @static_contents[:fj_increase_header]
+
+%table
+  %tr
+  - @fj_inc.each do |result|
+    %tr
+      %td= result
+
+%h5= @static_contents[:fj_decrease_header]
+
+%table
+  %tr
+  - @fj_dec.each do |result|
+    %tr
+      %td= result
+
+%h5= @fj_unfavorable
+
+%h5= @fj_nonsig
+
+%h5= @fj_favorable
+
+%h4= @ambassadorNoteTitle
+-# %p= @report.note
+= render :partial => 'comment_form'

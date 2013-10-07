@@ -1,0 +1,3 @@
+%p Select the school you want to add the results for.
+- if @current_user.admin?
+  = collection_select(:admin, :school_id, School.all, :id, :name)

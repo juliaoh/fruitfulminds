@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  state: MyString
+  county: MyString
+  district: MyString
+
+two:
+  name: MyString
+  state: MyString
+  county: MyString
+  district: MyString

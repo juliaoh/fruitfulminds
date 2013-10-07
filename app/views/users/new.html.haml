@@ -1,0 +1,41 @@
+- @subtitle = "Signup"
+
+%div{:class => "auth_container"}
+  %div{:class => "auth_form"}
+    = form_tag users_path, :method => :post do
+      = label :user, :firstname, "First Name"
+      = text_field :user, :firstname
+      = label :user, :lastname, "Last Name"
+      = text_field :user, :lastname
+      = label :user, :college, "College"
+      = text_field :user, :college
+      = label :school, :name, "School Name"
+      = text_field :school, :name
+      = label :school, :county, "School County"
+      = text_field :school, :county
+      = label :school, :district, "School District"
+      = text_field :school, :district
+      = label :school, :city, "School City"
+      = text_field :school, :city
+      = label :semester, :name, "Survey Period"
+      = select('semester', 'name', %w[Fall Winter Spring Summer], {}, {})
+
+      = label :semester, :year, "Survey Year"
+      = select_year(Date.today, :start_year => 2005, :end_year => Time.now.year + 5)
+
+      = label :user, :email, "Email Address"
+      = text_field :user, :email
+
+      = label :user, :password, "Password"
+      = password_field :user, :password
+      = label :user, :confirm_password, "Confirm Password"
+      = password_field :user, :confirm_password
+      %br
+      -# name, value, checked, options
+      %div{:style => "margin-top: 15px; margin-bottom: 15px; background-color: #ffffff; border: 1px solid black; width: 100%; height: 200px; overflow: auto;"}
+        = render :partial => "terms_of_service"
+      = check_box_tag 'tos', "1", false
+      = "Accept Terms of Service"
+      %br
+      %br
+      = submit_tag "Register"

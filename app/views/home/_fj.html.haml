@@ -1,0 +1,20 @@
+- journal.attributes.each do |k,v|
+  - if k[/student_name/]
+    = "Student Name: #{v}"
+    %br
+  - if k[/week_num/]
+    = "Week Number: #{v}"
+    %br
+  - if k[/fruit/]
+    = "Fruit: #{v}"
+    %br
+  - if k[/vegetable/]
+    = "Vegtable: #{v}"
+    %br
+  - if k[/sugary_drink/]
+    = "Sugary Drink: #{v}"
+    %br
+  - if k[/water/]
+    = "Water: #{v}"
+    %br
+= button_to "Edit Food Journal", edit_foodjournal_path(journal), :method => :get, :id => "edit_food_journal_#{journal.id}"

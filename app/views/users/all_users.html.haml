@@ -1,0 +1,26 @@
+- @subtitle = "All Users"
+
+= form_tag update_all_users_path, :method => :post, :id => 'all_users_form' do
+  %table#pending_users
+    %thead
+      %tr
+        %th Update
+        %th Delete
+        %th Name
+        %th Email
+        %th College
+        %th School
+        %th Semester
+        %th Year
+    %tbody
+      - @all_users.each do |user|
+        %tr
+          %td= check_box_tag "updates[#{user[:id]}]", 1, false, :id => "updates_#{user[:id]}", :style => "width: 30px;"
+          %td= check_box_tag "deletes[#{user[:id]}]", 1, false, :id => "deletes_#{user[:id]}", :style => "width: 30px;"
+          %td= user[:name]
+          %td= user[:email]
+          %td= text_field_tag "colleges[#{user[:id]}]", user[:college], :style => "width: 150px;"
+          %td= select_tag "schools[#{user[:id]}]", options_for_select(School.all.collect { |s| ["#{s.name},#{s.county},#{s.city}", s.id ] }, :selected => user[:school_id]), :style => "width: 300px;"
+          %td= select_tag "semester_names[#{user[:id]}]", options_for_select(%w[Fall Winter Spring Summer], :selected => user[:semester_name]), :style => "width: 85px;"
+          %td= select_tag "semester_years[#{user[:id]}]", options_for_select(2005.upto(Time.now.year + 2).to_a, :selected => user[:semester_year]), :style => "width: 75px;"
+  = submit_tag 'Apply Changes', :id => 'apply_changes', :style => "margin: 10px;"

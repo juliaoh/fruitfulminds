@@ -1,0 +1,9 @@
+- survey.attributes.each do |k,v|
+  - if k[/section/]
+    = "Section #{k.split('_')[1]} Number #{k.split('_')[2]}: #{v}"
+    %br
+- Efficacy.find_by_postsurvey_id(survey.id).attributes.each do |k,v|
+  - if k[/efficacy/]
+    = "Efficacy #{k.split('_')[1]}: #{v}"
+    %br
+= button_to "Edit Post-Survey", edit_postsurvey_path(survey), :method => :get, :id => "edit_post_survey_#{survey.id}"

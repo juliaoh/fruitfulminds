@@ -1,0 +1,14 @@
+%h3=""
+%p
+  ="This email is to inform you that a new user with the following info has requested access to Fruitfulminds Website"
+  %br
+  = "Name: #{@user.name}"
+  %br
+  = "Email: #{@user.email}"
+  %br
+  %b="Your approval is needed in order to allow the user to access Fruitfulminds Website"
+  %br
+  %br
+  ="You can approve/disapprove all pending users by loging into Fruitfulminds and selecting "
+  =link_to "Pending Users", "http://fruitfulminds.herokuapp.com/pending_users"
+  =" and selecting the appropirate box for each user."

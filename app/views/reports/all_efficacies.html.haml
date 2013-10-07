@@ -1,0 +1,16 @@
+- @subtitle = "Cumulative Reports"
+
+%table#pending_users
+  %thead
+    %tr
+      %th School
+      %th County/District/City
+      %th Semester/Year
+      %th Comprehension Percent Change
+  %tbody
+    - @ss_efficacies.each do |ss_efficacy|
+      %tr
+        %td= ss_efficacy[:school].name 
+        %td= "#{ss_efficacy[:school].county}/#{ss_efficacy[:school].district}/#{ss_efficacy[:school].city}"
+        %td= "#{ss_efficacy[:semester_name]}/#{ss_efficacy[:semester_year]}"
+        %td= "#{ss_efficacy[:efficacy]}%"
