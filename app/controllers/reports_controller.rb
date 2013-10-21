@@ -22,8 +22,8 @@ class ReportsController < ApplicationController
         @school.users.each do |user|
           @ambassadors += user.name + ", "
         end
-        
-        @main_title = "Fruitful Minds #{@school.name} Fall 2012 Report"
+        #Should not hardcode the semester (Fall 2013 etc)
+        @main_title = "Fruitful Minds #{@school.name} Fall 2013 Report"
         @school_intro_title = "Fruitful Minds at #{@school.name}"
         @school_intro = "Fruitful Minds held a nutrition lesson series at #{@school.name} during #{@school_semester.name} #{@school_semester.year}" 
         @school_intro_second = "    #{@school.users.size} students from UC Berkeley #{@ambassadors} were selected as Fruitful Minds ambassadors"    
@@ -162,6 +162,7 @@ class ReportsController < ApplicationController
     @school.name.gsub!(/_/, ' ')
 
     @main_title = "Fruitful Minds #{@school.name} Fall 2012 Report"
+    @main_semester_title = @school_semester + ' Report'
     @school_intro_title = "Fruitful Minds at #{@school.name}"
     @school_intro = "Fruitful Minds held a nutrition lesson series at #{@school.name} during #{@school_semester.name} #{@school_semester.year}" 
     @school_intro_second = "    #{@school.users.size} students from UC Berkeley #{@ambassadors} were selected as Fruitful Minds ambassadors"    

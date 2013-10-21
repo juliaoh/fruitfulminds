@@ -1,5 +1,11 @@
 pdf.text " "
-pdf.text @main_title, :align => :center, :size => 18, :style => :bold
+image "#{Rails.root}/app/assets/images/fm_icon.jpg"
+pdf.text " "
+pdf.text "Fruitful Minds", :align => :left, :size =>18, style => :bold
+pdf.text " "
+pdf.text @school.name, :align => :left, :size => 18, :style => :bold
+pdf.text " "
+pdf.text @main_semester_title, :align => :left, :size => 18, :style => :bold
 pdf.text " "
 pdf.text " "
 pdf.text @static_contents[:intro_title], :size => 14, :style => :bold
