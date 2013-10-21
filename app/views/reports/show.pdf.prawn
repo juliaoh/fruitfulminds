@@ -77,6 +77,7 @@ pdf.text @static_contents[:behavior_title], :size => 14, :style => :bold
 pdf.text " "
 pdf.text @static_contents[:behavior_intro]
 pdf.text " "
+pdf.start_new_page
 pdf.image open(URI.escape(@efficacy_chart)), :align => :center
 pdf.text " "
 pdf.text @improvement_intro

@@ -1,7 +1,11 @@
 {
   "Cucumber Features": {
     "coverage": {
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/controllers/admin_controller.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/controllers/admin_controller.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         null,
@@ -56,7 +60,11 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/controllers/application_controller.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/controllers/application_controller.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         1,
@@ -79,17 +87,28 @@
         null,
         null,
         1,
+<<<<<<< HEAD
         54,
+=======
+        16,
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         0,
         0,
         null,
         null,
         null,
         1,
+<<<<<<< HEAD
         5,
         null,
         5,
         4,
+=======
+        3,
+        null,
+        3,
+        3,
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         null,
         1,
         null,
@@ -97,6 +116,7 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/helpers/application_helper.rb": [
         1,
         null
@@ -118,6 +138,29 @@
         null
       ],
       "/home/saasbook/fruitfulminds/app/controllers/food_journals_controller.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/helpers/food_journals_helper.rb": [
+        1,
+        null
+      ],
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/helpers/postsurveys_helper.rb": [
+        1,
+        null
+      ],
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/helpers/presurveys_helper.rb": [
+        1,
+        null
+      ],
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/helpers/schools_helper.rb": [
+        1,
+        null
+      ],
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/controllers/food_journals_controller.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         null,
@@ -265,7 +308,11 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/models/food_journal.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/models/food_journal.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         1,
@@ -276,11 +323,19 @@
         1,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/controllers/home_controller.rb": [
         1,
         null
       ],
       "/home/saasbook/fruitfulminds/app/controllers/postsurveys_controller.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/controllers/home_controller.rb": [
+        1,
+        null
+      ],
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/controllers/postsurveys_controller.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         3,
@@ -329,7 +384,11 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/models/postsurvey.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/models/postsurvey.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         1,
@@ -338,7 +397,11 @@
         1,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/controllers/presurveys/part1_controller.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/controllers/presurveys/part1_controller.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         3,
@@ -379,7 +442,11 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/controllers/presurveys/part2_controller.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/controllers/presurveys/part2_controller.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         3,
@@ -428,7 +495,11 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/controllers/reports_controller.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/controllers/reports_controller.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         7,
@@ -592,6 +663,7 @@
         4,
         4,
         null,
+<<<<<<< HEAD
         4,
         4,
         4,
@@ -608,6 +680,25 @@
         4,
         4,
         4,
+=======
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         null,
         4,
         null,
@@ -1481,7 +1572,11 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/models/report.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/models/report.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         1,
@@ -1489,7 +1584,11 @@
         1,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/controllers/schools_controller.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/controllers/schools_controller.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         null,
@@ -1528,7 +1627,11 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/models/school.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/models/school.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         1,
@@ -1545,7 +1648,11 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/controllers/sessions_controller.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/controllers/sessions_controller.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         1,
@@ -1580,7 +1687,11 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/controllers/users_controller.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/controllers/users_controller.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         null,
         1,
@@ -1821,7 +1932,11 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/models/user.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/models/user.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         1,
@@ -1870,7 +1985,11 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/mailers/user_mailer.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/mailers/user_mailer.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         null,
@@ -1894,19 +2013,31 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/models/content.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/models/content.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         1,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/models/dynamic_content.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/models/dynamic_content.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         1,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/models/efficacy.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/models/efficacy.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         1,
@@ -1914,25 +2045,41 @@
         1,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/models/pending_user.rb": [
         1,
         null
       ],
       "/home/saasbook/fruitfulminds/app/models/presurvey.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/models/pending_user.rb": [
+        1,
+        null
+      ],
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/models/presurvey.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         2,
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/models/presurvey/part1.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/models/presurvey/part1.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         1,
         1,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/models/presurvey/part2.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/models/presurvey/part2.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         1,
@@ -1940,7 +2087,11 @@
         1,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/models/profile.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/models/profile.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         1,
@@ -1949,7 +2100,11 @@
         1,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/models/school_semester.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/models/school_semester.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         1,
@@ -1959,12 +2114,20 @@
         1,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/fruitfulminds/app/models/static_content.rb": [
+=======
+      "/home/saasbook/Desktop/SAVEDWORK/FM/app/models/static_content.rb": [
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
         1,
         1,
         null
       ]
     },
+<<<<<<< HEAD
     "timestamp": 1382317795
+=======
+    "timestamp": 1382324575
+>>>>>>> 46ba5e851537df2f29a162a0aef68b2705e793db
   }
 }
