@@ -1,5 +1,5 @@
 pdf.text " "
-image "#{Rails.root}/app/assets/images/fm_icon.jpg"
+-image "#{Rails.root}/app/assets/images/fm_icon.jpg"
 pdf.text " "
 pdf.text "Fruitful Minds", :align => :left, :size =>18, style => :bold
 pdf.text " "
