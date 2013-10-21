@@ -1,30 +1,0 @@
-o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1382319797.10107:@value{I"
-class:EFI"BundledAsset;
-FI"id;
-F"%b039a7cd4cffab323868bdbf800a1f4bI"logical_path;
-FI"schools.js;
-TI"pathname;
-FI"3$root/app/assets/javascripts/schools.js.coffee;
-TI"content_type;
-FI"application/javascript;
-FI"
-mtime;
-FI"2013-10-20T18:34:41-07:00;
-FI"	body;
-FI"$(function() {
-
-
-}).call(this);
-;
-TI"asset_paths;
-F[I"3$root/app/assets/javascripts/schools.js.coffee;
-TI"dependency_paths;
-F[{I"	path;
-FI"3$root/app/assets/javascripts/schools.js.coffee;
-TI"
-mtime;
-FIu:	Time°fÄZªêä
-:@_zoneI"PDT;
-T:nano_numié:nano_deni:submicro"ë:offseti˛êùI"hexdigest;
-F"%f50e3d51579225e3370988d160060f33I"_version;
-F"%0868aba5d4b750d3a9421721ea3d9b9c
