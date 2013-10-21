@@ -1,6 +1,7 @@
 pdf.text " "
+pdf.image "#{Rails.root}/app/assets/images/fm_icon.jpg"
 pdf.text " "
-pdf.text "Fruitful Minds", :align => :left, :size =>18, :style => :bold
+pdf.text "Fruitful Minds", :align => :left, :size =>18, style => :bold
 pdf.text " "
 pdf.text @school.name, :align => :left, :size => 18, :style => :bold
 pdf.text " "
@@ -43,7 +44,7 @@ pdf.text @eval_intro_third
 pdf.text " "
 pdf.text " "
 pdf.text " "
-start_new_page
+pdf.start_new_page
 pdf.image open(URI.escape(@nutrition_chart)) 
 pdf.text " "
 pdf.image open(URI.escape(@combined_chart))
