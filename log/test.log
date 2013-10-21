@@ -9793,3 +9793,403 @@ Started GET "/portal" for 127.0.0.1 at 2013-10-20 19:46:39 -0700
   [1m[36mFoodJournal Load (0.1ms)[0m  [1mSELECT "food_journals".* FROM "food_journals" INNER JOIN "school_semesters" ON "food_journals"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3[0m
 Rendered home/portal.html.haml within layouts/application (11.8ms)
 Completed 200 OK in 16ms (Views: 13.0ms | ActiveRecord: 0.9ms)
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (2.0ms)[0m  SELECT 1 FROM "profiles" WHERE "profiles"."label" = 'admin' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "profiles" ("label") VALUES (?)[0m  [["label", "admin"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SELECT 1 FROM "profiles" WHERE "profiles"."label" = 'ambassador' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "profiles" ("label") VALUES (?)[0m  [["label", "ambassador"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.6ms)[0m  INSERT INTO "schools" ("city", "county", "created_at", "district", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["city", "Berkeley"], ["county", "Alameda"], ["created_at", Mon, 21 Oct 2013 03:02:32 UTC +00:00], ["district", "Berkeley"], ["name", "UC Berkeley"], ["updated_at", Mon, 21 Oct 2013 03:02:32 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "school_semesters" ("name", "school_id", "year") VALUES (?, ?, ?)[0m  [["name", "Fall"], ["school_id", 1], ["year", 2013]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("college", "created_at", "email", "name", "password_digest", "profile_id", "school_semester_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["college", nil], ["created_at", Mon, 21 Oct 2013 03:02:33 UTC +00:00], ["email", "admin@fruitfulminds.com"], ["name", "Admin"], ["password_digest", "$2a$10$BXzkC8ikDdXIJxh9fqJkF.CVTW5/498MbmE6OJey5EUqnzrCFSLkO"], ["profile_id", 1], ["school_semester_id", 3], ["updated_at", Mon, 21 Oct 2013 03:02:33 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("college", "created_at", "email", "name", "password_digest", "profile_id", "school_semester_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["college", nil], ["created_at", Mon, 21 Oct 2013 03:02:33 UTC +00:00], ["email", "alwong8@berkeley.edu"], ["name", "Alvin"], ["password_digest", "$2a$10$SX4r.8ziD797mpTSfPVIF.W0ov6FP8BDi9k07L6Sv4l53ZALfKI4S"], ["profile_id", 2], ["school_semester_id", 3], ["updated_at", Mon, 21 Oct 2013 03:02:33 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("college", "created_at", "email", "name", "password_digest", "profile_id", "school_semester_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["college", nil], ["created_at", Mon, 21 Oct 2013 03:02:33 UTC +00:00], ["email", "kevinyeun@berkeley.edu"], ["name", "Kevin"], ["password_digest", "$2a$10$rYtDqd5jjc7TspmkYK4YUO6GDkFijP396Kdp8ZAMvxbYBd7pKv.vq"], ["profile_id", 3], ["school_semester_id", 4], ["updated_at", Mon, 21 Oct 2013 03:02:33 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+
+
+Started GET "/login" for 127.0.0.1 at 2013-10-20 20:02:33 -0700
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.haml within layouts/application (8.1ms)
+Completed 200 OK in 71ms (Views: 68.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2013-10-20 20:02:33 -0700
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"alwong8@berkeley.edu", "password"=>"[FILTERED]"}, "commit"=>"Sign In"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'alwong8@berkeley.edu' LIMIT 1
+  [1m[36mPendingUser Load (0.1ms)[0m  [1mSELECT "pending_users".* FROM "pending_users" WHERE "pending_users"."user_id" = 2 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1
+Redirected to http://www.example.com/portal
+Completed 302 Found in 168ms
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-20 20:02:33 -0700
+  Processing by HomeController#portal as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSchoolSemester Load (0.1ms)[0m  SELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 3 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1[0m
+  [1m[35mPostsurvey Load (0.3ms)[0m  SELECT "postsurveys".* FROM "postsurveys" INNER JOIN "school_semesters" ON "postsurveys"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3
+  [1m[36mPresurvey::Part1 Load (0.2ms)[0m  [1mSELECT "presurvey_part1s".* FROM "presurvey_part1s" INNER JOIN "school_semesters" ON "presurvey_part1s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3[0m
+  [1m[35mPresurvey::Part2 Load (0.1ms)[0m  SELECT "presurvey_part2s".* FROM "presurvey_part2s" INNER JOIN "school_semesters" ON "presurvey_part2s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3
+  [1m[36mFoodJournal Load (0.1ms)[0m  [1mSELECT "food_journals".* FROM "food_journals" INNER JOIN "school_semesters" ON "food_journals"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3[0m
+Rendered home/portal.html.haml within layouts/application (63.0ms)
+Completed 200 OK in 71ms (Views: 66.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-20 20:02:33 -0700
+  Processing by HomeController#portal as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSchoolSemester Load (0.1ms)[0m  [1mSELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 3 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1
+  [1m[36mPostsurvey Load (0.2ms)[0m  [1mSELECT "postsurveys".* FROM "postsurveys" INNER JOIN "school_semesters" ON "postsurveys"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3[0m
+  [1m[35mPresurvey::Part1 Load (0.1ms)[0m  SELECT "presurvey_part1s".* FROM "presurvey_part1s" INNER JOIN "school_semesters" ON "presurvey_part1s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3
+  [1m[36mPresurvey::Part2 Load (0.1ms)[0m  [1mSELECT "presurvey_part2s".* FROM "presurvey_part2s" INNER JOIN "school_semesters" ON "presurvey_part2s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3[0m
+  [1m[35mFoodJournal Load (0.1ms)[0m  SELECT "food_journals".* FROM "food_journals" INNER JOIN "school_semesters" ON "food_journals"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3
+Rendered home/portal.html.haml within layouts/application (5.8ms)
+Completed 200 OK in 9ms (Views: 6.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-20 20:02:33 -0700
+  Processing by HomeController#portal as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSchoolSemester Load (0.1ms)[0m  SELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 3 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1[0m
+  [1m[35mPostsurvey Load (0.2ms)[0m  SELECT "postsurveys".* FROM "postsurveys" INNER JOIN "school_semesters" ON "postsurveys"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3
+  [1m[36mPresurvey::Part1 Load (0.2ms)[0m  [1mSELECT "presurvey_part1s".* FROM "presurvey_part1s" INNER JOIN "school_semesters" ON "presurvey_part1s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3[0m
+  [1m[35mPresurvey::Part2 Load (0.1ms)[0m  SELECT "presurvey_part2s".* FROM "presurvey_part2s" INNER JOIN "school_semesters" ON "presurvey_part2s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3
+  [1m[36mFoodJournal Load (0.1ms)[0m  [1mSELECT "food_journals".* FROM "food_journals" INNER JOIN "school_semesters" ON "food_journals"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3[0m
+Rendered home/portal.html.haml within layouts/application (11.6ms)
+Completed 200 OK in 16ms (Views: 13.0ms | ActiveRecord: 0.9ms)
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (2.4ms)[0m  SELECT 1 FROM "profiles" WHERE "profiles"."label" = 'admin' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "profiles" ("label") VALUES (?)[0m  [["label", "admin"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SELECT 1 FROM "profiles" WHERE "profiles"."label" = 'ambassador' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "profiles" ("label") VALUES (?)[0m  [["label", "ambassador"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO "schools" ("city", "county", "created_at", "district", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["city", "Berkeley"], ["county", "Alameda"], ["created_at", Mon, 21 Oct 2013 03:02:53 UTC +00:00], ["district", nil], ["name", "school1"], ["updated_at", Mon, 21 Oct 2013 03:02:53 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "school_semesters" ("name", "school_id", "year") VALUES (?, ?, ?)[0m  [["name", "Fall"], ["school_id", 1], ["year", 2012]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+
+
+Started GET "/login" for 127.0.0.1 at 2013-10-20 20:02:53 -0700
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.haml within layouts/application (7.4ms)
+Completed 200 OK in 95ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2013-10-20 20:02:53 -0700
+  Processing by UsersController#new as HTML
+Rendered users/_terms_of_service.html.haml (71.3ms)
+Rendered users/new.html.haml within layouts/application (121.4ms)
+Completed 200 OK in 125ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SELECT 1 FROM "profiles" WHERE "profiles"."label" = 'admin' LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "profiles" ("label") VALUES (?)[0m  [["label", "admin"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SELECT 1 FROM "profiles" WHERE "profiles"."label" = 'ambassador' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "profiles" ("label") VALUES (?)[0m  [["label", "ambassador"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schools" ("city", "county", "created_at", "district", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["city", "Berkeley"], ["county", "Alameda"], ["created_at", Mon, 21 Oct 2013 03:02:53 UTC +00:00], ["district", nil], ["name", "school1"], ["updated_at", Mon, 21 Oct 2013 03:02:53 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "school_semesters" ("name", "school_id", "year") VALUES (?, ?, ?)[0m  [["name", "Fall"], ["school_id", 1], ["year", 2012]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+
+
+Started GET "/signup" for 127.0.0.1 at 2013-10-20 20:02:53 -0700
+  Processing by UsersController#new as HTML
+Rendered users/_terms_of_service.html.haml (1.7ms)
+Rendered users/new.html.haml within layouts/application (6.9ms)
+Completed 200 OK in 10ms (Views: 9.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2013-10-20 20:02:53 -0700
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"firstname"=>"Amir", "lastname"=>"Khodaei", "college"=>"Berkeley City College", "email"=>"amirk88@gmail.com", "password"=>"[FILTERED]", "confirm_password"=>"[FILTERED]"}, "school"=>{"name"=>"school1", "county"=>"Alameda", "district"=>"District", "city"=>"Berkeley"}, "semester"=>{"name"=>"Fall"}, "date"=>{"year"=>"2012"}, "tos"=>"1", "commit"=>"Register"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."label" = 'ambassador' LIMIT 1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("college", "created_at", "email", "name", "password_digest", "profile_id", "school_semester_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["college", "Berkeley City College"], ["created_at", Mon, 21 Oct 2013 03:02:53 UTC +00:00], ["email", "amirk88@gmail.com"], ["name", "Amir Khodaei"], ["password_digest", "$2a$10$/7w3gAghYqxqBjVUYsWkm.H5.Hm2FljIPrV4Q6.nDk3EjNCPzw7e6"], ["profile_id", 2], ["school_semester_id", nil], ["updated_at", Mon, 21 Oct 2013 03:02:53 UTC +00:00]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "pending_users" ("created_at", "school_city", "school_county", "school_district", "school_name", "semester_name", "semester_year", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Mon, 21 Oct 2013 03:02:53 UTC +00:00], ["school_city", "Berkeley"], ["school_county", "Alameda"], ["school_district", "District"], ["school_name", "school1"], ["semester_name", "Fall"], ["semester_year", 2012], ["updated_at", Mon, 21 Oct 2013 03:02:53 UTC +00:00], ["user_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Rendered user_mailer/notify_admin.html.haml (2.6ms)
+
+Sent mail to fruitful@fruitfulminds.org (50ms)
+Date: Sun, 20 Oct 2013 20:02:54 -0700
+From: fruitful@fruitfulminds.org
+To: fruitful@fruitfulminds.org
+Message-ID: <5264995e5790_4860464d01c816ad@saasbook.mail>
+Subject: New User Registered
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<h3></h3>
+<p>
+This email is to inform you that a new user with the following info has requested access to Fruitfulminds Website
+<br>
+Name: Amir Khodaei
+<br>
+Email: amirk88@gmail.com
+<br>
+<b>Your approval is needed in order to allow the user to access Fruitfulminds Website</b>
+<br>
+<br>
+You can approve/disapprove all pending users by loging into Fruitfulminds and selecting 
+<a href="http://fruitfulminds.herokuapp.com/pending_users">Pending Users</a>
+ and selecting the appropirate box for each user.
+</p>
+Redirected to http://www.example.com/login
+Completed 302 Found in 392ms
+
+
+Started GET "/login" for 127.0.0.1 at 2013-10-20 20:02:54 -0700
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT 1 FROM "profiles" WHERE "profiles"."label" = 'admin' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "profiles" ("label") VALUES (?)  [["label", "admin"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT 1 FROM "profiles" WHERE "profiles"."label" = 'ambassador' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "profiles" ("label") VALUES (?)  [["label", "ambassador"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schools" ("city", "county", "created_at", "district", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["city", "Berkeley"], ["county", "Alameda"], ["created_at", Mon, 21 Oct 2013 03:02:54 UTC +00:00], ["district", nil], ["name", "school1"], ["updated_at", Mon, 21 Oct 2013 03:02:54 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "school_semesters" ("name", "school_id", "year") VALUES (?, ?, ?)  [["name", "Fall"], ["school_id", 1], ["year", 2012]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+
+
+Started GET "/signup" for 127.0.0.1 at 2013-10-20 20:02:54 -0700
+  Processing by UsersController#new as HTML
+Rendered users/_terms_of_service.html.haml (1.5ms)
+Rendered users/new.html.haml within layouts/application (6.5ms)
+Completed 200 OK in 8ms (Views: 8.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2013-10-20 20:02:54 -0700
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"firstname"=>"Amir", "lastname"=>"Khodaei", "college"=>"Berkeley City College", "email"=>"amirk88@gmail.com", "password"=>"[FILTERED]", "confirm_password"=>"[FILTERED]"}, "school"=>{"name"=>"school1", "county"=>"Alameda", "district"=>"District", "city"=>"Berkeley"}, "semester"=>{"name"=>"Fall"}, "date"=>{"year"=>"2012"}, "commit"=>"Register"}
+Redirected to http://www.example.com/signup
+Completed 302 Found in 1ms
+
+
+Started GET "/signup" for 127.0.0.1 at 2013-10-20 20:02:54 -0700
+  Processing by UsersController#new as HTML
+Rendered users/_terms_of_service.html.haml (1.0ms)
+Rendered users/new.html.haml within layouts/application (5.4ms)
+Completed 200 OK in 7ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSELECT 1 FROM "profiles" WHERE "profiles"."label" = 'admin' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "profiles" ("label") VALUES (?)  [["label", "admin"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT 1 FROM "profiles" WHERE "profiles"."label" = 'ambassador' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "profiles" ("label") VALUES (?)  [["label", "ambassador"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("city", "county", "created_at", "district", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["city", "Berkeley"], ["county", "Alameda"], ["created_at", Mon, 21 Oct 2013 03:02:54 UTC +00:00], ["district", nil], ["name", "school1"], ["updated_at", Mon, 21 Oct 2013 03:02:54 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (4.4ms)[0m  INSERT INTO "school_semesters" ("name", "school_id", "year") VALUES (?, ?, ?)  [["name", "Fall"], ["school_id", 1], ["year", 2012]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+
+
+Started GET "/signup" for 127.0.0.1 at 2013-10-20 20:02:54 -0700
+  Processing by UsersController#new as HTML
+Rendered users/_terms_of_service.html.haml (1.0ms)
+Rendered users/new.html.haml within layouts/application (5.1ms)
+Completed 200 OK in 7ms (Views: 6.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2013-10-20 20:02:54 -0700
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"firstname"=>"Amir", "lastname"=>"Khodaei", "college"=>"Berkeley City College", "email"=>"amirk88@gmail.com", "password"=>"[FILTERED]", "confirm_password"=>"[FILTERED]"}, "school"=>{"name"=>"school1", "county"=>"Alameda", "district"=>"District", "city"=>"Berkeley"}, "semester"=>{"name"=>"Fall"}, "date"=>{"year"=>"2012"}, "tos"=>"1", "commit"=>"Register"}
+Redirected to http://www.example.com/signup
+Completed 302 Found in 1ms
+
+
+Started GET "/signup" for 127.0.0.1 at 2013-10-20 20:02:54 -0700
+  Processing by UsersController#new as HTML
+Rendered users/_terms_of_service.html.haml (1.2ms)
+Rendered users/new.html.haml within layouts/application (6.4ms)
+Completed 200 OK in 8ms (Views: 8.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT 1 FROM "profiles" WHERE "profiles"."label" = 'admin' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "profiles" ("label") VALUES (?)  [["label", "admin"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT 1 FROM "profiles" WHERE "profiles"."label" = 'ambassador' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "profiles" ("label") VALUES (?)  [["label", "ambassador"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("city", "county", "created_at", "district", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["city", "Berkeley"], ["county", "Alameda"], ["created_at", Mon, 21 Oct 2013 03:02:54 UTC +00:00], ["district", nil], ["name", "school1"], ["updated_at", Mon, 21 Oct 2013 03:02:54 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "school_semesters" ("name", "school_id", "year") VALUES (?, ?, ?)  [["name", "Fall"], ["school_id", 1], ["year", 2012]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+
+
+Started GET "/signup" for 127.0.0.1 at 2013-10-20 20:02:54 -0700
+  Processing by UsersController#new as HTML
+Rendered users/_terms_of_service.html.haml (1.1ms)
+Rendered users/new.html.haml within layouts/application (6.7ms)
+Completed 200 OK in 9ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2013-10-20 20:02:54 -0700
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"firstname"=>"Amir", "lastname"=>"Khodaei", "college"=>"Berkeley City College", "email"=>"amirk88@gmail.com", "password"=>"[FILTERED]", "confirm_password"=>"[FILTERED]"}, "school"=>{"name"=>"school1", "county"=>"Alameda", "district"=>"District", "city"=>"Berkeley"}, "semester"=>{"name"=>"Fall"}, "date"=>{"year"=>"2012"}, "tos"=>"1", "commit"=>"Register"}
+Redirected to http://www.example.com/signup
+Completed 302 Found in 1ms
+
+
+Started GET "/signup" for 127.0.0.1 at 2013-10-20 20:02:54 -0700
+  Processing by UsersController#new as HTML
+Rendered users/_terms_of_service.html.haml (1.6ms)
+Rendered users/new.html.haml within layouts/application (5.8ms)
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT 1 FROM "profiles" WHERE "profiles"."label" = 'admin' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "profiles" ("label") VALUES (?)  [["label", "admin"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT 1 FROM "profiles" WHERE "profiles"."label" = 'ambassador' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "profiles" ("label") VALUES (?)  [["label", "ambassador"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schools" ("city", "county", "created_at", "district", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["city", "Berkeley"], ["county", "Alameda"], ["created_at", Mon, 21 Oct 2013 03:02:54 UTC +00:00], ["district", nil], ["name", "school1"], ["updated_at", Mon, 21 Oct 2013 03:02:54 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "school_semesters" ("name", "school_id", "year") VALUES (?, ?, ?)  [["name", "Fall"], ["school_id", 1], ["year", 2012]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+
+
+Started GET "/signup" for 127.0.0.1 at 2013-10-20 20:02:54 -0700
+  Processing by UsersController#new as HTML
+Rendered users/_terms_of_service.html.haml (1.1ms)
+Rendered users/new.html.haml within layouts/application (4.9ms)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2013-10-20 20:02:55 -0700
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"firstname"=>"", "lastname"=>"", "college"=>"", "email"=>"newuser@gmail.com", "password"=>"[FILTERED]", "confirm_password"=>"[FILTERED]"}, "school"=>{"name"=>"", "county"=>"", "district"=>"", "city"=>""}, "semester"=>{"name"=>"Fall"}, "date"=>{"year"=>"2013"}, "tos"=>"1", "commit"=>"Register"}
+Redirected to http://www.example.com/signup
+Completed 302 Found in 0ms
+
+
+Started GET "/signup" for 127.0.0.1 at 2013-10-20 20:02:55 -0700
+  Processing by UsersController#new as HTML
+Rendered users/_terms_of_service.html.haml (1.0ms)
+Rendered users/new.html.haml within layouts/application (5.3ms)
+Completed 200 OK in 7ms (Views: 6.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT 1 FROM "profiles" WHERE "profiles"."label" = 'admin' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "profiles" ("label") VALUES (?)  [["label", "admin"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT 1 FROM "profiles" WHERE "profiles"."label" = 'ambassador' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "profiles" ("label") VALUES (?)  [["label", "ambassador"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schools" ("city", "county", "created_at", "district", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["city", "Berkeley"], ["county", "Alameda"], ["created_at", Mon, 21 Oct 2013 03:02:55 UTC +00:00], ["district", nil], ["name", "school1"], ["updated_at", Mon, 21 Oct 2013 03:02:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "school_semesters" ("name", "school_id", "year") VALUES (?, ?, ?)  [["name", "Fall"], ["school_id", 1], ["year", 2012]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+
+
+Started GET "/signup" for 127.0.0.1 at 2013-10-20 20:02:55 -0700
+  Processing by UsersController#new as HTML
+Rendered users/_terms_of_service.html.haml (1.0ms)
+Rendered users/new.html.haml within layouts/application (4.9ms)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT 1 FROM "profiles" WHERE "profiles"."label" = 'admin' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "profiles" ("label") VALUES (?)  [["label", "admin"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT 1 FROM "profiles" WHERE "profiles"."label" = 'ambassador' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "profiles" ("label") VALUES (?)  [["label", "ambassador"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schools" ("city", "county", "created_at", "district", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["city", "Berkeley"], ["county", "Alameda"], ["created_at", Mon, 21 Oct 2013 03:02:55 UTC +00:00], ["district", nil], ["name", "school1"], ["updated_at", Mon, 21 Oct 2013 03:02:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "school_semesters" ("name", "school_id", "year") VALUES (?, ?, ?)  [["name", "Fall"], ["school_id", 1], ["year", 2012]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+
+
+Started GET "/signup" for 127.0.0.1 at 2013-10-20 20:02:55 -0700
+  Processing by UsersController#new as HTML
+Rendered users/_terms_of_service.html.haml (1.0ms)
+Rendered users/new.html.haml within layouts/application (5.4ms)
+Completed 200 OK in 7ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSELECT 1 FROM "profiles" WHERE "profiles"."label" = 'admin' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "profiles" ("label") VALUES (?)  [["label", "admin"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT 1 FROM "profiles" WHERE "profiles"."label" = 'ambassador' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "profiles" ("label") VALUES (?)  [["label", "ambassador"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("city", "county", "created_at", "district", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["city", "Berkeley"], ["county", "Alameda"], ["created_at", Mon, 21 Oct 2013 03:02:55 UTC +00:00], ["district", nil], ["name", "school1"], ["updated_at", Mon, 21 Oct 2013 03:02:55 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "school_semesters" ("name", "school_id", "year") VALUES (?, ?, ?)  [["name", "Fall"], ["school_id", 1], ["year", 2012]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+
+
+Started GET "/signup" for 127.0.0.1 at 2013-10-20 20:02:55 -0700
+  Processing by UsersController#new as HTML
+Rendered users/_terms_of_service.html.haml (0.6ms)
+Rendered users/new.html.haml within layouts/application (10.4ms)
+Completed 200 OK in 12ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT 1 FROM "profiles" WHERE "profiles"."label" = 'admin' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "profiles" ("label") VALUES (?)  [["label", "admin"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSELECT 1 FROM "profiles" WHERE "profiles"."label" = 'ambassador' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "profiles" ("label") VALUES (?)  [["label", "ambassador"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schools" ("city", "county", "created_at", "district", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["city", "Berkeley"], ["county", "Alameda"], ["created_at", Mon, 21 Oct 2013 03:02:55 UTC +00:00], ["district", nil], ["name", "school1"], ["updated_at", Mon, 21 Oct 2013 03:02:55 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "school_semesters" ("name", "school_id", "year") VALUES (?, ?, ?)  [["name", "Fall"], ["school_id", 1], ["year", 2012]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+
+
+Started GET "/signup" for 127.0.0.1 at 2013-10-20 20:02:55 -0700
+  Processing by UsersController#new as HTML
+Rendered users/_terms_of_service.html.haml (1.0ms)
+Rendered users/new.html.haml within layouts/application (9.3ms)
+Completed 200 OK in 11ms (Views: 10.7ms | ActiveRecord: 0.0ms)
