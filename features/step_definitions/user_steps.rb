@@ -102,3 +102,14 @@ And I fill in "Email" with "john@gmail.com"
 And I fill in "Pass" with "12345"
 And I press "Sign In"}
 end
+
+
+# From Fall 2013 -- Group 16
+
+Given /\s*I login as user "(.*)" with password "(.*)"$/ do |email, pass|
+  steps %Q{
+  And I am on the login page
+  And I fill in "Email" with "#{email}"
+  And I fill in "Pass" with "#{pass}"
+  And I press "Sign In"}
+end
