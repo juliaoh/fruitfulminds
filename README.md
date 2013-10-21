@@ -9,7 +9,7 @@ The goal of the project is to build a user-friendly web application for Fruitful
 * SaaS Website: http://beta.saasbook.info
 
 == Developers
-Michael Jun, Julia Oh, Alvin Wong, Sam Xu, William Yau, Kevin Yuen
+Michael Jun, Julia Oh, Alvin Wong, Sam Xu, William Yau, Kevin Yeun
 
 == Getting Started
 === GitHub Repo
