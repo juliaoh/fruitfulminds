@@ -1,7 +1,7 @@
 pdf.text " "
 pdf.image "#{Rails.root}/app/assets/images/fm_icon.jpg"
 pdf.text " "
-pdf.text "Fruitful Minds", :align => :left, :size =>18, style => :bold
+pdf.text "Fruitful Minds", :align => :left, :size =>18, :style => :bold
 pdf.text " "
 pdf.text @school.name, :align => :left, :size => 18, :style => :bold
 pdf.text " "
