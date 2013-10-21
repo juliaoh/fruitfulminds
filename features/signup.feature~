@@ -80,7 +80,7 @@ Background: users have been added to database
     
   Scenario: college should be in drop-down menu
     Given I am on the signup page
-    Then I should see "user_college" in drop-down menu
+    Then I should see "college" in drop-down menu
     
   Scenario: school name should be in drop-down menu
     Given I am on the signup page
