@@ -161,8 +161,8 @@ class ReportsController < ApplicationController
     schoolName.gsub!(/_/, ' ')    
     @school.name.gsub!(/_/, ' ')
 
-    @main_title = "Fruitful Minds #{@school.name} Fall 2012 Report"
-    @main_semester_title = "#{@school_semester.name} Report
+    @main_title = "Fruitful Minds #{@school.name} Fall 2013 Report"
+    @main_semester_title = "#{@school_semester.name} Report"
     @school_intro_title = "Fruitful Minds at #{@school.name}"
     @school_intro = "Fruitful Minds held a nutrition lesson series at #{@school.name} during #{@school_semester.name} #{@school_semester.year}" 
     @school_intro_second = "    #{@school.users.size} students from UC Berkeley #{@ambassadors} were selected as Fruitful Minds ambassadors"    
