@@ -44,6 +44,7 @@ pdf.text @eval_intro_third
 pdf.text " "
 pdf.text " "
 pdf.text " "
+start_new_page
 pdf.image open(URI.escape(@nutrition_chart)) 
 pdf.text " "
 pdf.image open(URI.escape(@combined_chart))
