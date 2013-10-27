@@ -1,5 +1,11 @@
 pdf.text " "
-pdf.text @main_title, :align => :center, :size => 18, :style => :bold
+pdf.image "#{Rails.root}/app/assets/images/fm_icon.jpg"
+pdf.text " "
+pdf.text "Fruitful Minds", :align => :left, :size =>18, :style => :bold
+pdf.text " "
+pdf.text @school.name, :align => :left, :size => 18, :style => :bold
+pdf.text " "
+pdf.text @main_semester_title, :align => :left, :size => 18, :style => :bold
 pdf.text " "
 pdf.text " "
 pdf.text @static_contents[:intro_title], :size => 14, :style => :bold
@@ -38,6 +44,7 @@ pdf.text @eval_intro_third
 pdf.text " "
 pdf.text " "
 pdf.text " "
+pdf.start_new_page
 pdf.image open(URI.escape(@nutrition_chart)) 
 pdf.text " "
 pdf.image open(URI.escape(@combined_chart))
@@ -70,6 +77,7 @@ pdf.text @static_contents[:behavior_title], :size => 14, :style => :bold
 pdf.text " "
 pdf.text @static_contents[:behavior_intro]
 pdf.text " "
+pdf.start_new_page
 pdf.image open(URI.escape(@efficacy_chart)), :align => :center
 pdf.text " "
 pdf.text @improvement_intro

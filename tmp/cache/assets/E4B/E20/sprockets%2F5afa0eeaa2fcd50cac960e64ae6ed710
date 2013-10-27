@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1382316697.320071:@value{I"
 class:EFI"StaticAsset;
 FI"id;
 F"%66fc657ad04ac90311815de25ab98836I"logical_path;
+=======
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1382325676.3982131:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%6efba1b94ac6371b9510e7ffb145a122I"logical_path;
+>>>>>>> 0678c3ec07c9c32cdaec3686555e3f22309def56
 FI"fm_icon.jpg;
 TI"pathname;
 FI"($root/app/assets/images/fm_icon.jpg;
@@ -9,9 +16,18 @@ TI"content_type;
 FI"image/jpeg;
 FI"
 mtime;
+<<<<<<< HEAD
 FI"2013-10-20T17:30:48-07:00;
 FI"length;
 FI"	4252;
 FI"digest;
 F"%064b43045a917ef8c6e6206aa42d3f33I"_version;
 F"%0868aba5d4b750d3a9421721ea3d9b9c
+=======
+FI"2013-10-20T17:46:58-07:00;
+FI"length;
+FI"	4252;
+FI"digest;
+F"%3d8df8c2b9abbd05a465d17392141a67I"_version;
+F"%df7525e917401704ef453cb56bf16697
+>>>>>>> 0678c3ec07c9c32cdaec3686555e3f22309def56

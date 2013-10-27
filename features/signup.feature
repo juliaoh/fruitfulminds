@@ -77,3 +77,19 @@ Background: users have been added to database
     And I press "Register"
     Then I should be on the signup page
     And I should see "Please fill in all fields"
+    
+  Scenario: college should be in drop-down menu
+    Given I am on the signup page
+    Then I should see "user_college" in drop-down menu
+    
+  Scenario: school name should be in drop-down menu
+    Given I am on the signup page
+    Then I should see "school_name" in drop-down menu
+    
+  Scenario: school district should be in drop-down menu
+    Given I am on the signup page
+    Then I should see "school_district" in drop-down menu
+    
+  Scenario: school city should be in drop-down menu
+    Given I am on the signup page
+    Then I should see "school_city" in drop-down menu

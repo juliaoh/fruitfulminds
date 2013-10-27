@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1382316695.4123986:@value{I"
 class:EFI"BundledAsset;
 FI"id;
 F"%6475f4026ba24ecc282a1b39b76e4bb4I"logical_path;
+=======
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1382325679.9078481:@value{I"
+class:EFI"BundledAsset;
+FI"id;
+F"%21a796ec363fabd5d1e42b664e626cd3I"logical_path;
+>>>>>>> 0678c3ec07c9c32cdaec3686555e3f22309def56
 FI"bootstrap.min.css;
 TI"pathname;
 FI"3$root/app/assets/stylesheets/bootstrap.min.css;
@@ -9,7 +16,11 @@ TI"content_type;
 FI"text/css;
 FI"
 mtime;
+<<<<<<< HEAD
 FI"2013-10-20T17:30:48-07:00;
+=======
+FI"2013-10-20T17:46:58-07:00;
+>>>>>>> 0678c3ec07c9c32cdaec3686555e3f22309def56
 FI"	body;
 FI"v/*!
  * Bootstrap v2.1.1
@@ -29,8 +40,16 @@ F[{I"	path;
 FI"3$root/app/assets/stylesheets/bootstrap.min.css;
 TI"
 mtime;
+<<<<<<< HEAD
 FIu:	Time f€Xâ{
 :@_zoneI"PDT;
 T:nano_numi:nano_deni:submicro"QP:offsetiþI"hexdigest;
 F"%56a4730b570b8f54760bde0e54940a45I"_version;
 F"%0868aba5d4b750d3a9421721ea3d9b9c
+=======
+FIu:	Time f€LK »
+:@_zoneI"PDT;
+T:nano_numiw:nano_deni:submicro"7P:offsetiþI"hexdigest;
+F"%195aa4622325d0194a558965eecb5000I"_version;
+F"%df7525e917401704ef453cb56bf16697
+>>>>>>> 0678c3ec07c9c32cdaec3686555e3f22309def56

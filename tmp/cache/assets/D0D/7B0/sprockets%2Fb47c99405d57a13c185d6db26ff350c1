@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1382316695.760955:@value{I"
 class:EFI"BundledAsset;
 FI"id;
 F"%007a90a05b5a5fe5004b40a1d458d0c1I"logical_path;
+=======
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1382325676.4074805:@value{I"
+class:EFI"BundledAsset;
+FI"id;
+F"%4fd9df5fb586ca5dd414bece348d46e4I"logical_path;
+>>>>>>> 0678c3ec07c9c32cdaec3686555e3f22309def56
 FI"jquery.js;
 TI"pathname;
 FI"i/home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/jquery-rails-3.0.4/vendor/assets/javascripts/jquery.js;
@@ -9812,5 +9819,10 @@ mtime;
 FIu:	Time¦^€O¢º¦
 :@_zoneI"PDT;
 T:nano_numiş:nano_deni:submicro"v`:offsetişI"hexdigest;
+<<<<<<< HEAD
 F"%f11cf60ec044cbd1d4dab2286872d640I"_version;
 F"%0868aba5d4b750d3a9421721ea3d9b9c
+=======
+F"%93e61127ddd450a020fc1923acd2c314I"_version;
+F"%df7525e917401704ef453cb56bf16697
+>>>>>>> 0678c3ec07c9c32cdaec3686555e3f22309def56
