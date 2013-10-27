@@ -2,6 +2,6 @@
 
 %span
   = form_for @college_fields, :url => {:action => :update} do |f|
-    = render :partial => "school", :locals => {:f => f}
+    = render :partial => "college", :locals => {:f => f}
     #submit
       = submit_tag 'Save Changes'
