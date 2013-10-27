@@ -1,17 +1,0 @@
-o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1382325676.3982131:@value{I"
-class:EFI"StaticAsset;
-FI"id;
-F"%6efba1b94ac6371b9510e7ffb145a122I"logical_path;
-FI"fm_icon.jpg;
-TI"pathname;
-FI"($root/app/assets/images/fm_icon.jpg;
-TI"content_type;
-FI"image/jpeg;
-FI"
-mtime;
-FI"2013-10-20T17:46:58-07:00;
-FI"length;
-FI"	4252;
-FI"digest;
-F"%3d8df8c2b9abbd05a465d17392141a67I"_version;
-F"%df7525e917401704ef453cb56bf16697

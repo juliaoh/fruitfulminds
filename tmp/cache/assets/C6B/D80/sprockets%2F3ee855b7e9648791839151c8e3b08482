@@ -1,17 +1,0 @@
-o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1382325681.3581057:@value{I"
-class:EFI"StaticAsset;
-FI"id;
-F"%03ecd1813aa0288925d20e6efdfc42d3I"logical_path;
-FI"jquery.min.map;
-TI"pathname;
-FI"n/home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/jquery-rails-3.0.4/vendor/assets/javascripts/jquery.min.map;
-TI"content_type;
-FI"application/octet-stream;
-FI"
-mtime;
-FI"2013-08-20T23:41:43-07:00;
-FI"length;
-FI"140023;
-FI"digest;
-F"%65a15c9aac52989bb056d466abc85100I"_version;
-F"%df7525e917401704ef453cb56bf16697
