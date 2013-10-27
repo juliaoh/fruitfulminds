@@ -1,0 +1,13 @@
+- @subtitle = "All Schools"
+
+%table.table
+  %thead
+    %tr
+      %th Name
+  %tbody
+    - @all_colleges.each do |college|
+      %tr
+        %td
+          = college.name
+        %td
+          = button_to "Edit #{college.name}", edit_college_path(college.id), :method => :get, :id=> "edit_college_#{college.id}"
