@@ -5700,3 +5700,206 @@ DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated
   [1m[36m (14.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121217051648')[0m
   [1m[35m (17.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121028031850')
   [1m[36m (10.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121027222901')[0m
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Dropbox/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Dropbox/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Dropbox/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Dropbox/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+  [1m[36m (3.8ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (61.7ms)[0m  [1mCREATE TABLE "efficacies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "postsurvey_id" integer, "part2_id" integer, "efficacy_1" integer, "efficacy_2" integer, "efficacy_3" integer, "efficacy_4" integer, "efficacy_5" integer, "efficacy_6" integer, "efficacy_7" integer, "efficacy_8" integer, "efficacy_9" integer, "efficacy_10" integer, "number_students" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (11.0ms)[0m  CREATE TABLE "food_journals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "school_semester_id" integer, "student_name" varchar(255), "week_num" integer, "fruit" integer, "vegetable" integer, "sugary_drink" integer, "water" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (12.7ms)[0m  [1mCREATE TABLE "pending_users" ("user_id" integer, "created_at" datetime, "updated_at" datetime, "school_city" varchar(255), "school_name" varchar(255), "school_county" varchar(255), "semester_name" varchar(255), "semester_year" integer, "school_district" varchar(255)) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("pending_users")
+  [1m[36m (14.3ms)[0m  [1mCREATE UNIQUE INDEX "index_pending_users_on_user_id" ON "pending_users" ("user_id")[0m
+  [1m[35m (12.7ms)[0m  CREATE TABLE "postsurveys" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "school_semester_id" integer, "section_1_1" integer, "section_1_2" integer, "section_2_1" integer, "section_2_2" integer, "section_2_3" integer, "section_2_4" integer, "section_3_1" integer, "section_3_2" integer, "section_3_3" integer, "section_3_4" integer, "section_3_5" integer, "section_3_6" integer, "section_4_1" integer, "section_4_2" integer, "section_4_3" integer, "section_5_1" integer, "section_5_2" integer, "section_6_1" integer, "section_6_2" integer, "section_6_3" integer, "section_6_4" integer, "number_students" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (19.6ms)[0m  [1mCREATE TABLE "presurvey_part1s" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "school_semester_id" integer, "number_students" integer, "section_1_1" integer, "section_1_2" integer, "section_2_1" integer, "section_2_2" integer, "section_2_3" integer, "section_2_4" integer, "section_3_1" integer, "section_3_2" integer, "section_3_3" integer, "section_3_4" integer, "section_3_5" integer, "section_3_6" integer, "section_4_1" integer, "section_4_2" integer, "section_4_3" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (16.9ms)[0m  CREATE TABLE "presurvey_part2s" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "school_semester_id" integer, "number_students" integer, "section_5_1" integer, "section_5_2" integer, "section_6_1" integer, "section_6_2" integer, "section_6_3" integer, "section_6_4" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (21.4ms)[0m  [1mCREATE TABLE "profiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "label" varchar(255)) [0m
+  [1m[35m (15.8ms)[0m  CREATE TABLE "reports" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "school_semester_id" integer, "main_title" text, "school_intro_title" text, "school_introduction" text, "eval_intro" text, "strength_weakness_title" text, "strengths" text, "weaknesses" text, "summary" text, "created_at" datetime, "updated_at" datetime, "note" text) 
+  [1m[36m (17.4ms)[0m  [1mCREATE TABLE "school_semesters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "school_id" integer, "name" varchar(255), "year" integer) [0m
+  [1m[35m (10.1ms)[0m  CREATE TABLE "schools" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "city" varchar(255), "county" varchar(255), "created_at" datetime, "updated_at" datetime, "district" varchar(255)) 
+  [1m[36m (17.4ms)[0m  [1mCREATE TABLE "static_contents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "report_id" integer, "intro_title" text, "introduction" text, "objectives_title" text, "objectives" text, "eval_title" text, "strength_weakness_intro" text, "strength_intro" text, "weakness_intro" text, "summary" text, "behavior_title" text, "behavior_intro" text, "agree_1" text, "agree_2" text, "agree_3" text, "agree_4" text, "agree_5" text, "agree_6" text, "agree_7" text, "agree_8" text, "agree_9" text, "agree_10" text, "slight_increase_header" text, "decrease_header" text, "slight_decrease_header" text, "summary_header" text, "increase_1_2" text, "increase_1" text, "increase_2" text, "increase_3_4" text, "increase_3" text, "increase_4" text, "increase_5_6_7" text, "increase_5_6" text, "increase_5_7" text, "increase_6_7" text, "increase_5" text, "increase_6" text, "increase_7" text, "increase_8_9_10" text, "increase_8_9" text, "increase_8_10" text, "increase_9_10" text, "increase_8" text, "increase_9" text, "increase_10" text, "decrease_1_2" text, "decrease_1" text, "decrease_2" text, "decrease_3_4" text, "decrease_3" text, "decrease_4" text, "decrease_5_6_7" text, "decrease_5_6" text, "decrease_5_7" text, "decrease_6_7" text, "decrease_5" text, "decrease_6" text, "decrease_7" text, "decrease_8_9_10" text, "decrease_8_9" text, "decrease_8_10" text, "decrease_9_10" text, "decrease_8" text, "decrease_9" text, "decrease_10" text, "food_journal_header" text, "food_journal_intro" text, "fj_increase_header" text, "fj_decrease_header" text, "fj_unfavorable_header" text, "fj_nonsig_header" text, "fj_favorable_header" text, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (10.8ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "profile_id" integer, "school_semester_id" integer, "name" varchar(255), "email" varchar(255), "password_digest" varchar(255), "created_at" datetime, "updated_at" datetime, "college" varchar(255)) 
+  [1m[36m (12.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36m (14.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (12.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121217053337')[0m
+  [1m[35m (15.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121027224131')
+  [1m[36m (11.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121028170323')[0m
+  [1m[35m (19.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121015024258')
+  [1m[36m (12.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121102344844')[0m
+  [1m[35m (28.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121014035107')
+  [1m[36m (14.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121031105508')[0m
+  [1m[35m (18.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121014214701')
+  [1m[36m (10.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121031104556')[0m
+  [1m[35m (7.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121128225847')
+  [1m[36m (6.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121031105232')[0m
+  [1m[35m (11.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121128231117')
+  [1m[36m (16.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121119010438')[0m
+  [1m[35m (18.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121101171610')
+  [1m[36m (29.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121217051648')[0m
+  [1m[35m (6.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121028031850')
+  [1m[36m (13.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121027222901')[0m
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-27 15:12:49 -0700
+  Processing by HomeController#portal as HTML
+  Parameters: {"authenticity_token"=>"orCm4jo9AXky8aFizmOoT64o9AcEHmZYXzBEpbE9MuU="}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (5.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mPresurvey::Part1 Load (3.0ms)[0m  SELECT "presurvey_part1s".* FROM "presurvey_part1s" 
+  [1m[36mPresurvey::Part2 Load (0.2ms)[0m  [1mSELECT "presurvey_part2s".* FROM "presurvey_part2s" [0m
+  [1m[35mPostsurvey Load (0.2ms)[0m  SELECT "postsurveys".* FROM "postsurveys" 
+  [1m[36mFoodJournal Load (8.3ms)[0m  [1mSELECT "food_journals".* FROM "food_journals" [0m
+Rendered home/portal.html.haml within layouts/application (243.6ms)
+Completed 200 OK in 303ms (Views: 237.6ms | ActiveRecord: 18.5ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-10-27 15:12:50 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-10-27 15:12:50 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-10-27 15:12:50 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-10-27 15:12:50 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-10-27 15:12:50 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-10-27 15:12:50 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-27 15:12:50 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-10-27 15:12:50 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-10-27 15:12:50 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-27 15:12:50 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-10-27 15:12:50 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-10-27 15:12:50 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-27 15:14:41 -0700
+  Processing by HomeController#portal as HTML
+  Parameters: {"authenticity_token"=>"orCm4jo9AXky8aFizmOoT64o9AcEHmZYXzBEpbE9MuU="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (10.6ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mPresurvey::Part1 Load (12.7ms)[0m  SELECT "presurvey_part1s".* FROM "presurvey_part1s" 
+  [1m[36mPresurvey::Part2 Load (0.2ms)[0m  [1mSELECT "presurvey_part2s".* FROM "presurvey_part2s" [0m
+  [1m[35mPostsurvey Load (2.5ms)[0m  SELECT "postsurveys".* FROM "postsurveys" 
+Rendered home/portal.html.haml within layouts/application (255.6ms)
+Completed 200 OK in 602ms (Views: 246.4ms | ActiveRecord: 28.1ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-10-27 15:14:42 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-10-27 15:14:42 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-27 15:14:42 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-10-27 15:14:42 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-10-27 15:14:42 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-10-27 15:14:42 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-27 15:14:42 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-10-27 15:14:42 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-10-27 15:14:42 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-10-27 15:14:42 -0700
+Served asset /presurveys.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-10-27 15:14:42 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-10-27 15:14:42 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Dropbox/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Dropbox/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Dropbox/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Dropbox/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+  [1m[36m (2.7ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (56.7ms)[0m  [1mCREATE TABLE "efficacies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "postsurvey_id" integer, "part2_id" integer, "efficacy_1" integer, "efficacy_2" integer, "efficacy_3" integer, "efficacy_4" integer, "efficacy_5" integer, "efficacy_6" integer, "efficacy_7" integer, "efficacy_8" integer, "efficacy_9" integer, "efficacy_10" integer, "number_students" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (10.3ms)[0m  CREATE TABLE "food_journals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "school_semester_id" integer, "student_name" varchar(255), "week_num" integer, "fruit" integer, "vegetable" integer, "sugary_drink" integer, "water" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (11.9ms)[0m  [1mCREATE TABLE "pending_users" ("user_id" integer, "created_at" datetime, "updated_at" datetime, "school_city" varchar(255), "school_name" varchar(255), "school_county" varchar(255), "semester_name" varchar(255), "semester_year" integer, "school_district" varchar(255)) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("pending_users")
+  [1m[36m (11.1ms)[0m  [1mCREATE UNIQUE INDEX "index_pending_users_on_user_id" ON "pending_users" ("user_id")[0m
+  [1m[35m (13.5ms)[0m  CREATE TABLE "postsurveys" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "school_semester_id" integer, "section_1_1" integer, "section_1_2" integer, "section_2_1" integer, "section_2_2" integer, "section_2_3" integer, "section_2_4" integer, "section_3_1" integer, "section_3_2" integer, "section_3_3" integer, "section_3_4" integer, "section_3_5" integer, "section_3_6" integer, "section_4_1" integer, "section_4_2" integer, "section_4_3" integer, "section_5_1" integer, "section_5_2" integer, "section_6_1" integer, "section_6_2" integer, "section_6_3" integer, "section_6_4" integer, "number_students" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (10.8ms)[0m  [1mCREATE TABLE "presurvey_part1s" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "school_semester_id" integer, "number_students" integer, "section_1_1" integer, "section_1_2" integer, "section_2_1" integer, "section_2_2" integer, "section_2_3" integer, "section_2_4" integer, "section_3_1" integer, "section_3_2" integer, "section_3_3" integer, "section_3_4" integer, "section_3_5" integer, "section_3_6" integer, "section_4_1" integer, "section_4_2" integer, "section_4_3" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (12.7ms)[0m  CREATE TABLE "presurvey_part2s" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "school_semester_id" integer, "number_students" integer, "section_5_1" integer, "section_5_2" integer, "section_6_1" integer, "section_6_2" integer, "section_6_3" integer, "section_6_4" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (11.1ms)[0m  [1mCREATE TABLE "profiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "label" varchar(255)) [0m
+  [1m[35m (19.1ms)[0m  CREATE TABLE "reports" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "school_semester_id" integer, "main_title" text, "school_intro_title" text, "school_introduction" text, "eval_intro" text, "strength_weakness_title" text, "strengths" text, "weaknesses" text, "summary" text, "created_at" datetime, "updated_at" datetime, "note" text) 
+  [1m[36m (13.9ms)[0m  [1mCREATE TABLE "school_semesters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "school_id" integer, "name" varchar(255), "year" integer) [0m
+  [1m[35m (12.8ms)[0m  CREATE TABLE "schools" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "city" varchar(255), "county" varchar(255), "created_at" datetime, "updated_at" datetime, "district" varchar(255)) 
+  [1m[36m (19.2ms)[0m  [1mCREATE TABLE "static_contents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "report_id" integer, "intro_title" text, "introduction" text, "objectives_title" text, "objectives" text, "eval_title" text, "strength_weakness_intro" text, "strength_intro" text, "weakness_intro" text, "summary" text, "behavior_title" text, "behavior_intro" text, "agree_1" text, "agree_2" text, "agree_3" text, "agree_4" text, "agree_5" text, "agree_6" text, "agree_7" text, "agree_8" text, "agree_9" text, "agree_10" text, "slight_increase_header" text, "decrease_header" text, "slight_decrease_header" text, "summary_header" text, "increase_1_2" text, "increase_1" text, "increase_2" text, "increase_3_4" text, "increase_3" text, "increase_4" text, "increase_5_6_7" text, "increase_5_6" text, "increase_5_7" text, "increase_6_7" text, "increase_5" text, "increase_6" text, "increase_7" text, "increase_8_9_10" text, "increase_8_9" text, "increase_8_10" text, "increase_9_10" text, "increase_8" text, "increase_9" text, "increase_10" text, "decrease_1_2" text, "decrease_1" text, "decrease_2" text, "decrease_3_4" text, "decrease_3" text, "decrease_4" text, "decrease_5_6_7" text, "decrease_5_6" text, "decrease_5_7" text, "decrease_6_7" text, "decrease_5" text, "decrease_6" text, "decrease_7" text, "decrease_8_9_10" text, "decrease_8_9" text, "decrease_8_10" text, "decrease_9_10" text, "decrease_8" text, "decrease_9" text, "decrease_10" text, "food_journal_header" text, "food_journal_intro" text, "fj_increase_header" text, "fj_decrease_header" text, "fj_unfavorable_header" text, "fj_nonsig_header" text, "fj_favorable_header" text, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (13.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "profile_id" integer, "school_semester_id" integer, "name" varchar(255), "email" varchar(255), "password_digest" varchar(255), "created_at" datetime, "updated_at" datetime, "college" varchar(255)) 
+  [1m[36m (13.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36m (13.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (16.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121217053337')[0m
+  [1m[35m (19.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121027224131')
+  [1m[36m (18.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121028170323')[0m
+  [1m[35m (15.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121015024258')
+  [1m[36m (17.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121102344844')[0m
+  [1m[35m (18.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121014035107')
+  [1m[36m (18.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121031105508')[0m
+  [1m[35m (12.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121014214701')
+  [1m[36m (10.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121031104556')[0m
+  [1m[35m (11.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121128225847')
+  [1m[36m (11.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121031105232')[0m
+  [1m[35m (12.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121128231117')
+  [1m[36m (10.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121119010438')[0m
+  [1m[35m (11.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121101171610')
+  [1m[36m (8.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121217051648')[0m
+  [1m[35m (13.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121028031850')
+  [1m[36m (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121027222901')[0m

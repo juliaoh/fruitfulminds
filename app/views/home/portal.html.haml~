@@ -19,6 +19,8 @@
 | 
 = link_to "Add Post-Survey Results", new_postsurvey_path
 | 
+= link_to "Add Food Journal", new_foodjournal_path
+| 
 = link_to "Preview Report/Add Ambassador Comments", new_report_path
 %br
 %br
@@ -35,6 +37,7 @@
       %th Pre-Survey Part 1
       %th Pre-Survey Part 2
       %th Post-Surveys
+      %th Food Journals
   %tbody
     %tr
       %td
@@ -58,3 +61,10 @@
         - else
           - @current_user.postsurveys.each do |survey|
             = render :partial => "ps", :locals => {:survey => survey}
+      %td
+        - if @current_user.admin?
+          - FoodJournal.all.each do |journal|
+            = render :partial => "fj", :locals => {:journal => journal}
+        - else
+          - @current_user.food_journals.each do |journal|
+            = render :partial => "fj", :locals => {:journal => journal}

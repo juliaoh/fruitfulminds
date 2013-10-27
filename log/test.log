@@ -19736,3 +19736,162 @@ Started GET "/signup" for 127.0.0.1 at 2013-10-27 15:01:54 -0700
 Rendered users/_terms_of_service.html.haml (0.4ms)
 Rendered users/new.html.haml within layouts/application (4.1ms)
 Completed 200 OK in 16ms (Views: 9.3ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (2.8ms)[0m  SELECT 1 FROM "profiles" WHERE "profiles"."label" = 'admin' LIMIT 1
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "profiles" ("label") VALUES (?)[0m  [["label", "admin"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SELECT 1 FROM "profiles" WHERE "profiles"."label" = 'ambassador' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "profiles" ("label") VALUES (?)[0m  [["label", "ambassador"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "schools" ("city", "county", "created_at", "district", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["city", "Berkeley"], ["county", "Alameda"], ["created_at", Sun, 27 Oct 2013 22:10:43 UTC +00:00], ["district", "Berkeley"], ["name", "UC Berkeley"], ["updated_at", Sun, 27 Oct 2013 22:10:43 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "school_semesters" ("name", "school_id", "year") VALUES (?, ?, ?)[0m  [["name", "Fall"], ["school_id", 1], ["year", 2013]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (10.2ms)[0m  INSERT INTO "users" ("college", "created_at", "email", "name", "password_digest", "profile_id", "school_semester_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["college", nil], ["created_at", Sun, 27 Oct 2013 22:10:44 UTC +00:00], ["email", "admin@fruitfulminds.com"], ["name", "Admin"], ["password_digest", "$2a$10$tIV6WrHuV/.JagnORQ33Ee2.cOSrMWZEX7p/J3Zyrr5fMWq7ppuXW"], ["profile_id", 1], ["school_semester_id", 3], ["updated_at", Sun, 27 Oct 2013 22:10:44 UTC +00:00]]
+  [1m[36m (1.4ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (6.2ms)[0m  SAVEPOINT active_record_1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("college", "created_at", "email", "name", "password_digest", "profile_id", "school_semester_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["college", nil], ["created_at", Sun, 27 Oct 2013 22:10:44 UTC +00:00], ["email", "alwong8@berkeley.edu"], ["name", "Alvin"], ["password_digest", "$2a$10$WUJKhI//MyqsccPpw9xA5ebGtx6QHibmM79pkfgWeq.Jo76uBhPYi"], ["profile_id", 2], ["school_semester_id", 3], ["updated_at", Sun, 27 Oct 2013 22:10:44 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("college", "created_at", "email", "name", "password_digest", "profile_id", "school_semester_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["college", nil], ["created_at", Sun, 27 Oct 2013 22:10:44 UTC +00:00], ["email", "kevinyeun@berkeley.edu"], ["name", "Kevin"], ["password_digest", "$2a$10$fgUSXAGfsI5zgDirCGi.ZeEb1BOawH2kENKGkFymzX7pEDpRig3eS"], ["profile_id", 3], ["school_semester_id", 4], ["updated_at", Sun, 27 Oct 2013 22:10:44 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+
+
+Started GET "/login" for 127.0.0.1 at 2013-10-27 15:10:44 -0700
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.haml within layouts/application (21.6ms)
+Completed 200 OK in 183ms (Views: 119.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2013-10-27 15:10:45 -0700
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"alwong8@berkeley.edu", "password"=>"[FILTERED]"}, "commit"=>"Sign In"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'alwong8@berkeley.edu' LIMIT 1
+  [1m[36mPendingUser Load (0.1ms)[0m  [1mSELECT "pending_users".* FROM "pending_users" WHERE "pending_users"."user_id" = 2 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1
+Redirected to http://www.example.com/portal
+Completed 302 Found in 232ms
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-27 15:10:45 -0700
+  Processing by HomeController#portal as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSchoolSemester Load (0.1ms)[0m  SELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 3 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1[0m
+  [1m[35mPostsurvey Load (0.3ms)[0m  SELECT "postsurveys".* FROM "postsurveys" INNER JOIN "school_semesters" ON "postsurveys"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3
+  [1m[36mPresurvey::Part1 Load (0.2ms)[0m  [1mSELECT "presurvey_part1s".* FROM "presurvey_part1s" INNER JOIN "school_semesters" ON "presurvey_part1s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3[0m
+  [1m[35mPresurvey::Part2 Load (0.1ms)[0m  SELECT "presurvey_part2s".* FROM "presurvey_part2s" INNER JOIN "school_semesters" ON "presurvey_part2s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3
+  [1m[36mFoodJournal Load (0.8ms)[0m  [1mSELECT "food_journals".* FROM "food_journals" INNER JOIN "school_semesters" ON "food_journals"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3[0m
+Rendered home/portal.html.haml within layouts/application (69.9ms)
+Completed 200 OK in 144ms (Views: 134.7ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-27 15:10:45 -0700
+  Processing by HomeController#portal as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mSchoolSemester Load (0.1ms)[0m  [1mSELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 3 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1
+  [1m[36mPostsurvey Load (0.2ms)[0m  [1mSELECT "postsurveys".* FROM "postsurveys" INNER JOIN "school_semesters" ON "postsurveys"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3[0m
+  [1m[35mPresurvey::Part1 Load (0.2ms)[0m  SELECT "presurvey_part1s".* FROM "presurvey_part1s" INNER JOIN "school_semesters" ON "presurvey_part1s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3
+  [1m[36mPresurvey::Part2 Load (0.1ms)[0m  [1mSELECT "presurvey_part2s".* FROM "presurvey_part2s" INNER JOIN "school_semesters" ON "presurvey_part2s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3[0m
+  [1m[35mFoodJournal Load (0.1ms)[0m  SELECT "food_journals".* FROM "food_journals" INNER JOIN "school_semesters" ON "food_journals"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3
+Rendered home/portal.html.haml within layouts/application (12.7ms)
+Completed 200 OK in 20ms (Views: 15.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-27 15:10:45 -0700
+  Processing by HomeController#portal as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSchoolSemester Load (0.1ms)[0m  SELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 3 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1[0m
+  [1m[35mPostsurvey Load (0.1ms)[0m  SELECT "postsurveys".* FROM "postsurveys" INNER JOIN "school_semesters" ON "postsurveys"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3
+  [1m[36mPresurvey::Part1 Load (0.1ms)[0m  [1mSELECT "presurvey_part1s".* FROM "presurvey_part1s" INNER JOIN "school_semesters" ON "presurvey_part1s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3[0m
+  [1m[35mPresurvey::Part2 Load (5.8ms)[0m  SELECT "presurvey_part2s".* FROM "presurvey_part2s" INNER JOIN "school_semesters" ON "presurvey_part2s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3
+  [1m[36mFoodJournal Load (0.1ms)[0m  [1mSELECT "food_journals".* FROM "food_journals" INNER JOIN "school_semesters" ON "food_journals"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3[0m
+Rendered home/portal.html.haml within layouts/application (14.4ms)
+Completed 200 OK in 30ms (Views: 10.8ms | ActiveRecord: 6.5ms)
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (3.1ms)[0m  SELECT 1 FROM "profiles" WHERE "profiles"."label" = 'admin' LIMIT 1
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "profiles" ("label") VALUES (?)[0m  [["label", "admin"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SELECT 1 FROM "profiles" WHERE "profiles"."label" = 'ambassador' LIMIT 1
+  [1m[36mSQL (2.4ms)[0m  [1mINSERT INTO "profiles" ("label") VALUES (?)[0m  [["label", "ambassador"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "schools" ("city", "county", "created_at", "district", "name", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["city", "Berkeley"], ["county", "Alameda"], ["created_at", Sun, 27 Oct 2013 22:15:03 UTC +00:00], ["district", "Berkeley"], ["name", "UC Berkeley"], ["updated_at", Sun, 27 Oct 2013 22:15:03 UTC +00:00]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (12.3ms)[0m  [1mINSERT INTO "school_semesters" ("name", "school_id", "year") VALUES (?, ?, ?)[0m  [["name", "Fall"], ["school_id", 1], ["year", 2013]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("college", "created_at", "email", "name", "password_digest", "profile_id", "school_semester_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["college", nil], ["created_at", Sun, 27 Oct 2013 22:15:03 UTC +00:00], ["email", "admin@fruitfulminds.com"], ["name", "Admin"], ["password_digest", "$2a$10$XRJUd2600VoBiYP4JgdmzuuBfC23PDlRkpKrE9ACHTBtOExiE/wy2"], ["profile_id", 1], ["school_semester_id", 3], ["updated_at", Sun, 27 Oct 2013 22:15:03 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (4.4ms)[0m  SAVEPOINT active_record_1
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (3.7ms)[0m  [1mINSERT INTO "users" ("college", "created_at", "email", "name", "password_digest", "profile_id", "school_semester_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["college", nil], ["created_at", Sun, 27 Oct 2013 22:15:03 UTC +00:00], ["email", "alwong8@berkeley.edu"], ["name", "Alvin"], ["password_digest", "$2a$10$g6XjR3AXLejfkd9Qji.qZuwCDJeExP3JG1VXmMfMOw4TN6cfgT6FS"], ["profile_id", 2], ["school_semester_id", 3], ["updated_at", Sun, 27 Oct 2013 22:15:03 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (3.3ms)[0m  INSERT INTO "users" ("college", "created_at", "email", "name", "password_digest", "profile_id", "school_semester_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)  [["college", nil], ["created_at", Sun, 27 Oct 2013 22:15:03 UTC +00:00], ["email", "kevinyeun@berkeley.edu"], ["name", "Kevin"], ["password_digest", "$2a$10$9kRea0t9wz.FaXB9ySBiKO0BxUO7gqkGCcnYF2g/5bk6zfoJ6wsYK"], ["profile_id", 3], ["school_semester_id", 4], ["updated_at", Sun, 27 Oct 2013 22:15:03 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+
+
+Started GET "/login" for 127.0.0.1 at 2013-10-27 15:15:04 -0700
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.haml within layouts/application (6.5ms)
+Completed 200 OK in 131ms (Views: 86.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2013-10-27 15:15:04 -0700
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"alwong8@berkeley.edu", "password"=>"[FILTERED]"}, "commit"=>"Sign In"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'alwong8@berkeley.edu' LIMIT 1
+  [1m[36mPendingUser Load (0.2ms)[0m  [1mSELECT "pending_users".* FROM "pending_users" WHERE "pending_users"."user_id" = 2 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1
+Redirected to http://www.example.com/portal
+Completed 302 Found in 264ms
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-27 15:15:04 -0700
+  Processing by HomeController#portal as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSchoolSemester Load (0.1ms)[0m  SELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 3 LIMIT 1
+  [1m[36mProfile Load (3.5ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1[0m
+  [1m[35mPostsurvey Load (0.2ms)[0m  SELECT "postsurveys".* FROM "postsurveys" INNER JOIN "school_semesters" ON "postsurveys"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3
+  [1m[36mPresurvey::Part1 Load (0.1ms)[0m  [1mSELECT "presurvey_part1s".* FROM "presurvey_part1s" INNER JOIN "school_semesters" ON "presurvey_part1s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3[0m
+  [1m[35mPresurvey::Part2 Load (0.1ms)[0m  SELECT "presurvey_part2s".* FROM "presurvey_part2s" INNER JOIN "school_semesters" ON "presurvey_part2s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3
+Rendered home/portal.html.haml within layouts/application (127.7ms)
+Completed 200 OK in 177ms (Views: 164.8ms | ActiveRecord: 9.6ms)
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-27 15:15:04 -0700
+  Processing by HomeController#portal as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSchoolSemester Load (0.1ms)[0m  SELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 3 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1[0m
+  [1m[35mPostsurvey Load (0.2ms)[0m  SELECT "postsurveys".* FROM "postsurveys" INNER JOIN "school_semesters" ON "postsurveys"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3
+  [1m[36mPresurvey::Part1 Load (0.1ms)[0m  [1mSELECT "presurvey_part1s".* FROM "presurvey_part1s" INNER JOIN "school_semesters" ON "presurvey_part1s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3[0m
+  [1m[35mPresurvey::Part2 Load (0.1ms)[0m  SELECT "presurvey_part2s".* FROM "presurvey_part2s" INNER JOIN "school_semesters" ON "presurvey_part2s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3
+Rendered home/portal.html.haml within layouts/application (23.7ms)
+Completed 200 OK in 28ms (Views: 25.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-27 15:15:04 -0700
+  Processing by HomeController#portal as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mSchoolSemester Load (16.2ms)[0m  SELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 3 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1[0m
+  [1m[35mPostsurvey Load (0.2ms)[0m  SELECT "postsurveys".* FROM "postsurveys" INNER JOIN "school_semesters" ON "postsurveys"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3
+  [1m[36mPresurvey::Part1 Load (0.1ms)[0m  [1mSELECT "presurvey_part1s".* FROM "presurvey_part1s" INNER JOIN "school_semesters" ON "presurvey_part1s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3[0m
+  [1m[35mPresurvey::Part2 Load (10.5ms)[0m  SELECT "presurvey_part2s".* FROM "presurvey_part2s" INNER JOIN "school_semesters" ON "presurvey_part2s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 3
+Rendered home/portal.html.haml within layouts/application (17.7ms)
+Completed 200 OK in 37ms (Views: 8.8ms | ActiveRecord: 27.2ms)
