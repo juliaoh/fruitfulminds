@@ -1,0 +1,67 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1382316695.551611:@value{I"
+class:EFI"BundledAsset;
+FI"id;
+F"%a6f5079b2279cc2c5a68e10b1de50676I"logical_path;
+FI"users.css;
+TI"pathname;
+FI"+$root/app/assets/stylesheets/users.css;
+TI"content_type;
+FI"text/css;
+FI"
+mtime;
+FI"2013-10-20T17:30:48-07:00;
+FI"	body;
+FI"©.auth_container {
+clear: both;
+width: 300px;
+padding: 10px;
+margin: 0 auto;
+background-color: #F0F0F0;
+border: 1px solid #C0C0C0;
+border-radius: 10px;
+}
+
+.auth_form {
+  width: 230px;
+  margin: 0 auto;
+}
+
+.text_input{
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+}
+table#pending_users {
+  margin: 10px;
+  border-collapse: collapse;
+  width: 100%;
+  border-bottom: 2px solid black;
+}
+table#pending_users th {
+  border: 2px solid white;
+  font-weight: bold;
+  background-color: wheat;
+}
+table#pending_users th, table#pending_users td {
+  padding: 4px;
+  text-align: left;
+}
+table#pending_users th.hilite {
+  background-color: yellow;
+}
+
+.pending_text_inputs {
+  width: 100px;
+}
+;
+FI"asset_paths;
+F[I"+$root/app/assets/stylesheets/users.css;
+TI"dependency_paths;
+F[{I"	path;
+FI"+$root/app/assets/stylesheets/users.css;
+TI"
+mtime;
+FIu:	Time†fÄX‚{
+:@_zoneI"PDT;
+T:nano_numi:nano_deni:submicro"QP:offseti˛êùI"hexdigest;
+F"%2049fd9cd24b68d4f0fb1fad05cdcdd4I"_version;
+F"%0868aba5d4b750d3a9421721ea3d9b9c

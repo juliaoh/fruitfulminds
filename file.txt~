@@ -1,0 +1,1428 @@
+Using the default profile...
+Feature: add post-survey results
+  
+  As an ambassador
+  So that I can generate post-survey reports
+  I want to have the data in an easy to access location
+
+  Background: results are to be added to database # features/add_post-survey.feature:7
+    Given the following profiles exist:           # features/step_definitions/profile_steps.rb:1
+      | label      |
+      | admin      |
+      | ambassador |
+    And the following users exist:                # features/step_definitions/user_steps.rb:1
+      | email             | password | name         | profile_id | school_semester_id |
+      | amirk88@gmail.com | 123f5    | amir khodaei | 1          | 1                  |
+    And the following schools exist:              # features/step_definitions/school_steps.rb:1
+      | name      | county    | city       |
+      | "school1" | "Alameda" | "Berkeley" |
+    And the following school_semesters exist:     # features/step_definitions/user_steps.rb:7
+      | school_id | name | year |
+      | 1         | Fall | 2011 |
+    And I am logged in as amir                    # features/step_definitions/user_steps.rb:90
+    And I am on the portal page                   # features/step_definitions/web_steps.rb:44
+
+  Scenario: add new post-survey results to database                                  # features/add_post-survey.feature:29
+    When I follow "Add Post-Survey Results"                                          # features/step_definitions/web_steps.rb:56
+    Then I should be on the Add new post-survey results page                         # features/step_definitions/web_steps.rb:230
+    And I fill in "postsurvey_section_1_1" with "7"                                  # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                                                       # features/step_definitions/web_steps.rb:52
+    Then I should see "Results failed to add. Incomplete or has invalid characters." # features/step_definitions/web_steps.rb:105
+
+  Scenario: add new post-survey results to database          # features/add_post-survey.feature:36
+    When I follow "Add Post-Survey Results"                  # features/step_definitions/web_steps.rb:56
+    Then I should be on the Add new post-survey results page # features/step_definitions/web_steps.rb:230
+    And I fill in "postsurvey_number_students" with "7"      # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_1_1" with "7"          # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_1_2" with "7"          # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_2_1" with "7"          # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_2_2" with "7"          # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_2_3" with "7"          # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_2_4" with "7"          # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_3_1" with "7"          # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_3_2" with "7"          # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_3_3" with "7"          # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_3_4" with "7"          # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_3_5" with "7"          # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_3_6" with "7"          # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_4_1" with "7"          # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_4_2" with "7"          # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_4_3" with "7"          # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_5_1" with "7"          # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_5_2" with "7"          # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_6_1" with "7"          # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_6_2" with "7"          # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_6_3" with "7"          # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_6_4" with "7"          # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_1" with "7"             # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_2" with "7"             # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_3" with "7"             # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_4" with "7"             # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_5" with "7"             # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_6" with "7"             # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_7" with "7"             # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_8" with "7"             # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_9" with "7"             # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_10" with "7"            # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                               # features/step_definitions/web_steps.rb:52
+    Then I should see "Results successfully added."          # features/step_definitions/web_steps.rb:105
+
+Feature: add pre-survey results
+  
+  As an ambassador
+  So that I can generate pre-survey reports
+  I want to have the data in an easy to access location
+
+  Background: results are to be added to database # features/add_pre-survey.feature:7
+    Given the following profiles exist:           # features/step_definitions/profile_steps.rb:1
+      | label      |
+      | admin      |
+      | ambassador |
+    And the following users exist:                # features/step_definitions/user_steps.rb:1
+      | email             | password | name         | profile_id | school_semester_id |
+      | amirk88@gmail.com | 123f5    | amir khodaei | 2          | 1                  |
+    And the following schools exist:              # features/step_definitions/school_steps.rb:1
+      | name      | county    | city       |
+      | "school1" | "Alameda" | "Berkeley" |
+    And the following school_semesters exist:     # features/step_definitions/user_steps.rb:7
+      | school_id | name | year |
+      | 1         | Fall | 2011 |
+    And I am logged in as amir                    # features/step_definitions/user_steps.rb:90
+    And I am on the portal page                   # features/step_definitions/web_steps.rb:44
+
+  Scenario: add new pre-survey part 1 results to database                            # features/add_pre-survey.feature:29
+    When I follow "Add Pre-Survey Part 1 Results"                                    # features/step_definitions/web_steps.rb:56
+    Then I should be on the Add new pre-survey part 1 results page                   # features/step_definitions/web_steps.rb:230
+    And I fill in "presurvey_part1_section_1_1" with "7"                             # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                                                       # features/step_definitions/web_steps.rb:52
+    Then I should see "Results failed to add. Incomplete or has invalid characters." # features/step_definitions/web_steps.rb:105
+
+  Scenario: add new pre-survey part 2 results to database                            # features/add_pre-survey.feature:36
+    When I follow "Add Pre-Survey Part 2 Results"                                    # features/step_definitions/web_steps.rb:56
+    Then I should be on the Add new pre-survey part 2 results page                   # features/step_definitions/web_steps.rb:230
+    And I fill in "presurvey_part2_section_5_1" with "7"                             # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                                                       # features/step_definitions/web_steps.rb:52
+    Then I should see "Results failed to add. Incomplete or has invalid characters." # features/step_definitions/web_steps.rb:105
+
+  Scenario: add new pre-survey part 1 results to database          # features/add_pre-survey.feature:43
+    When I follow "Add Pre-Survey Part 1 Results"                  # features/step_definitions/web_steps.rb:56
+    Then I should be on the Add new pre-survey part 1 results page # features/step_definitions/web_steps.rb:230
+    And I fill in "presurvey_part1_number_students" with "7"       # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_1_1" with "7"           # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_1_2" with "7"           # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_2_1" with "7"           # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_2_2" with "7"           # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_2_3" with "7"           # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_2_4" with "7"           # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_3_1" with "7"           # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_3_2" with "7"           # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_3_3" with "7"           # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_3_4" with "7"           # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_3_5" with "7"           # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_3_6" with "7"           # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_4_1" with "7"           # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_4_2" with "7"           # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_4_3" with "7"           # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                                     # features/step_definitions/web_steps.rb:52
+    Then I should see "Results successfully added."                # features/step_definitions/web_steps.rb:105
+
+  Scenario: add new pre-survey part 2 results to database          # features/add_pre-survey.feature:65
+    When I follow "Add Pre-Survey Part 2 Results"                  # features/step_definitions/web_steps.rb:56
+    Then I should be on the Add new pre-survey part 2 results page # features/step_definitions/web_steps.rb:230
+    And I fill in "presurvey_part2_number_students" with "7"       # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part2_section_5_1" with "7"           # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part2_section_5_2" with "7"           # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part2_section_6_1" with "7"           # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part2_section_6_2" with "7"           # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part2_section_6_3" with "7"           # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part2_section_6_4" with "7"           # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_1" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_2" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_3" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_4" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_5" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_6" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_7" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_8" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_9" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_10" with "7"                  # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                                     # features/step_definitions/web_steps.rb:52
+    Then I should see "Results successfully added."                # features/step_definitions/web_steps.rb:105
+
+Feature: Administrator assigns a school to an ambassador
+  As an administrator
+  So that an ambassador can add survey results and generate report for a given school
+  I want to assign a school to an ambassador
+
+Feature: allow admin users to add and modify admins
+  
+  As an administrator
+  So that I can add and modify admins
+  I want to have the data in an easy to access location
+
+  Background: results are to be added to database # features/admin_create.feature:7
+    Given the following profiles exist:           # features/step_definitions/profile_steps.rb:1
+      | label      |
+      | admin      |
+      | ambassador |
+    And the following users exist:                # features/step_definitions/user_steps.rb:1
+      | email             | password | name         | profile_id | school_semester_id |
+      | amirk88@gmail.com | 123f5    | amir khodaei | 1          | 0                  |
+    And I am logged in as amir                    # features/step_definitions/user_steps.rb:90
+    And I am on the portal page                   # features/step_definitions/web_steps.rb:44
+
+  Scenario: add new admin                                       # features/admin_create.feature:21
+    When I follow "Add New Administrator"                       # features/step_definitions/web_steps.rb:56
+    Then I should be on the Create New Administrator page       # features/step_definitions/web_steps.rb:230
+    And I fill in "user_name" with "names"                      # features/step_definitions/web_steps.rb:60
+    And I fill in "user_email" with "email@example.com"         # features/step_definitions/web_steps.rb:60
+    And I fill in "user_password" with "cities"                 # features/step_definitions/web_steps.rb:60
+    And I fill in "user_confirm_password" with "cities"         # features/step_definitions/web_steps.rb:60
+    And I press "Create account"                                # features/step_definitions/web_steps.rb:52
+    Then I should see "Successfully created new administrator." # features/step_definitions/web_steps.rb:105
+
+  Scenario: add new admin                                 # features/admin_create.feature:31
+    When I follow "Add New Administrator"                 # features/step_definitions/web_steps.rb:56
+    Then I should be on the Create New Administrator page # features/step_definitions/web_steps.rb:230
+    And I fill in "user_name" with "names"                # features/step_definitions/web_steps.rb:60
+    And I fill in "user_email" with "counties"            # features/step_definitions/web_steps.rb:60
+    And I fill in "user_password" with "cities"           # features/step_definitions/web_steps.rb:60
+    And I fill in "user_confirm_password" with "cities"   # features/step_definitions/web_steps.rb:60
+    And I press "Create account"                          # features/step_definitions/web_steps.rb:52
+    Then I should see "Not a valid email address"         # features/step_definitions/web_steps.rb:105
+
+  Scenario: add new admin                                       # features/admin_create.feature:41
+    When I follow "Add New Administrator"                       # features/step_definitions/web_steps.rb:56
+    Then I should be on the Create New Administrator page       # features/step_definitions/web_steps.rb:230
+    And I fill in "user_email" with "counties"                  # features/step_definitions/web_steps.rb:60
+    And I press "Create account"                                # features/step_definitions/web_steps.rb:52
+    Then I should see "Password must have 6 characters or more" # features/step_definitions/web_steps.rb:105
+
+  Scenario: add new admin                                 # features/admin_create.feature:48
+    When I follow "Add New Administrator"                 # features/step_definitions/web_steps.rb:56
+    Then I should be on the Create New Administrator page # features/step_definitions/web_steps.rb:230
+    And I press "Create account"                          # features/step_definitions/web_steps.rb:52
+    Then I should see "Please fill in all fields"         # features/step_definitions/web_steps.rb:105
+
+Feature: Admin approves/disapproves new users before they are given access to the portal page
+  As an Administrator
+  So that I can grant access only to those new ambassadors that I know about
+  I want to approve/disapprove a new user's request to access the ambassador portal
+
+  Background:                                                                           # features/admin_pending_users.feature:6
+    Given the following profiles exist:                                                 # features/step_definitions/profile_steps.rb:1
+      | label      |
+      | admin      |
+      | ambassador |
+    And the following schools exist:                                                    # features/step_definitions/school_steps.rb:1
+      | name    | county  | city     | district |
+      | school1 | Alameda | Berkeley | District |
+    And the following school_semesters exist:                                           # features/step_definitions/user_steps.rb:7
+      | school_id | name | year |
+      | 1         | Fall | 2012 |
+    And the following users exist:                                                      # features/step_definitions/user_steps.rb:1
+      | email                   | password | name          | profile_id | school_semester_id |
+      | admin@gmail.com         | 123f5    | Admin         | 1          |                    |
+      | approved_user@gmail.com | 12323    | Approved User | 2          | 1                  |
+      | pending_user@gmail.com  | 2isd82   | Pending User  | 2          |                    |
+    And "Pending User" is a pending user for school "school1" and semester "Fall, 2012" # features/step_definitions/user_steps.rb:45
+    And I am logged in as "admin@gmail.com" with "123f5" as my password                 # features/step_definitions/user_steps.rb:58
+    And I am on the portal page                                                         # features/step_definitions/web_steps.rb:44
+
+  Scenario: Admin sees all pending users                                                # features/admin_pending_users.feature:30
+    When I follow "Pending Users"                                                       # features/step_definitions/web_steps.rb:56
+    Then I should be on the pending users page                                          # features/step_definitions/web_steps.rb:230
+    And I should see "pending_user@gmail.com"                                           # features/step_definitions/web_steps.rb:105
+    And I should not see "approved_user@gmail.com"                                      # features/step_definitions/web_steps.rb:123
+
+  Scenario: Admin approves a pending user                                               # features/admin_pending_users.feature:36
+    Given I am on the pending users page                                                # features/step_definitions/web_steps.rb:44
+    And I approve "Pending User"                                                        # features/step_definitions/user_steps.rb:67
+    And I press "Update"                                                                # features/step_definitions/web_steps.rb:52
+    Then I should be on the pending users page                                          # features/step_definitions/web_steps.rb:230
+    And I should not see "pending_user@gmail.com"                                       # features/step_definitions/web_steps.rb:123
+    And I should not see "approved_user@gmail.com"                                      # features/step_definitions/web_steps.rb:123
+    And I should see "Pending User were approved and nobody were disapproved"           # features/step_definitions/web_steps.rb:105
+
+  Scenario: Admin disapproves a pending user                                            # features/admin_pending_users.feature:45
+    Given I am on the pending users page                                                # features/step_definitions/web_steps.rb:44
+    And I disapprove "Pending User"                                                     # features/step_definitions/user_steps.rb:67
+    And I press "Update"                                                                # features/step_definitions/web_steps.rb:52
+    Then I should be on the pending users page                                          # features/step_definitions/web_steps.rb:230
+    And I should not see "pending_user@gmail.com"                                       # features/step_definitions/web_steps.rb:123
+    And I should not see "approved_user@gmail.com"                                      # features/step_definitions/web_steps.rb:123
+    And I should see "Nobody were approved and Pending User were disapproved"           # features/step_definitions/web_steps.rb:105
+
+Feature: Accessing report history of a shool
+  As an administrator
+  So that I can compare the effictiveness of our programs in a school in different periods
+  I want to have access to all reports generated for a school
+
+Feature: Administrator portal
+  As an administrator
+  So that I can manage/review survey results added by all ambassadors
+  I want to have access to all survey results added by all ambassadors
+
+Feature: Admin can viwe cumulative reports
+  As an Admin
+  So that I can see all cumulative reports for all schools
+  I want to see all cumulative reports for all schools
+
+  Background: Computer Cumulative Report based on Pre-Post-Surveys        # features/cumulative_reports.feature:6
+    Given the following profiles exist:                                   # features/step_definitions/profile_steps.rb:1
+      | label      |
+      | admin      |
+      | ambassador |
+    And the following school_semesters exist:                             # features/step_definitions/user_steps.rb:7
+      | school_id | name | year |
+      | 1         | Fall | 2011 |
+    And the following users exist:                                        # features/step_definitions/user_steps.rb:1
+      | email             | password | name         | profile_id | school_semester_id |
+      | amirk88@gmail.com | 123ff5   | amir khodaei | 1          |                    |
+    And the following schools exist:                                      # features/step_definitions/school_steps.rb:1
+      | name    | county  | city     | district |
+      | school1 | Alameda | Berkeley | district |
+      | school2 | Rowland | Rowland  | district |
+    And the following pre-results 1 exist:                                # features/step_definitions/survey_steps.rb:1
+      | school_semester_id | section_1_1 | section_1_2 | section_2_1 | section_2_2 | section_2_3 | section_2_4 | section_3_1 | section_3_2 | section_3_3 | section_3_4 | section_3_5 | section_3_6 | section_4_1 | section_4_2 | section_4_3 | number_students |
+      | 1                  | 1           | 2           | 3           | 2           | 4           | 2           | 4           | 4           | 4           | 7           | 5           | 5           | 7           | 9           | 9           | 7               |
+    And the following pre-results 2 exist:                                # features/step_definitions/survey_steps.rb:7
+      | school_semester_id | section_5_1 | section_5_2 | section_6_1 | section_6_2 | section_6_3 | section_6_4 | number_students |
+      | 1                  | 1           | 3           | 3           | 2           | 4           | 2           | 7               |
+    And the following post-results exist:                                 # features/step_definitions/survey_steps.rb:13
+      | school_semester_id | section_1_1 | section_1_2 | section_2_1 | section_2_2 | section_2_3 | section_2_4 | section_3_1 | section_3_2 | section_3_3 | section_3_4 | section_3_5 | section_3_6 | section_4_1 | section_4_2 | section_4_3 | section_5_1 | section_5_2 | section_6_1 | section_6_2 | section_6_3 | section_6_4 | number_students |
+      | 1                  | 1           | 2           | 5           | 3           | 4           | 2           | 7           | 4           | 4           | 8           | 5           | 5           | 8           | 9           | 10          | 5           | 2           | 3           | 3           | 2           | 3           | 9               |
+    And the following food journals exist:                                # features/step_definitions/food_journal_steps.rb:1
+      | student_name | school_semester_id | week_num | fruit | vegetable | sugary_drink | water |
+      | a name       | 1                  | 1        | 34    | 53        | 61           | 43    |
+      | a name       | 1                  | 3        | 34    | 33        | 32           | 43    |
+      | a name       | 1                  | 8        | 34    | 53        | 53           | 24    |
+      | the name     | 1                  | 1        | 34    | 26        | 63           | 24    |
+      | the name     | 1                  | 5        | 41    | 39        | 63           | 24    |
+      | the name     | 1                  | 8        | 34    | 68        | 53           | 24    |
+    And I am logged in as "amirk88@gmail.com" with "123ff5" as my password # features/step_definitions/user_steps.rb:58
+      undefined method `attributes' for nil:NilClass (ActionView::Template::Error)
+      ./app/views/home/_ps2.html.haml:5:in `_app_views_home__ps__html_haml___55000564_92003670'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/template.rb:144:in `block in render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/notifications.rb:55:in `instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/template.rb:142:in `render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/partial_renderer.rb:256:in `render_partial'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/partial_renderer.rb:228:in `block (2 levels) in render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/abstract_renderer.rb:33:in `block in instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/notifications.rb:53:in `block in instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/notifications.rb:53:in `instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/abstract_renderer.rb:33:in `instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/partial_renderer.rb:227:in `block in render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/abstract_renderer.rb:22:in `wrap_formats'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/partial_renderer.rb:219:in `render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/renderer.rb:41:in `render_partial'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/renderer.rb:15:in `render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/helpers/rendering_helper.rb:24:in `render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/haml-4.0.3/lib/haml/helpers/action_view_mods.rb:10:in `block in render_with_haml'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/haml-4.0.3/lib/haml/helpers.rb:89:in `non_haml'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/haml-4.0.3/lib/haml/helpers/action_view_mods.rb:10:in `render_with_haml'
+      ./app/views/home/portal.html.haml:53:in `block in _app_views_home_portal_html_haml__518544757_91404130'
+      ./app/views/home/portal.html.haml:52:in `each'
+      ./app/views/home/portal.html.haml:52:in `_app_views_home_portal_html_haml__518544757_91404130'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/template.rb:144:in `block in render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/notifications.rb:55:in `instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/template.rb:142:in `render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/template_renderer.rb:40:in `block (2 levels) in render_template'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/abstract_renderer.rb:33:in `block in instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/notifications.rb:53:in `block in instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/notifications.rb:53:in `instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/abstract_renderer.rb:33:in `instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/template_renderer.rb:39:in `block in render_template'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/template_renderer.rb:47:in `render_with_layout'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/template_renderer.rb:38:in `render_template'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/template_renderer.rb:12:in `block in render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/abstract_renderer.rb:22:in `wrap_formats'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/template_renderer.rb:9:in `render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/renderer.rb:36:in `render_template'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/renderer.rb:17:in `render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/abstract_controller/rendering.rb:120:in `_render_template'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/streaming.rb:250:in `_render_template'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/abstract_controller/rendering.rb:114:in `render_to_body'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/renderers.rb:30:in `render_to_body'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/compatibility.rb:43:in `render_to_body'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/abstract_controller/rendering.rb:99:in `render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/rendering.rb:16:in `render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+      /home/saasbook/.rvm/rubies/ruby-1.9.3-p448/lib/ruby/1.9.1/benchmark.rb:295:in `realtime'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activerecord-3.1.10/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/instrumentation.rb:39:in `render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/abstract_controller/base.rb:167:in `process_action'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/rendering.rb:10:in `process_action'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/callbacks.rb:425:in `_run__253933880__process_action__504854596__callbacks'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/callbacks.rb:386:in `_run_process_action_callbacks'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/callbacks.rb:81:in `run_callbacks'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/abstract_controller/callbacks.rb:17:in `process_action'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/rescue.rb:17:in `process_action'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/notifications.rb:53:in `block in instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/notifications.rb:53:in `instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/params_wrapper.rb:201:in `process_action'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activerecord-3.1.10/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/abstract_controller/base.rb:121:in `process'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/abstract_controller/rendering.rb:45:in `process'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal.rb:193:in `dispatch'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal.rb:236:in `block in action'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/routing/route_set.rb:71:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/routing/route_set.rb:71:in `dispatch'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/routing/route_set.rb:35:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-mount-0.8.3/lib/rack/mount/route_set.rb:152:in `block in call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-mount-0.8.3/lib/rack/mount/code_generation.rb:96:in `block in recognize'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-mount-0.8.3/lib/rack/mount/code_generation.rb:75:in `optimized_each'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-mount-0.8.3/lib/rack/mount/code_generation.rb:95:in `recognize'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-mount-0.8.3/lib/rack/mount/route_set.rb:141:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/routing/route_set.rb:538:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-1.3.10/lib/rack/etag.rb:23:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-1.3.10/lib/rack/conditionalget.rb:25:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/head.rb:14:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/flash.rb:243:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-1.3.10/lib/rack/session/abstract/id.rb:195:in `context'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-1.3.10/lib/rack/session/abstract/id.rb:190:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/cookies.rb:331:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activerecord-3.1.10/lib/active_record/query_cache.rb:64:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activerecord-3.1.10/lib/active_record/connection_adapters/abstract/connection_pool.rb:477:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/callbacks.rb:392:in `_run_call_callbacks'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/callbacks.rb:81:in `run_callbacks'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-1.3.10/lib/rack/sendfile.rb:101:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/cucumber-rails-1.4.0/lib/cucumber/rails/action_controller.rb:10:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/railties-3.1.10/lib/rails/rack/logger.rb:13:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-1.3.10/lib/rack/methodoverride.rb:24:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-1.3.10/lib/rack/runtime.rb:17:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-1.3.10/lib/rack/lock.rb:15:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/static.rb:61:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/railties-3.1.10/lib/rails/engine.rb:456:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/railties-3.1.10/lib/rails/application.rb:143:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-1.3.10/lib/rack/urlmap.rb:52:in `block in call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-1.3.10/lib/rack/urlmap.rb:46:in `each'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-1.3.10/lib/rack/urlmap.rb:46:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-test-0.6.2/lib/rack/mock_session.rb:30:in `request'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-test-0.6.2/lib/rack/test.rb:230:in `process_request'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-test-0.6.2/lib/rack/test.rb:57:in `get'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/rack_test/browser.rb:59:in `process'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/rack_test/browser.rb:38:in `block in process_and_follow_redirects'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/rack_test/browser.rb:37:in `times'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/rack_test/browser.rb:37:in `process_and_follow_redirects'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/rack_test/browser.rb:26:in `submit'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/rack_test/form.rb:71:in `submit'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/rack_test/node.rb:55:in `click'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/cucumber-rails-1.4.0/lib/cucumber/rails/capybara/javascript_emulation.rb:16:in `click_with_javascript_emulation'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/node/element.rb:118:in `block in click'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/node/base.rb:81:in `synchronize'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/node/element.rb:118:in `click'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/node/actions.rb:37:in `click_button'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/session.rb:354:in `block (2 levels) in <class:Session>'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/dsl.rb:51:in `block (2 levels) in <module:DSL>'
+      ./features/step_definitions/web_steps.rb:53:in `/^(?:|I )press "([^"]*)"$/'
+      features/cumulative_reports.feature:47:in `And I am logged in as "amirk88@gmail.com" with "123f5" as my password'
+    And I am on the portal page                                           # features/step_definitions/web_steps.rb:44
+
+  Scenario: See school1 in cumulative reports                             # features/cumulative_reports.feature:50
+    Given I follow "Cumulative Reports"                                   # features/step_definitions/web_steps.rb:56
+    Then I should be on the cumulative reports page                       # features/step_definitions/web_steps.rb:230
+    And I should see "school1"                                            # features/step_definitions/web_steps.rb:105
+    And I should see "Alameda/district/Berkeley"                          # features/step_definitions/web_steps.rb:105
+    And I should see "Fall/2011"                                          # features/step_definitions/web_steps.rb:105
+    And I should see a valid number as percentage                         # features/step_definitions/report_steps.rb:24
+
+Feature: add food journal results
+  
+  As an ambassador
+  So that I can see student's progress to see if they are improving
+  I want to add a food journal
+
+  Background: results are to be added to database # features/food_journal.feature:7
+    Given the following profiles exist:           # features/step_definitions/profile_steps.rb:1
+      | label      |
+      | admin      |
+      | ambassador |
+    And the following users exist:                # features/step_definitions/user_steps.rb:1
+      | email             | password | name         | profile_id | school_semester_id |
+      | amirk88@gmail.com | 123f5    | amir khodaei | 1          | 1                  |
+    And the following schools exist:              # features/step_definitions/school_steps.rb:1
+      | name      | county    | city       |
+      | "school1" | "Alameda" | "Berkeley" |
+    And the following school_semesters exist:     # features/step_definitions/user_steps.rb:7
+      | school_id | name | year |
+      | 1         | Fall | 2011 |
+    And I am logged in as amir                    # features/step_definitions/user_steps.rb:90
+    And I am on the portal page                   # features/step_definitions/web_steps.rb:44
+
+  Scenario: add new food journals to database                                        # features/food_journal.feature:29
+    When I follow "Add Food Journal"                                                 # features/step_definitions/web_steps.rb:56
+    Then I should be on the Add New Food Journal page                                # features/step_definitions/web_steps.rb:230
+    And I fill in "food_journal_student_name" with "A Student"                       # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_1_fields_vegetable" with "37"                   # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                                                       # features/step_definitions/web_steps.rb:52
+    Then I should see "Results failed to add. Incomplete or has invalid characters." # features/step_definitions/web_steps.rb:105
+
+  Scenario: add new food journals to database                  # features/food_journal.feature:37
+    When I follow "Add Food Journal"                           # features/step_definitions/web_steps.rb:56
+    Then I should be on the Add New Food Journal page          # features/step_definitions/web_steps.rb:230
+    And I fill in "food_journal_student_name" with "A Student" # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                                 # features/step_definitions/web_steps.rb:52
+    Then I should see "No results filled in."                  # features/step_definitions/web_steps.rb:105
+
+  Scenario: add new food journals to database                      # features/food_journal.feature:44
+    When I follow "Add Food Journal"                               # features/step_definitions/web_steps.rb:56
+    Then I should be on the Add New Food Journal page              # features/step_definitions/web_steps.rb:230
+    And I fill in "food_journal_week_1_fields_vegetable" with "37" # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                                     # features/step_definitions/web_steps.rb:52
+    Then I should see "Student Name cannot be empty."              # features/step_definitions/web_steps.rb:105
+
+  Scenario: add new week 1 food journals to database                  # features/food_journal.feature:51
+    When I follow "Add Food Journal"                                  # features/step_definitions/web_steps.rb:56
+    Then I should be on the Add New Food Journal page                 # features/step_definitions/web_steps.rb:230
+    And I fill in "food_journal_student_name" with "A Student"        # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_1_fields_fruit" with "7"         # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_1_fields_vegetable" with "37"    # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_1_fields_sugary_drink" with "73" # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_1_fields_water" with "87"        # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                                        # features/step_definitions/web_steps.rb:52
+    Then I should see "Results successfully added."                   # features/step_definitions/web_steps.rb:105
+
+  Scenario: add new week 4 food journals to database                  # features/food_journal.feature:62
+    When I follow "Add Food Journal"                                  # features/step_definitions/web_steps.rb:56
+    Then I should be on the Add New Food Journal page                 # features/step_definitions/web_steps.rb:230
+    And I fill in "food_journal_student_name" with "A Student"        # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_num" with "4"                    # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_1_fields_fruit" with "7"         # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_1_fields_vegetable" with "37"    # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_1_fields_sugary_drink" with "73" # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_1_fields_water" with "87"        # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                                        # features/step_definitions/web_steps.rb:52
+    Then I should see "Results successfully added."                   # features/step_definitions/web_steps.rb:105
+
+  Scenario: add new week 8 food journals to database                  # features/food_journal.feature:74
+    When I follow "Add Food Journal"                                  # features/step_definitions/web_steps.rb:56
+    Then I should be on the Add New Food Journal page                 # features/step_definitions/web_steps.rb:230
+    And I fill in "food_journal_student_name" with "A Student"        # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_8_fields_fruit" with "7"         # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_8_fields_vegetable" with "37"    # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_8_fields_sugary_drink" with "73" # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_8_fields_water" with "87"        # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                                        # features/step_definitions/web_steps.rb:52
+    Then I should see "Results successfully added."                   # features/step_definitions/web_steps.rb:105
+
+Feature: Generate a Textual Report
+  
+  As an Ambassador
+  So that I can determine the Strengths and Weaknesses of the lessons in
+  the curriculum taught
+  I want to generate a textual report based on the results of pre/post
+  surveys and the Ambassador's feedback
+
+  Background: Generate report based on survey results # features/generate_report.feature:9
+    Given the following profiles exist:               # features/step_definitions/profile_steps.rb:1
+      | label      |
+      | admin      |
+      | ambassador |
+    And the following users exist:                    # features/step_definitions/user_steps.rb:1
+      | email             | password | name         | profile_id | school_semester_id |
+      | amirk88@gmail.com | 123f5    | amir khodaei | 1          | 1                  |
+      | john@gmail.com    | 12345    | john smith   | 1          | 2                  |
+    And the following schools exist:                  # features/step_definitions/school_steps.rb:1
+      | name    | county  | city     |
+      | school1 | Alameda | Berkeley |
+      | school2 | Rowland | Rowland  |
+    And the following pre-results 1 exist:            # features/step_definitions/survey_steps.rb:1
+      | school_semester_id | section_1_1 | section_1_2 | section_2_1 | section_2_2 | section_2_3 | section_2_4 | section_3_1 | section_3_2 | section_3_3 | section_3_4 | section_3_5 | section_3_6 | section_4_1 | section_4_2 | section_4_3 | number_students |
+      | 1                  | 1           | 2           | 3           | 2           | 4           | 2           | 4           | 4           | 4           | 7           | 5           | 5           | 7           | 9           | 9           | 7               |
+    And the following pre-results 2 exist:            # features/step_definitions/survey_steps.rb:7
+      | school_semester_id | section_5_1 | section_5_2 | section_6_1 | section_6_2 | section_6_3 | section_6_4 | number_students |
+      | 1                  | 1           | 3           | 3           | 2           | 4           | 2           | 7               |
+    And the following post-results exist:             # features/step_definitions/survey_steps.rb:13
+      | school_semester_id | section_1_1 | section_1_2 | section_2_1 | section_2_2 | section_2_3 | section_2_4 | section_3_1 | section_3_2 | section_3_3 | section_3_4 | section_3_5 | section_3_6 | section_4_1 | section_4_2 | section_4_3 | section_5_1 | section_5_2 | section_6_1 | section_6_2 | section_6_3 | section_6_4 | number_students |
+      | 1                  | 1           | 2           | 5           | 3           | 4           | 2           | 7           | 4           | 4           | 8           | 5           | 5           | 8           | 9           | 10          | 5           | 2           | 3           | 3           | 2           | 3           | 9               |
+    And the following efficacies exist:               # features/step_definitions/survey_steps.rb:19
+      | postsurvey_id | part2_id | efficacy_1 | efficacy_2 | efficacy_3 | efficacy_4 | efficacy_5 | efficacy_6 | efficacy_7 | efficacy_8 | efficacy_9 | efficacy_10 | number_students |
+      | 1             | nil      | 3          | 4          | 4          | 6          | 5          | 4          | 4          | 9          | 9          | 4           | 22              |
+      | nil           | 1        | 5          | 4          | 5          | 6          | 5          | 7          | 4          | 10         | 9          | 6           | 22              |
+    And the following food journals exist:            # features/step_definitions/food_journal_steps.rb:1
+      | student_name | school_semester_id | week_num | fruit | vegetable | sugary_drink | water |
+      | a name       | 1                  | 1        | 34    | 53        | 61           | 43    |
+      | a name       | 1                  | 3        | 34    | 33        | 32           | 43    |
+      | a name       | 1                  | 8        | 34    | 53        | 53           | 24    |
+      | the name     | 1                  | 1        | 34    | 26        | 63           | 24    |
+      | the name     | 1                  | 5        | 41    | 39        | 63           | 24    |
+      | the name     | 1                  | 8        | 34    | 68        | 53           | 24    |
+    And the following school_semesters exist:         # features/step_definitions/user_steps.rb:7
+      | school_id | name | year |
+      | 1         | Fall | 2011 |
+      | 2         | Fall | 2011 |
+    And the following static content exists:          # features/step_definitions/school_steps.rb:7
+      | intro_title             | introduction                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | objectives_title                        | strength_weakness_intro                                                                                                                                                                                   | strength_intro | weakness_intro | eval_title             | summary                                                                                                                                                                                                                                      |
+      | Intro to Fruitful Minds | Fruitful Minds is a start up, non-profit organization providing nutrition education to youth at greatest risk for obesity and related illnesses.  The program recruits young people with a passion for health and education from local colleges and universities like UC Berkeley to develop curriculum and instruct children through classroom presentation, after school sports programs and summer camps.  While many nutrition programs exist today, Fruitful Minds is unique in its targeting of at-risk youth, customized approach and use of college students to deliver the program.  Fruitful Minds goal is to identify elementary schools, middle schools, and community centers where a nutrition education component is lacking and partner with existing sports, cooking or gardening programs to form a complete education focused on ending the escalating rate of obesity among at-risk youth. | Fruitful Minds 7-Week Lesson Objectives | Based on the pre- and post-curriculum surveys, as well as feedback from the ambassadors, we identified areas of strength and weaknesses. Below is a list of strengths and weaknesses of the class series: | Strengths:     | Weaknesses:    | Curriculum Evaluations | Based on our evaluation, we plan to spend more time developing the concepts that proved to be incompletely understood at the completion of the lesson series, and include more in-class activities that reinforce these learning objectives. |
+
+  Scenario: Generate Report                                              # features/generate_report.feature:61
+    Given I am logged in as amir                                         # features/step_definitions/user_steps.rb:90
+    And I am on the generate report page                                 # features/step_definitions/web_steps.rb:44
+    And I select "school1" from "school"                                 # features/step_definitions/web_steps.rb:85
+[]
+[]
+71
+57
+71
+86
+71
+100
+57
+143
+129
+86
+33
+44
+44
+67
+56
+44
+44
+100
+100
+44
+[]
+[]
+71
+57
+71
+86
+71
+100
+57
+143
+129
+86
+33
+44
+44
+67
+56
+44
+44
+100
+100
+44
+    And I press "Generate Report"                                        # features/step_definitions/web_steps.rb:52
+    Then I should see "Fruitful Minds school1 Fall 2012 Report"          # features/step_definitions/web_steps.rb:105
+    And I should see "Intro to Fruitful Minds"                           # features/step_definitions/web_steps.rb:105
+    And I should see "Fruitful Minds at school1"                         # features/step_definitions/web_steps.rb:105
+    And I should see "Fruitful Minds 7-Week Lesson Objectives"           # features/step_definitions/web_steps.rb:105
+    And I should see "Curriculum Evaluations"                            # features/step_definitions/web_steps.rb:105
+    And I should see "Strengths and Weaknesses of FM Lessons at school1" # features/step_definitions/web_steps.rb:105
+    And I should see "Strengths:"                                        # features/step_definitions/web_steps.rb:105
+    And I should see "Weaknesses:"                                       # features/step_definitions/web_steps.rb:105
+
+  Scenario: Generate Report Failure                                                        # features/generate_report.feature:75
+    Given I am logged in as john                                                           # features/step_definitions/user_steps.rb:98
+    And I am on the generate report page                                                   # features/step_definitions/web_steps.rb:44
+    And I select "school2" from "school"                                                   # features/step_definitions/web_steps.rb:85
+    And I press "Generate Report"                                                          # features/step_definitions/web_steps.rb:52
+    And I should see "Not enough data available to generate a report for 'school2' school" # features/step_definitions/web_steps.rb:105
+    And I should not see "Fruitful Minds school1 Fall 2012 Report"                         # features/step_definitions/web_steps.rb:123
+    And I should not see "Intro to Fruitful Minds"                                         # features/step_definitions/web_steps.rb:123
+    And I should not see "Fruitful Minds at school1"                                       # features/step_definitions/web_steps.rb:123
+    And I should not see "Fruitful Minds 7-Week Lesson Objectives"                         # features/step_definitions/web_steps.rb:123
+    And I should not see "Curriculum Evaluations"                                          # features/step_definitions/web_steps.rb:123
+    And I should not see "Strengths and Weaknesses of FM Lessons at school1"               # features/step_definitions/web_steps.rb:123
+    And I should not see "Strengths:"                                                      # features/step_definitions/web_steps.rb:123
+    And I should not see "Weaknesses:"                                                     # features/step_definitions/web_steps.rb:123
+
+Feature: user logs into his/her portal
+  
+  As a user
+  So that I can access the appropriate portal
+  I want to login in with my username and password
+
+  Background: users have been added to database # features/login.feature:7
+    Given the following profiles exist:         # features/step_definitions/profile_steps.rb:1
+      | label      |
+      | admin      |
+      | ambassador |
+    And the following users exist:              # features/step_definitions/user_steps.rb:1
+      | email             | password | name         | profile_id | school_semester_id |
+      | amirk88@gmail.com | 123f5    | amir khodaei | 1          |                    |
+      | amb@gmail.com     | ambpass  | New Amb      | 2          | 1                  |
+      | amb2@gmail.com    | ambpass  | New Amb2     | 2          | 1                  |
+    And the following schools exist:            # features/step_definitions/school_steps.rb:1
+      | name    | county  | city     |
+      | school1 | Alameda | Berkeley |
+    And the following school_semesters exist:   # features/step_definitions/user_steps.rb:7
+      | school_id | name | year |
+      | 1         | Fall | 2012 |
+    And I am on the login page                  # features/step_definitions/web_steps.rb:44
+
+  Scenario: An admin logs in with no pending user             # features/login.feature:30
+    Given I fill in "Email" with "amirk88@gmail.com"          # features/step_definitions/web_steps.rb:60
+    And I fill in "user_password" with "123f5"                # features/step_definitions/web_steps.rb:60
+    And I press "Sign In"                                     # features/step_definitions/web_steps.rb:52
+    Then I should be on the portal page                       # features/step_definitions/web_steps.rb:230
+    And I should see "Pending Users"                          # features/step_definitions/web_steps.rb:105
+    And I should see "Add Pre-Survey Part 1 Results"          # features/step_definitions/web_steps.rb:105
+    And I should see "Add Pre-Survey Part 2 Results"          # features/step_definitions/web_steps.rb:105
+    And I should see "Add Post-Survey Results"                # features/step_definitions/web_steps.rb:105
+    And I should see "Preview Report/Add Ambassador Comments" # features/step_definitions/web_steps.rb:105
+
+  Scenario: An admin logs in with a pending user                                     # features/login.feature:41
+    Given "New Amb" is a pending user for school "school1" and semester "Fall, 2012" # features/step_definitions/user_steps.rb:45
+    And I fill in "Email" with "amirk88@gmail.com"                                   # features/step_definitions/web_steps.rb:60
+    And I fill in "user_password" with "123f5"                                       # features/step_definitions/web_steps.rb:60
+    And I press "Sign In"                                                            # features/step_definitions/web_steps.rb:52
+    Then I should be on the pending users page                                       # features/step_definitions/web_steps.rb:230
+    And I should see "amb@gmail.com"                                                 # features/step_definitions/web_steps.rb:105
+
+  Scenario: An ambassador logs in with no pending users       # features/login.feature:49
+    Given I fill in "Email" with "amb@gmail.com"              # features/step_definitions/web_steps.rb:60
+    And I fill in "user_password" with "ambpass"              # features/step_definitions/web_steps.rb:60
+    And I press "Sign In"                                     # features/step_definitions/web_steps.rb:52
+    Then I should be on the portal page                       # features/step_definitions/web_steps.rb:230
+    And I should see "Add Pre-Survey Part 1 Results"          # features/step_definitions/web_steps.rb:105
+    And I should see "Add Pre-Survey Part 2 Results"          # features/step_definitions/web_steps.rb:105
+    And I should see "Add Post-Survey Results"                # features/step_definitions/web_steps.rb:105
+    And I should see "Preview Report/Add Ambassador Comments" # features/step_definitions/web_steps.rb:105
+    And I should not see "Pending Users"                      # features/step_definitions/web_steps.rb:123
+
+  Scenario: An ambassador logs in with a pending user                                 # features/login.feature:60
+    Given "New Amb2" is a pending user for school "school1" and semester "Fall, 2012" # features/step_definitions/user_steps.rb:45
+    And I fill in "Email" with "amb@gmail.com"                                        # features/step_definitions/web_steps.rb:60
+    And I fill in "user_password" with "ambpass"                                      # features/step_definitions/web_steps.rb:60
+    And I press "Sign In"                                                             # features/step_definitions/web_steps.rb:52
+    Then I should be on the portal page                                               # features/step_definitions/web_steps.rb:230
+    And I should see "Add Pre-Survey Part 1 Results"                                  # features/step_definitions/web_steps.rb:105
+    And I should see "Add Pre-Survey Part 2 Results"                                  # features/step_definitions/web_steps.rb:105
+    And I should see "Add Post-Survey Results"                                        # features/step_definitions/web_steps.rb:105
+    And I should see "Preview Report/Add Ambassador Comments"                         # features/step_definitions/web_steps.rb:105
+    And I should not see "Pending Users"                                              # features/step_definitions/web_steps.rb:123
+
+  Scenario: A pending user logs in                                                   # features/login.feature:72
+    Given "New Amb" is a pending user for school "school1" and semester "Fall, 2012" # features/step_definitions/user_steps.rb:45
+    And I fill in "Email" with "amb@gmail.com"                                       # features/step_definitions/web_steps.rb:60
+    And I fill in "user_password" with "ambpass"                                     # features/step_definitions/web_steps.rb:60
+    And I press "Sign In"                                                            # features/step_definitions/web_steps.rb:52
+    Then I should be on the login page                                               # features/step_definitions/web_steps.rb:230
+    And I should see "You are not approved yet"                                      # features/step_definitions/web_steps.rb:105
+    And I should see "You will receive an email upon approval/disapproval"           # features/step_definitions/web_steps.rb:105
+
+  Scenario: ambassador logs out                      # features/login.feature:81
+    Given I fill in "Email" with "amirk88@gmail.com" # features/step_definitions/web_steps.rb:60
+    And I fill in "Pass" with "123f5"                # features/step_definitions/web_steps.rb:60
+    And I press "Sign In"                            # features/step_definitions/web_steps.rb:52
+    And I am on the portal page                      # features/step_definitions/web_steps.rb:44
+    And I follow "log_out"                           # features/step_definitions/web_steps.rb:56
+    Then I should be on the login page               # features/step_definitions/web_steps.rb:230
+
+  Scenario: Incorrect password is entered                    # features/login.feature:89
+    Given I fill in "Email" with "amirk88@gmail.com"         # features/step_definitions/web_steps.rb:60
+    And I fill in "Pass" with "password"                     # features/step_definitions/web_steps.rb:60
+    And I press "Sign In"                                    # features/step_definitions/web_steps.rb:52
+    Then I should be on the login page                       # features/step_definitions/web_steps.rb:230
+    And I should see "Incorrect password! Please try again." # features/step_definitions/web_steps.rb:105
+
+  Scenario: Incorrect username is entered                          # features/login.feature:96
+    Given I fill in "Email" with "felix@wong.com"                  # features/step_definitions/web_steps.rb:60
+    And I fill in "Pass" with "password"                           # features/step_definitions/web_steps.rb:60
+    And I press "Sign In"                                          # features/step_definitions/web_steps.rb:52
+    Then I should be on the login page                             # features/step_definitions/web_steps.rb:230
+    And I should see "Incorrect email/password! Please try again." # features/step_definitions/web_steps.rb:105
+
+Feature: edit existing survey results
+  
+  As an ambassador
+  So that I can edit survey reports
+  I want to have the data in an easy to access location
+
+  Background: results are to be added to database # features/portal.feature:7
+    Given the following profiles exist:           # features/step_definitions/profile_steps.rb:1
+      | label      |
+      | admin      |
+      | ambassador |
+    And the following users exist:                # features/step_definitions/user_steps.rb:1
+      | email             | password | name         | profile_id | school_semester_id |
+      | amirk88@gmail.com | 123f5    | amir khodaei | 1          | 1                  |
+    And the following pre-results 1 exist:        # features/step_definitions/survey_steps.rb:1
+      | school_semester_id | section_1_1 | section_1_2 | section_2_1 | section_2_2 | section_2_3 | section_2_4 | section_3_1 | section_3_1 | section_3_2 | section_3_3 | section_3_4 | section_3_5 | section_3_6 | section_4_1 | section_4_2 | section_4_3 | number_students |
+      | 1                  | 3           | 9           | 6           | 7           | 9           | 6           | 4           | 7           | 5           | 4           | 5           | 6           | 8           | 4           | 4           | 5           | 32              |
+      | 6                  | 4           | 8           | 5           | 7           | 11          | 6           | 4           | 5           | 7           | 4           | 5           | 5           | 8           | 4           | 6           | 9           | 34              |
+      | 2                  | 3           | 8           | 4           | 7           | 9           | 6           | 4           | 9           | 5           | 5           | 5           | 5           | 10          | 4           | 6           | 5           | 11              |
+    And the following pre-results 2 exist:        # features/step_definitions/survey_steps.rb:7
+      | school_semester_id | section_5_1 | section_5_2 | section_6_1 | section_6_2 | section_6_3 | section_6_4 | number_students |
+      | 1                  | 4           | 5           | 5           | 7           | 2           | 9           | 34              |
+      | 2                  | 6           | 5           | 8           | 7           | 3           | 9           | 22              |
+      | 3                  | 4           | 7           | 5           | 7           | 9           | 11          | 87              |
+    And the following post-results exist:         # features/step_definitions/survey_steps.rb:13
+      | school_semester_id | section_1_1 | section_1_2 | section_2_1 | section_2_2 | section_2_3 | section_2_4 | section_3_1 | section_3_1 | section_3_2 | section_3_3 | section_3_4 | section_3_5 | section_3_6 | section_4_1 | section_4_2 | section_4_3 | section_5_1 | section_5_2 | section_6_1 | section_6_2 | section_6_3 | section_6_4 | number_students |
+      | 1                  | 2           | 3           | 2           | 4           | 2           | 4           | 4           | 4           | 7           | 5           | 5           | 7           | 9           | 9           | 5           | 2           | 5           | 7           | 9           | 9           | 6           | 4           | 23              |
+      | 2                  | 8           | 1           | 7           | 7           | 7           | 5           | 4           | 4           | 7           | 6           | 5           | 7           | 9           | 9           | 6           | 3           | 7           | 8           | 10          | 9           | 5           | 2           | 43              |
+      | 2                  | 3           | 2           | 2           | 2           | 2           | 6           | 4           | 6           | 8           | 5           | 6           | 9           | 3           | 1           | 5           | 2           | 5           | 7           | 10          | 11          | 5           | 4           | 11              |
+    And the following efficacies exist:           # features/step_definitions/survey_steps.rb:19
+      | postsurvey_id | part2_id | efficacy_1 | efficacy_2 | efficacy_3 | efficacy_4 | efficacy_5 | efficacy_6 | efficacy_7 | efficacy_8 | efficacy_9 | efficacy_10 | number_students |
+      | 1             | nil      | 3          | 4          | 4          | 6          | 5          | 4          | 4          | 9          | 9          | 4           | 22              |
+      | nil           | 1        | 5          | 4          | 5          | 6          | 5          | 7          | 4          | 10         | 9          | 6           | 22              |
+    Given the following food journals exist:      # features/step_definitions/food_journal_steps.rb:1
+      | student_name | school_semester_id | week_num | fruit | vegetable | sugary_drink | water |
+      | a name       | 1                  | 1        | 43    | 53        | 61           | 43    |
+      | a name       | 1                  | 3        | 34    | 33        | 32           | 43    |
+      | a name       | 1                  | 8        | 34    | 53        | 53           | 24    |
+      | the name     | 1                  | 1        | 34    | 26        | 63           | 24    |
+      | the name     | 1                  | 5        | 41    | 39        | 63           | 24    |
+      | the name     | 1                  | 8        | 34    | 68        | 53           | 24    |
+    Given the following schools exist:            # features/step_definitions/school_steps.rb:1
+      | name      | county    | city       |
+      | "school1" | "Alameda" | "Berkeley" |
+    And the following school_semesters exist:     # features/step_definitions/user_steps.rb:7
+      | school_id | name | year |
+      | 1         | Fall | 2011 |
+    And I am logged in as amir                    # features/step_definitions/user_steps.rb:90
+      undefined method `attributes' for nil:NilClass (ActionView::Template::Error)
+      ./app/views/home/_ps2.html.haml:5:in `_app_views_home__ps__html_haml___55000564_92003670'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/template.rb:144:in `block in render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/notifications.rb:55:in `instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/template.rb:142:in `render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/partial_renderer.rb:256:in `render_partial'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/partial_renderer.rb:228:in `block (2 levels) in render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/abstract_renderer.rb:33:in `block in instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/notifications.rb:53:in `block in instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/notifications.rb:53:in `instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/abstract_renderer.rb:33:in `instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/partial_renderer.rb:227:in `block in render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/abstract_renderer.rb:22:in `wrap_formats'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/partial_renderer.rb:219:in `render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/renderer.rb:41:in `render_partial'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/renderer.rb:15:in `render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/helpers/rendering_helper.rb:24:in `render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/haml-4.0.3/lib/haml/helpers/action_view_mods.rb:10:in `block in render_with_haml'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/haml-4.0.3/lib/haml/helpers.rb:89:in `non_haml'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/haml-4.0.3/lib/haml/helpers/action_view_mods.rb:10:in `render_with_haml'
+      ./app/views/home/portal.html.haml:53:in `block in _app_views_home_portal_html_haml__518544757_91404130'
+      ./app/views/home/portal.html.haml:52:in `each'
+      ./app/views/home/portal.html.haml:52:in `_app_views_home_portal_html_haml__518544757_91404130'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/template.rb:144:in `block in render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/notifications.rb:55:in `instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/template.rb:142:in `render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/template_renderer.rb:40:in `block (2 levels) in render_template'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/abstract_renderer.rb:33:in `block in instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/notifications.rb:53:in `block in instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/notifications.rb:53:in `instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/abstract_renderer.rb:33:in `instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/template_renderer.rb:39:in `block in render_template'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/template_renderer.rb:47:in `render_with_layout'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/template_renderer.rb:38:in `render_template'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/template_renderer.rb:12:in `block in render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/abstract_renderer.rb:22:in `wrap_formats'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/template_renderer.rb:9:in `render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/renderer.rb:36:in `render_template'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_view/renderer/renderer.rb:17:in `render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/abstract_controller/rendering.rb:120:in `_render_template'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/streaming.rb:250:in `_render_template'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/abstract_controller/rendering.rb:114:in `render_to_body'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/renderers.rb:30:in `render_to_body'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/compatibility.rb:43:in `render_to_body'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/abstract_controller/rendering.rb:99:in `render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/rendering.rb:16:in `render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+      /home/saasbook/.rvm/rubies/ruby-1.9.3-p448/lib/ruby/1.9.1/benchmark.rb:295:in `realtime'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/instrumentation.rb:78:in `cleanup_view_runtime'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activerecord-3.1.10/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/instrumentation.rb:39:in `render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/abstract_controller/base.rb:167:in `process_action'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/rendering.rb:10:in `process_action'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/callbacks.rb:425:in `_run__253933880__process_action__504854596__callbacks'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/callbacks.rb:386:in `_run_process_action_callbacks'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/callbacks.rb:81:in `run_callbacks'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/abstract_controller/callbacks.rb:17:in `process_action'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/rescue.rb:17:in `process_action'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/notifications.rb:53:in `block in instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/notifications.rb:53:in `instrument'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/params_wrapper.rb:201:in `process_action'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activerecord-3.1.10/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/abstract_controller/base.rb:121:in `process'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/abstract_controller/rendering.rb:45:in `process'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal.rb:193:in `dispatch'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_controller/metal.rb:236:in `block in action'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/routing/route_set.rb:71:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/routing/route_set.rb:71:in `dispatch'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/routing/route_set.rb:35:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-mount-0.8.3/lib/rack/mount/route_set.rb:152:in `block in call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-mount-0.8.3/lib/rack/mount/code_generation.rb:96:in `block in recognize'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-mount-0.8.3/lib/rack/mount/code_generation.rb:75:in `optimized_each'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-mount-0.8.3/lib/rack/mount/code_generation.rb:95:in `recognize'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-mount-0.8.3/lib/rack/mount/route_set.rb:141:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/routing/route_set.rb:538:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-1.3.10/lib/rack/etag.rb:23:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-1.3.10/lib/rack/conditionalget.rb:25:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/head.rb:14:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/flash.rb:243:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-1.3.10/lib/rack/session/abstract/id.rb:195:in `context'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-1.3.10/lib/rack/session/abstract/id.rb:190:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/cookies.rb:331:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activerecord-3.1.10/lib/active_record/query_cache.rb:64:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activerecord-3.1.10/lib/active_record/connection_adapters/abstract/connection_pool.rb:477:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/callbacks.rb:392:in `_run_call_callbacks'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/callbacks.rb:81:in `run_callbacks'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-1.3.10/lib/rack/sendfile.rb:101:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/cucumber-rails-1.4.0/lib/cucumber/rails/action_controller.rb:10:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/railties-3.1.10/lib/rails/rack/logger.rb:13:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-1.3.10/lib/rack/methodoverride.rb:24:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-1.3.10/lib/rack/runtime.rb:17:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.1.10/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-1.3.10/lib/rack/lock.rb:15:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/static.rb:61:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/railties-3.1.10/lib/rails/engine.rb:456:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/railties-3.1.10/lib/rails/application.rb:143:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-1.3.10/lib/rack/urlmap.rb:52:in `block in call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-1.3.10/lib/rack/urlmap.rb:46:in `each'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-1.3.10/lib/rack/urlmap.rb:46:in `call'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-test-0.6.2/lib/rack/mock_session.rb:30:in `request'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-test-0.6.2/lib/rack/test.rb:230:in `process_request'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/rack-test-0.6.2/lib/rack/test.rb:57:in `get'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/rack_test/browser.rb:59:in `process'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/rack_test/browser.rb:38:in `block in process_and_follow_redirects'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/rack_test/browser.rb:37:in `times'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/rack_test/browser.rb:37:in `process_and_follow_redirects'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/rack_test/browser.rb:26:in `submit'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/rack_test/form.rb:71:in `submit'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/rack_test/node.rb:55:in `click'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/cucumber-rails-1.4.0/lib/cucumber/rails/capybara/javascript_emulation.rb:16:in `click_with_javascript_emulation'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/node/element.rb:118:in `block in click'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/node/base.rb:81:in `synchronize'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/node/element.rb:118:in `click'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/node/actions.rb:37:in `click_button'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/session.rb:354:in `block (2 levels) in <class:Session>'
+      /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/capybara-2.1.0/lib/capybara/dsl.rb:51:in `block (2 levels) in <module:DSL>'
+      ./features/step_definitions/web_steps.rb:53:in `/^(?:|I )press "([^"]*)"$/'
+      features/portal.feature:58:in `And I am logged in as amir'
+    And I am on the portal page                   # features/step_definitions/web_steps.rb:44
+
+  Scenario: edit existing pre-survey 1 results                                       # features/portal.feature:61
+    When I press "edit_pre_survey_part1_1"                                           # features/step_definitions/web_steps.rb:52
+    Then I should be on the Edit Pre-Survey Results (Part 1) page for survey 1       # features/step_definitions/web_steps.rb:230
+    And I fill in "presurvey_part1_section_1_1" with "adsfklj"                       # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                                                       # features/step_definitions/web_steps.rb:52
+    Then I should see "Results failed to add. Incomplete or has invalid characters." # features/step_definitions/web_steps.rb:105
+
+  Scenario: edit existing pre-survey 2 results                                       # features/portal.feature:68
+    When I press "edit_pre_survey_part2_1"                                           # features/step_definitions/web_steps.rb:52
+    Then I should be on the Edit Pre-Survey Results (Part 2) page for survey 1       # features/step_definitions/web_steps.rb:230
+    And I fill in "presurvey_part2_section_5_1" with "bad"                           # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                                                       # features/step_definitions/web_steps.rb:52
+    Then I should see "Results failed to add. Incomplete or has invalid characters." # features/step_definitions/web_steps.rb:105
+
+  Scenario: edit existing post-survey results                                        # features/portal.feature:75
+    When I press "edit_post_survey_1"                                                # features/step_definitions/web_steps.rb:52
+    Then I should be on the Edit Postsurvey Results page for survey 1                # features/step_definitions/web_steps.rb:230
+    And I fill in "postsurvey_section_1_1" with "ness"                               # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                                                       # features/step_definitions/web_steps.rb:52
+    Then I should see "Results failed to add. Incomplete or has invalid characters." # features/step_definitions/web_steps.rb:105
+
+  Scenario: edit existing pre-survey 1 results                                 # features/portal.feature:82
+    When I press "edit_pre_survey_part1_1"                                     # features/step_definitions/web_steps.rb:52
+    Then I should be on the Edit Pre-Survey Results (Part 1) page for survey 1 # features/step_definitions/web_steps.rb:230
+    And I fill in "presurvey_part1_number_students" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_1_1" with "7"                       # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_1_2" with "7"                       # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_2_1" with "7"                       # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_2_2" with "7"                       # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_2_3" with "7"                       # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_2_4" with "7"                       # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_3_1" with "7"                       # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_3_2" with "7"                       # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_3_3" with "7"                       # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_3_4" with "7"                       # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_3_5" with "7"                       # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_3_6" with "7"                       # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_4_1" with "7"                       # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_4_2" with "7"                       # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part1_section_4_3" with "7"                       # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                                                 # features/step_definitions/web_steps.rb:52
+    Then I should see "Survey updated successfully."                           # features/step_definitions/web_steps.rb:105
+
+  Scenario: edit existing pre-survey 2 results                                 # features/portal.feature:104
+    When I press "edit_pre_survey_part2_1"                                     # features/step_definitions/web_steps.rb:52
+    Then I should be on the Edit Pre-Survey Results (Part 2) page for survey 1 # features/step_definitions/web_steps.rb:230
+    And I fill in "presurvey_part2_number_students" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part2_section_5_1" with "7"                       # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part2_section_5_2" with "7"                       # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part2_section_6_1" with "7"                       # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part2_section_6_2" with "7"                       # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part2_section_6_3" with "7"                       # features/step_definitions/web_steps.rb:60
+    And I fill in "presurvey_part2_section_6_4" with "7"                       # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_1" with "7"                               # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_2" with "7"                               # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_3" with "7"                               # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_4" with "7"                               # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_5" with "7"                               # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_6" with "7"                               # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_7" with "7"                               # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_8" with "7"                               # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_9" with "7"                               # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_10" with "7"                              # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                                                 # features/step_definitions/web_steps.rb:52
+    Then I should see "Survey updated successfully."                           # features/step_definitions/web_steps.rb:105
+
+  Scenario: edit existing post-survey results                         # features/portal.feature:127
+    When I press "edit_post_survey_1"                                 # features/step_definitions/web_steps.rb:52
+    Then I should be on the Edit Postsurvey Results page for survey 1 # features/step_definitions/web_steps.rb:230
+    And I fill in "postsurvey_number_students" with "7"               # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_1_1" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_1_2" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_2_1" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_2_2" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_2_3" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_2_4" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_3_1" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_3_2" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_3_3" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_3_4" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_3_5" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_3_6" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_4_1" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_4_2" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_4_3" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_5_1" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_5_2" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_6_1" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_6_2" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_6_3" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "postsurvey_section_6_4" with "7"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_1" with "7"                      # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_2" with "7"                      # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_3" with "7"                      # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_4" with "7"                      # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_5" with "7"                      # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_6" with "7"                      # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_7" with "7"                      # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_8" with "7"                      # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_9" with "7"                      # features/step_definitions/web_steps.rb:60
+    And I fill in "efficacy_efficacy_10" with "7"                     # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                                        # features/step_definitions/web_steps.rb:52
+    Then I should see "Survey updated successfully."                  # features/step_definitions/web_steps.rb:105
+
+  Scenario: edit food journals                                        # features/portal.feature:165
+    When I press "edit_food_journal_1"                                # features/step_definitions/web_steps.rb:52
+    Then I should be on the Edit Food Journal page for journal 1      # features/step_definitions/web_steps.rb:230
+    And I fill in "food_journal_student_name" with "A Student"        # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_num" with "4"                    # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_x_fields_fruit" with "7"         # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_x_fields_vegetable" with "37"    # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_x_fields_sugary_drink" with "73" # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_x_fields_water" with "87"        # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                                        # features/step_definitions/web_steps.rb:52
+    Then I should see "Results successfully updated."                 # features/step_definitions/web_steps.rb:105
+
+  Scenario: edit food journals                                        # features/portal.feature:177
+    When I press "edit_food_journal_1"                                # features/step_definitions/web_steps.rb:52
+    Then I should be on the Edit Food Journal page for journal 1      # features/step_definitions/web_steps.rb:230
+    And I fill in "food_journal_student_name" with "A Student"        # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_8_fields_fruit" with "7"         # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_8_fields_vegetable" with "37"    # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_8_fields_sugary_drink" with "73" # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_8_fields_water" with "87"        # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                                        # features/step_definitions/web_steps.rb:52
+    Then I should see "Results successfully updated."                 # features/step_definitions/web_steps.rb:105
+
+  Scenario: edit food journals                                                          # features/portal.feature:188
+    When I press "edit_food_journal_1"                                                  # features/step_definitions/web_steps.rb:52
+    Then I should be on the Edit Food Journal page for journal 1                        # features/step_definitions/web_steps.rb:230
+    And I fill in "food_journal_student_name" with "A Student"                          # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_8_fields_fruit" with "7"                           # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_8_fields_vegetable" with "37"                      # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_8_fields_sugary_drink" with "73"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_8_fields_water" with "bad"                         # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                                                          # features/step_definitions/web_steps.rb:52
+    Then I should see "Results failed to update. Incomplete or has invalid characters." # features/step_definitions/web_steps.rb:105
+
+  Scenario: edit food journals                                        # features/portal.feature:199
+    When I press "edit_food_journal_1"                                # features/step_definitions/web_steps.rb:52
+    Then I should be on the Edit Food Journal page for journal 1      # features/step_definitions/web_steps.rb:230
+    And I fill in "food_journal_student_name" with ""                 # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_8_fields_fruit" with "7"         # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_8_fields_vegetable" with "37"    # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_8_fields_sugary_drink" with "73" # features/step_definitions/web_steps.rb:60
+    And I fill in "food_journal_week_8_fields_water" with "87"        # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                                        # features/step_definitions/web_steps.rb:52
+    Then I should see "Student Name cannot be empty."                 # features/step_definitions/web_steps.rb:105
+
+Feature: Generate a Report Summary
+  
+  As an Ambassador
+  So that I can verify the correctness of report and add comments to it
+  I want to view a summary of the report and add comments before generating a pdf version of the report
+
+  Background: Generate report based on survey results # features/report_summary.feature:7
+    Given the following profiles exist:               # features/step_definitions/profile_steps.rb:1
+      | label      |
+      | admin      |
+      | ambassador |
+    And the following users exist:                    # features/step_definitions/user_steps.rb:1
+      | email             | password | name         | profile_id | school_semester_id |
+      | amirk88@gmail.com | 123f5    | amir khodaei | 1          | 1                  |
+      | john@gmail.com    | 12345    | john smith   | 1          | 2                  |
+    And the following schools exist:                  # features/step_definitions/school_steps.rb:1
+      | name    | county  | city     |
+      | school1 | Alameda | Berkeley |
+      | school2 | Rowland | Rowland  |
+    And the following pre-results 1 exist:            # features/step_definitions/survey_steps.rb:1
+      | school_semester_id | section_1_1 | section_1_2 | section_2_1 | section_2_2 | section_2_3 | section_2_4 | section_3_1 | section_3_2 | section_3_3 | section_3_4 | section_3_5 | section_3_6 | section_4_1 | section_4_2 | section_4_3 | number_students |
+      | 1                  | 1           | 2           | 3           | 2           | 4           | 2           | 4           | 4           | 4           | 7           | 5           | 5           | 7           | 9           | 9           | 18              |
+    And the following pre-results 2 exist:            # features/step_definitions/survey_steps.rb:7
+      | school_semester_id | section_5_1 | section_5_2 | section_6_1 | section_6_2 | section_6_3 | section_6_4 | number_students |
+      | 1                  | 1           | 3           | 3           | 2           | 4           | 2           | 20              |
+    And the following post-results exist:             # features/step_definitions/survey_steps.rb:13
+      | school_semester_id | section_1_1 | section_1_2 | section_2_1 | section_2_2 | section_2_3 | section_2_4 | section_3_1 | section_3_2 | section_3_3 | section_3_4 | section_3_5 | section_3_6 | section_4_1 | section_4_2 | section_4_3 | section_5_1 | section_5_2 | section_6_1 | section_6_2 | section_6_3 | section_6_4 | number_students |
+      | 1                  | 1           | 2           | 5           | 3           | 4           | 2           | 7           | 4           | 4           | 8           | 5           | 5           | 8           | 9           | 10          | 5           | 2           | 3           | 3           | 2           | 3           | 9               |
+    And the following efficacies exist:               # features/step_definitions/survey_steps.rb:19
+      | postsurvey_id | part2_id | efficacy_1 | efficacy_2 | efficacy_3 | efficacy_4 | efficacy_5 | efficacy_6 | efficacy_7 | efficacy_8 | efficacy_9 | efficacy_10 | number_students |
+      | 1             | nil      | 3          | 4          | 4          | 6          | 5          | 4          | 4          | 9          | 9          | 4           | 22              |
+      | nil           | 1        | 5          | 4          | 5          | 6          | 5          | 7          | 4          | 10         | 9          | 6           | 22              |
+    And the following food journals exist:            # features/step_definitions/food_journal_steps.rb:1
+      | student_name | school_semester_id | week_num | fruit | vegetable | sugary_drink | water |
+      | a name       | 1                  | 1        | 43    | 53        | 61           | 43    |
+      | a name       | 1                  | 3        | 34    | 33        | 32           | 43    |
+      | a name       | 1                  | 8        | 34    | 53        | 53           | 24    |
+      | the name     | 1                  | 1        | 34    | 26        | 63           | 24    |
+      | the name     | 1                  | 5        | 41    | 39        | 63           | 24    |
+      | the name     | 1                  | 8        | 34    | 68        | 53           | 24    |
+    And the following school_semesters exist:         # features/step_definitions/user_steps.rb:7
+      | school_id | name | year |
+      | 1         | Fall | 2011 |
+    And the following static content exists:          # features/step_definitions/school_steps.rb:7
+      | intro_title | introduction | objectives_title | strength_weakness_intro | strength_intro | weakness_intro | eval_title | summary |
+      | Intro Title | Intro Body   | Objective Title  | Sterngth-weakness Intro | Strength Intro | Weakness Intro | Eval Title | Summary |
+    And I am logged in as amir                        # features/step_definitions/user_steps.rb:90
+    And I am on the generate report page              # features/step_definitions/web_steps.rb:44
+
+  Scenario: See comment textbox on the report summary page       # features/report_summary.feature:61
+    Given I select "school1" from "school"                       # features/step_definitions/web_steps.rb:85
+[]
+[]
+25
+20
+25
+30
+25
+35
+20
+50
+45
+30
+33
+44
+44
+67
+56
+44
+44
+100
+100
+44
+[]
+[]
+25
+20
+25
+30
+25
+35
+20
+50
+45
+30
+33
+44
+44
+67
+56
+44
+44
+100
+100
+44
+    And I press "Generate Report"                                # features/step_definitions/web_steps.rb:52
+    Then I should see summary of the report with static contents # features/step_definitions/report_steps.rb:1
+    And I should see "Ambassador Note"                           # features/step_definitions/web_steps.rb:105
+
+  Scenario: Add comment to report                                        # features/report_summary.feature:67
+[]
+[]
+25
+20
+25
+30
+25
+35
+20
+50
+45
+30
+33
+44
+44
+67
+56
+44
+44
+100
+100
+44
+[]
+[]
+25
+20
+25
+30
+25
+35
+20
+50
+45
+30
+33
+44
+44
+67
+56
+44
+44
+100
+100
+44
+    Given I initiated the report generation for "school1"                # features/step_definitions/report_steps.rb:17
+    And I fill in "Ambassador Note" with "This is an ambassador comment" # features/step_definitions/web_steps.rb:60
+
+  #And I press "Add Comments and Generate pdf"
+  #Then I should be on the portal page
+  #And I should see "PDF report was successfully generated"
+  Scenario: Leave comment box empty and generate report   # features/report_summary.feature:74
+[]
+[]
+25
+20
+25
+30
+25
+35
+20
+50
+45
+30
+33
+44
+44
+67
+56
+44
+44
+100
+100
+44
+[]
+[]
+25
+20
+25
+30
+25
+35
+20
+50
+45
+30
+33
+44
+44
+67
+56
+44
+44
+100
+100
+44
+    Given I initiated the report generation for "school1" # features/step_definitions/report_steps.rb:17
+    And I press "Add Comments and Generate pdf"           # features/step_definitions/web_steps.rb:52
+    Then I should be on the generate report page          # features/step_definitions/web_steps.rb:230
+    And I should see "Could not generate the PDF report"  # features/step_definitions/web_steps.rb:105
+
+Feature: allow admin users to add and modify schools
+  
+  As an administrator
+  So that I can add and modify schools
+  I want to have the data in an easy to access location
+
+  Background: results are to be added to database # features/schools.feature:7
+    Given the following profiles exist:           # features/step_definitions/profile_steps.rb:1
+      | label      |
+      | admin      |
+      | ambassador |
+    And the following users exist:                # features/step_definitions/user_steps.rb:1
+      | email             | password | name         | profile_id | school_semester_id |
+      | amirk88@gmail.com | 123f5    | amir khodaei | 1          | 1                  |
+    Given the following schools exist:            # features/step_definitions/school_steps.rb:1
+      | name      | county    | city       |
+      | "school1" | "Alameda" | "Berkeley" |
+    And the following school_semesters exist:     # features/step_definitions/user_steps.rb:7
+      | school_id | name | year |
+      | 1         | Fall | 2011 |
+    And I am logged in as amir                    # features/step_definitions/user_steps.rb:90
+    And I am on the portal page                   # features/step_definitions/web_steps.rb:44
+
+  Scenario: add new school                           # features/schools.feature:29
+    When I follow "Add New School"                   # features/step_definitions/web_steps.rb:56
+    Then I should be on the Add New School page      # features/step_definitions/web_steps.rb:230
+    And I fill in "school_name" with "names"         # features/step_definitions/web_steps.rb:60
+    And I fill in "school_county" with "counties"    # features/step_definitions/web_steps.rb:60
+    And I fill in "school_city" with "cities"        # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                       # features/step_definitions/web_steps.rb:52
+    Then I should see "School successfully created." # features/step_definitions/web_steps.rb:105
+
+  Scenario: edit existing school                     # features/schools.feature:38
+    When I follow "Show All Schools"                 # features/step_definitions/web_steps.rb:56
+    Then I should be on the All Schools page         # features/step_definitions/web_steps.rb:230
+    And I press "edit_school_1"                      # features/step_definitions/web_steps.rb:52
+    And I fill in "school_name" with "foo"           # features/step_definitions/web_steps.rb:60
+    And I fill in "school_county" with "bar"         # features/step_definitions/web_steps.rb:60
+    And I fill in "school_city" with "baz"           # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                       # features/step_definitions/web_steps.rb:52
+    Then I should see "School successfully updated." # features/step_definitions/web_steps.rb:105
+
+  Scenario: add new school                           # features/schools.feature:48
+    When I follow "Add New School"                   # features/step_definitions/web_steps.rb:56
+    Then I should be on the Add New School page      # features/step_definitions/web_steps.rb:230
+    And I fill in "school_county" with "counties"    # features/step_definitions/web_steps.rb:60
+    And I fill in "school_city" with "cities"        # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                       # features/step_definitions/web_steps.rb:52
+    Then I should see "Fields cannot be left blank." # features/step_definitions/web_steps.rb:105
+
+  Scenario: edit existing school                     # features/schools.feature:56
+    When I follow "Show All Schools"                 # features/step_definitions/web_steps.rb:56
+    Then I should be on the All Schools page         # features/step_definitions/web_steps.rb:230
+    And I press "edit_school_1"                      # features/step_definitions/web_steps.rb:52
+    And I fill in "school_name" with "foo"           # features/step_definitions/web_steps.rb:60
+    And I fill in "school_county" with ""            # features/step_definitions/web_steps.rb:60
+    And I fill in "school_city" with "baz"           # features/step_definitions/web_steps.rb:60
+    And I press "Save Changes"                       # features/step_definitions/web_steps.rb:52
+    Then I should see "Fields cannot be left blank." # features/step_definitions/web_steps.rb:105
+
+Feature: New user registeration
+  
+  As a new user
+  So I can view the user portal and add survey data for my school
+  I want to sign up in the website
+
+  Background: users have been added to database # features/signup.feature:7
+    Given the following profiles exist:         # features/step_definitions/profile_steps.rb:1
+      | label      |
+      | admin      |
+      | ambassador |
+    And the following schools exist:            # features/step_definitions/school_steps.rb:1
+      | name    | county  | city     |
+      | school1 | Alameda | Berkeley |
+    And the following school_semesters exist:   # features/step_definitions/user_steps.rb:7
+      | school_id | name | year |
+      | 1         | Fall | 2012 |
+
+  Scenario: user follows registration page    # features/signup.feature:22
+    Given I am on the login page              # features/step_definitions/web_steps.rb:44
+    And I follow "Register"                   # features/step_definitions/web_steps.rb:56
+    Then I should be on the signup page       # features/step_definitions/web_steps.rb:230
+
+  Scenario: user registers successfully                                                      # features/signup.feature:27
+    Given I am on the signup page                                                            # features/step_definitions/web_steps.rb:44
+    And I fill in "First Name" with "Amir"                                                   # features/step_definitions/web_steps.rb:60
+    And I fill in "Last Name" with "Khodaei"                                                 # features/step_definitions/web_steps.rb:60
+    And I fill in "Email Address" with "amirk88@gmail.com"                                   # features/step_definitions/web_steps.rb:60
+    And I fill in "College" with "Berkeley City College"                                     # features/step_definitions/web_steps.rb:60
+    And I fill in "School Name" with "school1"                                               # features/step_definitions/web_steps.rb:60
+    And I fill in "School County" with "Alameda"                                             # features/step_definitions/web_steps.rb:60
+    And I fill in "School City" with "Berkeley"                                              # features/step_definitions/web_steps.rb:60
+    And I fill in "School District" with "District"                                          # features/step_definitions/web_steps.rb:60
+    And I select "Fall" from "Survey Period"                                                 # features/step_definitions/web_steps.rb:85
+    And I select "2012" from "date_year"                                                     # features/step_definitions/web_steps.rb:85
+    And I fill in "user_password" with "password"                                            # features/step_definitions/web_steps.rb:60
+    And I fill in "user_confirm_password" with "password"                                    # features/step_definitions/web_steps.rb:60
+    And I check "tos"                                                                        # features/step_definitions/web_steps.rb:89
+    And I press "Register"                                                                   # features/step_definitions/web_steps.rb:52
+    Then I should be on the login page                                                       # features/step_definitions/web_steps.rb:230
+    And I should see "Thank you for registering, a confirmation will be sent to you shortly" # features/step_definitions/web_steps.rb:105
+
+  Scenario: user does not check tos                                    # features/signup.feature:46
+    Given I am on the signup page                                      # features/step_definitions/web_steps.rb:44
+    And I fill in all of the registration text fields                  # features/step_definitions/user_steps.rb:13
+    And I press "Register"                                             # features/step_definitions/web_steps.rb:52
+    Then I should be on the signup page                                # features/step_definitions/web_steps.rb:230
+    And I should see "You have to accept the TOS in order to register" # features/step_definitions/web_steps.rb:105
+
+  Scenario: passwords entered do not match                       # features/signup.feature:53
+    Given I am on the signup page                                # features/step_definitions/web_steps.rb:44
+    And I fill in all registration fields except password fields # features/step_definitions/user_steps.rb:30
+    And I fill in "user_password" with "password"                # features/step_definitions/web_steps.rb:60
+    And I fill in "user_confirm_password" with "something_else"  # features/step_definitions/web_steps.rb:60
+    And I check "tos"                                            # features/step_definitions/web_steps.rb:89
+    And I press "Register"                                       # features/step_definitions/web_steps.rb:52
+    Then I should be on the signup page                          # features/step_definitions/web_steps.rb:230
+    And I should see "Passwords did not match"                   # features/step_definitions/web_steps.rb:105
+
+  Scenario: password too short                                   # features/signup.feature:63
+    Given I am on the signup page                                # features/step_definitions/web_steps.rb:44
+    And I fill in all registration fields except password fields # features/step_definitions/user_steps.rb:30
+    And I fill in "user_password" with "passw"                   # features/step_definitions/web_steps.rb:60
+    And I fill in "user_confirm_password" with "passw"           # features/step_definitions/web_steps.rb:60
+    And I check "tos"                                            # features/step_definitions/web_steps.rb:89
+    And I press "Register"                                       # features/step_definitions/web_steps.rb:52
+    Then I should be on the signup page                          # features/step_definitions/web_steps.rb:230
+    And I should see "Password must have 6 characters or more"   # features/step_definitions/web_steps.rb:105
+
+  Scenario: user leaves a registration field empty                                      # features/signup.feature:73
+    Given I am on the signup page                                                       # features/step_definitions/web_steps.rb:44
+    And I fill in email and passwords with: "newuser@gmail.com", "password", "password" # features/step_definitions/user_steps.rb:82
+    And I check "tos"                                                                   # features/step_definitions/web_steps.rb:89
+    And I press "Register"                                                              # features/step_definitions/web_steps.rb:52
+    Then I should be on the signup page                                                 # features/step_definitions/web_steps.rb:230
+    And I should see "Please fill in all fields"                                        # features/step_definitions/web_steps.rb:105
+
+Failing Scenarios:
+cucumber features/cumulative_reports.feature:50 # Scenario: See school1 in cumulative reports
+cucumber features/portal.feature:61 # Scenario: edit existing pre-survey 1 results
+
+53 scenarios (2 failed, 9 skipped, 42 passed)
+849 steps (2 failed, 236 skipped, 611 passed)
+1m3.918s
+Coverage report generated for Cucumber Features to /home/saasbook/Dropbox/fruitfulminds/coverage. 831 / 1088 LOC (76.38%) covered.
