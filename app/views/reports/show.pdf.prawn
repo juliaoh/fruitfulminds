@@ -114,28 +114,6 @@ pdf.text " "
   pdf.text "#{disagree}"
 end
 pdf.text " "
-pdf.text @static_contents[:food_journal_header], :size => 14, :style => :bold
-pdf.text " "
-pdf.text @static_contents[:food_journal_intro]
-pdf.text " "
-pdf.text @static_contents[:fj_increase_header], :style => :bold
-pdf.text " "
-@fj_inc.each do |result|
-  pdf.text "#{result}"
-end
-pdf.text " "
-pdf.text @static_contents[:fj_decrease_header], :style => :bold
-pdf.text " "
-@fj_dec.each do |result|
-  pdf.text "#{result}"
-end
-pdf.text " "
-pdf.text @fj_unfavorable
-pdf.text " "
-pdf.text @fj_nonsig
-pdf.text " "
-pdf.text @fj_favorable
-pdf.text " "
 pdf.text @ambassadorNoteTitle, :size => 14, :style => :bold
 pdf.text " "
 pdf.text @reportNote

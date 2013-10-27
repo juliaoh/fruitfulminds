@@ -102,30 +102,7 @@
     %tr
       %td= disagree
 
-%h5= @static_contents[:food_journal_header]
-%p= @static_contents[:food_journal_intro]
 
-%h5= @static_contents[:fj_increase_header]
-
-%table
-  %tr
-  - @fj_inc.each do |result|
-    %tr
-      %td= result
-
-%h5= @static_contents[:fj_decrease_header]
-
-%table
-  %tr
-  - @fj_dec.each do |result|
-    %tr
-      %td= result
-
-%h5= @fj_unfavorable
-
-%h5= @fj_nonsig
-
-%h5= @fj_favorable
 
 %h4= @ambassadorNoteTitle
 -# %p= @report.note
