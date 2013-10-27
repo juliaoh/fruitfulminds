@@ -10,6 +10,18 @@ class UsersController < ApplicationController
 
   # renders sign up page
   def new
+    @school_names = School.find(:all).map do |school|
+      school.name
+    end.uniq
+    @county_names = School.find(:all).map do |school|
+      school.county
+    end.uniq
+    @district_names = School.find(:all).map do |school|
+      school.district
+    end.uniq
+    @city_names = School.find(:all).map do |school|
+      school.city
+    end.uniq
   end
 
   def tos

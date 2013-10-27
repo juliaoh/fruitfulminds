@@ -12,4 +12,5 @@ class School < ActiveRecord::Base
     # TODO: add food journal requirement here as well
     not(presurvey_part1s.empty? or presurvey_part2s.empty? or postsurveys.empty?)
   end
+
 end
