@@ -39,14 +39,14 @@ pdf.start_new_page
 pdf.image open(URI.escape(@nutrition_chart)) 
 pdf.text " "
 pdf.image open(URI.escape(@combined_chart))
-pdf.text " "
+
+pdf.start_new_page
 pdf.text @strength_weakness_title, :size => 14, :style => :bold
 pdf.text " "
 pdf.text @static_contents[:strength_weakness_intro]
 pdf.text " "
 pdf.text @static_contents[:strength_intro], :size => 14, :style => :bold
 pdf.text " "
-pdf.start_new_page
 
 @strengths.each do |key, strength|
   pdf.text "#{strength}"
