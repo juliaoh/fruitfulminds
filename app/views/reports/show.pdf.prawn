@@ -19,19 +19,10 @@ pdf.text " "
 pdf.text @school_intro_second
 pdf.text " "
 pdf.text @school_intro_third
-pdf.text " "
+pdf.start_new_page
 pdf.text @static_contents[:objectives_title], :size => 14, :style => :bold
 pdf.text " "
-
-
-
-
-
-
 pdf.table(@objectivesTable, :header => true)
-
-
-
 pdf.text " "
 pdf.text " "
 pdf.text @static_contents[:eval_title], :size => 14, :style => :bold
@@ -55,7 +46,7 @@ pdf.text @static_contents[:strength_weakness_intro]
 pdf.text " "
 pdf.text @static_contents[:strength_intro], :size => 14, :style => :bold
 pdf.text " "
-
+pdf.start_new_page
 
 @strengths.each do |key, strength|
   pdf.text "#{strength}"
@@ -85,7 +76,7 @@ pdf.text " "
 @sig_increase.each do |agree|
   pdf.text "#{agree}"
 end
-pdf.text " "
+pdf.start_new_page
 pdf.text @static_contents[:slight_increase_header], :style => :bold
 pdf.text " "
 @slight_increase.each do |agree|
