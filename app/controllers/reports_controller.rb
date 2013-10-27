@@ -45,7 +45,6 @@ class ReportsController < ApplicationController
                    "7. Review lesson" => "Review major concepts covered in the previous lessons. Students are given a chance to practice problem-solving in different scenarios given the knowledge they have in nutrition."  }
         @improvement_intro = "#{@ps_part1.number_students} students took the pre-efficacy survey part 1, #{@ps_part2.number_students} students took the pre-efficacy survey part 2 and #{@ps.number_students} students took the post-efficacy survey. These were not necessarily the same students. However, on average, students showed significant increases in their agreement that they could"
         generate_mapping
-        generate_fj_data                   
         generate_graph
         show
         @ambassadorNoteTitle = "Ambassador Notes: "
@@ -202,7 +201,6 @@ class ReportsController < ApplicationController
     @graphdata2 = [[@efficacy_pre],[@efficacy_post]]
     generate_pdf_graphs(@graphdata1, @graphdata2)
     generate_efficacy_pdf_graphs(@meanPreList, @meanPostList)
-    generate_fj_data 
                       
 
     
