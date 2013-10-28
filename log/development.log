@@ -7030,3 +7030,1631 @@ DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated
   [1m[36m (11.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121217051648')[0m
   [1m[35m (11.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121028031850')
   [1m[36m (11.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121027222901')[0m
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+
+
+Started GET "/login" for 127.0.0.1 at 2013-10-27 16:09:03 -0700
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.haml within layouts/application (21.4ms)
+Completed 200 OK in 218ms (Views: 183.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:04 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (33ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:04 -0700
+Served asset /food_journals.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:04 -0700
+Served asset /postsurveys.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:04 -0700
+Served asset /presurveys.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:04 -0700
+Served asset /schools.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:04 -0700
+Served asset /users.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:04 -0700
+Served asset /jquery.js - 304 Not Modified (30ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:04 -0700
+Served asset /food_journals.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:04 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:04 -0700
+Served asset /postsurveys.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:05 -0700
+Served asset /presurveys.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:05 -0700
+Served asset /schools.js - 304 Not Modified (8ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2013-10-27 16:09:10 -0700
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3t5VPBHnqOQjljZleNWnjjkQzQLRWjoZaDne6i7TiiU=", "user"=>{"email"=>"user@fruitfulminds.org", "password"=>"[FILTERED]"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'user@fruitfulminds.org' LIMIT 1[0m
+  [1m[35mPendingUser Load (0.0ms)[0m  SELECT "pending_users".* FROM "pending_users" WHERE "pending_users"."user_id" = 3 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1[0m
+Redirected to http://localhost:3000/portal
+Completed 302 Found in 473ms
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-27 16:09:10 -0700
+  Processing by HomeController#portal as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mSchoolSemester Load (0.1ms)[0m  [1mSELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 2 LIMIT 1[0m
+  [1m[35mSchool Load (0.2ms)[0m  SELECT "schools".* FROM "schools" WHERE "schools"."id" = 2 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1[0m
+  [1m[35mPostsurvey Load (0.3ms)[0m  SELECT "postsurveys".* FROM "postsurveys" INNER JOIN "school_semesters" ON "postsurveys"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 2
+  [1m[36mPresurvey::Part1 Load (0.3ms)[0m  [1mSELECT "presurvey_part1s".* FROM "presurvey_part1s" INNER JOIN "school_semesters" ON "presurvey_part1s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 2[0m
+  [1m[35mPresurvey::Part2 Load (0.2ms)[0m  SELECT "presurvey_part2s".* FROM "presurvey_part2s" INNER JOIN "school_semesters" ON "presurvey_part2s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 2
+Rendered home/portal.html.haml within layouts/application (160.2ms)
+Completed 200 OK in 288ms (Views: 174.8ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:11 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:11 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:11 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:11 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:11 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:11 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:11 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:11 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:11 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:11 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:11 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:11 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/presurveys/part1/new" for 127.0.0.1 at 2013-10-27 16:09:16 -0700
+  Processing by Presurveys::Part1Controller#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mSchoolSemester Load (0.2ms)[0m  SELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 2 LIMIT 1
+  [1m[36mSchool Load (0.6ms)[0m  [1mSELECT "schools".* FROM "schools" WHERE "schools"."id" = 2 LIMIT 1[0m
+  [1m[35mSchool Load (0.1ms)[0m  SELECT "schools".* FROM "schools" 
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1[0m
+Rendered admin/_schools.html.haml (10.5ms)
+Rendered presurveys/_sections.html.haml (6.8ms)
+Rendered presurveys/part1/new.html.haml within layouts/application (109.8ms)
+Completed 200 OK in 248ms (Views: 123.3ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:16 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:16 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:16 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:16 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:16 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:16 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:16 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:16 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:16 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:16 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:16 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:16 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started POST "/presurveys/part1" for 127.0.0.1 at 2013-10-27 16:09:42 -0700
+  Processing by Presurveys::Part1Controller#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3t5VPBHnqOQjljZleNWnjjkQzQLRWjoZaDne6i7TiiU=", "presurvey_part1"=>{"number_students"=>"25", "section_1_1"=>"18", "section_1_2"=>"14", "section_2_1"=>"13", "section_2_2"=>"12", "section_2_3"=>"8", "section_2_4"=>"7", "section_3_1"=>"14", "section_3_2"=>"19", "section_3_3"=>"20", "section_3_4"=>"11", "section_3_5"=>"7", "section_3_6"=>"6", "section_4_1"=>"1", "section_4_2"=>"4", "section_4_3"=>"5"}, "commit"=>"Save Changes"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mSchoolSemester Load (0.2ms)[0m  [1mSELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 2 LIMIT 1[0m
+  [1m[35mSchool Load (0.3ms)[0m  SELECT "schools".* FROM "schools" WHERE "schools"."id" = 2 LIMIT 1
+  [1m[36mSchool Load (45.4ms)[0m  [1mSELECT "schools".* FROM "schools" WHERE "schools"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mSchoolSemester Load (0.2ms)[0m  SELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mSQL (9.1ms)[0m  [1mINSERT INTO "presurvey_part1s" ("created_at", "number_students", "school_semester_id", "section_1_1", "section_1_2", "section_2_1", "section_2_2", "section_2_3", "section_2_4", "section_3_1", "section_3_2", "section_3_3", "section_3_4", "section_3_5", "section_3_6", "section_4_1", "section_4_2", "section_4_3", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 27 Oct 2013 23:09:43 UTC +00:00], ["number_students", 25], ["school_semester_id", 2], ["section_1_1", 18], ["section_1_2", 14], ["section_2_1", 13], ["section_2_2", 12], ["section_2_3", 8], ["section_2_4", 7], ["section_3_1", 14], ["section_3_2", 19], ["section_3_3", 20], ["section_3_4", 11], ["section_3_5", 7], ["section_3_6", 6], ["section_4_1", 1], ["section_4_2", 4], ["section_4_3", 5], ["updated_at", Sun, 27 Oct 2013 23:09:43 UTC +00:00]]
+Redirected to http://localhost:3000/portal
+Completed 302 Found in 276ms
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-27 16:09:43 -0700
+  Processing by HomeController#portal as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mSchoolSemester Load (0.2ms)[0m  [1mSELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 2 LIMIT 1[0m
+  [1m[35mSchool Load (0.2ms)[0m  SELECT "schools".* FROM "schools" WHERE "schools"."id" = 2 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1[0m
+  [1m[35mPostsurvey Load (0.3ms)[0m  SELECT "postsurveys".* FROM "postsurveys" INNER JOIN "school_semesters" ON "postsurveys"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 2
+  [1m[36mPresurvey::Part1 Load (0.3ms)[0m  [1mSELECT "presurvey_part1s".* FROM "presurvey_part1s" INNER JOIN "school_semesters" ON "presurvey_part1s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 2[0m
+Rendered home/_ps1.html.haml (56.8ms)
+  [1m[35mPresurvey::Part2 Load (0.3ms)[0m  SELECT "presurvey_part2s".* FROM "presurvey_part2s" INNER JOIN "school_semesters" ON "presurvey_part2s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 2
+Rendered home/portal.html.haml within layouts/application (101.4ms)
+Completed 200 OK in 305ms (Views: 115.9ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:43 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:43 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:43 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:43 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:43 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:43 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:44 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:44 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:44 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:44 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:44 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:44 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/presurveys/part2/new" for 127.0.0.1 at 2013-10-27 16:09:47 -0700
+  Processing by Presurveys::Part2Controller#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mSchoolSemester Load (0.1ms)[0m  SELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 2 LIMIT 1
+  [1m[36mSchool Load (0.2ms)[0m  [1mSELECT "schools".* FROM "schools" WHERE "schools"."id" = 2 LIMIT 1[0m
+  [1m[35mSchool Load (0.2ms)[0m  SELECT "schools".* FROM "schools" 
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1[0m
+Rendered admin/_schools.html.haml (10.3ms)
+Rendered presurveys/_sections.html.haml (1.3ms)
+Rendered presurveys/_efficacy.html.haml (4.3ms)
+Rendered presurveys/part2/new.html.haml within layouts/application (101.3ms)
+Completed 200 OK in 272ms (Views: 126.2ms | ActiveRecord: 13.4ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:47 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:47 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:47 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:47 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:47 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:47 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:47 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:47 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:47 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:47 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:47 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:47 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/presurveys/part1/1/edit" for 127.0.0.1 at 2013-10-27 16:09:56 -0700
+  Processing by Presurveys::Part1Controller#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mSchoolSemester Load (0.2ms)[0m  [1mSELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 2 LIMIT 1[0m
+  [1m[35mSchool Load (0.2ms)[0m  SELECT "schools".* FROM "schools" WHERE "schools"."id" = 2 LIMIT 1
+  [1m[36mPresurvey::Part1 Load (0.2ms)[0m  [1mSELECT "presurvey_part1s".* FROM "presurvey_part1s" WHERE "presurvey_part1s"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1
+Rendered admin/_schools.html.haml (11.6ms)
+Rendered presurveys/_sections.html.haml (3.0ms)
+Rendered presurveys/part1/edit.html.haml within layouts/application (44.9ms)
+Completed 200 OK in 207ms (Views: 70.2ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:57 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:57 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:57 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:57 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:57 -0700
+Served asset /schools.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-10-27 16:09:57 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:57 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:57 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:57 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:57 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:57 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-10-27 16:09:57 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/presurveys/part2/new" for 127.0.0.1 at 2013-10-27 16:10:00 -0700
+  Processing by Presurveys::Part2Controller#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mSchoolSemester Load (0.3ms)[0m  SELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 2 LIMIT 1
+  [1m[36mSchool Load (0.3ms)[0m  [1mSELECT "schools".* FROM "schools" WHERE "schools"."id" = 2 LIMIT 1[0m
+  [1m[35mSchool Load (1.2ms)[0m  SELECT "schools".* FROM "schools" 
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1[0m
+Rendered admin/_schools.html.haml (10.8ms)
+Rendered presurveys/_sections.html.haml (3.6ms)
+Rendered presurveys/_efficacy.html.haml (1.7ms)
+Rendered presurveys/part2/new.html.haml within layouts/application (61.7ms)
+Completed 200 OK in 232ms (Views: 86.7ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-10-27 16:10:00 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-10-27 16:10:00 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:10:00 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:10:00 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-10-27 16:10:00 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-10-27 16:10:00 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-27 16:10:00 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-27 16:10:00 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-10-27 16:10:00 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:10:00 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:10:01 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-10-27 16:10:01 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started POST "/presurveys/part2" for 127.0.0.1 at 2013-10-27 16:10:24 -0700
+  Processing by Presurveys::Part2Controller#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3t5VPBHnqOQjljZleNWnjjkQzQLRWjoZaDne6i7TiiU=", "presurvey_part2"=>{"number_students"=>"25", "section_5_1"=>"17", "section_5_2"=>"16", "section_6_1"=>"14", "section_6_2"=>"15", "section_6_3"=>"18", "section_6_4"=>"11"}, "efficacy"=>{"efficacy_1"=>"7", "efficacy_2"=>"5", "efficacy_3"=>"8", "efficacy_4"=>"7", "efficacy_5"=>"5", "efficacy_6"=>"7", "efficacy_7"=>"8", "efficacy_8"=>"6", "efficacy_9"=>"8", "efficacy_10"=>"6"}, "commit"=>"Save Changes"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mSchoolSemester Load (0.2ms)[0m  [1mSELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 2 LIMIT 1[0m
+  [1m[35mSchool Load (4.0ms)[0m  SELECT "schools".* FROM "schools" WHERE "schools"."id" = 2 LIMIT 1
+  [1m[36mSchool Load (0.2ms)[0m  [1mSELECT "schools".* FROM "schools" WHERE "schools"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mSchoolSemester Load (0.2ms)[0m  SELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "presurvey_part2s" ("created_at", "number_students", "school_semester_id", "section_5_1", "section_5_2", "section_6_1", "section_6_2", "section_6_3", "section_6_4", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 27 Oct 2013 23:10:24 UTC +00:00], ["number_students", 25], ["school_semester_id", 2], ["section_5_1", 17], ["section_5_2", 16], ["section_6_1", 14], ["section_6_2", 15], ["section_6_3", 18], ["section_6_4", 11], ["updated_at", Sun, 27 Oct 2013 23:10:24 UTC +00:00]]
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "efficacies" ("created_at", "efficacy_1", "efficacy_10", "efficacy_2", "efficacy_3", "efficacy_4", "efficacy_5", "efficacy_6", "efficacy_7", "efficacy_8", "efficacy_9", "number_students", "part2_id", "postsurvey_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Sun, 27 Oct 2013 23:10:24 UTC +00:00], ["efficacy_1", 7], ["efficacy_10", 6], ["efficacy_2", 5], ["efficacy_3", 8], ["efficacy_4", 7], ["efficacy_5", 5], ["efficacy_6", 7], ["efficacy_7", 8], ["efficacy_8", 6], ["efficacy_9", 8], ["number_students", 25], ["part2_id", 1], ["postsurvey_id", nil], ["updated_at", Sun, 27 Oct 2013 23:10:24 UTC +00:00]]
+Redirected to http://localhost:3000/portal
+Completed 302 Found in 232ms
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-27 16:10:24 -0700
+  Processing by HomeController#portal as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mSchoolSemester Load (0.4ms)[0m  SELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 2 LIMIT 1
+  [1m[36mSchool Load (0.2ms)[0m  [1mSELECT "schools".* FROM "schools" WHERE "schools"."id" = 2 LIMIT 1[0m
+  [1m[35mProfile Load (1.0ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1
+  [1m[36mPostsurvey Load (0.2ms)[0m  [1mSELECT "postsurveys".* FROM "postsurveys" INNER JOIN "school_semesters" ON "postsurveys"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 2[0m
+  [1m[35mPresurvey::Part1 Load (0.3ms)[0m  SELECT "presurvey_part1s".* FROM "presurvey_part1s" INNER JOIN "school_semesters" ON "presurvey_part1s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 2
+Rendered home/_ps1.html.haml (15.2ms)
+  [1m[36mPresurvey::Part2 Load (0.2ms)[0m  [1mSELECT "presurvey_part2s".* FROM "presurvey_part2s" INNER JOIN "school_semesters" ON "presurvey_part2s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 2[0m
+  [1m[35mEfficacy Load (0.2ms)[0m  SELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."part2_id" = 1 LIMIT 1
+Rendered home/_ps2.html.haml (64.5ms)
+Rendered home/portal.html.haml within layouts/application (116.4ms)
+Completed 200 OK in 250ms (Views: 132.1ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-10-27 16:10:25 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-10-27 16:10:25 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:10:25 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:10:25 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-10-27 16:10:25 -0700
+Served asset /schools.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-10-27 16:10:25 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-27 16:10:25 -0700
+Served asset /jquery.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-27 16:10:25 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-10-27 16:10:25 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:10:25 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:10:25 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-10-27 16:10:25 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/postsurveys/new" for 127.0.0.1 at 2013-10-27 16:10:30 -0700
+  Processing by PostsurveysController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mSchoolSemester Load (0.2ms)[0m  SELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 2 LIMIT 1
+  [1m[36mSchool Load (0.2ms)[0m  [1mSELECT "schools".* FROM "schools" WHERE "schools"."id" = 2 LIMIT 1[0m
+  [1m[35mSchool Load (0.2ms)[0m  SELECT "schools".* FROM "schools" 
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1[0m
+Rendered admin/_schools.html.haml (48.9ms)
+Rendered presurveys/_sections.html.haml (4.2ms)
+Rendered presurveys/_efficacy.html.haml (1.6ms)
+Rendered postsurveys/new.html.haml within layouts/application (106.7ms)
+Completed 200 OK in 280ms (Views: 128.3ms | ActiveRecord: 10.6ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-10-27 16:10:31 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-10-27 16:10:31 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:10:31 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:10:31 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-10-27 16:10:31 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-10-27 16:10:31 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-27 16:10:31 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-27 16:10:31 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-10-27 16:10:31 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:10:31 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:10:31 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-10-27 16:10:31 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started POST "/postsurveys" for 127.0.0.1 at 2013-10-27 16:11:31 -0700
+  Processing by PostsurveysController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3t5VPBHnqOQjljZleNWnjjkQzQLRWjoZaDne6i7TiiU=", "postsurvey"=>{"number_students"=>"25", "section_1_1"=>"23", "section_1_2"=>"24", "section_2_1"=>"23", "section_2_2"=>"21", "section_2_3"=>"22", "section_2_4"=>"20", "section_3_1"=>"19", "section_3_2"=>"23", "section_3_3"=>"25", "section_3_4"=>"23", "section_3_5"=>"22", "section_3_6"=>"21", "section_4_1"=>"22", "section_4_2"=>"20", "section_4_3"=>"17", "section_5_1"=>"12", "section_5_2"=>"20", "section_6_1"=>"22", "section_6_2"=>"21", "section_6_3"=>"20", "section_6_4"=>"23"}, "efficacy"=>{"efficacy_1"=>"24", "efficacy_2"=>"22", "efficacy_3"=>"23", "efficacy_4"=>"21", "efficacy_5"=>"20", "efficacy_6"=>"18", "efficacy_7"=>"22", "efficacy_8"=>"24", "efficacy_9"=>"24", "efficacy_10"=>"22"}, "commit"=>"Save Changes"}
+  [1m[35mUser Load (3.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mSchoolSemester Load (0.1ms)[0m  [1mSELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 2 LIMIT 1[0m
+  [1m[35mSchool Load (0.2ms)[0m  SELECT "schools".* FROM "schools" WHERE "schools"."id" = 2 LIMIT 1
+  [1m[36mSchool Load (0.3ms)[0m  [1mSELECT "schools".* FROM "schools" WHERE "schools"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mSchoolSemester Load (0.2ms)[0m  SELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "postsurveys" ("created_at", "number_students", "school_semester_id", "section_1_1", "section_1_2", "section_2_1", "section_2_2", "section_2_3", "section_2_4", "section_3_1", "section_3_2", "section_3_3", "section_3_4", "section_3_5", "section_3_6", "section_4_1", "section_4_2", "section_4_3", "section_5_1", "section_5_2", "section_6_1", "section_6_2", "section_6_3", "section_6_4", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 27 Oct 2013 23:11:31 UTC +00:00], ["number_students", 25], ["school_semester_id", 2], ["section_1_1", 23], ["section_1_2", 24], ["section_2_1", 23], ["section_2_2", 21], ["section_2_3", 22], ["section_2_4", 20], ["section_3_1", 19], ["section_3_2", 23], ["section_3_3", 25], ["section_3_4", 23], ["section_3_5", 22], ["section_3_6", 21], ["section_4_1", 22], ["section_4_2", 20], ["section_4_3", 17], ["section_5_1", 12], ["section_5_2", 20], ["section_6_1", 22], ["section_6_2", 21], ["section_6_3", 20], ["section_6_4", 23], ["updated_at", Sun, 27 Oct 2013 23:11:31 UTC +00:00]]
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO "efficacies" ("created_at", "efficacy_1", "efficacy_10", "efficacy_2", "efficacy_3", "efficacy_4", "efficacy_5", "efficacy_6", "efficacy_7", "efficacy_8", "efficacy_9", "number_students", "part2_id", "postsurvey_id", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Sun, 27 Oct 2013 23:11:31 UTC +00:00], ["efficacy_1", 24], ["efficacy_10", 22], ["efficacy_2", 22], ["efficacy_3", 23], ["efficacy_4", 21], ["efficacy_5", 20], ["efficacy_6", 18], ["efficacy_7", 22], ["efficacy_8", 24], ["efficacy_9", 24], ["number_students", 25], ["part2_id", nil], ["postsurvey_id", 1], ["updated_at", Sun, 27 Oct 2013 23:11:31 UTC +00:00]]
+Redirected to http://localhost:3000/portal
+Completed 302 Found in 308ms
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-27 16:11:32 -0700
+  Processing by HomeController#portal as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mSchoolSemester Load (0.1ms)[0m  SELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 2 LIMIT 1
+  [1m[36mSchool Load (0.2ms)[0m  [1mSELECT "schools".* FROM "schools" WHERE "schools"."id" = 2 LIMIT 1[0m
+  [1m[35mProfile Load (0.2ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1
+  [1m[36mPostsurvey Load (0.3ms)[0m  [1mSELECT "postsurveys".* FROM "postsurveys" INNER JOIN "school_semesters" ON "postsurveys"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 2[0m
+  [1m[35mPresurvey::Part1 Load (0.2ms)[0m  SELECT "presurvey_part1s".* FROM "presurvey_part1s" INNER JOIN "school_semesters" ON "presurvey_part1s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 2
+Rendered home/_ps1.html.haml (17.1ms)
+  [1m[36mPresurvey::Part2 Load (0.2ms)[0m  [1mSELECT "presurvey_part2s".* FROM "presurvey_part2s" INNER JOIN "school_semesters" ON "presurvey_part2s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 2[0m
+  [1m[35mEfficacy Load (3.6ms)[0m  SELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."part2_id" = 1 LIMIT 1
+Rendered home/_ps2.html.haml (27.9ms)
+  [1m[36mEfficacy Load (0.2ms)[0m  [1mSELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."postsurvey_id" = 1 LIMIT 1[0m
+Rendered home/_ps.html.haml (61.8ms)
+Rendered home/portal.html.haml within layouts/application (153.3ms)
+Completed 200 OK in 285ms (Views: 160.7ms | ActiveRecord: 9.6ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-10-27 16:11:32 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-10-27 16:11:32 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-10-27 16:11:32 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:11:32 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:11:32 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-10-27 16:11:32 -0700
+Served asset /food_journals.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-27 16:11:32 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-27 16:11:32 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-10-27 16:11:32 -0700
+Served asset /food_journals.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:11:32 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:11:32 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-10-27 16:11:32 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/reports/new" for 127.0.0.1 at 2013-10-27 16:11:35 -0700
+  Processing by ReportsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mSchoolSemester Load (0.2ms)[0m  [1mSELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 2 LIMIT 1[0m
+  [1m[35mSchool Load (3.1ms)[0m  SELECT "schools".* FROM "schools" WHERE "schools"."id" = 2 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1[0m
+Rendered reports/_generate_report.html.haml (7.5ms)
+Rendered reports/new.html.haml within layouts/application (9.5ms)
+Completed 200 OK in 188ms (Views: 30.5ms | ActiveRecord: 8.8ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-10-27 16:11:36 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-10-27 16:11:36 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-27 16:11:36 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-10-27 16:11:36 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-10-27 16:11:36 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:11:36 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:11:36 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-27 16:11:36 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:11:36 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-10-27 16:11:36 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:11:36 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-10-27 16:11:36 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started POST "/reports" for 127.0.0.1 at 2013-10-27 16:11:38 -0700
+  Processing by ReportsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3t5VPBHnqOQjljZleNWnjjkQzQLRWjoZaDne6i7TiiU=", "school"=>"2", "commit"=>"Generate Report"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mSchoolSemester Load (0.2ms)[0m  [1mSELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 2 LIMIT 1[0m
+  [1m[35mSchool Load (0.2ms)[0m  SELECT "schools".* FROM "schools" WHERE "schools"."id" = 2 LIMIT 1
+  [1m[36mProfile Load (0.2ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "schools".* FROM "schools" WHERE "schools"."id" = 2 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "presurvey_part1s" INNER JOIN "school_semesters" ON "presurvey_part1s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."school_id" = 2[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "presurvey_part2s" INNER JOIN "school_semesters" ON "presurvey_part2s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."school_id" = 2
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "postsurveys" INNER JOIN "school_semesters" ON "postsurveys"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."school_id" = 2[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "reports" ("created_at", "eval_intro", "main_title", "note", "school_intro_title", "school_introduction", "school_semester_id", "strength_weakness_title", "strengths", "summary", "updated_at", "weaknesses") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Sun, 27 Oct 2013 23:11:39 UTC +00:00], ["eval_intro", nil], ["main_title", nil], ["note", nil], ["school_intro_title", nil], ["school_introduction", nil], ["school_semester_id", 2], ["strength_weakness_title", nil], ["strengths", nil], ["summary", nil], ["updated_at", Sun, 27 Oct 2013 23:11:39 UTC +00:00], ["weaknesses", nil]]
+  [1m[36mStaticContent Load (0.6ms)[0m  [1mSELECT "static_contents".* FROM "static_contents" LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "school_semesters" ON "users"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."school_id" = 2
+  [1m[36mPresurvey::Part1 Load (0.2ms)[0m  [1mSELECT "presurvey_part1s".* FROM "presurvey_part1s" WHERE "presurvey_part1s"."school_semester_id" = 2[0m
+  [1m[35mPresurvey::Part2 Load (0.2ms)[0m  SELECT "presurvey_part2s".* FROM "presurvey_part2s" WHERE "presurvey_part2s"."school_semester_id" = 2
+  [1m[36mPostsurvey Load (0.5ms)[0m  [1mSELECT "postsurveys".* FROM "postsurveys" WHERE "postsurveys"."school_semester_id" = 2[0m
+  [1m[35mEfficacy Load (0.3ms)[0m  SELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."part2_id" = 1
+  [1m[36mEfficacy Load (0.2ms)[0m  [1mSELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."postsurvey_id" = 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "static_contents".* FROM "static_contents" LIMIT 1
+  [1m[36mSchool Load (0.2ms)[0m  [1mSELECT "schools".* FROM "schools" WHERE "schools"."id" = ? LIMIT 1[0m  [["id", "2"]]
+Rendered reports/_comment_form.html.haml (1.8ms)
+Rendered reports/create.html.haml within layouts/application (18.6ms)
+Completed 200 OK in 534ms (Views: 44.6ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-10-27 16:11:39 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-10-27 16:11:39 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-10-27 16:11:39 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-27 16:11:39 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-10-27 16:11:39 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:11:39 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-10-27 16:11:39 -0700
+Served asset /postsurveys.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-27 16:11:39 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-10-27 16:11:39 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:11:39 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-10-27 16:11:39 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-10-27 16:11:39 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-27 17:14:46 -0700
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-27 17:14:47 -0700
+  Processing by HomeController#portal as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mSchoolSemester Load (0.1ms)[0m  SELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 2 LIMIT 1
+  [1m[36mSchool Load (0.2ms)[0m  [1mSELECT "schools".* FROM "schools" WHERE "schools"."id" = 2 LIMIT 1[0m
+  [1m[35mProfile Load (0.2ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1
+  [1m[36mPostsurvey Load (0.3ms)[0m  [1mSELECT "postsurveys".* FROM "postsurveys" INNER JOIN "school_semesters" ON "postsurveys"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 2[0m
+  [1m[35mPresurvey::Part1 Load (0.6ms)[0m  SELECT "presurvey_part1s".* FROM "presurvey_part1s" INNER JOIN "school_semesters" ON "presurvey_part1s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 2
+Rendered home/_ps1.html.haml (64.4ms)
+  [1m[36mPresurvey::Part2 Load (0.3ms)[0m  [1mSELECT "presurvey_part2s".* FROM "presurvey_part2s" INNER JOIN "school_semesters" ON "presurvey_part2s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 2[0m
+  [1m[35mEfficacy Load (0.2ms)[0m  SELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."part2_id" = 1 LIMIT 1
+Rendered home/_ps2.html.haml (30.8ms)
+  [1m[36mEfficacy Load (0.3ms)[0m  [1mSELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."postsurvey_id" = 1 LIMIT 1[0m
+Rendered home/_ps.html.haml (25.6ms)
+Rendered home/portal.html.haml within layouts/application (283.0ms)
+Completed 200 OK in 822ms (Views: 476.5ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-10-27 17:14:48 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (34ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-10-27 17:14:48 -0700
+Served asset /postsurveys.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-10-27 17:14:48 -0700
+Served asset /presurveys.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-10-27 17:14:48 -0700
+Served asset /schools.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-10-27 17:14:48 -0700
+Served asset /food_journals.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-10-27 17:14:48 -0700
+Served asset /users.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-27 17:14:48 -0700
+Served asset /jquery.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-27 17:14:48 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (12ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-10-27 17:14:48 -0700
+Served asset /food_journals.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-10-27 17:14:48 -0700
+Served asset /presurveys.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-10-27 17:14:48 -0700
+Served asset /postsurveys.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-10-27 17:14:48 -0700
+Served asset /schools.js - 304 Not Modified (10ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2013-10-27 17:14:53 -0700
+  Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-27 17:14:53 -0700
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-27 17:14:53 -0700
+  Processing by HomeController#portal as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://localhost:3000/login
+Completed 302 Found in 26ms
+
+
+Started GET "/login" for 127.0.0.1 at 2013-10-27 17:14:53 -0700
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.haml within layouts/application (6.7ms)
+Completed 200 OK in 15ms (Views: 14.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-10-27 17:14:53 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-10-27 17:14:53 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-10-27 17:14:53 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-10-27 17:14:53 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-10-27 17:14:53 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-10-27 17:14:53 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-27 17:14:53 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-27 17:14:53 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-10-27 17:14:53 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-10-27 17:14:53 -0700
+Served asset /postsurveys.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-10-27 17:14:53 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-10-27 17:14:53 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2013-10-27 17:15:03 -0700
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3Lhu2luVVkUSfUrlPVlq3fKM7gCdtV5vabOZ9WjZgCk=", "user"=>{"email"=>"admin@fruitfulminds.org", "password"=>"[FILTERED]"}, "commit"=>"Sign In"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'admin@fruitfulminds.org' LIMIT 1[0m
+Redirected to http://localhost:3000/login
+Completed 302 Found in 223ms
+
+
+Started GET "/login" for 127.0.0.1 at 2013-10-27 17:15:03 -0700
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 17ms (Views: 11.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-10-27 17:15:04 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-10-27 17:15:04 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-10-27 17:15:04 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-10-27 17:15:04 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-10-27 17:15:04 -0700
+Served asset /presurveys.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-10-27 17:15:04 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-27 17:15:04 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-27 17:15:04 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-10-27 17:15:04 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-10-27 17:15:04 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-10-27 17:15:04 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-10-27 17:15:04 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2013-10-27 17:15:08 -0700
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3Lhu2luVVkUSfUrlPVlq3fKM7gCdtV5vabOZ9WjZgCk=", "user"=>{"email"=>"admin@fruitfulminds.org", "password"=>"[FILTERED]"}, "commit"=>"Sign In"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'admin@fruitfulminds.org' LIMIT 1
+  [1m[36mPendingUser Load (0.2ms)[0m  [1mSELECT "pending_users".* FROM "pending_users" WHERE "pending_users"."user_id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mPendingUser Load (0.2ms)[0m  [1mSELECT "pending_users".* FROM "pending_users" LIMIT 1[0m
+Redirected to http://localhost:3000/portal
+Completed 302 Found in 244ms
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-27 17:15:08 -0700
+  Processing by HomeController#portal as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+Rendered home/portal.html.haml within layouts/application (96.3ms)
+Completed 500 Internal Server Error in 145ms
+
+ActionView::Template::Error (undefined local variable or method `new_college_path' for #<#<Class:0x94c49ac>:0x94c2cd8>):
+    7:   | 
+    8:   = link_to("Show All Schools", schools_path)
+    9:   |
+    10:   = link_to("Add New College", new_college_path)
+    11:   |
+    12:   | 
+    13:   = link_to("Add New Administrator", new_admin_path)
+  app/views/home/portal.html.haml:10:in `_app_views_home_portal_html_haml__368399597_81523220'
+
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.8ms)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-27 17:24:01 -0700
+  Processing by HomeController#portal as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.6ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+Rendered home/portal.html.haml within layouts/application (97.9ms)
+Completed 500 Internal Server Error in 846ms
+
+ActionView::Template::Error (undefined local variable or method `new_college_path' for #<#<Class:0xb9bdf4c>:0xb9c5788>):
+    7:   | 
+    8:   = link_to("Show All Schools", schools_path)
+    9:   |
+    10:   = link_to("Add New College", new_college_path)
+    11:   |
+    12:   = link_to("Show All Colleges", colleges_path)
+    13:   | 
+  app/views/home/portal.html.haml:10:in `_app_views_home_portal_html_haml___551619148_95732050'
+
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.7ms)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-27 17:25:21 -0700
+  Processing by HomeController#portal as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+Rendered home/portal.html.haml within layouts/application (107.8ms)
+Completed 500 Internal Server Error in 548ms
+
+ActionView::Template::Error (undefined local variable or method `new_college_path' for #<#<Class:0xabca278>:0xabc6fc4>):
+    7:   | 
+    8:   = link_to("Show All Schools", schools_path)
+    9:   |
+    10:   = link_to("Add New College", new_college_path)
+    11:   |
+    12:   = link_to("Show All Colleges", colleges_path)
+    13:   | 
+  app/views/home/portal.html.haml:10:in `_app_views_home_portal_html_haml___648157385_88782930'
+
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.0ms)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-27 17:28:01 -0700
+  Processing by HomeController#portal as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.2ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mPresurvey::Part1 Load (0.2ms)[0m  [1mSELECT "presurvey_part1s".* FROM "presurvey_part1s" [0m
+Rendered home/_ps1.html.haml (15.0ms)
+  [1m[35mPresurvey::Part2 Load (0.2ms)[0m  SELECT "presurvey_part2s".* FROM "presurvey_part2s" 
+  [1m[36mEfficacy Load (0.2ms)[0m  [1mSELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."part2_id" = 1 LIMIT 1[0m
+Rendered home/_ps2.html.haml (36.5ms)
+  [1m[35mPostsurvey Load (0.3ms)[0m  SELECT "postsurveys".* FROM "postsurveys" 
+  [1m[36mEfficacy Load (0.2ms)[0m  [1mSELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."postsurvey_id" = 1 LIMIT 1[0m
+Rendered home/_ps.html.haml (23.7ms)
+Rendered home/portal.html.haml within layouts/application (351.2ms)
+Completed 200 OK in 812ms (Views: 435.7ms | ActiveRecord: 10.8ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-10-27 17:28:03 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (35ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-10-27 17:28:03 -0700
+Served asset /food_journals.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-10-27 17:28:03 -0700
+Served asset /presurveys.css - 304 Not Modified (13ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-10-27 17:28:03 -0700
+Served asset /postsurveys.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-10-27 17:28:03 -0700
+Served asset /schools.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-10-27 17:28:03 -0700
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-27 17:28:03 -0700
+Served asset /jquery.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-27 17:28:03 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-10-27 17:28:03 -0700
+Served asset /food_journals.js - 304 Not Modified (13ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-10-27 17:28:03 -0700
+Served asset /postsurveys.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-10-27 17:28:03 -0700
+Served asset /presurveys.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-10-27 17:28:03 -0700
+Served asset /schools.js - 304 Not Modified (1ms)
+
+
+Started GET "/colleges/new" for 127.0.0.1 at 2013-10-27 17:28:07 -0700
+
+SyntaxError (/home/saasbook/Desktop/fruitfulminds/fruitfulminds/app/models/college.rb:1: class/module name must be CONSTANT
+class college < ActiveRecord::Base
+               ^):
+  app/controllers/colleges_controller.rb:1:in `<top (required)>'
+
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (5.6ms)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+
+
+Started GET "/colleges" for 127.0.0.1 at 2013-10-27 17:30:00 -0700
+  Processing by CollegesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+Completed 500 Internal Server Error in 194ms
+
+ActiveRecord::StatementInvalid (Could not find table 'colleges'):
+  app/controllers/colleges_controller.rb:5:in `index'
+
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-27 17:30:15 -0700
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-27 17:30:15 -0700
+  Processing by HomeController#portal as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mPresurvey::Part1 Load (0.3ms)[0m  [1mSELECT "presurvey_part1s".* FROM "presurvey_part1s" [0m
+Rendered home/_ps1.html.haml (46.9ms)
+  [1m[35mPresurvey::Part2 Load (0.2ms)[0m  SELECT "presurvey_part2s".* FROM "presurvey_part2s" 
+  [1m[36mEfficacy Load (0.2ms)[0m  [1mSELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."part2_id" = 1 LIMIT 1[0m
+Rendered home/_ps2.html.haml (30.3ms)
+  [1m[35mPostsurvey Load (0.2ms)[0m  SELECT "postsurveys".* FROM "postsurveys" 
+  [1m[36mEfficacy Load (0.2ms)[0m  [1mSELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."postsurvey_id" = 1 LIMIT 1[0m
+Rendered home/_ps.html.haml (21.3ms)
+Rendered home/portal.html.haml within layouts/application (245.1ms)
+Completed 200 OK in 362ms (Views: 280.1ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-10-27 17:30:15 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (17ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-10-27 17:30:15 -0700
+Served asset /food_journals.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-10-27 17:30:15 -0700
+Served asset /postsurveys.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-10-27 17:30:15 -0700
+Served asset /presurveys.css - 304 Not Modified (12ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-10-27 17:30:16 -0700
+Served asset /schools.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-27 17:30:16 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (15ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-27 17:30:16 -0700
+Served asset /jquery.js - 304 Not Modified (125ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-10-27 17:30:16 -0700
+Served asset /users.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-10-27 17:30:16 -0700
+Served asset /food_journals.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-10-27 17:30:16 -0700
+Served asset /postsurveys.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-10-27 17:30:16 -0700
+Served asset /schools.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-10-27 17:30:16 -0700
+Served asset /presurveys.js - 304 Not Modified (6ms)
+
+
+Started GET "/colleges/new" for 127.0.0.1 at 2013-10-27 17:30:18 -0700
+  Processing by CollegesController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.2ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+Completed 500 Internal Server Error in 39ms
+
+ActiveRecord::StatementInvalid (Could not find table 'colleges'):
+  app/controllers/colleges_controller.rb:9:in `new'
+  app/controllers/colleges_controller.rb:9:in `new'
+
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (5.7ms)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+
+
+Started GET "/colleges/new" for 127.0.0.1 at 2013-10-27 17:34:45 -0700
+  Processing by CollegesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+Completed 500 Internal Server Error in 262ms
+
+ActiveRecord::StatementInvalid (Could not find table 'colleges'):
+  app/controllers/colleges_controller.rb:9:in `new'
+  app/controllers/colleges_controller.rb:9:in `new'
+
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (46.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-27 17:34:53 -0700
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-27 17:34:53 -0700
+  Processing by HomeController#portal as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.2ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mPresurvey::Part1 Load (0.2ms)[0m  [1mSELECT "presurvey_part1s".* FROM "presurvey_part1s" [0m
+Rendered home/_ps1.html.haml (13.5ms)
+  [1m[35mPresurvey::Part2 Load (0.2ms)[0m  SELECT "presurvey_part2s".* FROM "presurvey_part2s" 
+  [1m[36mEfficacy Load (0.1ms)[0m  [1mSELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."part2_id" = 1 LIMIT 1[0m
+Rendered home/_ps2.html.haml (34.7ms)
+  [1m[35mPostsurvey Load (0.3ms)[0m  SELECT "postsurveys".* FROM "postsurveys" 
+  [1m[36mEfficacy Load (0.2ms)[0m  [1mSELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."postsurvey_id" = 1 LIMIT 1[0m
+Rendered home/_ps.html.haml (22.8ms)
+Rendered home/portal.html.haml within layouts/application (249.7ms)
+Completed 200 OK in 364ms (Views: 283.2ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-10-27 17:34:53 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-10-27 17:34:53 -0700
+Served asset /food_journals.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-10-27 17:34:54 -0700
+Served asset /postsurveys.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-10-27 17:34:54 -0700
+Served asset /presurveys.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-10-27 17:34:54 -0700
+Served asset /schools.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-10-27 17:34:54 -0700
+Served asset /users.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-27 17:34:54 -0700
+Served asset /jquery.js - 304 Not Modified (14ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-27 17:34:54 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-10-27 17:34:54 -0700
+Served asset /food_journals.js - 304 Not Modified (14ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-10-27 17:34:54 -0700
+Served asset /postsurveys.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-10-27 17:34:54 -0700
+Served asset /presurveys.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-10-27 17:34:54 -0700
+Served asset /schools.js - 304 Not Modified (6ms)
+
+
+Started GET "/colleges" for 127.0.0.1 at 2013-10-27 17:34:57 -0700
+  Processing by CollegesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+Completed 500 Internal Server Error in 40ms
+
+ActiveRecord::StatementInvalid (Could not find table 'colleges'):
+  app/controllers/colleges_controller.rb:5:in `index'
+
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.3ms)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+  [1m[36m (3.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateSchools (20121014035107)
+Migrating to CreateUsers (20121014214701)
+Migrating to CreateReport (20121015024258)
+Migrating to CreateFoodJournals (20121027222901)
+Migrating to CreateStaticContents (20121027224131)
+Migrating to Profile (20121028031850)
+Migrating to AddNoteColumnToReports (20121028170323)
+Migrating to CreatePresurveyPart1s (20121031104556)
+Migrating to CreateSchoolSemesters (20121031105232)
+Migrating to CreateEfficacies (20121031105508)
+Migrating to CreatePostsurveys (20121101171610)
+Migrating to CreatePresurveyPart2s (20121102344844)
+Migrating to CreatePendingUsers (20121119010438)
+Migrating to AddSchoolAndSemesterColumnsToPendingUsers (20121128225847)
+Migrating to AddCollegeToUsers (20121128231117)
+Migrating to AddDistrictToSchools (20121217051648)
+Migrating to AddDistrictToPendingUsers (20121217053337)
+  [1m[35m (0.5ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("efficacies")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("food_journals")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("pending_users")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_pending_users_on_user_id')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("postsurveys")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("presurvey_part1s")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("presurvey_part2s")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("profiles")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("reports")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("school_semesters")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("schools")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("static_contents")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-27 17:40:20 -0700
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-10-27 17:40:21 -0700
+  Processing by HomeController#portal as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mPresurvey::Part1 Load (0.5ms)[0m  [1mSELECT "presurvey_part1s".* FROM "presurvey_part1s" [0m
+Rendered home/_ps1.html.haml (14.2ms)
+  [1m[35mPresurvey::Part2 Load (0.2ms)[0m  SELECT "presurvey_part2s".* FROM "presurvey_part2s" 
+  [1m[36mEfficacy Load (0.2ms)[0m  [1mSELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."part2_id" = 1 LIMIT 1[0m
+Rendered home/_ps2.html.haml (30.3ms)
+  [1m[35mPostsurvey Load (0.2ms)[0m  SELECT "postsurveys".* FROM "postsurveys" 
+  [1m[36mEfficacy Load (0.3ms)[0m  [1mSELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."postsurvey_id" = 1 LIMIT 1[0m
+Rendered home/_ps.html.haml (22.5ms)
+Rendered home/portal.html.haml within layouts/application (286.9ms)
+Completed 200 OK in 597ms (Views: 366.4ms | ActiveRecord: 8.6ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-10-27 17:40:22 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (18ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-10-27 17:40:22 -0700
+Served asset /food_journals.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-10-27 17:40:22 -0700
+Served asset /postsurveys.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-10-27 17:40:22 -0700
+Served asset /presurveys.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-10-27 17:40:22 -0700
+Served asset /schools.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-10-27 17:40:22 -0700
+Served asset /users.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-27 17:40:22 -0700
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-27 17:40:22 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-10-27 17:40:22 -0700
+Served asset /food_journals.js - 304 Not Modified (12ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-10-27 17:40:22 -0700
+Served asset /postsurveys.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-10-27 17:40:23 -0700
+Served asset /presurveys.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-10-27 17:40:23 -0700
+Served asset /schools.js - 304 Not Modified (1ms)
+
+
+Started GET "/colleges/new" for 127.0.0.1 at 2013-10-27 17:40:25 -0700
+  Processing by CollegesController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.2ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+Completed 500 Internal Server Error in 42ms
+
+ActiveRecord::StatementInvalid (Could not find table 'colleges'):
+  app/controllers/colleges_controller.rb:9:in `new'
+  app/controllers/colleges_controller.rb:9:in `new'
+
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (4.8ms)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+  [1m[36m (3.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateSchools (20121014035107)
+Migrating to CreateUsers (20121014214701)
+Migrating to CreateReport (20121015024258)
+Migrating to CreateFoodJournals (20121027222901)
+Migrating to CreateStaticContents (20121027224131)
+Migrating to Profile (20121028031850)
+Migrating to AddNoteColumnToReports (20121028170323)
+Migrating to CreatePresurveyPart1s (20121031104556)
+Migrating to CreateSchoolSemesters (20121031105232)
+Migrating to CreateEfficacies (20121031105508)
+Migrating to CreatePostsurveys (20121101171610)
+Migrating to CreatePresurveyPart2s (20121102344844)
+Migrating to CreatePendingUsers (20121119010438)
+Migrating to AddSchoolAndSemesterColumnsToPendingUsers (20121128225847)
+Migrating to AddCollegeToUsers (20121128231117)
+Migrating to AddDistrictToSchools (20121217051648)
+Migrating to AddDistrictToPendingUsers (20121217053337)
+  [1m[35m (0.6ms)[0m  select sqlite_version(*)
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("efficacies")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("food_journals")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("pending_users")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_pending_users_on_user_id')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("postsurveys")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("presurvey_part1s")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("presurvey_part2s")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("profiles")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("reports")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("school_semesters")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("schools")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("static_contents")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+  [1m[36m (4.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateSchools (20121014035107)
+Migrating to CreateUsers (20121014214701)
+Migrating to CreateReport (20121015024258)
+Migrating to CreateFoodJournals (20121027222901)
+Migrating to CreateStaticContents (20121027224131)
+Migrating to Profile (20121028031850)
+Migrating to AddNoteColumnToReports (20121028170323)
+Migrating to CreatePresurveyPart1s (20121031104556)
+Migrating to CreateSchoolSemesters (20121031105232)
+Migrating to CreateEfficacies (20121031105508)
+Migrating to CreatePostsurveys (20121101171610)
+Migrating to CreatePresurveyPart2s (20121102344844)
+Migrating to CreatePendingUsers (20121119010438)
+Migrating to AddSchoolAndSemesterColumnsToPendingUsers (20121128225847)
+Migrating to AddCollegeToUsers (20121128231117)
+Migrating to AddDistrictToSchools (20121217051648)
+Migrating to AddDistrictToPendingUsers (20121217053337)
+Migrating to CreateColleges (20131028004956)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (2.5ms)[0m  [1mCREATE TABLE "colleges" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20131028004956')
+  [1m[36m (2.4ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("colleges")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("efficacies")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("food_journals")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("pending_users")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_pending_users_on_user_id')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("postsurveys")
+  [1m[36m (0.3ms)[0m  [1mPRAGMA index_list("presurvey_part1s")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("presurvey_part2s")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("profiles")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("reports")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("school_semesters")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("schools")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("static_contents")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/fruitfulminds/fruitfulminds/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+
+
+Started GET "/colleges/new" for 127.0.0.1 at 2013-10-27 17:52:40 -0700
+  Processing by CollegesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.2ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+Rendered colleges/_college.html.haml (57.4ms)
+Rendered colleges/new.html.haml within layouts/application (149.5ms)
+Completed 500 Internal Server Error in 555ms
+
+ActionView::Template::Error (undefined method `name' for #<College id: nil, created_at: nil, updated_at: nil>):
+    1: = f.label "Name"
+    2: = f.text_field "name", :class=> "text_input_field"
+  app/views/colleges/_college.html.haml:2:in `_app_views_colleges__college_html_haml___96721519_95046080'
+  app/views/colleges/new.html.haml:5:in `block in _app_views_colleges_new_html_haml__698186924_95226740'
+  app/views/colleges/new.html.haml:4:in `_app_views_colleges_new_html_haml__698186924_95226740'
+
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (14.7ms)
