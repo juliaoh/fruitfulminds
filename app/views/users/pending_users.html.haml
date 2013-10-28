@@ -20,7 +20,7 @@
         %tr
           %td= user[:name]
           %td= user[:email]
-          %td= text_field_tag "colleges[#{user[:id]}]", user[:college], :class => "pending_text_inputs"
+          %td= text_field_tag "colleges[#{user[:id]}]", user[:college_name], :class => "pending_text_inputs"
           %td= text_field_tag "school_names[#{user[:id]}]", user[:school_name], :class => "pending_text_inputs"
           %td= text_field_tag "school_cities[#{user[:id]}]", user[:school_city], :class => "pending_text_inputs"
           %td= text_field_tag "school_counties[#{user[:id]}]", user[:school_county], :class => "pending_text_inputs"
