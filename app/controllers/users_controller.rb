@@ -218,14 +218,14 @@ class UsersController < ApplicationController
         semester_year = params[:date][uid] # a 4-digit number, e.g 2012
 
         # find school with the given info
-        #puts "name: #{school_name}\tcity: #{school_city}\tdistrict: #{school_district}\tcounty: #{school_county}"
+        puts "name: #{school_name}\tcity: #{school_city}\tdistrict: #{school_district}\tcounty: #{school_county}"
         school = School.where(
             "lower(name) = :name and lower(city) = :city and lower(county) = :county and lower(district) = :district",
             :name => school_name.downcase,
             :city => school_city.downcase,
             :district => school_district.downcase,
             :county => school_county.downcase).first
-        #puts "school: #{school}"
+        puts "school: #{school}"
         #puts "schools:\t#{School.all}"
         # ask admin to add the school if this is a new school
         if school.nil?
