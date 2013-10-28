@@ -8,7 +8,7 @@
       = label :user, :lastname, "Last Name"
       = text_field :user, :lastname
       = label :user, :college, "College"
-      = text_field :user, :college
+      = select('college', 'name', @college_names, {} {})
       = label :school, :name, "School Name"
       = select('school', 'name', @school_names, {}, {})
       = label :school, :county, "School County"
