@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     end.uniq
     @city_names = School.find(:all).map do |school|
       school.city
+    end.uniq
 
     @college_names = College.find(:all).map do |college|
       college.name
