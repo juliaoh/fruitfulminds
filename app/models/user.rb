@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   delegate :label, :to => :profile, :prefix => true
 
   has_secure_password
-  validate :college,
+  validate :college, :presence => true
   validate :name, :presence => true
   validate :email, :presence => true, :uniqueness => true
   validate :password, :presence => true, :on => :create, :length => {:minimum => 6}
