@@ -35,14 +35,6 @@ Background: Computer Cumulative Report based on Pre-Post-Surveys
     | school_semester_id | section_1_1 | section_1_2 | section_2_1 | section_2_2 | section_2_3 | section_2_4 | section_3_1 | section_3_2 | section_3_3 | section_3_4 | section_3_5 | section_3_6 | section_4_1 | section_4_2 | section_4_3 | section_5_1 | section_5_2 | section_6_1 | section_6_2 | section_6_3 | section_6_4 | number_students |
     |    1    |     1     | 2  | 5  | 3  | 4  | 2  | 7  | 4  | 4  | 8  | 5  | 5  | 8  | 9  | 10  | 5  | 2 |    3    |     3     | 2  | 3  | 9 |
 
-  And the following food journals exist:
-    | student_name | school_semester_id | week_num | fruit | vegetable | sugary_drink | water |
-    |   a name     |        1           |    1     |  34   |   53      |   61         |  43   |
-    |   a name     |        1           |    3     |  34   |   33      |   32         |  43   |
-    |   a name     |        1           |    8     |  34   |   53      |   53         |  24   |
-    |  the name    |        1           |    1     |  34   |   26      |   63         |  24   |
-    |  the name    |        1           |    5     |  41   |   39      |   63         |  24   |
-    |  the name    |        1           |    8     |  34   |   68      |   53         |  24   |
 
   And I am logged in as "amirk88@gmail.com" with "123f5" as my password
   And I am on the portal page
