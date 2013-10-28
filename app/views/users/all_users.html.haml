@@ -19,7 +19,7 @@
           %td= check_box_tag "deletes[#{user[:id]}]", 1, false, :id => "deletes_#{user[:id]}", :style => "width: 30px;"
           %td= user[:name]
           %td= user[:email]
-          %td= text_field_tag "colleges[#{user[:id]}]", user[:college_name], :style => "width: 150px;"
+          %td= text_field_tag "colleges[#{user[:id]}]", user[:college], :style => "width: 150px;"
           %td= select_tag "schools[#{user[:id]}]", options_for_select(School.all.collect { |s| ["#{s.name},#{s.county},#{s.city}", s.id ] }, :selected => user[:school_id]), :style => "width: 300px;"
           %td= select_tag "semester_names[#{user[:id]}]", options_for_select(%w[Fall Winter Spring Summer], :selected => user[:semester_name]), :style => "width: 85px;"
           %td= select_tag "semester_years[#{user[:id]}]", options_for_select(2005.upto(Time.now.year + 2).to_a, :selected => user[:semester_year]), :style => "width: 75px;"
