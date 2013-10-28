@@ -178,11 +178,18 @@ class UsersController < ApplicationController
     @pending_users = []
     PendingUser.all.each do |puser|
       user = User.find(puser.user_id)
+      @college = College.find_by_id(user.college)
+        if (@college) 
+          @collegename = @college.name
+        else
+          @collegename = "N/A"
+        end
       @pending_users << {
         :id => user.id,
         :name => user.name,
         :email => user.email,
         :college => user.college,
+        :college_name => @collegename,
         :school_name => puser.school_name,
         :school_city => puser.school_city,
         :school_county => puser.school_county,
