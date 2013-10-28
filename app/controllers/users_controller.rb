@@ -119,13 +119,18 @@ class UsersController < ApplicationController
     @all_users = []
     User.all.each do |user|
       if !user.admin? and !PendingUser.find_by_user_id(user.id)
-        @collegename = College.find_by_id(user.college)
+        @college = College.find_by_id(user.college)
+        if (@college) 
+          @collegename = @college.name
+        else
+          @collegename = "N/A"
+        end
         @all_users << {
           :id => user.id,
           :email => user.email,
           :name => user.name,
           :college => user.college,
-          :college_name => @collegename.name if @collegename != nil,
+          :college_name => 2collegename,
           :school_id => user.school_semester.school_id,
           :semester_name => user.school_semester.name,
           :semester_year => user.school_semester.year
