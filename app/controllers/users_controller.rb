@@ -76,6 +76,7 @@ class UsersController < ApplicationController
                                 :profile_id => Profile.find_by_label("ambassador").id)
             # add user's id to :pending_users table
             PendingUser.create!(:user_id => @user.id,
+                                :college => college
                                 :school_name => schoolName,
                                 :school_city => schoolCity,
                                 :school_county => schoolCounty,
@@ -158,7 +159,7 @@ class UsersController < ApplicationController
 
         # update user attributes and delete the user from pending_users table
         user = User.find_by_id(uid)
-        user.college = user_college
+        user.college = College.find_by_name(user_college)
         user.school_semester_id = semester.id
         user.save
       end
@@ -226,7 +227,7 @@ class UsersController < ApplicationController
 
         # update user attributes and delete the user from pending_users table
         user = User.find_by_id(uid)
-        user.college = user_college
+        user.college = College.find_by_name(user_college)
         user.school_semester_id = semester.id
         if user.save
           delete_pending_user(uid)
