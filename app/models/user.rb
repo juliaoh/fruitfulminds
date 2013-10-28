@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   belongs_to :profile
   belongs_to :school_semester
+  belongs_to :college
 
   has_many :presurvey_part1s, :through => :school_semester, :class_name => "Presurvey::Part1"
   has_many :presurvey_part2s, :through => :school_semester, :class_name => "Presurvey::Part2"
@@ -39,19 +40,6 @@ class User < ActiveRecord::Base
     user_schools
   end
 
-  def college
-    college.name if college
-  end
-
-  def colleges
-    user_colleges = []
-    if admin?
-      user_colleges = College.all
-    else
-      user_colleges << college if !college.nil?
-    end
-    user_colleges
-  end
   def pendingUser?
     if PendingUser.find_by_user_id(id); true
     else; false; end
