@@ -130,7 +130,7 @@ class UsersController < ApplicationController
           :email => user.email,
           :name => user.name,
           :college => user.college,
-          :college_name => 2collegename,
+          :college_name => @collegename,
           :school_id => user.school_semester.school_id,
           :semester_name => user.school_semester.name,
           :semester_year => user.school_semester.year
