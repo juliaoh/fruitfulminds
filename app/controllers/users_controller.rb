@@ -93,7 +93,7 @@ class UsersController < ApplicationController
             flash[:notice] = "Thank you for registering, a confirmation will be sent to you shortly"
             redirect_to login_path and return
           else
-            flash[:warning] = @user_error
+            flash[:warning] = @user_error.message
           end
         end
         redirect_to signup_path and return
