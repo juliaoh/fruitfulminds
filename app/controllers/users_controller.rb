@@ -209,7 +209,7 @@ class UsersController < ApplicationController
             :name => school_name.downcase,
             :city => school_city.downcase,
             :district => school_district.downcase,
-            :county => school_county.downcase).first
+            :county => school_county.downcase.first
         #puts "school: #{school}"
         #puts "schools:\t#{School.all}"
         # ask admin to add the school if this is a new school
