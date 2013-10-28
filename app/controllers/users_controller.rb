@@ -225,7 +225,7 @@ class UsersController < ApplicationController
 
         # update user attributes and delete the user from pending_users table
         user = User.find_by_id(uid)
-        user.college = user_college
+        user.college = College.find_by_name(user_college)
         user.school_semester_id = semester.id
         if user.save
           delete_pending_user(uid)
