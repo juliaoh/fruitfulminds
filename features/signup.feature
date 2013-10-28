@@ -19,6 +19,10 @@ Background: users have been added to database
     | school_id | name | year |
     | 1         | Fall | 2012 |
 
+  And the following colleges exist:
+    | name          |
+    |  UC Berkeley  |
+
   Scenario: user follows registration page
     Given I am on the login page
     And I follow "Register"
