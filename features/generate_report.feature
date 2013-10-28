@@ -37,8 +37,8 @@ Background: Generate report based on survey results
 
   And the following efficacies exist:
     | postsurvey_id | part2_id | efficacy_1 | efficacy_2 | efficacy_3 | efficacy_4 | efficacy_5 | efficacy_6 | efficacy_7 | efficacy_8 | efficacy_9 | efficacy_10 | number_students |
-    |      1   | nil | 3 | 4 | 4 | 6 | 5 | 4 |4 | 9 | 9| 4 | 22 |
-    |     nil  |  1  | 5 | 4 | 5 | 6 | 5 | 7 |4 | 10 | 9| 6 | 22 |
+    |      1   |  1  | 3 | 4 | 4 | 6 | 5 | 4 |4 | 9 | 9| 4 | 22 |
+    |      1   |  1  | 5 | 4 | 5 | 6 | 5 | 7 |4 | 10 | 9| 6 | 22 |
 
 
   And the following school_semesters exist:
