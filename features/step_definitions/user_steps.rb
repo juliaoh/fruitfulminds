@@ -10,6 +10,12 @@ Given /^the following school_semesters exist/ do |school_semesters_table|
   end
 end
 
+Given /^the following colleges exist/ do |colleges_table|
+  colleges_table.hashes.each do |college|
+    College.create!(college)
+  end
+end
+
 Given /^I fill in all of the registration text fields$/ do
   steps %Q{
     Given I fill in "First Name" with "Amir"
