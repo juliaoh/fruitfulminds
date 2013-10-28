@@ -45,9 +45,9 @@ class UsersController < ApplicationController
         college = params[:user][:college]
 
         schoolName = params[:school][:name]
-        schoolCounty = School.find_by(name:schoolName).county
-        schoolDistrict = School.find_by(name:schoolName).district
-        schoolCity = School.find_by(name:schoolName).city
+        schoolCounty = School.find_by_name(schoolName).county
+        schoolDistrict = School.find_by_name(schoolName).district
+        schoolCity = School.find_by_name(schoolName).city
         #schoolCounty = params[:school][:county]
         #schoolDistrict = params[:school][:district]
         schoolCity = params[:school][:city]
