@@ -29,7 +29,7 @@ Background: users have been added to database
     And I fill in "First Name" with "Amir"
     And I fill in "Last Name" with "Khodaei"
     And I fill in "Email Address" with "amirk88@gmail.com"
-    And I fill in "College" with "Berkeley City College"
+    And I select "UC Berkeley" from "College"
     And I select "school1" from "School Name"
     And I select "Alameda" from "School County"
     And I select "Berkeley" from "School City"
