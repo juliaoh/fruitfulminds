@@ -55,7 +55,7 @@ Scenario: Generate Report
   And I am on the generate report page
   And I select "school1" from "school"
   And I press "Generate Report"
-  Then I should see "Fruitful Minds school1 Fall 2012 Report"
+  Then I should see "Fruitful Minds school1 Fall 2013 Report"
   And I should see "Intro to Fruitful Minds"
   And I should see "Fruitful Minds at school1"
   And I should see "Fruitful Minds 7-Week Lesson Objectives"
@@ -70,7 +70,7 @@ Scenario: Generate Report Failure
   And I select "school2" from "school"
   And I press "Generate Report"
   And I should see "Not enough data available to generate a report for 'school2' school"
-  And I should not see "Fruitful Minds school1 Fall 2012 Report"
+  And I should not see "Fruitful Minds school1 Fall 2013 Report"
   And I should not see "Intro to Fruitful Minds"
   And I should not see "Fruitful Minds at school1"
   And I should not see "Fruitful Minds 7-Week Lesson Objectives"
