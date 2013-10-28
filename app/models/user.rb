@@ -39,6 +39,19 @@ class User < ActiveRecord::Base
     user_schools
   end
 
+  def college
+    college.name if college
+  end
+
+  def colleges
+    user_colleges = []
+    if admin?
+      user_colleges = College.all
+    else
+      user_colleges << college if !college.nil?
+    end
+    user_colleges
+  end
   def pendingUser?
     if PendingUser.find_by_user_id(id); true
     else; false; end
