@@ -17,6 +17,10 @@ Feature: Admin approves/disapproves new users before they are given access to th
       | school_id | name | year |
       | 1         | Fall | 2012 |
 
+    And the following colleges exist:
+      | name         |
+      | UC Berkeley  |
+
     And the following users exist:
       | email                   | password | name          | profile_id | school_semester_id |
       | admin@gmail.com         | 123f5    | Admin         | 1          |                    |
