@@ -76,7 +76,7 @@ class UsersController < ApplicationController
                                 :profile_id => Profile.find_by_label("ambassador").id)
             # add user's id to :pending_users table
             PendingUser.create!(:user_id => @user.id,
-                                :college => college
+                                :college => college,
                                 :school_name => schoolName,
                                 :school_city => schoolCity,
                                 :school_county => schoolCounty,
