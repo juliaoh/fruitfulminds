@@ -124,7 +124,7 @@ class UsersController < ApplicationController
           :email => user.email,
           :name => user.name,
           :college => user.college,
-          :college_name => College.find_by_id(user.college),
+          :college_name => College.find_by_id(user.college).name,
           :school_id => user.school_semester.school_id,
           :semester_name => user.school_semester.name,
           :semester_year => user.school_semester.year
