@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :profile
   belongs_to :school_semester
-  belongs_to :college
 
   has_many :presurvey_part1s, :through => :school_semester, :class_name => "Presurvey::Part1"
   has_many :presurvey_part2s, :through => :school_semester, :class_name => "Presurvey::Part2"
@@ -12,6 +11,7 @@ class User < ActiveRecord::Base
   delegate :label, :to => :profile, :prefix => true
 
   has_secure_password
+  validate :college,
   validate :name, :presence => true
   validate :email, :presence => true, :uniqueness => true
   validate :password, :presence => true, :on => :create, :length => {:minimum => 6}
