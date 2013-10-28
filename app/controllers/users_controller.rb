@@ -85,6 +85,7 @@ class UsersController < ApplicationController
                                 :semester_year => semesterYear)
             rescue Exception => e
               @user = nil
+              @user_error = e
             end
           end
           if @user
@@ -92,7 +93,7 @@ class UsersController < ApplicationController
             flash[:notice] = "Thank you for registering, a confirmation will be sent to you shortly"
             redirect_to login_path and return
           else
-            flash[:warning] = "Registration Failed"
+            flash[:warning] = @user_error
           end
         end
         redirect_to signup_path and return
@@ -124,7 +125,6 @@ class UsersController < ApplicationController
           :email => user.email,
           :name => user.name,
           :college => user.college,
-          :college_name => College.find_by_name(user.college),
           :school_id => user.school_semester.school_id,
           :semester_name => user.school_semester.name,
           :semester_year => user.school_semester.year
