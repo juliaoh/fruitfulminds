@@ -11144,3 +11144,1967 @@ Served asset /presurveys.js - 304 Not Modified (0ms)
 
 Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-10-27 18:19:25 -0700
 Served asset /schools.js - 304 Not Modified (0ms)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+  [1m[36m (12.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.2ms)[0m  SELECT 1 FROM "profiles" WHERE "profiles"."label" = 'admin' LIMIT 1
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+
+
+Started GET "/" for 127.0.0.1 at 2013-11-01 16:25:29 -0700
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-11-01 16:25:29 -0700
+  Processing by HomeController#portal as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://localhost:3000/login
+Completed 302 Found in 160ms
+
+
+Started GET "/login" for 127.0.0.1 at 2013-11-01 16:25:30 -0700
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.haml within layouts/application (31.3ms)
+Compiled application.css  (2ms)  (pid 1678)
+Compiled bootstrap.min.css  (0ms)  (pid 1678)
+Compiled food_journals.css  (18ms)  (pid 1678)
+Compiled postsurveys.css  (2ms)  (pid 1678)
+Compiled presurveys.css  (28ms)  (pid 1678)
+Compiled schools.css  (2ms)  (pid 1678)
+Compiled users.css  (0ms)  (pid 1678)
+Compiled application.js  (10ms)  (pid 1678)
+Compiled jquery.js  (24ms)  (pid 1678)
+Compiled jquery_ujs.js  (7ms)  (pid 1678)
+Compiled food_journals.js  (75ms)  (pid 1678)
+Compiled postsurveys.js  (0ms)  (pid 1678)
+Compiled presurveys.js  (0ms)  (pid 1678)
+Compiled schools.js  (0ms)  (pid 1678)
+Completed 200 OK in 402ms (Views: 401.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:25:30 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (22ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:25:30 -0700
+Served asset /food_journals.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:25:30 -0700
+Served asset /postsurveys.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:25:30 -0700
+Served asset /users.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:25:30 -0700
+Served asset /schools.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:25:30 -0700
+Served asset /presurveys.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:25:30 -0700
+Served asset /jquery.js - 304 Not Modified (52ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:25:30 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:25:30 -0700
+Served asset /food_journals.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:25:30 -0700
+Served asset /presurveys.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:25:30 -0700
+Served asset /postsurveys.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:25:30 -0700
+Served asset /schools.js - 304 Not Modified (2ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2013-11-01 16:25:46 -0700
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AZIlzGWU6Tfg0Pm2SN/QSylyjfeNU/bzBVe85F7rhz0=", "user"=>{"email"=>"user@fruitfulminds.org", "password"=>"[FILTERED]"}, "commit"=>"Sign In"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'user@fruitfulminds.org' LIMIT 1
+  [1m[36mPendingUser Load (0.1ms)[0m  [1mSELECT "pending_users".* FROM "pending_users" WHERE "pending_users"."user_id" = 3 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1
+Redirected to http://localhost:3000/portal
+Completed 302 Found in 219ms
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-11-01 16:25:46 -0700
+  Processing by HomeController#portal as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mSchoolSemester Load (0.1ms)[0m  SELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 2 LIMIT 1
+  [1m[36mSchool Load (0.1ms)[0m  [1mSELECT "schools".* FROM "schools" WHERE "schools"."id" = 2 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1
+  [1m[36mPostsurvey Load (0.4ms)[0m  [1mSELECT "postsurveys".* FROM "postsurveys" INNER JOIN "school_semesters" ON "postsurveys"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 2[0m
+  [1m[35mPresurvey::Part1 Load (0.3ms)[0m  SELECT "presurvey_part1s".* FROM "presurvey_part1s" INNER JOIN "school_semesters" ON "presurvey_part1s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 2
+Rendered home/_ps1.html.haml (19.1ms)
+  [1m[36mPresurvey::Part2 Load (0.2ms)[0m  [1mSELECT "presurvey_part2s".* FROM "presurvey_part2s" INNER JOIN "school_semesters" ON "presurvey_part2s"."school_semester_id" = "school_semesters"."id" WHERE "school_semesters"."id" = 2[0m
+  [1m[35mEfficacy Load (0.2ms)[0m  SELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."part2_id" = 1 LIMIT 1
+Rendered home/_ps2.html.haml (31.1ms)
+  [1m[36mEfficacy Load (0.2ms)[0m  [1mSELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."postsurvey_id" = 1 LIMIT 1[0m
+Rendered home/_ps.html.haml (54.0ms)
+Rendered home/portal.html.haml within layouts/application (276.8ms)
+Completed 200 OK in 359ms (Views: 286.6ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:25:46 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:25:46 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:25:46 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:25:46 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:25:46 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:25:46 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:25:46 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:25:46 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:25:46 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:25:46 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:25:46 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:25:46 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/presurveys/part1/1/edit" for 127.0.0.1 at 2013-11-01 16:25:57 -0700
+  Processing by Presurveys::Part1Controller#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mSchoolSemester Load (0.1ms)[0m  [1mSELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 2 LIMIT 1[0m
+  [1m[35mSchool Load (0.1ms)[0m  SELECT "schools".* FROM "schools" WHERE "schools"."id" = 2 LIMIT 1
+  [1m[36mPresurvey::Part1 Load (0.2ms)[0m  [1mSELECT "presurvey_part1s".* FROM "presurvey_part1s" WHERE "presurvey_part1s"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1
+Rendered admin/_schools.html.haml (9.6ms)
+Rendered presurveys/_sections.html.haml (4.1ms)
+Rendered presurveys/part1/edit.html.haml within layouts/application (37.1ms)
+Completed 200 OK in 181ms (Views: 79.6ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:25:57 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:25:57 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:25:57 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:25:57 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:25:57 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:25:57 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:25:57 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:25:57 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:25:57 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:25:57 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:25:57 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:25:57 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/presurveys/part1/new" for 127.0.0.1 at 2013-11-01 16:26:38 -0700
+  Processing by Presurveys::Part1Controller#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mSchoolSemester Load (0.1ms)[0m  SELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 2 LIMIT 1
+  [1m[36mSchool Load (0.1ms)[0m  [1mSELECT "schools".* FROM "schools" WHERE "schools"."id" = 2 LIMIT 1[0m
+  [1m[35mSchool Load (0.0ms)[0m  SELECT "schools".* FROM "schools" 
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1[0m
+Rendered admin/_schools.html.haml (8.7ms)
+Rendered presurveys/_sections.html.haml (3.3ms)
+Rendered presurveys/part1/new.html.haml within layouts/application (31.2ms)
+Completed 200 OK in 168ms (Views: 42.1ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:26:38 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:26:38 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:26:38 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:26:38 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:26:38 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:26:38 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:26:38 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:26:38 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:26:38 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:26:38 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:26:38 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:26:38 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/postsurveys/new" for 127.0.0.1 at 2013-11-01 16:26:43 -0700
+  Processing by PostsurveysController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mSchoolSemester Load (0.1ms)[0m  [1mSELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 2 LIMIT 1[0m
+  [1m[35mSchool Load (0.1ms)[0m  SELECT "schools".* FROM "schools" WHERE "schools"."id" = 2 LIMIT 1
+  [1m[36mSchool Load (0.2ms)[0m  [1mSELECT "schools".* FROM "schools" [0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1
+Rendered admin/_schools.html.haml (8.3ms)
+Rendered presurveys/_sections.html.haml (4.4ms)
+Rendered presurveys/_efficacy.html.haml (3.2ms)
+Rendered postsurveys/new.html.haml within layouts/application (53.7ms)
+Completed 200 OK in 164ms (Views: 64.2ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:26:44 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:26:44 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:26:44 -0700
+Served asset /schools.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:26:44 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:26:44 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:26:44 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:26:44 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:26:44 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:26:44 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:26:44 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:26:44 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:26:44 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2013-11-01 16:26:58 -0700
+  Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 0ms
+
+
+Started GET "/" for 127.0.0.1 at 2013-11-01 16:26:58 -0700
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-11-01 16:26:58 -0700
+  Processing by HomeController#portal as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://localhost:3000/login
+Completed 302 Found in 21ms
+
+
+Started GET "/login" for 127.0.0.1 at 2013-11-01 16:26:58 -0700
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.haml within layouts/application (1.0ms)
+Completed 200 OK in 44ms (Views: 43.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:26:58 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:26:58 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:26:58 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:26:58 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:26:58 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:26:58 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:26:58 -0700
+Served asset /jquery.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:26:58 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:26:58 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:26:58 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:26:58 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:26:58 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2013-11-01 16:27:08 -0700
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SXaI3XOMxPNALU51exb/R78ip0xbTMwYXt4YThsmFy8=", "user"=>{"email"=>"admin@fruitfulminds.org", "password"=>"[FILTERED]"}, "commit"=>"Sign In"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'admin@fruitfulminds.org' LIMIT 1
+  [1m[36mPendingUser Load (0.1ms)[0m  [1mSELECT "pending_users".* FROM "pending_users" WHERE "pending_users"."user_id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.2ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mPendingUser Load (0.2ms)[0m  [1mSELECT "pending_users".* FROM "pending_users" LIMIT 1[0m
+Redirected to http://localhost:3000/pending_users
+Completed 302 Found in 138ms
+
+
+Started GET "/pending_users" for 127.0.0.1 at 2013-11-01 16:27:08 -0700
+  Processing by UsersController#pending_users as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPendingUser Load (0.2ms)[0m  [1mSELECT "pending_users".* FROM "pending_users" [0m
+  [1m[35mUser Load (5.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mCollege Load (0.1ms)[0m  [1mSELECT "colleges".* FROM "colleges" WHERE "colleges"."id" IS NULL LIMIT 1[0m
+  [1m[35mCollege Load (0.1ms)[0m  SELECT "colleges".* FROM "colleges" 
+  [1m[36mSchool Load (0.2ms)[0m  [1mSELECT "schools".* FROM "schools" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "schools".* FROM "schools" 
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "schools".* FROM "schools" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "schools".* FROM "schools" 
+Rendered users/pending_users.html.haml within layouts/application (45.6ms)
+Completed 200 OK in 114ms (Views: 51.7ms | ActiveRecord: 8.3ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:08 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:08 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:08 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:08 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:08 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:08 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:08 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:08 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:08 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:08 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:08 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:08 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-11-01 16:27:19 -0700
+  Processing by HomeController#portal as HTML
+  Parameters: {"authenticity_token"=>"SXaI3XOMxPNALU51exb/R78ip0xbTMwYXt4YThsmFy8="}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mPresurvey::Part1 Load (0.2ms)[0m  [1mSELECT "presurvey_part1s".* FROM "presurvey_part1s" [0m
+Rendered home/_ps1.html.haml (15.0ms)
+  [1m[35mPresurvey::Part2 Load (0.2ms)[0m  SELECT "presurvey_part2s".* FROM "presurvey_part2s" 
+  [1m[36mEfficacy Load (0.2ms)[0m  [1mSELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."part2_id" = 1 LIMIT 1[0m
+Rendered home/_ps2.html.haml (26.6ms)
+  [1m[35mPostsurvey Load (0.2ms)[0m  SELECT "postsurveys".* FROM "postsurveys" 
+  [1m[36mEfficacy Load (0.2ms)[0m  [1mSELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."postsurvey_id" = 1 LIMIT 1[0m
+Rendered home/_ps.html.haml (21.7ms)
+Rendered home/portal.html.haml within layouts/application (141.8ms)
+Completed 200 OK in 214ms (Views: 145.2ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:20 -0700
+Served asset /schools.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:20 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:20 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:20 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:20 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:20 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:20 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:20 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:20 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:20 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:20 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:20 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/admin/new" for 127.0.0.1 at 2013-11-01 16:27:23 -0700
+  Processing by AdminController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.3ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+Rendered admin/_form.html.haml (2.0ms)
+Rendered admin/new.html.haml within layouts/application (4.9ms)
+Completed 200 OK in 61ms (Views: 14.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:23 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:23 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:23 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:23 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:23 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:23 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:23 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:23 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:23 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:23 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:23 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:23 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/colleges/new" for 127.0.0.1 at 2013-11-01 16:27:25 -0700
+  Processing by CollegesController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+Rendered colleges/_college.html.haml (1.4ms)
+Rendered colleges/new.html.haml within layouts/application (7.7ms)
+Completed 200 OK in 53ms (Views: 13.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:25 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:25 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:25 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:25 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:25 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:25 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:25 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:25 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:25 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:25 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:25 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:25 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/schools" for 127.0.0.1 at 2013-11-01 16:27:28 -0700
+  Processing by SchoolsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSchool Load (0.2ms)[0m  SELECT "schools".* FROM "schools" 
+Rendered schools/index.html.haml within layouts/application (14.0ms)
+Completed 200 OK in 62ms (Views: 23.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:28 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:28 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:28 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:28 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:28 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:28 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:28 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:28 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:28 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:28 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:28 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:28 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/all_users" for 127.0.0.1 at 2013-11-01 16:27:33 -0700
+  Processing by UsersController#all_users as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1
+  [1m[36mPendingUser Load (0.2ms)[0m  [1mSELECT "pending_users".* FROM "pending_users" WHERE "pending_users"."user_id" = 3 LIMIT 1[0m
+  [1m[35mCollege Load (0.1ms)[0m  SELECT "colleges".* FROM "colleges" WHERE "colleges"."id" IS NULL LIMIT 1
+  [1m[36mSchoolSemester Load (0.1ms)[0m  [1mSELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1
+  [1m[36mPendingUser Load (0.2ms)[0m  [1mSELECT "pending_users".* FROM "pending_users" WHERE "pending_users"."user_id" = 4 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "colleges".* FROM "colleges" WHERE "colleges"."id" IS NULL LIMIT 1
+  [1m[36mSchoolSemester Load (0.1ms)[0m  [1mSELECT "school_semesters".* FROM "school_semesters" WHERE "school_semesters"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 2 LIMIT 1
+  [1m[36mPendingUser Load (0.1ms)[0m  [1mSELECT "pending_users".* FROM "pending_users" WHERE "pending_users"."user_id" = 5 LIMIT 1[0m
+  [1m[35mCollege Load (0.1ms)[0m  SELECT "colleges".* FROM "colleges" 
+  [1m[36mSchool Load (0.2ms)[0m  [1mSELECT "schools".* FROM "schools" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "colleges".* FROM "colleges" 
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "schools".* FROM "schools" [0m
+Rendered users/all_users.html.haml within layouts/application (41.5ms)
+Completed 200 OK in 129ms (Views: 47.2ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:33 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:33 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:33 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:33 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:33 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:33 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:33 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:33 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:33 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:33 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:33 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:33 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/pending_users" for 127.0.0.1 at 2013-11-01 16:27:51 -0700
+  Processing by UsersController#pending_users as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPendingUser Load (0.1ms)[0m  [1mSELECT "pending_users".* FROM "pending_users" [0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mCollege Load (0.1ms)[0m  [1mSELECT "colleges".* FROM "colleges" WHERE "colleges"."id" IS NULL LIMIT 1[0m
+  [1m[35mCollege Load (0.1ms)[0m  SELECT "colleges".* FROM "colleges" 
+  [1m[36mSchool Load (0.2ms)[0m  [1mSELECT "schools".* FROM "schools" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "schools".* FROM "schools" 
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "schools".* FROM "schools" [0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "schools".* FROM "schools" 
+Rendered users/pending_users.html.haml within layouts/application (34.3ms)
+Completed 200 OK in 71ms (Views: 40.7ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:51 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:51 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:51 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:51 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:51 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:27:51 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:51 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:51 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:51 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:51 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:51 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:27:51 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/schools/new" for 127.0.0.1 at 2013-11-01 16:28:17 -0700
+  Processing by SchoolsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+Rendered schools/_school.html.haml (4.9ms)
+Rendered schools/new.html.haml within layouts/application (43.4ms)
+Completed 200 OK in 87ms (Views: 50.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:18 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:18 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:18 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:18 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:18 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:18 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:18 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:18 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:18 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:18 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:18 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:18 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/schools" for 127.0.0.1 at 2013-11-01 16:28:20 -0700
+  Processing by SchoolsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mSchool Load (0.2ms)[0m  [1mSELECT "schools".* FROM "schools" [0m
+Rendered schools/index.html.haml within layouts/application (9.7ms)
+Completed 200 OK in 88ms (Views: 16.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:20 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:20 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:20 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:20 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:20 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:20 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:20 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:20 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:20 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:20 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:20 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:20 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/schools" for 127.0.0.1 at 2013-11-01 16:28:34 -0700
+  Processing by SchoolsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSchool Load (0.2ms)[0m  SELECT "schools".* FROM "schools" 
+Rendered schools/index.html.haml within layouts/application (9.0ms)
+Completed 200 OK in 86ms (Views: 16.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:34 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:34 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:34 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:34 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:34 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:34 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:34 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:34 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:34 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:34 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:34 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:34 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/schools/1/edit" for 127.0.0.1 at 2013-11-01 16:28:35 -0700
+  Processing by SchoolsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mSchool Load (0.2ms)[0m  [1mSELECT "schools".* FROM "schools" WHERE "schools"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered schools/_school.html.haml (1.9ms)
+Rendered schools/edit.html.haml within layouts/application (13.9ms)
+Completed 200 OK in 61ms (Views: 20.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:35 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:35 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:35 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:35 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:36 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:36 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:36 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:36 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:36 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:36 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (11ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:36 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:36 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/schools/1/edit" for 127.0.0.1 at 2013-11-01 16:28:42 -0700
+  Processing by SchoolsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSchool Load (0.1ms)[0m  SELECT "schools".* FROM "schools" WHERE "schools"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered schools/_school.html.haml (1.6ms)
+Rendered schools/edit.html.haml within layouts/application (12.0ms)
+Completed 200 OK in 58ms (Views: 18.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:43 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:43 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:43 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:43 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:43 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:28:43 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:43 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:43 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:43 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:43 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:43 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:28:43 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/schools/1/edit" for 127.0.0.1 at 2013-11-01 16:29:19 -0700
+  Processing by SchoolsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mSchool Load (0.1ms)[0m  [1mSELECT "schools".* FROM "schools" WHERE "schools"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered schools/_school.html.haml (3.5ms)
+Rendered schools/edit.html.haml within layouts/application (10.9ms)
+Completed 200 OK in 84ms (Views: 45.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:29:19 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:29:19 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:29:19 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:29:19 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:29:19 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:29:19 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:29:19 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:29:19 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:29:19 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:29:19 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:29:19 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:29:19 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+
+
+Started GET "/" for 127.0.0.1 at 2013-11-01 16:34:00 -0700
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-11-01 16:34:00 -0700
+  Processing by HomeController#portal as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mPresurvey::Part1 Load (0.2ms)[0m  [1mSELECT "presurvey_part1s".* FROM "presurvey_part1s" [0m
+Rendered home/_ps1.html.haml (16.3ms)
+  [1m[35mPresurvey::Part2 Load (0.2ms)[0m  SELECT "presurvey_part2s".* FROM "presurvey_part2s" 
+  [1m[36mEfficacy Load (0.2ms)[0m  [1mSELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."part2_id" = 1 LIMIT 1[0m
+Rendered home/_ps2.html.haml (28.7ms)
+  [1m[35mPostsurvey Load (0.2ms)[0m  SELECT "postsurveys".* FROM "postsurveys" 
+  [1m[36mEfficacy Load (0.2ms)[0m  [1mSELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."postsurvey_id" = 1 LIMIT 1[0m
+Rendered home/_ps.html.haml (50.7ms)
+Rendered home/portal.html.haml within layouts/application (250.3ms)
+Completed 200 OK in 499ms (Views: 308.6ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:01 -0700
+Served asset /schools.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:01 -0700
+Served asset /presurveys.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:01 -0700
+Served asset /postsurveys.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:01 -0700
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:01 -0700
+Served asset /food_journals.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:01 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:01 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (16ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:01 -0700
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:01 -0700
+Served asset /postsurveys.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:01 -0700
+Served asset /food_journals.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:01 -0700
+Served asset /presurveys.js - 304 Not Modified (14ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:01 -0700
+Served asset /schools.js - 304 Not Modified (1ms)
+
+
+Started GET "/schools" for 127.0.0.1 at 2013-11-01 16:34:14 -0700
+  Processing by SchoolsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSchool Load (0.4ms)[0m  SELECT "schools".* FROM "schools" 
+Rendered schools/index.html.haml within layouts/application (11.8ms)
+Completed 200 OK in 84ms (Views: 18.6ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:14 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:14 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:14 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:14 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:14 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:14 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:14 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:14 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:14 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:14 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:14 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:14 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/schools/1/edit" for 127.0.0.1 at 2013-11-01 16:34:15 -0700
+  Processing by SchoolsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mSchool Load (0.2ms)[0m  [1mSELECT "schools".* FROM "schools" WHERE "schools"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered schools/_school.html.haml (2.9ms)
+Rendered schools/edit.html.haml within layouts/application (13.1ms)
+Completed 200 OK in 103ms (Views: 24.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:15 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:15 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:15 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:15 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:15 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:15 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:15 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:15 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:15 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:15 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:15 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:15 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started PUT "/schools/1" for 127.0.0.1 at 2013-11-01 16:34:16 -0700
+  Processing by SchoolsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SXaI3XOMxPNALU51exb/R78ip0xbTMwYXt4YThsmFy8=", "school"=>{"name"=>"Haven's Elementary", "county"=>"Alameda", "district"=>"", "city"=>"Piedmont"}, "commit"=>"Save Changes", "id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSchool Load (0.1ms)[0m  SELECT "schools".* FROM "schools" WHERE "schools"."id" = ? LIMIT 1  [["id", "1"]]
+Redirected to http://localhost:3000/portal
+Completed 302 Found in 48ms
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-11-01 16:34:16 -0700
+  Processing by HomeController#portal as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mPresurvey::Part1 Load (0.2ms)[0m  [1mSELECT "presurvey_part1s".* FROM "presurvey_part1s" [0m
+Rendered home/_ps1.html.haml (22.6ms)
+  [1m[35mPresurvey::Part2 Load (0.2ms)[0m  SELECT "presurvey_part2s".* FROM "presurvey_part2s" 
+  [1m[36mEfficacy Load (0.1ms)[0m  [1mSELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."part2_id" = 1 LIMIT 1[0m
+Rendered home/_ps2.html.haml (29.2ms)
+  [1m[35mPostsurvey Load (0.2ms)[0m  SELECT "postsurveys".* FROM "postsurveys" 
+  [1m[36mEfficacy Load (0.2ms)[0m  [1mSELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."postsurvey_id" = 1 LIMIT 1[0m
+Rendered home/_ps.html.haml (23.7ms)
+Rendered home/portal.html.haml within layouts/application (159.8ms)
+Completed 200 OK in 198ms (Views: 164.0ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:17 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:17 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:17 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:17 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:17 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:34:17 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:17 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:17 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:17 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:17 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:17 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:34:17 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/schools" for 127.0.0.1 at 2013-11-01 16:38:32 -0700
+  Processing by SchoolsController#index as HTML
+  [1m[35mUser Load (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSchool Load (0.2ms)[0m  SELECT "schools".* FROM "schools" 
+Rendered schools/index.html.haml within layouts/application (43.6ms)
+Completed 200 OK in 93ms (Views: 51.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:38:33 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:38:33 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:38:33 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:38:33 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:38:33 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:38:33 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:38:33 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:38:33 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:38:33 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:38:33 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:38:33 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:38:33 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/schools/1/edit" for 127.0.0.1 at 2013-11-01 16:38:34 -0700
+  Processing by SchoolsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mSchool Load (0.1ms)[0m  [1mSELECT "schools".* FROM "schools" WHERE "schools"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered schools/_school.html.haml (1.9ms)
+Rendered schools/edit.html.haml within layouts/application (13.2ms)
+Completed 200 OK in 92ms (Views: 20.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:38:34 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:38:34 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:38:34 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:38:34 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:38:34 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:38:34 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:38:34 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:38:34 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:38:34 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:38:34 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:38:34 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:38:34 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started DELETE "/schools" for 127.0.0.1 at 2013-11-01 16:38:40 -0700
+
+ActionController::RoutingError (No route matches [DELETE] "/schools"):
+  
+
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:3)
+DEPRECATION WARNING: Including Compilable in your template handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from include at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/base.rb:4)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/dsl.rb:3)
+DEPRECATION WARNING: Inheriting from ActionView::Template::Handler is deprecated. Since Rails 3, all the API your template handler needs to implement is to respond to #call. (called from <module:TemplateHandlers> at /home/saasbook/Desktop/FFM/vendor/plugins/prawnto/lib/prawnto/template_handlers/raw.rb:3)
+
+
+Started DELETE "/schools" for 127.0.0.1 at 2013-11-01 16:39:39 -0700
+
+ActionController::RoutingError (No route matches [DELETE] "/schools"):
+  
+
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (12.4ms)
+
+
+Started PUT "/schools/1" for 127.0.0.1 at 2013-11-01 16:39:49 -0700
+  Processing by SchoolsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SXaI3XOMxPNALU51exb/R78ip0xbTMwYXt4YThsmFy8=", "school"=>{"name"=>"Haven's Elementary", "county"=>"Alameda", "district"=>"", "city"=>"Piedmont"}, "commit"=>"Save Changes", "id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSchool Load (0.2ms)[0m  SELECT "schools".* FROM "schools" WHERE "schools"."id" = ? LIMIT 1  [["id", "1"]]
+Redirected to http://localhost:3000/portal
+Completed 302 Found in 46ms
+
+
+Started GET "/portal" for 127.0.0.1 at 2013-11-01 16:39:49 -0700
+  Processing by HomeController#portal as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mPresurvey::Part1 Load (0.2ms)[0m  [1mSELECT "presurvey_part1s".* FROM "presurvey_part1s" [0m
+Rendered home/_ps1.html.haml (14.8ms)
+  [1m[35mPresurvey::Part2 Load (0.2ms)[0m  SELECT "presurvey_part2s".* FROM "presurvey_part2s" 
+  [1m[36mEfficacy Load (0.2ms)[0m  [1mSELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."part2_id" = 1 LIMIT 1[0m
+Rendered home/_ps2.html.haml (28.0ms)
+  [1m[35mPostsurvey Load (0.1ms)[0m  SELECT "postsurveys".* FROM "postsurveys" 
+  [1m[36mEfficacy Load (0.2ms)[0m  [1mSELECT "efficacies".* FROM "efficacies" WHERE "efficacies"."postsurvey_id" = 1 LIMIT 1[0m
+Rendered home/_ps.html.haml (23.0ms)
+Rendered home/portal.html.haml within layouts/application (143.8ms)
+Completed 200 OK in 217ms (Views: 147.1ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:39:50 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:39:50 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:39:50 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:39:50 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:39:50 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:39:50 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:39:50 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:39:50 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:39:50 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:39:50 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:39:50 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:39:50 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/schools" for 127.0.0.1 at 2013-11-01 16:39:51 -0700
+  Processing by SchoolsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSchool Load (0.2ms)[0m  SELECT "schools".* FROM "schools" 
+Rendered schools/index.html.haml within layouts/application (8.6ms)
+Completed 200 OK in 52ms (Views: 15.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:39:52 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:39:52 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:39:52 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:39:52 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:39:52 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:39:52 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:39:52 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:39:52 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:39:52 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:39:52 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:39:52 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:39:52 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/schools/1/edit" for 127.0.0.1 at 2013-11-01 16:40:08 -0700
+  Processing by SchoolsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mSchool Load (0.1ms)[0m  [1mSELECT "schools".* FROM "schools" WHERE "schools"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered schools/_school.html.haml (1.6ms)
+Rendered schools/edit.html.haml within layouts/application (65.3ms)
+Completed 500 Internal Server Error in 112ms
+
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"schools", :id=>nil}):
+    7:       = submit_tag 'Save Changes'
+    8: 
+    9: 
+    10:   = button_to 'Delete', school_path(@school), :method => :delete, :confirm => 'Are you sure?'
+  app/views/schools/edit.html.haml:10:in `_app_views_schools_edit_html_haml__60646327_101349810'
+
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/schools/2/edit" for 127.0.0.1 at 2013-11-01 16:40:18 -0700
+  Processing by SchoolsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSchool Load (0.1ms)[0m  SELECT "schools".* FROM "schools" WHERE "schools"."id" = ? LIMIT 1  [["id", "2"]]
+Rendered schools/_school.html.haml (1.5ms)
+Rendered schools/edit.html.haml within layouts/application (11.9ms)
+Completed 500 Internal Server Error in 52ms
+
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"schools", :id=>nil}):
+    7:       = submit_tag 'Save Changes'
+    8: 
+    9: 
+    10:   = button_to 'Delete', school_path(@school), :method => :delete, :confirm => 'Are you sure?'
+  app/views/schools/edit.html.haml:10:in `_app_views_schools_edit_html_haml__60646327_101349810'
+
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/schools" for 127.0.0.1 at 2013-11-01 16:41:53 -0700
+  Processing by SchoolsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mSchool Load (0.2ms)[0m  [1mSELECT "schools".* FROM "schools" [0m
+Rendered schools/index.html.haml within layouts/application (10.0ms)
+Completed 200 OK in 60ms (Views: 20.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:41:53 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:41:53 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:41:53 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:41:53 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:41:53 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:41:53 -0700
+Served asset /food_journals.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:41:53 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:41:53 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:41:53 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:41:53 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:41:53 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:41:53 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/schools/1/edit" for 127.0.0.1 at 2013-11-01 16:41:54 -0700
+  Processing by SchoolsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.2ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSchool Load (0.1ms)[0m  SELECT "schools".* FROM "schools" WHERE "schools"."id" = ? LIMIT 1  [["id", "1"]]
+Rendered schools/_school.html.haml (1.6ms)
+Rendered schools/edit.html.haml within layouts/application (43.1ms)
+Completed 500 Internal Server Error in 92ms
+
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"schools", :id=>nil}):
+    7:       = submit_tag 'Save Changes'
+    8: 
+    9: 
+    10:   = button_to 'Delete', school_path(@school), :method => :delete, :confirm => 'Are you sure you want to delete #{@school}?'
+  app/views/schools/edit.html.haml:10:in `_app_views_schools_edit_html_haml__60646327_101513400'
+
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/schools/4/edit" for 127.0.0.1 at 2013-11-01 16:41:59 -0700
+  Processing by SchoolsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mSchool Load (0.1ms)[0m  [1mSELECT "schools".* FROM "schools" WHERE "schools"."id" = ? LIMIT 1[0m  [["id", "4"]]
+Rendered schools/_school.html.haml (2.5ms)
+Rendered schools/edit.html.haml within layouts/application (47.0ms)
+Completed 500 Internal Server Error in 92ms
+
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"schools", :id=>nil}):
+    7:       = submit_tag 'Save Changes'
+    8: 
+    9: 
+    10:   = button_to 'Delete', school_path(@school), :method => :delete, :confirm => 'Are you sure you want to delete #{@school}?'
+  app/views/schools/edit.html.haml:10:in `_app_views_schools_edit_html_haml__60646327_101513400'
+
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
+
+
+Started GET "/schools" for 127.0.0.1 at 2013-11-01 16:42:35 -0700
+  Processing by SchoolsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mProfile Load (0.1ms)[0m  [1mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1[0m
+  [1m[35mSchool Load (0.2ms)[0m  SELECT "schools".* FROM "schools" 
+Rendered schools/index.html.haml within layouts/application (10.5ms)
+Completed 200 OK in 99ms (Views: 58.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/food_journals.css?body=1" for 127.0.0.1 at 2013-11-01 16:42:35 -0700
+Served asset /food_journals.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-11-01 16:42:35 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:42:35 -0700
+Served asset /presurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.css?body=1" for 127.0.0.1 at 2013-11-01 16:42:35 -0700
+Served asset /schools.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.css?body=1" for 127.0.0.1 at 2013-11-01 16:42:35 -0700
+Served asset /postsurveys.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2013-11-01 16:42:35 -0700
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-11-01 16:42:35 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/food_journals.js?body=1" for 127.0.0.1 at 2013-11-01 16:42:35 -0700
+Served asset /food_journals.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-11-01 16:42:35 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/postsurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:42:35 -0700
+Served asset /postsurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/presurveys.js?body=1" for 127.0.0.1 at 2013-11-01 16:42:35 -0700
+Served asset /presurveys.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/schools.js?body=1" for 127.0.0.1 at 2013-11-01 16:42:35 -0700
+Served asset /schools.js - 304 Not Modified (0ms)
+
+
+Started GET "/schools/1/edit" for 127.0.0.1 at 2013-11-01 16:42:36 -0700
+  Processing by SchoolsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mProfile Load (0.1ms)[0m  SELECT "profiles".* FROM "profiles" WHERE "profiles"."id" = 1 LIMIT 1
+  [1m[36mSchool Load (0.2ms)[0m  [1mSELECT "schools".* FROM "schools" WHERE "schools"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Rendered schools/_school.html.haml (1.6ms)
+Rendered schools/edit.html.haml within layouts/application (12.3ms)
+Completed 500 Internal Server Error in 104ms
+
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"schools", :id=>nil}):
+    7:       = submit_tag 'Save Changes'
+    8: 
+    9: 
+    10:       = button_to 'Delete', school_path(@school), :method => :delete, :confirm => 'Are you sure you want to delete #{@school}?'
+  app/views/schools/edit.html.haml:10:in `block in _app_views_schools_edit_html_haml__60646327_95491110'
+  app/views/schools/edit.html.haml:4:in `_app_views_schools_edit_html_haml__60646327_95491110'
+
+Rendered /home/saasbook/.rvm/gems/ruby-1.9.3-p448/gems/actionpack-3.1.10/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.5ms)
