@@ -17,7 +17,7 @@ Michael Jun, Julia Oh, Alvin Wong, Sam Xu, William Yau, Kevin Yeun
 Note: You have to be added to the list of collaborators of the git repo to push your changes.
 
 1. Clone the repository with the following command at the command prompt
-       git clone git@github.com:khodaei/fruitfulminds.git
+       git clone git@github.com:juliaoh/fruitfulminds.git
 
 2. Change the working directory
        cd fruitfulminds
@@ -39,8 +39,8 @@ Note: You have to be added to the collaborators of the fruitful-minds heroku app
     which should return something like this
       heroku  git@heroku.com:fruitfulminds.git (fetch)
       heroku  git@heroku.com:fruitfulminds.git (push)
-      origin  git@github.com:khodaei/fruitfulminds.git (fetch)
-      origin  git@github.com:khodaei/fruitfulminds.git (push)
+      origin  git@github.com:juliaoh/fruitfulminds.git (fetch)
+      origin  git@github.com:juliaoh/fruitfulminds.git (push)
 
 3. If you get a "permission denied error" when you push to heroku, do the following first, then try to push again.
       heroku keys:add
