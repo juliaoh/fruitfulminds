@@ -24,6 +24,7 @@ module NavigationHelpers
     when /^the Edit Food Journal page for journal (.*)$/ then edit_foodjournal_path($1)
     when /^the Add New School page$/ then new_school_path
     when /^the All Schools page$/ then schools_path
+    when /^the All Colleges page$/ then colleges_path
     when /^the Create New Administrator page$/ then new_admin_path
     when /^the surveys page$/ then '/surveys'
     when /^the reports page$/ then '/reports'

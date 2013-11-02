@@ -28,7 +28,7 @@ class CollegesController < ApplicationController
     begin
       College.find(params[:id]).update_attributes!(params[:college])
       flash[:notice] = "College successfully updated."
-      redirect_to portal_path
+      redirect_to colleges_path
     rescue ActiveRecord::RecordInvalid
       flash[:warning] = "Fields cannot be left blank."
       redirect_to edit_college_path(:id => params[:id], :college => params[:college])
