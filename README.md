@@ -4,7 +4,7 @@ This is a class project for CS 169, Software Engineering, at UC Berkeley in Fall
 
 The goal of the project is to build a user-friendly web application for Fruitful Minds, Inc. which is a non-profit organization whose mission is to combat childhood obesity by delivering a customized nutrition program to communities in need.
 
-* Fruitful Minds Heroku App: http://fruitfulminds.herokuapp.com
+* Fruitful Minds Heroku App: http://fruitful-minds.herokuapp.com
 * Fruitful Minds current website: http://www.fruitfulminds.org
 * SaaS Website: http://beta.saasbook.info
 
