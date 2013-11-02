@@ -7,4 +7,4 @@
       = submit_tag 'Save Changes'
 
 
-  = button_to 'Delete', schools_path(@school), :method => :delete, :confirm => "Are you sure you want to delete #{@school}?"
+      = button_to 'Delete', schools_path(@school), :method => :delete, :confirm => "Are you sure you want to delete #{@school}?"
