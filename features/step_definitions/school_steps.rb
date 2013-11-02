@@ -9,3 +9,11 @@ Given /^the following static content exists/ do |table|
     StaticContent.create!(info)
   end
 end
+
+Given /^I confirm popup$/ do
+  page.driver.browser.switch_to.alert.accept
+end
+
+Given /^I dismiss popup$/ do
+  page.driver.browser.switch_to.alert.dismiss
+end

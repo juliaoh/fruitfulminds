@@ -42,6 +42,7 @@ group :test do
   gem 'haml-rails'
   gem 'autotest-rails'
   gem 'pdf-reader'
+  gem 'selenium-webdriver'
 end
 group :production do
   gem 'pg'

@@ -62,3 +62,25 @@ Scenario: edit existing school
   And   I fill in "school_city" with "baz"
   And   I press "Save Changes"
   Then  I should see "Fields cannot be left blank."
+
+@javascript
+Scenario: delete existing school - (happy path)
+  When  I follow "Show All Schools"
+  Then  I should be on the All Schools page
+  And   I press "edit_school_1"
+  And   I press "Delete"
+  And   I confirm popup
+  Then  I should be on the All Schools page
+  And   I should see "School successfully deleted."
+
+@javascript
+Scenario: delete existing school - cancel (sad path)
+  When  I follow "Show All Schools"
+  Then  I should be on the All Schools page
+  And   I press "edit_school_1"
+  And   I press "Delete"
+  And   I dismiss popup
+  And   I press "Save Changes"
+  Then  I should be on the All Schools page
+  And   I should see "school1"
+  And   I should see "School successfully updated."
