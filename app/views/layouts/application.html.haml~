@@ -103,6 +103,7 @@
           if (!this.value || !this.value.trim()){
             $(this).css("background-color", "red");
             $(this).css("color", "white");
+            $(this).val("No Input");
             $(this).val(this.value.trim());
           }
           else{

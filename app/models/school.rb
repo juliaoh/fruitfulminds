@@ -5,7 +5,7 @@ class School < ActiveRecord::Base
   has_many :presurvey_part2s, :through => :school_semesters, :class_name => "Presurvey::Part2"
   has_many :postsurveys, :through => :school_semesters
   has_many :reports #, :through => :surveys
-  validates :name, :county, :city, :presence => true
+  validates :name, :county, :city, :district, :presence  => true
   strip_attributes
 
   def has_all_report_data
