@@ -60,3 +60,4 @@ Scenario: sad path for not filling in all of the survey questions
   And I press "Save Changes"
   Then I should be on the add new survey results page
   And I should see "Please fill in number of students."
+

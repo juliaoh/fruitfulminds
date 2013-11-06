@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   end
 
   def tos
+
   end
 
   def edit
@@ -120,7 +121,7 @@ class UsersController < ApplicationController
     User.all.each do |user|
       if !user.admin? and !PendingUser.find_by_user_id(user.id)
         @college = College.find_by_id(user.college)
-        if (@college) 
+        if (@college)
           @collegename = @college.name
         else
           @collegename = "N/A"
@@ -179,7 +180,7 @@ class UsersController < ApplicationController
     PendingUser.all.each do |puser|
       user = User.find(puser.user_id)
       @college = College.find_by_id(user.college)
-        if (@college) 
+        if (@college)
           @collegename = @college.name
         else
           @collegename = "N/A"
