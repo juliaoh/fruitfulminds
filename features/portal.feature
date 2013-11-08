@@ -39,9 +39,9 @@ Background: results are to be added to database
     |     nil  |  1  | 5 | 4 | 5 | 6 | 5 | 7 |4 | 10 | 9| 6 | 22 |
 
 
-  Given the following schools exist:
-    | name | county | city | 
-    | "school1" | "Alameda" | "Berkeley" |
+  And the following schools exist:
+    | name    | county  | city     | district |
+    | school1 | Alameda | Berkeley | District |
 
   And the following school_semesters exist:
     | school_id |   name   | year |

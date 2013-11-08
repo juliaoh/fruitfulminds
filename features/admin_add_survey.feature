@@ -16,8 +16,8 @@ Background: results are to be added to database
     | amirk88@gmail.com  | 123f5    | amir khodaei | 1          |     1              |
 
   And the following schools exist:
-    | name | county | city | 
-    | "school1" | "Alameda" | "Berkeley" |
+    | name 	| county    | city 	  | district |
+    | "school1" | "Alameda" | "Berkeley"  | District |
 
   And the following school_semesters exist:
     | school_id | name | year |

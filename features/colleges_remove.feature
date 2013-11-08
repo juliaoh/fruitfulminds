@@ -15,9 +15,9 @@ Background: results are to be added to database
     | email                | password | name         | profile_id | school_semester_id |
     | alwong8@berkeley.edu | aaaaaa   | Alvin Wong   | 1          |     1     |
 
-  Given the following schools exist:
-    | name | county | city | 
-    | "school1" | "Alameda" | "Berkeley" |
+  And the following schools exist:
+    | name 	| county    | city 	  | district |
+    | "school1" | "Alameda" | "Berkeley"  | District |
 
   And the following school_semesters exist:
     | school_id |   name   | year |

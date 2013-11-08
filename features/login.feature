@@ -18,8 +18,8 @@ Background: users have been added to database
     | amb2@gmail.com     | ambpass  | New Amb2     | 2          | 1                  |
 
   And the following schools exist:
-    | name    | county  | city     |
-    | school1 | Alameda | Berkeley |
+    | name    | county  | city     | district |
+    | school1 | Alameda | Berkeley | District |
 
   And the following school_semesters exist:
     | school_id | name | year |
