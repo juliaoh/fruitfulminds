@@ -31,6 +31,7 @@ Scenario: add new school
   Then  I should be on the Add New School page
   And   I fill in "school_name" with "names"
   And   I fill in "school_county" with "counties"
+  And   I fill in "school_district" with "districts"
   And   I fill in "school_city" with "cities"
   And   I press "Save Changes"
   Then  I should see "School successfully created."
