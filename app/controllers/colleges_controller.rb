@@ -12,7 +12,7 @@ class CollegesController < ApplicationController
   def create
     begin
       College.create!(params[:college])
-      flash[:notice] = "College successfully created."
+      flash[:notice] = "Successfully created college."
       redirect_to portal_path
     rescue ActiveRecord::RecordInvalid
       flash[:warning] = "Fields cannot be left blank."
@@ -27,7 +27,7 @@ class CollegesController < ApplicationController
   def update
     begin
       College.find(params[:id]).update_attributes!(params[:college])
-      flash[:notice] = "College successfully updated."
+      flash[:notice] = "Successfully updated college."
       redirect_to colleges_path
     rescue ActiveRecord::RecordInvalid
       flash[:warning] = "Fields cannot be left blank."
@@ -38,7 +38,7 @@ class CollegesController < ApplicationController
   def destroy
     @college = College.find(params[:id])
     @college.destroy
-    flash[:notice] = "College successfully deleted."
+    flash[:notice] = "Successfully deleted college."
     redirect_to colleges_path
   end
 end
