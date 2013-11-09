@@ -28,6 +28,7 @@ class CollegesController < ApplicationController
   def update
     begin
       College.find(params[:id]).update_attributes!(params[:college])
+      flash[:notice] = "Code"
       flash[:notice] = "Successfully updated college."
       redirect_to colleges_path
     rescue ActiveRecord::RecordInvalid
