@@ -203,10 +203,12 @@ class UsersController < ApplicationController
 
         # fields that admin might have modified
         user_college = params[:colleges][uid]
-        school_name = params[:school_names][uid]
-        school_city = params[:school_cities][uid]
-        school_district = params[:school_districts][uid]
-        school_county = params[:school_counties][uid]
+        school_id = params[:school][uid]
+        school = School.find_by_id(school_id)
+        school_name = school.name
+        school_city = school.city
+        school_district = school.district
+        school_county = school.county
         semester_name = params[:semester_names][uid] # Fall, Winter, Spring, Summer
         semester_year = params[:date][uid] # a 4-digit number, e.g 2012
 
