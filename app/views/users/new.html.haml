@@ -9,17 +9,10 @@
       = text_field :user, :lastname
       = label :user, :college, "College"
       = select('user', 'college', @college_names, {}, {})
-      = label :school, :name, "School Name"
-      = select('school', 'name', @school_names, {}, {})
-      = label :school, :county, "School County"
-      = select('school', 'county', @county_names, {}, {})
-      = label :school, :district, "School District"
-      = select('school', 'district', @district_names, {}, {})
-      = label :school, :city, "School City"
-      =  select('school', 'city', @city_names, {}, {})
+      = label :school, :name, "School"
+      = select(:school, :name, @school_names, {}, {})
       = label :semester, :name, "Survey Period"
       = select('semester', 'name', %w[Fall Winter Spring Summer], {}, {})
-
       = label :semester, :year, "Survey Year"
       = select_year(Date.today, :start_year => 2005, :end_year => Time.now.year + 5)
 

@@ -10,22 +10,11 @@ class UsersController < ApplicationController
 
   # renders sign up page
   def new
-    @school_names = School.find(:all).map do |school|
-      school.name
-    end.uniq
-    @county_names = School.find(:all).map do |school|
-      school.county
-    end.uniq
-    @district_names = School.find(:all).map do |school|
-      school.district
-    end.uniq
-    @city_names = School.find(:all).map do |school|
-      school.city
-    end.uniq
+    @school_names = School.all.collect { |s| ["#{s.name}, #{s.county}, #{s.city}", s.id ] }.sort
 
     @college_names = College.find(:all).map do |college|
       college.name
-    end.uniq
+    end.uniq.sort
   end
 
   def tos
@@ -45,13 +34,16 @@ class UsersController < ApplicationController
         confirm = params[:user][:confirm_password]
         college = params[:user][:college]
 
-        schoolName = params[:school][:name]
+
+        school_id = params[:school][:name]
+        school = School.find_by_id(school_id)
         #schoolCounty = School.find_by_name(schoolName).county
         #schoolDistrict = School.find_by_name(schoolName).district
         #schoolCity = School.find_by_name(schoolName).city
-        schoolCounty = params[:school][:county]
-        schoolDistrict = params[:school][:district]
-        schoolCity = params[:school][:city]
+        schoolName = school.name
+        schoolCounty = school.county
+        schoolDistrict = school.district
+        schoolCity = school.city
 
         semesterName = params[:semester][:name]
         semesterYear = params[:date][:year]
