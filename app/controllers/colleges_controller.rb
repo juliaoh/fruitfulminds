@@ -12,6 +12,7 @@ class CollegesController < ApplicationController
   def create
     begin
       College.create!(params[:college])
+      flash[:notice] = "Code"
       flash[:notice] = "Successfully created college."
       redirect_to portal_path
     rescue ActiveRecord::RecordInvalid
