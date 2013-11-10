@@ -35,7 +35,7 @@ Scenario: add new college
   Then  I should be on the Add New College page
   And   I fill in "college_name" with "UCB"
   And   I press "Save Changes"
-  Then  I should see "College successfully created."
+  Then  I should see "Successfully created college."
 
 Scenario: edit existing college
   When  I follow "Show All Colleges"
@@ -43,9 +43,9 @@ Scenario: edit existing college
   And   I press "edit_college_1"
   And   I fill in "college_name" with "foo"
   And   I press "Save Changes"
-  Then  I should see "College successfully updated."
+  Then  I should see "Successfully updated college."
 
-Scenario: add new school
+Scenario: add new college
   When  I follow "Add New College"
   Then  I should be on the Add New College page
   And   I press "Save Changes"
