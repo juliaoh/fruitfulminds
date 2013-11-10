@@ -1,4 +1,10 @@
 #temporary file, will replace reports_controller.rb later
+#                    __ __
+#            |    |    |
+#            |____|    |
+#            |    |    |
+#            |    |  __|__
+#
 #some things that I haven't done (doesn't include everything):
 #calculate_improvement - calculates overall % improvement for MC/objective sections
 #calculate size of graph based on # of sections in generate_objective_graph
@@ -88,7 +94,14 @@ class ReportsController < ApplicationController
     @eval_intro_second = "On average, students have shown a #{@efficacy}% improvement after going through seven weeks of classes." 
     @eval_intro_third = "The survey results are shown below. The first graph shows the average scores in each of the six nutrition topics covered in the curriculum (see graph 1). Note that the number of questions in each category varies. The second graph shows students\' overall performance on the pre-curriculum surveys and post-curriculum survey (see graph 2). #{@school_semester.presurvey_part1s[0].number_students} took the pre-curriculum survey, and #{@school_semester.postsurveys[0].number_students} students took the post-curriculum surveys."
     @strength_weakness_title = "Strengths and Weaknesses of FM Lessons at #{@school_name}"
-    #generate_strengths
+    efficacy_str_weak = generate_strengths(generate_data('Efficacy'))
+    @efficacy_str = efficacy_str_weak[0] #hash {q_name => msg}
+    @efficacy_weak = efficacy_str_weak[1]
+
+    objective_str_weak = generate_strengths(generate_data('Multiple Choice'))
+    @objective_str = objective_str_weak[0]
+    @objective_weak = objective_str_weak[1]
+
     @ambassadorNoteTitle = "Ambassador Notes: "
     #@objectives is a hash of
     #Section name => objective description
@@ -199,7 +212,7 @@ class ReportsController < ApplicationController
 
   def generate_strengths(data_list)
     #method can be used for either efficacy or MC questions
-    #data_list is [presurvey_data, postsurvey_data]
+    #data_list is [presurvey_data, postsurvey_data], use generate_data to get this
     #pre/postsurvey_data is {q_id => percent value}
     presurvey_data = data_list[0]
     postsurvey_data = data_list[1]
@@ -210,6 +223,7 @@ class ReportsController < ApplicationController
       pre_value = presurvey_data[q_id]
       post_value = postsurvey_data[q_id]
       delta = post_value - pre_value
+      #not considered a weakness if starting value is 90%
       possible_weakness = ((pre_value < 90) and (delta > 0))
       info_list = [q_id, delta, possible_weakness]
       data.push(info_list)
@@ -217,11 +231,11 @@ class ReportsController < ApplicationController
 
     #info_list is [q_id, delta, possible_weakness]
     sorted_data = data.sort_by {|info_list| [info_list[1]]}
-    strengths = []
-    weaknesses = []
+    strengths = {}
+    weaknesses = {}
     sorted_data[0..4].each do |info_list|
       question = Questions.find_by_id(info_list[0])
-      strengths.push(question.msg1) #strength message
+      strengths[question.name] = question.msg1 #strength message
     end
 
     weak_count = 0
@@ -231,13 +245,14 @@ class ReportsController < ApplicationController
       info_list = sorted_data[index]
       if info_list[2] #check if possible to be weakness
         question = Questions.find_by_id(info_list[0])
-        weaknesses.push(question.msg2) #weakness message
+        weaknesses[question.name] = question.msg2 #weakness message
         weak_count = weak_count + 1
       end
       index = index - 1
     end
 
-    #returns a list with [[str messages],[weak messages]]
+    #returns a list of hashes [{q_name => str message},{q_name => weak messages}]
+    #q_name should be something like "Section 6 Question 4"
     return [strengths, weaknesses]
   end
 
