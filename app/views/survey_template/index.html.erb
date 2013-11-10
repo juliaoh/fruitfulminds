@@ -1,0 +1,9 @@
+<% @subtitle = "Survey Templates" %>
+<script>
+$(document).ready(function() {
+    $('#add_new_survey_btn').click(function () {
+        window.location = "<%= new_survey_template_path %>";
+    });
+});
+</script>
+<input type="button" id="add_new_survey_btn" value="Add new survey template" />
