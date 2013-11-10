@@ -6,6 +6,9 @@ class Question < ActiveRecord::Base
   validates :msg1, :inclusion => [nil], :if => "is_not_efficacy?"
   validates :msg2, :inclusion => [nil], :if => "is_not_efficacy?"
 
+  belongs_to :section
+  belongs_to :curriculum
+
   def is_efficacy?
     type == "Efficacy"
   end
