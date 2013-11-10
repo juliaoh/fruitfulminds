@@ -1,0 +1,12 @@
+%tr
+  %td{:style => "text-align: center"}
+    = label "number_students", "Number of Students"
+  %td{:style => "text-align: center"}
+    = f.text_field "number_students", :readonly => true, :style => "width: 50%; text-align: Right;"
+- section_and_num_questions.each do |section,questions|
+  - questions.times do |i|
+    %tr
+      %td{:style => "text-align: center"}
+        = f.label "section_#{section}_#{i + 1}", "Section #{section} Number #{i + 1}"
+      %td{:style => "text-align: center"}
+        = f.text_field "section_#{section}_#{i + 1}", :readonly => true, :style => "width: 50%; text-align: Right;"

@@ -11,7 +11,7 @@ Profile.create!(:label => "ambassador")
 College.create!({:name=>'UC Berkeley'})
 User.create!({:name => "admin account", :email => "admin@fruitfulminds.org", :password => "password", :profile_id => 1})
 User.create!({:name => "another admin account", :email => "admin2@fruitfulminds.org", :password => "password", :profile_id => 1})
-User.create!({:name => "fm ambassador account", :email => "user@fruitfulminds.org", :password => "password", :school_semester_id => 2, :profile_id => 2})
+User.create!({:name => "fm ambassador account", :email => "user@fruitfulminds.org", :password => "password", :school_semester_id => 1, :profile_id => 2})
 User.create!({:name => "another fm ambassador account", :email => "ambassador@fruitfulminds.org", :password => "password", :school_semester_id => 1, :profile_id => 2})
 
 School.create!({:name => "Haven's Elementary", :county => "Alameda", :city => "Piedmont", :district => "PUSD"})
