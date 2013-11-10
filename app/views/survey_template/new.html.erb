@@ -1,0 +1,48 @@
+<% @subtitle = "Add new survey template" %>
+<script>
+  $( document ).ready(function() {
+    window.num_sections = 0;
+    window.add_question = function(section_num) {
+      $numquestions = $('#snumquestions'+section_num);
+      num_questions = parseInt($numquestions.val()) + 1;
+      $numquestions.val(num_questions);
+      var new_question = 'Question Name <input id="squestion'+section_num+'_'+num_questions+'" /> <input type="button" id="delquestion'+section_num+'_'+num_questions+'" value="X" /><br />';
+      new_question += 'Message 1:<br /><textarea id="sstrength'+num_sections+'"></textarea><br />';
+      new_question += 'Message 2:<br /><textarea id="sweakness'+num_sections+'"></textarea><br />';
+      $('td#squestion'+section_num).append(new_question);
+      $('#delquestion'+section_num+'_'+num_questions).click( function () { alert("HI"); });
+    };
+    window.add_section = function() {
+      num_sections += 1;
+      var content = '<div id="survey'+num_sections+'">';
+      content += '<input type="hidden" id="snumquestions'+num_sections+'" value="0" />';
+      content += 'Section';
+      content += '<table id="section_data'+num_sections+'">';
+      content += '<tr><td>Name</td><td><input id="sname'+num_sections+'" /></td></tr>';
+      content += '<tr><td>Type</td><td><select id="stype'+num_sections+'"><option value="mc">Multiple Choice</option><option value="efficacy">Efficacy</option></select></td></tr>';
+      content += '<tr id="sobjective'+num_sections+'"><td>Objective</td><td><input id="sobjective'+num_sections+'" /></td></tr>';
+      content += '<tr><td id="squestion'+num_sections+'" colspan="2"></td></tr>';
+      //content += '<tr id="smsg'+num_sections+'"><td colspan="2">';
+      //content += 'Message 1:<br /><textarea id="sstrength'+num_sections+'"></textarea><br />';
+      //content += 'Message 2:<br /><textarea id="sweakness'+num_sections+'"></textarea>';
+      //content += '</td></tr>';
+      content += '</table>';
+      content += '<input type="button" id="add_question_btn'+num_sections+'" value="Add Question" /><br />'
+      content += '</div>';
+      $('form').append(content);
+      $('#stype'+num_sections).change(function () {
+        if ($(this).val() == "mc") { $('#sobjective'+num_sections).show(); }
+        else { $('#sobjective'+num_sections).hide(); }
+      });
+      $('#smsg'+num_sections).hide();
+      add_question(num_sections);
+      $('input#add_question_btn'+num_sections).click(function () { add_question(num_sections); });
+    };
+    $('#add_section_btn').click(function () { add_section();});
+    add_section();
+  });
+</script>
+<form>
+
+</form>
+<input id="add_section_btn" type="button" value="Add Section" />

@@ -1,0 +1,15 @@
+- @subtitle = "Pre-Survey Results (Part 1)"
+- section_and_num_questions = {1 => 2, 2 => 4, 3 => 6, 4 => 3}
+
+%span
+  = form_for @presurvey_part1_fields, :url => {:action => :update}, :html => {:class => "form_to_validate"} do |f|
+    %table
+      %tbody
+        %tr
+          %td
+            %p temptemptemptemptest
+          %td
+            %p wattheperson'sname
+        = render :partial => "presurveys/viewer", :locals => {:f => f, :section_and_num_questions => section_and_num_questions}
+
+= button_to "Edit Pre-Survey 1", edit_presurveys_part1_path(@survey_id), :method => :get, :id => "edit_pre_survey_part1_#{@survey_id}"

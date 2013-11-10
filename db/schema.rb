@@ -11,9 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131028010013) do
+ActiveRecord::Schema.define(:version => 20131110090717) do
 
   create_table "colleges", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "courses", :force => true do |t|
+    t.string   "semester",       :null => false
+    t.integer  "total_students", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "curriculums", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -130,6 +143,16 @@ ActiveRecord::Schema.define(:version => 20131028010013) do
     t.string "label"
   end
 
+  create_table "questions", :force => true do |t|
+    t.string   "name",        :null => false
+    t.string   "type",        :null => false
+    t.string   "msg1"
+    t.string   "msg2"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "reports", :force => true do |t|
     t.integer  "school_semester_id"
     t.text     "main_title"
@@ -158,6 +181,14 @@ ActiveRecord::Schema.define(:version => 20131028010013) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "district"
+  end
+
+  create_table "sections", :force => true do |t|
+    t.string   "name",       :null => false
+    t.string   "objective"
+    t.string   "type",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "static_contents", :force => true do |t|
