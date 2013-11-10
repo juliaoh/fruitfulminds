@@ -1,4 +1,9 @@
 #temporary file, will replace reports_controller.rb later
+#some things that I haven't done (doesn't include everything):
+#calculate_improvement - calculates overall % improvement for MC/objective sections
+#calculate size of graph based on # of sections in generate_objective_graph
+#add overall improvement graph (for objective/mc)
+#add efficacy graph
 
 class ReportsController < ApplicationController
   def new
@@ -79,8 +84,7 @@ class ReportsController < ApplicationController
     @school_intro_second = "    #{@class.users.size} students from #{@college} #{was_were(@class.users.size)} selected as Fruitful Minds ambassadors"
     @school_intro_third = "    During each 50-minute lesson, class facilitators delivered the curriculum material through lectures, games, and various interactive activities."
     @eval_intro_first = "Prior to the 7-week curriculum, a pre-curriculum survey was distributed to assess the students\' knowledge in nutrition; a very similar survey was administered during the final class. The goal of the surveys was to determine the retention of key learning objectives from the Fruitful Minds program."
-   
-    @efficacy = calculate_efficacy
+    @efficacy = calculate_improvement
     @eval_intro_second = "On average, students have shown a #{@efficacy}% improvement after going through seven weeks of classes." 
     @eval_intro_third = "The survey results are shown below. The first graph shows the average scores in each of the six nutrition topics covered in the curriculum (see graph 1). Note that the number of questions in each category varies. The second graph shows students\' overall performance on the pre-curriculum surveys and post-curriculum survey (see graph 2). #{@school_semester.presurvey_part1s[0].number_students} took the pre-curriculum survey, and #{@school_semester.postsurveys[0].number_students} students took the post-curriculum surveys."
     @strength_weakness_title = "Strengths and Weaknesses of FM Lessons at #{@school_name}"
@@ -106,7 +110,6 @@ class ReportsController < ApplicationController
       #make sure ambassador writes some Notes
       session[:amb_note] = params[:amb_note]
       save_pdf
-
       redirect_to "/reports/#{@file_name}"
       return
     else
@@ -126,9 +129,31 @@ class ReportsController < ApplicationController
 
   def generate_objective_graph(data)
     @axes = []
+    @labels = ""
     @objectives.keys.each do |section_name|
       @axes.push(section_name)
+      @labels += section_name+"|"
     end
+    @labels.chomp('|')
+
+    @max = 0
+    data.each do |survey_data|
+      if survey_data.compact.max > @max
+        @max = survey_data
+      end
+    end
+    
+    @nutrition_chart = Gchart.bar(:size => '1000x300', 
+                                :title => "Average Survey Score in Six Nutrition Topics",
+                                :legend => ['Pre', 'Post'],
+                                :bar_colors => '3399CC,99CCFF',
+                                :data => data,
+                                :bar_width_and_spacing => '30,0,23',
+                                :axis_with_labels => 'x,y',
+                                :axis_labels => [@labels],
+                                :stacked => false,
+                                :axis_range => [nil, [0,@max,10]]
+                                )    
 
 
   end
@@ -139,7 +164,6 @@ class ReportsController < ApplicationController
     postsurvey_data = {}
     #presurvey.data & postsurvey.data are hashes of
     #{user_id => {q_id => value}} 
-    
 
     def calc_values(data, data_hash)
 
@@ -164,15 +188,58 @@ class ReportsController < ApplicationController
 
       #following code works because of invariant:
       #pre&post surveys have the exact same questions
-
       presurvey_data = calc_values(user_pre_data, presurvey_data)
       postsurvey_data = calc_values(user_post_data, postsurvey_data)
     end
-    
     data = [presurvey_data, postsurvey_data]
     return data
   end
 
+
+
+  def generate_strengths(data_list)
+    #method can be used for either efficacy or MC questions
+    #data_list is [presurvey_data, postsurvey_data]
+    #pre/postsurvey_data is {q_id => percent value}
+    presurvey_data = data_list[0]
+    postsurvey_data = data_list[1]
+    data = []
+    
+    presurvey_data.keys.each do |q_id|
+      #q_id is same for both presurvey & postsurvey questions
+      pre_value = presurvey_data[q_id]
+      post_value = postsurvey_data[q_id]
+      delta = post_value - pre_value
+      possible_weakness = ((pre_value < 90) and (delta > 0))
+      info_list = [q_id, delta, possible_weakness]
+      data.push(info_list)
+    end
+
+    #info_list is [q_id, delta, possible_weakness]
+    sorted_data = data.sort_by {|info_list| [info_list[1]]}
+    strengths = []
+    weaknesses = []
+    sorted_data[0..4].each do |info_list|
+      question = Questions.find_by_id(info_list[0])
+      strengths.push(question.msg1) #strength message
+    end
+
+    weak_count = 0
+    index = sorted_data.size - 1
+    while weak_count < 5: #need 5 weaknesses
+      break if index < 0
+      info_list = sorted_data[index]
+      if info_list[2] #check if possible to be weakness
+        question = Questions.find_by_id(info_list[0])
+        weaknesses.push(question.msg2) #weakness message
+        weak_count = weak_count + 1
+      end
+      index = index - 1
+    end
+
+    #returns a list with [[str messages],[weak messages]]
+    return [strengths, weaknesses]
+  end
 
 
 end
