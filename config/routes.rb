@@ -1,5 +1,5 @@
 Fruitfulminds::Application.routes.draw do
-
+  resources :survey_template
   resources :users
   resources :sessions, :only => [:create, :destroy, :new]
   resources :reports
