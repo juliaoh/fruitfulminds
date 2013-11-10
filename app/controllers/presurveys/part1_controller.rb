@@ -30,10 +30,15 @@ class Presurveys::Part1Controller < ApplicationController
     begin
       Presurvey::Part1.find(params[:id]).update_attributes!(params[:presurvey_part1])
       flash[:notice] = "Survey updated successfully."
-      redirect_to portal_path
+      redirect_to presurveys_part1_path(:id => params[:id])
     rescue ActiveRecord::RecordInvalid
       flash[:warning] = "Results failed to add. Incomplete or has invalid characters."
       redirect_to edit_presurveys_part1_path(:id => params[:id], :presurvey_part1 => params[:presurvey_part1])
     end
+  end
+
+  def show
+    @presurvey_part1_fields = Presurvey::Part1.find(params[:id])
+    @survey_id = params[:id]
   end
 end
