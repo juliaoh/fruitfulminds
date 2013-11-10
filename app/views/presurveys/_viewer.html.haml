@@ -2,11 +2,11 @@
   %td
     = label "number_students", "Number of Students"
   %td
-    = f.text_field "number_students", :readonly => true, :style => "width: 30px; text-align: Right;"
+    = f.text_field "number_students", :readonly => true, :style => "width: 100%; text-align: Right;"
 - section_and_num_questions.each do |section,questions|
   - questions.times do |i|
     %tr
       %td
         = f.label "section_#{section}_#{i + 1}", "Section #{section} Number #{i + 1}"
       %td
-        = f.text_field "section_#{section}_#{i + 1}", :readonly => true, :style => "width: 30px; text-align: Right;"
+        = f.text_field "section_#{section}_#{i + 1}", :readonly => true, :style => "width: 100%; text-align: Right;"
