@@ -1,4 +1,4 @@
-# Fruitful Minds, Inc. - UC Berkeley CS 169 Project
+# Fruitful Minds, Inc. - CS 169 Project
 
 This is a class project for CS 169, Software Engineering, at UC Berkeley in Fall 2013.
 
