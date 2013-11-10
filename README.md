@@ -1,4 +1,4 @@
-== Fruitful Minds, Inc. - UC Berkeley CS 169 Project
+# Fruitful Minds, Inc. - UC Berkeley CS 169 Project
 
 This is a class project for CS 169, Software Engineering, at UC Berkeley in Fall 2013.
 
@@ -8,11 +8,11 @@ The goal of the project is to build a user-friendly web application for Fruitful
 * Fruitful Minds current website: http://www.fruitfulminds.org
 * SaaS Website: http://beta.saasbook.info
 
-== Developers
+## Developers
 Michael Jun, Julia Oh, Alvin Wong, Sam Xu, William Yau, Kevin Yeun
 
-== Getting Started
-=== GitHub Repo
+## Getting Started
+### GitHub Repo
 
 Note: You have to be added to the list of collaborators of the git repo to push your changes.
 
@@ -27,7 +27,7 @@ Note: You have to be added to the list of collaborators of the git repo to push 
 
 4. If built successfully, you can start developing on the application.
 
-=== Heroku App
+### Heroku App
 
 Note: You have to be added to the collaborators of the fruitful-minds heroku app before doing any of the following.
 
@@ -45,7 +45,7 @@ Note: You have to be added to the collaborators of the fruitful-minds heroku app
 3. If you get a "permission denied error" when you push to heroku, do the following first, then try to push again.
       heroku keys:add
 
-=== Clarifications
+### Clarifications
 
 There are a few misleading terms.
 
