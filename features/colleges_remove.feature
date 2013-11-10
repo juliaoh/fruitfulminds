@@ -38,7 +38,7 @@ Scenario: delete existing college - (happy path)
   And   I press "Delete"
   And   I confirm popup
   Then  I should be on the All Colleges page
-  And   I should see "College successfully deleted."
+  And   I should see "Successfully deleted college."
 
 @javascript
 Scenario: delete existing college - cancel (sad path)
@@ -50,4 +50,4 @@ Scenario: delete existing college - cancel (sad path)
   And   I press "Save Changes"
   Then  I should be on the All Colleges page
   And   I should see "college1"
-  And   I should see "College successfully updated."
+  And   I should see "Successfully updated college."
