@@ -30,18 +30,7 @@ Background: users have been added to database
 
   Scenario: user registers successfully
     Given I am on the signup page
-    And I fill in "First Name" with "Amir"
-    And I fill in "Last Name" with "Khodaei"
-    And I fill in "Email Address" with "amirk88@gmail.com"
-    And I select "UC Berkeley" from "College"
-    And I select "school1" from "School Name"
-    And I select "Alameda" from "School County"
-    And I select "Berkeley" from "School City"
-    And I select "District" from "School District"
-    And I select "Fall" from "Survey Period"
-    And I select "2012" from "date_year"
-    And I fill in "user_password" with "password"
-    And I fill in "user_confirm_password" with "password"
+    And I fill in all of the registration text fields
     And I check "tos"
     And I press "Register"
     Then I should be on the login page
@@ -82,18 +71,6 @@ Background: users have been added to database
     Then I should be on the signup page
     And I should see "Please fill in all fields"
     
-  Scenario: school name should be in drop-down menu
+  Scenario: school should be in drop-down menu
     Given I am on the signup page
     Then I should see "school_name" in drop-down menu
-
-  Scenario: county name should be in drop-down menu
-    Given I am on the signup page
-    Then I should see "school_county" in drop-down menu
-    
-  Scenario: school district should be in drop-down menu
-    Given I am on the signup page
-    Then I should see "school_district" in drop-down menu
-    
-  Scenario: school city should be in drop-down menu
-    Given I am on the signup page
-    Then I should see "school_city" in drop-down menu
