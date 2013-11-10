@@ -45,5 +45,14 @@ Note: You have to be added to the collaborators of the fruitful-minds heroku app
 3. If you get a "permission denied error" when you push to heroku, do the following first, then try to push again.
       heroku keys:add
 
+=== Clarifications
+
+There are a few misleading terms.
+
+1. Presurvey refers to the survey taken by students before the curriculum, or pre-curriculum survey.
+
+2. Classes refer to actual classroom classes, not the computer science term class. Classes are uniquely identified by a combination of School, Semester, and Curriculum (e.g. Ascend Elementary, Fall 2013, 5th Grade Curriculum)
+
+3. Historical Data reporting ...
 
 Credit: Many parts of the code base has been contributed by a previous CS169 Group 25 from Fall 2012.
