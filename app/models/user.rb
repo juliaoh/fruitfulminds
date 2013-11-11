@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
     if admin?
       user_courses = Course.all
     else
-      #set user_courses to be the users' courses
+      user_courses = courses
     end
     user_courses
   end
