@@ -27,7 +27,7 @@ Given /the following curriculum exist/ do |table|
 end
 
 
-Given /the following sections exist/ do |table|
+Given /the following MC sections exist/ do |table|
   table.hashes.each do |result|
     name = result[:name]
     objective = result[:objective]
@@ -49,4 +49,40 @@ Given /the following questions exist/ do |table|
   end
 end
 
+Given /the following Efficacy sections exist/ do |table|
+  table.hashes.each do |result|
+    name = result[:name]
+    stype = result[:stype]
+    curriculum_id = result[:curriculum_id]
+    Section.create!(:name=>name,:stype=>stype,:curriculum_id=>curriculum_id)
+  end
+end
 
+Given /the following postsurveys exist/ do |table|
+  table.map_column!('data') do |data|
+    if data == 'POSTSURVEY_DATA'
+      data = nil
+    end
+  end
+  table.map_column!('total') do |total|
+    if total == 'POSTSURVEY_TOTAL'
+      total = nil
+    end
+  end
+end
+
+Given /the following presurveys exist/ do |table|
+  table.map_column!('data') do |data|
+    if data == 'PRESURVEY_DATA'
+      data = nil
+    end
+  end
+
+
+  table.map_column!('total') do |total|
+    if total == 'PRESURVEY_TOTAL'
+      total = nil
+    end
+  end
+end
+    

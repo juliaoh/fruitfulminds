@@ -25,10 +25,13 @@ Background: Generate report based on survey results
     | name        |
     | curriculum1 |
 
-  And the following sections exist:
-    | name     | objective      | stype           | curriculum_id |
-    | section1 | test objective | Multiple Choice | 1             |
-    | section2 |                | Efficacy        | 1             |
+  And the following MC sections exist:
+    | name     | objective            | stype           | curriculum_id |
+    | section1 | test objective       | Multiple Choice | 1             |
+
+  And the following Efficacy sections exist:
+    | name     | stype           | curriculum_id |  
+    | section2 | Efficacy        | 1             |
 
   And the following questions exist:
     | name     | qtype           | msg1            | msg2         | section_id |
