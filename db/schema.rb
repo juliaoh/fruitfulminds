@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131110090717) do
+ActiveRecord::Schema.define(:version => 20131110205957) do
 
   create_table "colleges", :force => true do |t|
     t.string   "name"
@@ -145,12 +145,13 @@ ActiveRecord::Schema.define(:version => 20131110090717) do
 
   create_table "questions", :force => true do |t|
     t.string   "name",        :null => false
-    t.string   "type",        :null => false
+    t.string   "qtype",       :null => false
     t.string   "msg1"
     t.string   "msg2"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "section_id"
   end
 
   create_table "reports", :force => true do |t|
@@ -184,11 +185,12 @@ ActiveRecord::Schema.define(:version => 20131110090717) do
   end
 
   create_table "sections", :force => true do |t|
-    t.string   "name",       :null => false
+    t.string   "name",          :null => false
     t.string   "objective"
-    t.string   "type",       :null => false
+    t.string   "stype",         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "curriculum_id"
   end
 
   create_table "static_contents", :force => true do |t|
