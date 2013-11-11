@@ -41,12 +41,12 @@ Background: Generate report based on survey results
     | S2Q2     | Efficacy        | S2Q2 strong ef  | S2Q2 weak ef | 2          |
 
   And the following presurveys exist:
-    | curriculum_id |   data            |    total        |
-    | 1             |   PRESURVEY_DATA  | PRESURVEY_TOTAL |
+    |   data            |    total        |
+    |   PRESURVEY_DATA  | PRESURVEY_TOTAL |
 
   And the following postsurveys exist:
-    | curriculum_id | data            |   total           |
-    | 1             | POSTSURVEY_DATA | POSTSURVEY_TOTAL  |
+    | data            |   total           |
+    | POSTSURVEY_DATA | POSTSURVEY_TOTAL  |
 
 
   And the following courses exist:

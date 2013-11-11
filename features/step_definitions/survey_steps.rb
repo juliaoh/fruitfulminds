@@ -63,17 +63,19 @@ Given /the following postsurveys exist/ do |table|
     if data == 'POSTSURVEY_DATA'
       data = {1=>{1=>20,2=>18,3=>24,4=>25}}
     end
+    data
   end
   table.map_column!('total') do |total|
     if total == 'POSTSURVEY_TOTAL'
       total = {1=>25}
     end
+    total
   end
-  table.map_column!('curriculum_id') do |c_id|
-    curriculum_id = c_id
+  table.hashes.each do |result|
+    total = {1=>25} 
+    data = {1=>{1=>20,2=>18,3=>24,4=>25}}
+    Postsurvey.create!(:total=>total, :data=>data)
   end
-  Presurvey.create!(:curriculum_id => curriculum_id, :total=>total, :data=>data)
-
 end
 
 Given /the following presurveys exist/ do |table|
@@ -81,6 +83,7 @@ Given /the following presurveys exist/ do |table|
     if data == 'PRESURVEY_DATA'
       data = {1=>{1=>10,2=>11,3=>4,4=>9}}
     end
+    data
   end
 
 
@@ -88,13 +91,15 @@ Given /the following presurveys exist/ do |table|
     if total == 'PRESURVEY_TOTAL'
       total = {1=>25}
     end
+    total
   end
 
-  table.map_column!('curriculum_id') do |c_id|
-    curriculum_id = c_id
+  table.hashes.each do |result|
+    total = {1=>25}
+    data = {1=>{1=>10,2=>11,3=>4,4=>9}}
+    Presurvey.create!(:total=>total, :data=>data)
   end
 
-  Presurvey.create!(:curriculum_id => curriculum_id, :total=>total, :data=>data)
 
 end
     
