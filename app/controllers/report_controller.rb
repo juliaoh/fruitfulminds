@@ -329,7 +329,7 @@ class ReportsController < ApplicationController
 
     weak_count = 0
     index = sorted_data.size - 1
-    while weak_count < 5: #need 5 weaknesses
+    while weak_count < 5 do #need 5 weaknesses
       break if index < 0
       info_list = sorted_data[index]
       if info_list[2] #check if possible to be weakness
