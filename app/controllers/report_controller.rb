@@ -59,6 +59,8 @@ class ReportsController < ApplicationController
     @school = School.find_by_id(@class.school_id)
     @school_name = @school.name
     @school_semester = @class.school_semester
+    @main_semester_title = @school_semester + " Report"
+    @static_content = StaticContent.first
     @curriculum = Curriculum.find_by_id(@class.curriculum_id)
     #presurvey.total & postsurvey.total are hashes of
     #{user_id => {'total' => # of students user is entering data for}}
@@ -92,10 +94,6 @@ class ReportsController < ApplicationController
     @school_intro = "Fruitful Minds held a nutrition lesson series at #{@school_name} during #{@school_semester}" 
     @school_intro_second = "    #{@class.users.size} students from #{@college} #{was_were(@class.users.size)} selected as Fruitful Minds ambassadors"
     @school_intro_third = "    During each 50-minute lesson, class facilitators delivered the curriculum material through lectures, games, and various interactive activities."
-    @eval_intro_first = "Prior to the 7-week curriculum, a pre-curriculum survey was distributed to assess the students\' knowledge in nutrition; a very similar survey was administered during the final class. The goal of the surveys was to determine the retention of key learning objectives from the Fruitful Minds program."
-    @efficacy = calculate_improvement
-    @eval_intro_second = "On average, students have shown a #{@efficacy}% improvement after going through seven weeks of classes." 
-    @eval_intro_third = "The survey results are shown below. The first graph shows the average scores in each of the six nutrition topics covered in the curriculum (see graph 1). Note that the number of questions in each category varies. The second graph shows students\' overall performance on the pre-curriculum surveys and post-curriculum survey (see graph 2). #{@school_semester.presurvey_part1s[0].number_students} took the pre-curriculum survey, and #{@school_semester.postsurveys[0].number_students} students took the post-curriculum surveys."
     @strength_weakness_title = "Strengths and Weaknesses of FM Lessons at #{@school_name}"
     efficacy_data = generate_data('Efficacy')
     efficacy_str_weak = generate_strengths(efficacy_data)
@@ -107,6 +105,9 @@ class ReportsController < ApplicationController
     objective_str_weak = generate_strengths(objective_data)
     @objective_str = objective_str_weak[0]
     @objective_weak = objective_str_weak[1]
+    @eval_intro_first = "Prior to the 7-week curriculum, a pre-curriculum survey was distributed to assess the students\' knowledge in nutrition; a very similar survey was administered during the final class. The goal of the surveys was to determine the retention of key learning objectives from the Fruitful Minds program."
+    @eval_intro_second = "On average, students have shown a #{@efficacy}% improvement after going through seven weeks of classes." 
+    @eval_intro_third = "The survey results are shown below. The first graph shows the average scores in each of the six nutrition topics covered in the curriculum (see graph 1). Note that the number of questions in each category varies. The second graph shows students\' overall performance on the pre-curriculum surveys and post-curriculum survey (see graph 2). #{@school_semester.presurvey_part1s[0].number_students} took the pre-curriculum survey, and #{@school_semester.postsurveys[0].number_students} students took the post-curriculum surveys."
 
     @ambassadorNoteTitle = "Ambassador Notes: "
     #@objectives is a hash of
@@ -120,6 +121,13 @@ class ReportsController < ApplicationController
         @objectives[section_name] = section.objective
       end
     end
+
+    @objectivesTable = @objectives.map do |section_name, objective|
+      [
+      section_name, objective
+      ]
+    end
+
     @improvement_intro = "#{@presurvey_total} students took the pre-curriculum survey and #{@postsurvey_total} students took the post-curriculum survey. These were not necessarily the same students. However, on average, students showed significant increases in their agreement that they could"
   
 
@@ -182,6 +190,7 @@ class ReportsController < ApplicationController
       end
     end
     
+    @improvement = combined_data[1] - combined_data[0]
     @nutrition_chart = Gchart.bar(:size => '1000x300', 
                                 :title => "Average Survey Score in Six Nutrition Topics",
                                 :legend => ['Pre', 'Post'],
@@ -212,10 +221,10 @@ class ReportsController < ApplicationController
     axes = []
     labels = ""
     @curriculum.sections.each do |section_id|
-      section = Sections.find_by_id(section_id)
+      section = Section.find_by_id(section_id)
       next if section.type != 'Efficacy'
       section.questions.each do |q_id|
-        question = Questions.find_by_id(q_id)
+        question = Question.find_by_id(q_id)
         labels += question.name + "|"
         axes.push(question.name)
       end
@@ -260,7 +269,7 @@ class ReportsController < ApplicationController
     def calc_values(data, data_hash)
       #helper function
       data.keys.each do |q_id|
-        question = Questions.find_by_id(q_id)
+        question = Question.find_by_id(q_id)
         next if question.qtype != type #skips if not type: 'Efficacy' or 'Multiple Choice'
 
         #value is (ratio of correct answers entered to total number of students) * 100
@@ -314,7 +323,7 @@ class ReportsController < ApplicationController
     strengths = {}
     weaknesses = {}
     sorted_data[0..4].each do |info_list|
-      question = Questions.find_by_id(info_list[0])
+      question = Question.find_by_id(info_list[0])
       strengths[question.name] = question.msg1 #strength message
     end
 
@@ -324,7 +333,7 @@ class ReportsController < ApplicationController
       break if index < 0
       info_list = sorted_data[index]
       if info_list[2] #check if possible to be weakness
-        question = Questions.find_by_id(info_list[0])
+        question = Question.find_by_id(info_list[0])
         weaknesses[question.name] = question.msg2 #weakness message
         weak_count = weak_count + 1
       end
