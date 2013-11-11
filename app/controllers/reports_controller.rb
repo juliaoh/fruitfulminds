@@ -67,6 +67,13 @@ class ReportsController < ApplicationController
     #{user_id => {'total' => # of students user is entering data for}}
     @presurvey = Presurvey.find_by_id(@course.presurvey_id)
     @postsurvey = Postsurvey.find_by_id(@course.postsurvey_id)
+    calc_subtotals
+    generate_intro_text
+    
+
+  end
+
+  def calc_subtotals
     @presurvey_total = 0
     @postsurvey_total = 0
     @presurvey.total.values.each do |subtotal|
@@ -76,11 +83,8 @@ class ReportsController < ApplicationController
     @postsurvey.total.values.each do |subtotal|
       @postsurvey_total += subtotal
     end
-    generate_intro_text
-    
 
   end
-
 
   def generate_intro_text
     @ambassadors = ""
@@ -157,20 +161,7 @@ class ReportsController < ApplicationController
   end
 
 
-
-
-  def generate_objective_graph(data_list)
-    #data_list is a list of hashes [{presurvey},{postsurvey}]
-    #hashes are {q_id => value}
-
-    axes = []
-    labels = ""
-    @objectives.keys.each do |section_name|
-      axes.push(section_name)
-      labels += section_name+"|"
-    end
-    labels.chomp('|')
-
+  def format_objective_data(data_list)
     data = []
     combined_data = []
     @max = 0
@@ -191,8 +182,27 @@ class ReportsController < ApplicationController
         @combined_max = combined_list.compact.max
       end
     end
-    
+    return data, combined_data
+
+  end
+
+  def generate_objective_graph(data_list)
+    #data_list is a list of hashes [{presurvey},{postsurvey}]
+    #hashes are {q_id => value}
+
+    axes = []
+    labels = ""
+    @objectives.keys.each do |section_name|
+      axes.push(section_name)
+      labels += section_name+"|"
+    end
+    labels.chomp('|')
+
+    data = []
+    combined_data = []
+    data, combined_data = format_objective_data(data_list)
     @improvement = combined_data[1] - combined_data[0]
+    
     @nutrition_chart = Gchart.bar(:size => '1000x300', 
                                 :title => "Average Survey Score in Six Nutrition Topics",
                                 :legend => ['Pre', 'Post'],
