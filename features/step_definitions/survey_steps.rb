@@ -49,4 +49,27 @@ Given /the following questions exist/ do |table|
   end
 end
 
+Given /the following postsurveys exist/ do |table|
+  table.map_column!('data') do |data|
+    if data == 'POSTSURVEY_DATA'
+      data = nil
+    end
+  end
+  table.map_column!('total') do |total|
+    if total == 'POSTSURVEY_TOTAL'
+      total = nil
+    end
+  end
 
+Given /the following presurveys exist/ do |table|
+  table.map_column!('data') do |data|
+    if data == 'PRESURVEY_DATA'
+      data = nil
+    end
+  end
+  table.map_column!('total') do |total|
+    if total == 'PRESURVEY_TOTAL'
+      total = nil
+    end
+  end
+    
