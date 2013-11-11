@@ -3,6 +3,10 @@ class CreateCourses < ActiveRecord::Migration
     create_table :courses do |t|
       t.string :semester, :null => false;
       t.integer :total_students, :null => false;
+      t.integer :school_id, :null => false;
+      t.integer :curriculum_id, :null => false;
+      t.integer :presurvey_id, :null => false;
+      t.integer :postsurvey_id, :null => false;
       t.timestamps
     end
   end
