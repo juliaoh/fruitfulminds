@@ -61,28 +61,40 @@ end
 Given /the following postsurveys exist/ do |table|
   table.map_column!('data') do |data|
     if data == 'POSTSURVEY_DATA'
-      data = nil
+      data = {1=>{1=>20,2=>18,3=>24,4=>25}}
     end
   end
   table.map_column!('total') do |total|
     if total == 'POSTSURVEY_TOTAL'
-      total = nil
+      total = {1=>25}
     end
   end
+  table.map_column!('curriculum_id') do |c_id|
+    curriculum_id = c_id
+  end
+  Presurvey.create!(:curriculum_id => curriculum_id, :total=>total, :data=>data)
+
 end
 
 Given /the following presurveys exist/ do |table|
   table.map_column!('data') do |data|
     if data == 'PRESURVEY_DATA'
-      data = nil
+      data = {1=>{1=>10,2=>11,3=>4,4=>9}}
     end
   end
 
 
   table.map_column!('total') do |total|
     if total == 'PRESURVEY_TOTAL'
-      total = nil
+      total = {1=>25}
     end
   end
+
+  table.map_column!('curriculum_id') do |c_id|
+    curriculum_id = c_id
+  end
+
+  Presurvey.create!(:curriculum_id => curriculum_id, :total=>total, :data=>data)
+
 end
     
