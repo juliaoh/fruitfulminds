@@ -6,9 +6,7 @@ class SurveyTemplateController < ApplicationController
   def new
   end
   def create
-    survey_name = params[:surveyname]
-    @survey_template = Curriculum.new(:name => survey_name)
-    @survey_template.save
+    create_curriculum(params)
     num_sections = params[:num_sections].to_i
     (1 .. num_sections).each do |sec_number|
       begin
@@ -24,6 +22,12 @@ class SurveyTemplateController < ApplicationController
       end
     end
     redirect_to "/survey_template"
+  end
+
+  def create_curriculum(params)
+    survey_name = params[:surveyname]
+    @survey_template = Curriculum.new(:name => survey_name)
+    @survey_template.save
   end
 
   def create_question(params, q_name_param)
