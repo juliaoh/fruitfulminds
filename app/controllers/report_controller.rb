@@ -242,6 +242,7 @@ class ReportsController < ApplicationController
         @max = survey_list.compact.max
       end
     end
+  end
 
     @efficacy_chart = Gchart.bar(:size => '500x400', 
                               :title => "Efficacy Survey Results - Agreement(%)",
@@ -347,6 +348,3 @@ class ReportsController < ApplicationController
 
 
 end
-
-
-
