@@ -18,6 +18,8 @@ class Section < ActiveRecord::Base
   def create_and_save_question(options = {})
     question = Question.new(options)
     question.qtype = stype
+    question.section_id = id
     question.save
+    return question
   end
 end

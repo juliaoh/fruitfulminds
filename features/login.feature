@@ -33,8 +33,7 @@ Background: users have been added to database
     And I press "Sign In"
     Then I should be on the portal page
     And I should see "Pending Users"
-    And I should see "Add Pre-Survey Part 1 Results"
-    And I should see "Add Pre-Survey Part 2 Results"
+    And I should see "Add Pre-Survey Results"
     And I should see "Add Post-Survey Results"
     And I should see "Preview Report/Add Ambassador Comments"
 
@@ -51,8 +50,7 @@ Background: users have been added to database
     And I fill in "user_password" with "ambpass"
     And I press "Sign In"
     Then I should be on the portal page
-    And I should see "Add Pre-Survey Part 1 Results"
-    And I should see "Add Pre-Survey Part 2 Results"
+    And I should see "Add Pre-Survey Results"
     And I should see "Add Post-Survey Results"
     And I should see "Preview Report/Add Ambassador Comments"
     And I should not see "Pending Users"
@@ -63,8 +61,7 @@ Background: users have been added to database
     And I fill in "user_password" with "ambpass"
     And I press "Sign In"
     Then I should be on the portal page
-    And I should see "Add Pre-Survey Part 1 Results"
-    And I should see "Add Pre-Survey Part 2 Results"
+    And I should see "Add Pre-Survey Results"
     And I should see "Add Post-Survey Results"
     And I should see "Preview Report/Add Ambassador Comments"
     And I should not see "Pending Users"

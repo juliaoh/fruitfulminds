@@ -23,7 +23,7 @@ class PresurveysController < ApplicationController
       redirect_to portal_path
     rescue ActiveRecord::RecordInvalid
       flash[:warning] = "Results failed to add. Incomplete or has invalid characters."
-      redirect_to new_presurveys_path(:presurvey => params[:presurvey], :efficacy => params[:efficacy])
+      redirect_to new_presurvey_path(:presurvey => params[:presurvey], :efficacy => params[:efficacy])
     end
   end
 
@@ -41,7 +41,7 @@ class PresurveysController < ApplicationController
       redirect_to presurvey_path(:id => params[:id])
     rescue ActiveRecord::RecordInvalid
       flash[:warning] = "Results failed to add. Incomplete or has invalid characters."
-      redirect_to edit_presurveys_path(:presurvey => params[:presurvey], :efficacy => params[:efficacy])
+      redirect_to edit_presurvey_path(:presurvey => params[:presurvey], :efficacy => params[:efficacy])
     end
   end
 

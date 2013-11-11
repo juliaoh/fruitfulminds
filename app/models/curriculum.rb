@@ -5,7 +5,9 @@ class Curriculum < ActiveRecord::Base
 
   def create_and_save_section(options = {})
     section = Section.new(options)
+    section.curriculum_id = id
     section.save
+    return section
   end
 
 end

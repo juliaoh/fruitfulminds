@@ -38,7 +38,7 @@
 
 %table
   %tr
-  - @strengths.each do |key, strength|
+  - @objective_str.each do |key, strength|
     %tr
       %td= strength
 
@@ -46,7 +46,7 @@
 
 %table
   %tr
-  - @weaknesses.each do |key, weakness|
+  - @objective_weak.each do |key, weakness|
     %tr
       %td= weakness
 %p
@@ -60,47 +60,31 @@
 
 %table
   %tr
-  - @sig_increase.each do |agree|
+  - @efficacy_str.each do |q_name, strength|
     %tr
-      %td= agree
-
-%h5= @static_contents[:slight_increase_header]
-
-%table
-  %tr
-  - @slight_increase.each do |agree|
-    %tr
-      %td= agree
+      %td= q_name
 
 %h5= @static_contents[:decrease_header]
 
 %table
   %tr
-  - @sig_decrease.each do |disagree|
+  - @efficacy_weak.each do |q_name, weakness|
     %tr
-      %td= disagree
-
-%h5= @static_contents[:slight_decrease_header]
-
-%table
-  %tr
-  - @slight_decrease.each do |disagree|
-    %tr
-      %td= disagree
+      %td= q_name
 
 %h5= @static_contents[:summary_header]
 
 %table
   %tr
-  - @sig_inc_map.each do |agree|
+  - @efficacy_str.each do |q_name, strength|
     %tr
-      %td= agree
+      %td= strength
 
 %table
   %tr
-  - @sig_dec_map.each do |disagree|
+  - @efficacy_weak.each do |q_name, weakness|
     %tr
-      %td= disagree
+      %td= weakness
 
 
 
