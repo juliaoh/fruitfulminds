@@ -70,6 +70,7 @@ class ReportsController < ApplicationController
     if @presurvey.nil? || @postsurvey.nil?
       flash[:warning] = "Not enough data"
       redirect_to "/reports/new" and return
+    end
     calc_subtotals
     generate_intro_text
     
