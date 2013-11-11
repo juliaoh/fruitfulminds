@@ -72,8 +72,8 @@ Given /the following postsurveys exist/ do |table|
     total
   end
   table.hashes.each do |result|
-    total = result[:total]
-    data = result[:data]
+    total = {1=>25} 
+    data = {1=>{1=>20,2=>18,3=>24,4=>25}}
     Presurvey.create!(:total=>total, :data=>data)
   end
 end
@@ -95,8 +95,8 @@ Given /the following presurveys exist/ do |table|
   end
 
   table.hashes.each do |result|
-    total = result[:total]
-    data = result[:data]
+    total = {1=>25}
+    data = {1=>{1=>10,2=>11,3=>4,4=>9}}
     Presurvey.create!(:total=>total, :data=>data)
   end
 
