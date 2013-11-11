@@ -192,7 +192,7 @@ class ReportsController < ApplicationController
       #helper function
       data.keys.each do |q_id|
         question = Questions.find_by_id(q_id)
-        next if question.type != type #skips if not type: 'Efficacy' or 'Multiple Choice'
+        next if question.qtype != type #skips if not type: 'Efficacy' or 'Multiple Choice'
 
         #value is (ratio of correct answers entered to total number of students) * 100
         value = (data[q_id]/class_total.to_f) * 100
