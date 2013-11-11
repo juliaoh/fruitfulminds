@@ -24,7 +24,10 @@ class CreatePostsurveys < ActiveRecord::Migration
       t.integer :section_6_3
       t.integer :section_6_4
       t.integer :number_students
-
+      t.integer :curriculum_id
+      t.integer :course_id
+      t.text :data
+      t.text :total
       t.timestamps
     end
   end

@@ -7,4 +7,8 @@ class Course < ActiveRecord::Base
   validates :postsurvey_id, :presence => true, :numericality => true
 
   has_and_belongs_to_many :users
+
+  def name
+  	School.find_by_id(school_id).name + " " + semester
+  end
 end

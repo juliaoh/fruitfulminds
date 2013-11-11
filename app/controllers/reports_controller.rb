@@ -59,7 +59,7 @@ class ReportsController < ApplicationController
     @course_total = @course.total_students
     @school = School.find_by_id(@course.school_id)
     @school_name = @school.name
-    @school_semester = @course.school_semester
+    @school_semester = @course.semester
     @main_semester_title = @school_semester + " Report"
     @static_content = StaticContent.first
     @curriculum = Curriculum.find_by_id(@course.curriculum_id)
@@ -67,6 +67,10 @@ class ReportsController < ApplicationController
     #{user_id => {'total' => # of students user is entering data for}}
     @presurvey = Presurvey.find_by_id(@course.presurvey_id)
     @postsurvey = Postsurvey.find_by_id(@course.postsurvey_id)
+    if @presurvey.nil? || @postsurvey.nil?
+      flash[:warning] = "Not enough data"
+      redirect_to "/reports/new" and return
+    end
     calc_subtotals
     generate_intro_text
     
@@ -143,7 +147,7 @@ class ReportsController < ApplicationController
     @objective_weak = objective_str_weak[1]
     @eval_intro_first = "Prior to the 7-week curriculum, a pre-curriculum survey was distributed to assess the students\' knowledge in nutrition; a very similar survey was administered during the final class. The goal of the surveys was to determine the retention of key learning objectives from the Fruitful Minds program."
     @eval_intro_second = "On average, students have shown a #{@efficacy}% improvement after going through seven weeks of classes." 
-    @eval_intro_third = "The survey results are shown below. The first graph shows the average scores in each of the six nutrition topics covered in the curriculum (see graph 1). Note that the number of questions in each category varies. The second graph shows students\' overall performance on the pre-curriculum surveys and post-curriculum survey (see graph 2). #{@school_semester.presurvey_part1s[0].number_students} took the pre-curriculum survey, and #{@school_semester.postsurveys[0].number_students} students took the post-curriculum surveys."
+    @eval_intro_third = "The survey results are shown below. The first graph shows the average scores in each of the six nutrition topics covered in the curriculum (see graph 1). Note that the number of questions in each category varies. The second graph shows students\' overall performance on the pre-curriculum surveys and post-curriculum survey (see graph 2). #{@presurvey_total} took the pre-curriculum survey, and #{@postsurvey_total} students took the post-curriculum surveys."
   end
 
   def generate_pdf

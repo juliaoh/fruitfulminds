@@ -250,7 +250,6 @@ class UsersController < ApplicationController
       params[:disapproves].keys.each do |uid|
         user = User.find_by_id(uid)
         disapproved_users << "#{user.name} "
-        user.destroy
         UserMailer.user_disapproved_email(user).deliver
         delete_pending_user(uid)
       end

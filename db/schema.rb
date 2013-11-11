@@ -104,6 +104,10 @@ ActiveRecord::Schema.define(:version => 20131111035944) do
     t.integer  "section_6_3"
     t.integer  "section_6_4"
     t.integer  "number_students"
+    t.integer  "curriculum_id"
+    t.integer  "course_id"
+    t.text     "data"
+    t.text     "total"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

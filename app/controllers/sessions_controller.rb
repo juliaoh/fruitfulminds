@@ -6,17 +6,9 @@ class SessionsController < ApplicationController
     user = User.where(:email => params[:user][:email]).first
     if user && user.authenticate(params[:user][:password])
       if user.pendingUser?
-        flash[:warning] = %Q{
-          You are not approved yet.\n
-          You will receive an email upon approval/disapproval.}
-        redirect_to login_path and return
+        create_handle_pending_user()
       else
-        session[:user_id] = user.id
-        if user.admin? and !PendingUser.first.nil?
-          redirect_to pending_users_path and return
-        else
-          redirect_to '/portal' and return
-        end
+        create_handle_admin(user)
       end
     else
       flash[:warning] = "Incorrect #{user.nil? ? 'email/' : ''}password! Please try again."
@@ -24,10 +16,26 @@ class SessionsController < ApplicationController
     end
   end
 
+  def create_handle_pending_user()
+    flash[:warning] = %Q{
+          You are not approved yet.\n
+          You will receive an email upon approval/disapproval.}
+    redirect_to login_path and return
+  end
+
+  def create_handle_admin(user)
+    session[:user_id] = user.id
+    if user.admin? and !PendingUser.first.nil?
+      redirect_to pending_users_path and return
+    else
+      redirect_to '/portal' and return
+    end
+  end
+
   def destroy
     reset_session
     redirect_to root_path
   end
-  
+
 
 end
