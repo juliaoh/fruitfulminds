@@ -15,17 +15,12 @@ Background: results are to be added to database
     | email              | password | name         | profile_id | school_semester_id |
     | amirk88@gmail.com  | 123f5    | amir khodaei | 1          |     1     |
 
-  And the following pre-results 1 exist:
-    | school_semester_id | section_1_1 | section_1_2 | section_2_1 | section_2_2 | section_2_3 | section_2_4 | section_3_1 | section_3_1 | section_3_2 | section_3_3 | section_3_4 | section_3_5 | section_3_6 | section_4_1 | section_4_2 |section_4_3 | number_students |
-    |          1         |     3     |     9     |     6     |     7     |      9    |     6     | 4 | 7 | 5 | 4 | 5 | 6 | 8 | 4 | 4 | 5 | 32 |
-    |          6         |     4     |     8     |     5     |     7     |      11   |     6     | 4 | 5 | 7 | 4 | 5 | 5 | 8 | 4 | 6 | 9 | 34 |
-    |          2         |     3     |     8     |     4     |     7     |      9    |     6     | 4 | 9 | 5 | 5 | 5 | 5 | 10 | 4 | 6 | 5 | 11 |
+  And the following pre-results exist:
+    | school_semester_id | section_1_1 | section_1_2 | section_2_1 | section_2_2 | section_2_3 | section_2_4 | section_3_1 | section_3_1 | section_3_2 | section_3_3 | section_3_4 | section_3_5 | section_3_6 | section_4_1 | section_4_2 |section_4_3 | section_5_1 | section_5_2 | section_6_1 | section_6_2 | section_6_3 | section_6_4 | number_students |
+    |          1         |     3     |     9     |     6     |     7     |      9    |     6     | 4 | 7 | 5 | 4 | 5 | 6 | 8 | 4 | 4 | 5 | 4      |      5      |      5      |      7      |      2      |      9 | 32 |
+    |          3         |     4     |     8     |     5     |     7     |      11   |     6     | 4 | 5 | 7 | 4 | 5 | 5 | 8 | 4 | 6 | 9 | 6      |      5      |      8      |      7      |      3      |      9      |  34 |
+    |          2         |     3     |     8     |     4     |     7     |      9    |     6     | 4 | 9 | 5 | 5 | 5 | 5 | 10 | 4 | 6 | 5 | 4      |      7      |      5      |      7      |      9      |     11      |   11 |
 
-  And the following pre-results 2 exist:
-    | school_semester_id | section_5_1 | section_5_2 | section_6_1 | section_6_2 | section_6_3 | section_6_4 | number_students |
-    |         1          |      4      |      5      |      5      |      7      |      2      |      9      |       34        |
-    |         2          |      6      |      5      |      8      |      7      |      3      |      9      |       22        |
-    |         3          |      4      |      7      |      5      |      7      |      9      |     11      |       87        |
 
   And the following post-results exist:
     | school_semester_id | section_1_1 | section_1_2 | section_2_1 | section_2_2 | section_2_3 | section_2_4 | section_3_1 | section_3_1 | section_3_2 | section_3_3 | section_3_4 | section_3_5 | section_3_6 | section_4_1 | section_4_2 |section_4_3 | section_5_1 | section_5_2 | section_6_1 | section_6_2 | section_6_3 | section_6_4 | number_students |
@@ -34,7 +29,7 @@ Background: results are to be added to database
     |     2     | 3  | 2  | 2  | 2  | 2  | 6  | 4  | 6  | 8  | 5  | 6  | 9  | 3  | 1  | 5  | 2   | 5  | 7  | 10  | 11  | 5  | 4   | 11 |
 
   And the following efficacies exist:
-    | postsurvey_id | part2_id | efficacy_1 | efficacy_2 | efficacy_3 | efficacy_4 | efficacy_5 | efficacy_6 | efficacy_7 | efficacy_8 | efficacy_9 | efficacy_10 | number_students |
+    | postsurvey_id | presurvey_id | efficacy_1 | efficacy_2 | efficacy_3 | efficacy_4 | efficacy_5 | efficacy_6 | efficacy_7 | efficacy_8 | efficacy_9 | efficacy_10 | number_students |
     |      1   | nil | 3 | 4 | 4 | 6 | 5 | 4 |4 | 9 | 9| 4 | 22 |
     |      2   | nil | 3 | 4 | 4 | 6 | 5 | 4 |4 | 9 | 9| 4 | 22 |
     |      3   | nil | 3 | 4 | 4 | 6 | 5 | 4 |4 | 9 | 9| 4 | 22 |
@@ -50,21 +45,18 @@ Background: results are to be added to database
   And the following school_semesters exist:
     | school_id |   name   | year |
     |     1     |   Fall   | 2011 |
+    |     1     |   Fall   | 2012 |
+    |     1     |   Fall   | 2013 |
 
   And   I am logged in as amir
   And   I am on the portal page
 
-Scenario: edit existing pre-survey 1 results
-  When  I press "edit_pre_survey_part1_1"
-  Then  I should be on the Edit Pre-Survey Results (Part 1) page for survey 1
-  And   I fill in "presurvey_part1_section_1_1" with "adsfklj"
-  And   I press "Save Changes"
-  Then  I should see "Results failed to add. Incomplete or has invalid characters."
-
-Scenario: edit existing pre-survey 2 results
-  When  I press "edit_pre_survey_part2_1"
-  Then  I should be on the Edit Pre-Survey Results (Part 2) page for survey 1
-  And   I fill in "presurvey_part2_section_5_1" with "bad"
+Scenario: edit existing pre-survey results
+  When  I press "pre_survey_1"
+  Then  I should be on the Show Pre-Survey Results page for survey 1
+  When  I press "Edit Presurvey"
+  Then  I should be on the Edit Pre-Survey Results page for survey 1
+  And   I fill in "presurvey_section_1_1" with "adsfklj"
   And   I press "Save Changes"
   Then  I should see "Results failed to add. Incomplete or has invalid characters."
 
@@ -75,48 +67,33 @@ Scenario: edit existing post-survey results
   And   I press "Save Changes"
   Then  I should see "Results failed to add. Incomplete or has invalid characters."
 
-Scenario: edit existing pre-survey 1 results
-  When  I press "edit_pre_survey_part1_1"
-  Then  I should be on the Edit Pre-Survey Results (Part 1) page for survey 1
-  And   I fill in "presurvey_part1_number_students" with "7"
-  And   I fill in "presurvey_part1_section_1_1" with "7"
-  And   I fill in "presurvey_part1_section_1_2" with "7"
-  And   I fill in "presurvey_part1_section_2_1" with "7"
-  And   I fill in "presurvey_part1_section_2_2" with "7"
-  And   I fill in "presurvey_part1_section_2_3" with "7"
-  And   I fill in "presurvey_part1_section_2_4" with "7"
-  And   I fill in "presurvey_part1_section_3_1" with "7"
-  And   I fill in "presurvey_part1_section_3_2" with "7"
-  And   I fill in "presurvey_part1_section_3_3" with "7"
-  And   I fill in "presurvey_part1_section_3_4" with "7"
-  And   I fill in "presurvey_part1_section_3_5" with "7"
-  And   I fill in "presurvey_part1_section_3_6" with "7"
-  And   I fill in "presurvey_part1_section_4_1" with "7"
-  And   I fill in "presurvey_part1_section_4_2" with "7"
-  And   I fill in "presurvey_part1_section_4_3" with "7"
-  And   I press "Save Changes"
-  Then  I should see "Survey updated successfully."
-
-Scenario: edit existing pre-survey 2 results
-  When  I press "edit_pre_survey_part2_1"
-  Then  I should be on the Edit Pre-Survey Results (Part 2) page for survey 1
-  And   I fill in "presurvey_part2_number_students" with "7"
-  And   I fill in "presurvey_part2_section_5_1" with "7"
-  And   I fill in "presurvey_part2_section_5_2" with "7"
-  And   I fill in "presurvey_part2_section_6_1" with "7"
-  And   I fill in "presurvey_part2_section_6_2" with "7"
-  And   I fill in "presurvey_part2_section_6_3" with "7"
-  And   I fill in "presurvey_part2_section_6_4" with "7"
-  And   I fill in "efficacy_efficacy_1" with "7"
-  And   I fill in "efficacy_efficacy_2" with "7"
-  And   I fill in "efficacy_efficacy_3" with "7"
-  And   I fill in "efficacy_efficacy_4" with "7"
-  And   I fill in "efficacy_efficacy_5" with "7"
-  And   I fill in "efficacy_efficacy_6" with "7"
-  And   I fill in "efficacy_efficacy_7" with "7"
-  And   I fill in "efficacy_efficacy_8" with "7"
-  And   I fill in "efficacy_efficacy_9" with "7"
-  And   I fill in "efficacy_efficacy_10" with "7"
+Scenario: edit existing pre-survey results
+  When  I press "pre_survey_1"
+  Then  I should be on the Show Pre-Survey Results page for survey 1
+  When  I press "Edit Presurvey"
+  Then  I should be on the Edit Pre-Survey Results page for survey 1
+  And   I fill in "presurvey_number_students" with "7"
+  And   I fill in "presurvey_section_1_1" with "7"
+  And   I fill in "presurvey_section_1_2" with "7"
+  And   I fill in "presurvey_section_2_1" with "7"
+  And   I fill in "presurvey_section_2_2" with "7"
+  And   I fill in "presurvey_section_2_3" with "7"
+  And   I fill in "presurvey_section_2_4" with "7"
+  And   I fill in "presurvey_section_3_1" with "7"
+  And   I fill in "presurvey_section_3_2" with "7"
+  And   I fill in "presurvey_section_3_3" with "7"
+  And   I fill in "presurvey_section_3_4" with "7"
+  And   I fill in "presurvey_section_3_5" with "7"
+  And   I fill in "presurvey_section_3_6" with "7"
+  And   I fill in "presurvey_section_4_1" with "7"
+  And   I fill in "presurvey_section_4_2" with "7"
+  And   I fill in "presurvey_section_4_3" with "7"
+  And   I fill in "presurvey_section_5_1" with "7"
+  And   I fill in "presurvey_section_5_2" with "7"
+  And   I fill in "presurvey_section_6_1" with "7"
+  And   I fill in "presurvey_section_6_2" with "7"
+  And   I fill in "presurvey_section_6_3" with "7"
+  And   I fill in "presurvey_section_6_4" with "7"
   And   I press "Save Changes"
   Then  I should see "Survey updated successfully."
 
