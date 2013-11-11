@@ -1,4 +1,5 @@
 <% @subtitle = "Survey Templates" %>
+
 <script>
 $(document).ready(function() {
     $('#add_new_survey_btn').click(function () {
@@ -6,7 +7,7 @@ $(document).ready(function() {
     });
 });
 </script>
-<input type="button" id="add_new_survey_btn" value="Add new survey template" />
+<a id="add_new_survey_btn" href="<%= new_survey_template_path %>">Add new survey</a>
 <hr />
 <% if @survey_template != nil %>
 <%  @survey_template.each do |template| %>
