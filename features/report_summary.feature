@@ -65,7 +65,7 @@ Background: Generate report based on survey results
   And I am on the generate report page
 
   Scenario: See comment textbox on the report summary page
-    Given I select "school1, Fall 2013" from "course"
+    Given I select "school1 Fall 2013" from "course"
     And I press "Generate Report"
     Then I should see summary of the report with static contents
     And I should see "Ambassador Note"
