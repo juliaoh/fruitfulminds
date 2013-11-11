@@ -6,9 +6,9 @@
       $numquestions = $('#snumquestions'+section_num);
       num_questions = parseInt($numquestions.val()) + 1;
       $numquestions.val(num_questions);
-      var new_question = '<div id="q'+section_num+'_'+num_questions+'">Question Name <input id="squestion'+section_num+'_'+num_questions+'" /> <input type="button" id="delquestion'+section_num+'_'+num_questions+'" value="X" /><br />';
-      new_question += 'Strength Message:<br /><textarea name="sstrength'+num_sections+'"></textarea><br />';
-      new_question += 'Weakness Message:<br /><textarea name="sweakness'+num_sections+'"></textarea><br /></div>';
+      var new_question = '<div id="q'+section_num+'_'+num_questions+'">Question Name <input name="s'+section_num+'q'+num_questions+'name'+'" id="squestion'+section_num+'_'+num_questions+'" /> <input type="button" id="delquestion'+section_num+'_'+num_questions+'" value="X" /><br />';
+      new_question += 'Strength Message:<br /><textarea name="s'+section_num+'q'+num_questions+'strength'+'"></textarea><br />';
+      new_question += 'Weakness Message:<br /><textarea name="s'+section_num+'q'+num_questions+'weakness'+'"></textarea><br /></div>';
       var $question = $('td#squestion'+section_num);
       $question.append(new_question);
       $('#delquestion'+section_num+'_'+num_questions).click({snum:section_num, qnum:num_questions}, function (e) {
