@@ -6,4 +6,5 @@ class Presurvey < ActiveRecord::Base
   serialize :data
   serialize :total
 
+  delegate :school_name_and_semester, :to => :school_semester
 end
