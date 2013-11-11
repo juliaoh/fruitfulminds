@@ -74,3 +74,9 @@ Background: users have been added to database
   Scenario: school should be in drop-down menu
     Given I am on the signup page
     Then I should see "school_name" in drop-down menu
+    
+  @javascript
+  Scenario: there should be a Terms of Service link
+    Given I am on the signup page
+    When I follow "Terms of Service"
+    Then I should see the Terms of Service on a new page
