@@ -1,6 +1,6 @@
 - survey.data.each do |user,data|
   - data.each do |q_id, value|
-  	-question = Question.find_by_id(q_id).name
+    -question = Question.find_by_id(q_id).name
     = "#{question}: #{value}"
     %br
 
