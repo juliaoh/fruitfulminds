@@ -1,7 +1,7 @@
 Given /the following users exist/ do |users_table|
   users_table.hashes.each do |user|
 
-    User.create!(:email=>user[:email],:password=>user[:password],:name=>user[:name],:profile_id=>user[:profile_id],:school_semester_id=>user[:school_semester_id],:courses=>[1])
+    User.create!(:email=>user[:email],:password=>user[:password],:name=>user[:name],:profile_id=>user[:profile_id],:school_semester_id=>user[:school_semester_id],:courses=>[Course.find_by_id(1)])
   end
 end
 

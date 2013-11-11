@@ -11,16 +11,6 @@ Background: Generate report based on survey results
     | admin      |
     | ambassador |
 
-  And the following users exist:
-    | email              | password | name         | profile_id | school_semester_id |
-    | amirk88@gmail.com  | 123f5    | amir khodaei | 1          |     1              |
-    | john@gmail.com     | 12345    | john smith   | 1          |     2              |
-
-  And the following schools exist:
-    | name    | county  | city     | district |
-    | school1 | Alameda | Berkeley | district |
-    | school2 | Rowland | Rowland  | district |
-
   And the following curriculum exist:
     | name        |
     | curriculum1 |
@@ -28,10 +18,6 @@ Background: Generate report based on survey results
   And the following MC sections exist:
     | name     | objective            | stype           | curriculum_id |
     | section1 | test objective       | Multiple Choice | 1             |
-
-  And the following Efficacy sections exist:
-    | name     | stype           | curriculum_id |  
-    | section2 | Efficacy        | 1             |
 
   And the following questions exist:
     | name     | qtype           | msg1            | msg2         | section_id |
@@ -52,6 +38,17 @@ Background: Generate report based on survey results
   And the following courses exist:
     | school_id | semester    | curriculum_id | total_students  | presurvey_id | postsurvey_id |
     | 1         | Fall 2013   | 1             | 25              | 1            | 1             |
+
+  And the following users exist:
+    | email              | password | name         | profile_id | school_semester_id |
+    | amirk88@gmail.com  | 123f5    | amir khodaei | 1          |     1              |
+    | john@gmail.com     | 12345    | john smith   | 1          |     2              |
+
+  And the following schools exist:
+    | name    | county  | city     | district |
+    | school1 | Alameda | Berkeley | district |
+    | school2 | Rowland | Rowland  | district |
+
 
   And the following school_semesters exist:
     | school_id | name | year |
