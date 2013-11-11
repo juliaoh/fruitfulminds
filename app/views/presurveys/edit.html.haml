@@ -1,9 +1,8 @@
 - @subtitle = "Edit Pre-Survey Results (Part 1)"
-- section_and_num_questions = {1 => 2, 2 => 4, 3 => 6, 4 => 3}
 
 %span
-  = form_for @presurvey_part1_fields, :url => {:action => :update}, :html => {:class => "form_to_validate"} do |f|
+  = form_for @presurvey_fields, :url => {:action => :update}, :html => {:class => "form_to_validate"} do |f|
     = render :partial => "admin/schools"
-    = render :partial => "presurveys/sections", :locals => {:f => f, :section_and_num_questions => section_and_num_questions}
+    = render :partial => "presurveys/sections", :locals => {:f => f}
     #submit
       = submit_tag 'Save Changes'

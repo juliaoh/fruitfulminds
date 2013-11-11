@@ -1,7 +1,5 @@
-= label "number_students", "Number of Students"
-= f.text_field "number_students", :class => "numeric_input_field"
-- section_and_num_questions.each do |section,questions|
-  - questions.times do |i|
-    = f.label "section_#{section}_#{i + 1}", "Section #{section} Number #{i + 1}"
-    = f.text_field "section_#{section}_#{i + 1}", :class => "numeric_input_field"
-    %br
+- @presurvey_fields.data.each do |question, result|
+  = f.label "#{question}", "#{question}"
+  = f.text_field "#{question}", :value=>result, :class => "numeric_input_field", :style => "text-align: Right;"
+  %br
+
