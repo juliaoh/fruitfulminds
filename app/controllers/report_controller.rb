@@ -180,6 +180,7 @@ class ReportsController < ApplicationController
       survey_hash.values.each do |value|
         survey_list.push(value)
         combined_list[0] += value
+      end
       data.push(survey_list)
       combined_data.push(combined_list)
       if survey_list.compact.max > @max
@@ -237,12 +238,12 @@ class ReportsController < ApplicationController
       survey_list = []
       survey_hash.values.each do |value|
         survey_list.push(value)
+      end
       data.push(survey_list)
       if survey_list.compact.max > @max
         @max = survey_list.compact.max
       end
     end
-  end
 
     @efficacy_chart = Gchart.bar(:size => '500x400', 
                               :title => "Efficacy Survey Results - Agreement(%)",
