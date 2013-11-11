@@ -27,7 +27,7 @@ Given /the following curriculum exist/ do |table|
 end
 
 
-Given /the following sections exist/ do |table|
+Given /the following MC sections exist/ do |table|
   table.hashes.each do |result|
     name = result[:name]
     objective = result[:objective]
@@ -49,4 +49,57 @@ Given /the following questions exist/ do |table|
   end
 end
 
+Given /the following Efficacy sections exist/ do |table|
+  table.hashes.each do |result|
+    name = result[:name]
+    stype = result[:stype]
+    curriculum_id = result[:curriculum_id]
+    Section.create!(:name=>name,:stype=>stype,:curriculum_id=>curriculum_id)
+  end
+end
 
+Given /the following postsurveys exist/ do |table|
+  table.map_column!('data') do |data|
+    if data == 'POSTSURVEY_DATA'
+      data = {1=>{1=>20,2=>18,3=>24,4=>25}}
+    end
+    data
+  end
+  table.map_column!('total') do |total|
+    if total == 'POSTSURVEY_TOTAL'
+      total = {1=>25}
+    end
+    total
+  end
+  table.hashes.each do |result|
+    total = result[:total]
+    data = result[:data]
+    Presurvey.create!(:total=>total, :data=>data)
+  end
+end
+
+Given /the following presurveys exist/ do |table|
+  table.map_column!('data') do |data|
+    if data == 'PRESURVEY_DATA'
+      data = {1=>{1=>10,2=>11,3=>4,4=>9}}
+    end
+    data
+  end
+
+
+  table.map_column!('total') do |total|
+    if total == 'PRESURVEY_TOTAL'
+      total = {1=>25}
+    end
+    total
+  end
+
+  table.hashes.each do |result|
+    total = result[:total]
+    data = result[:data]
+    Presurvey.create!(:total=>total, :data=>data)
+  end
+
+
+end
+    
