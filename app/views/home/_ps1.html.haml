@@ -1,5 +1,0 @@
-- survey.attributes.each do |k,v|
-  - if k[/section/]
-    = "Section #{k.split('_')[1]} Number #{k.split('_')[2]}: #{v}"
-    %br
-= button_to "Show Pre-Survey 1", presurveys_part1_path(survey), :method => :get, :id => "pre_survey_part1_#{survey.id}"

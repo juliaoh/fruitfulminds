@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(:version => 20131110205957) do
   end
 
   create_table "efficacies", :force => true do |t|
+    t.integer  "presurvey_id"
     t.integer  "postsurvey_id"
-    t.integer  "part2_id"
     t.integer  "efficacy_1"
     t.integer  "efficacy_2"
     t.integer  "efficacy_3"
@@ -104,9 +104,8 @@ ActiveRecord::Schema.define(:version => 20131110205957) do
     t.datetime "updated_at"
   end
 
-  create_table "presurvey_part1s", :force => true do |t|
+  create_table "presurveys", :force => true do |t|
     t.integer  "school_semester_id"
-    t.integer  "number_students"
     t.integer  "section_1_1"
     t.integer  "section_1_2"
     t.integer  "section_2_1"
@@ -122,19 +121,14 @@ ActiveRecord::Schema.define(:version => 20131110205957) do
     t.integer  "section_4_1"
     t.integer  "section_4_2"
     t.integer  "section_4_3"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "presurvey_part2s", :force => true do |t|
-    t.integer  "school_semester_id"
-    t.integer  "number_students"
     t.integer  "section_5_1"
     t.integer  "section_5_2"
     t.integer  "section_6_1"
     t.integer  "section_6_2"
     t.integer  "section_6_3"
     t.integer  "section_6_4"
+    t.integer  "number_students"
+    t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
