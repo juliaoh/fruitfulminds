@@ -56,7 +56,7 @@ Scenario: edit existing pre-survey results
   Then  I should be on the Show Pre-Survey Results page for survey 1
   When  I press "Edit Presurvey"
   Then  I should be on the Edit Pre-Survey Results page for survey 1
-  And   I fill in "presurvey_section_1_1" with "adsfklj"
+  And   I fill in "number_students" with "adsfklj"
   And   I press "Save Changes"
   Then  I should see "Results failed to add. Incomplete or has invalid characters."
 
