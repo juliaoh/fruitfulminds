@@ -1,11 +1,10 @@
 class Course < ActiveRecord::Base
   validates :semester, :presence => true
   validates :total_students, :presence => true
+  validates :school_id, :presence => true, :numericality => true
+  validates :curriculum_id, :presence => true, :numericality => true
+  validates :presurvey_id, :presence => true, :numericality => true
+  validates :postsurvey_id, :presence => true, :numericality => true
 
-  belongs_to :school
-  has_one :curriculum
-  has_one :presurvey
-  has_one :postsurvey
-  has_many :users
-
+  has_and_belongs_to_many :users
 end
