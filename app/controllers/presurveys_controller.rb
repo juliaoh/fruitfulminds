@@ -29,7 +29,7 @@ class PresurveysController < ApplicationController
 
   def edit
     @presurvey_fields = Presurvey.find(params[:id])
-    @efficacy_fields = Efficacy.find_id(@presurvey_fields.id)
+    @efficacy_fields = Efficacy.find_by_presurvey_id(@presurvey_fields.id)
   end
   
   def update
@@ -38,7 +38,7 @@ class PresurveysController < ApplicationController
       Efficacy.find_by_presurvey_id(params[:id]).update_attributes!(:number_students => params[:presurvey][:number_students])
       Efficacy.find_by_presurvey_id(params[:id]).update_attributes!(params[:efficacy])
       flash[:notice] = "Survey updated successfully."
-      redirect_to presurveys_path(:id => params[:id])
+      redirect_to presurvey_path(:id => params[:id])
     rescue ActiveRecord::RecordInvalid
       flash[:warning] = "Results failed to add. Incomplete or has invalid characters."
       redirect_to edit_presurveys_path(:presurvey => params[:presurvey], :efficacy => params[:efficacy])
@@ -47,6 +47,5 @@ class PresurveysController < ApplicationController
 
   def show
     @presurvey_fields = Presurvey.find(params[:id])
-    @survey_id = params[:id]
   end
 end
