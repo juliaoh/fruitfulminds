@@ -23,16 +23,16 @@ Background: results are to be added to database
     | school_id | name | year |
     |     1     | Fall | 2011 |
 
-  And the following survey exist:
-    | survey_name   |
-    | post_survey 1 |
-    | post_survey 2 |
+  And the following curriculum exist:
+    | name        |
+    | curriculum1 |
+    | curriculum2 |
     
   And the following questions exist:
-    | survey_name   |   question_name  |       type       |
-    | post_survey 1 |      q1          |    correctness   |  
-    | post_survey 1 |      q2          |    correctness   |
-    | post_survey 1 |      q3          |    correctness   |
+    | name      |   qtype     |  msg1   |  msg2  |
+    | question1 |   Efficacy  |    A    |   D    |
+    | question2 |   Efficacy  |    B    |   E    |
+    | question3 |   Efficacy  |    C    |   F    |
 
 
   And   I am logged in as amir
