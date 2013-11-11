@@ -11,15 +11,20 @@ Background: Generate report based on survey results
     | admin      |
     | ambassador |
 
+  And the following schools exist:
+    | name    | county  | city     | district |
+    | school1 | Alameda | Berkeley | district |
+    | school2 | Rowland | Rowland  | district |
+
+  And the following school_semesters exist:
+    | school_id | name | year |
+    | 1         | Fall | 2011 |
+    
   And the following users exist:
     | email              | password | name         | profile_id | school_semester_id |
     | amirk88@gmail.com  | 123f5    | amir khodaei | 1          |     1              |
     | john@gmail.com     | 12345    | john smith   | 1          |     2              |
 
-  And the following schools exist:
-    | name    | county  | city     | district |
-    | school1 | Alameda | Berkeley | district |
-    | school2 | Rowland | Rowland  | district |
 
   And the following curriculum exist:
     | name        |
@@ -69,9 +74,6 @@ Background: Generate report based on survey results
     |      1   | nil | 3 | 4 | 4 | 6 | 5 | 4 |4 | 9 | 9| 4 | 22 |
     |      nil |  1  | 5 | 4 | 5 | 6 | 5 | 7 |4 | 10 | 9| 6 | 22 |
 
-  And the following school_semesters exist:
-    | school_id | name | year |
-    | 1         | Fall | 2011 |
 
   And the following static content exists:
     | intro_title | introduction | objectives_title | strength_weakness_intro | strength_intro | weakness_intro | eval_title | summary |
