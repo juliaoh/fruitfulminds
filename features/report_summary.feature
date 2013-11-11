@@ -12,9 +12,9 @@ Background: Generate report based on survey results
     | ambassador |
 
   And the following users exist:
-    | email              | password | name         | profile_id | school_semester_id |
-    | amirk88@gmail.com  | 123f5    | amir khodaei | 1          |     1     |
-    | john@gmail.com     | 12345    | john smith   | 1          |     2     |
+    | email              | password | name         | profile_id | school_semester_id | courses |
+    | amirk88@gmail.com  | 123f5    | amir khodaei | 1          |     1              |         |
+    | john@gmail.com     | 12345    | john smith   | 1          |     2              |         |
 
   And the following schools exist:
     | name    | county  | city     | district |
@@ -37,12 +37,20 @@ Background: Generate report based on survey results
     | S2Q1     | Efficacy        | S2Q1 strong ef  | S2Q1 weak ef | 2          |
     | S2Q2     | Efficacy        | S2Q2 strong ef  | S2Q2 weak ef | 2          |
 
-  And the following courses exist:
-    | school_id | semester    | curriculum_id | total_students  |
-    | 1         | Fall 2013   | 1             | 25              |
+  And the following presurveys exist:
+    | curriculum_id |   data     |    total   |
+    | 1             |            |            |
 
-  And the following pre-results exist:
-    | course_id | 
+  And the following postsurveys exist:
+    | curriculum_id | data       |   total    |
+    | 1             |            |            |
+    
+
+
+  And the following courses exist:
+    | school_id | semester    | curriculum_id | total_students  | presurvey_id | postsurvey_id |
+    | 1         | Fall 2013   | 1             | 25              | 1            | 1             |
+
 
   And the following pre-results 1 exist:
     | school_semester_id | section_1_1 | section_1_2 | section_2_1 | section_2_2 | section_2_3 | section_2_4 | section_3_1 | section_3_2 | section_3_3 | section_3_4 | section_3_5 | section_3_6 | section_4_1 | section_4_2 | section_4_3 | number_students |
