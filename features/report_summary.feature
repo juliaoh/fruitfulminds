@@ -12,7 +12,7 @@ Background: Generate report based on survey results
     | ambassador |
 
   And the following users exist:
-    | email              | password | name         | profile_id | school_semester_id | course_id |
+    | email              | password | name         | profile_id | school_semester_id | courses |
     | amirk88@gmail.com  | 123f5    | amir khodaei | 1          |     1              | 1         |
     | john@gmail.com     | 12345    | john smith   | 1          |     2              | 1         |
 

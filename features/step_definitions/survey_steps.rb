@@ -48,3 +48,5 @@ Given /the following questions exist/ do |table|
     Question.create!(:name=>name, :qtype=>qtype, :msg1=>msg1, :msg2=>msg2, :section_id=>section_id)
   end
 end
+
+
