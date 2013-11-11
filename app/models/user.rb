@@ -38,6 +38,16 @@ class User < ActiveRecord::Base
     user_schools
   end
 
+  def courses
+    user_courses = []
+    if admin?
+      user_courses = Course.all
+    else
+      #set user_courses to be the users' courses
+    end
+    user_courses
+  end
+
   def pendingUser?
     if PendingUser.find_by_user_id(id); true
     else; false; end
