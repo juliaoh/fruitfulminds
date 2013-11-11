@@ -26,9 +26,9 @@ Background: Generate report based on survey results
     | curriculum1 |
 
   And the following sections exist:
-    | name     | objective      | stype           | curriculum_id |
-    | section1 | test objective | Multiple Choice | 1             |
-    | section2 |                | Efficacy        | 1             |
+    | name     | objective            | stype           | curriculum_id |
+    | section1 | test objective       | Multiple Choice | 1             |
+    | section2 | should not see this  | Efficacy        | 1             |
 
   And the following questions exist:
     | name     | qtype           | msg1            | msg2         | section_id |
