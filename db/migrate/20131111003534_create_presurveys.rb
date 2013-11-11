@@ -1,8 +1,7 @@
-class CreatePresurveyPart1s < ActiveRecord::Migration
+class CreatePresurveys < ActiveRecord::Migration
   def change
-    create_table :presurvey_part1s do |t|
+    create_table :presurveys do |t|
       t.references :school_semester
-      t.integer :number_students
       t.integer :section_1_1
       t.integer :section_1_2
       t.integer :section_2_1
@@ -18,6 +17,14 @@ class CreatePresurveyPart1s < ActiveRecord::Migration
       t.integer :section_4_1
       t.integer :section_4_2
       t.integer :section_4_3
+      t.integer :section_5_1
+      t.integer :section_5_2
+      t.integer :section_6_1
+      t.integer :section_6_2
+      t.integer :section_6_3
+      t.integer :section_6_4
+      t.integer :number_students
+      t.text :data
 
       t.timestamps
     end

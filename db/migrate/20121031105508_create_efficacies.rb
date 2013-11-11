@@ -1,8 +1,8 @@
 class CreateEfficacies < ActiveRecord::Migration
   def change
     create_table :efficacies do |t|
+      t.references :presurvey
       t.references :postsurvey
-      t.integer :part2_id
       t.integer :efficacy_1
       t.integer :efficacy_2
       t.integer :efficacy_3

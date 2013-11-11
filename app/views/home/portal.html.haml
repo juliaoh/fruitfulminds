@@ -17,9 +17,7 @@
   |
   = link_to("Cumulative Reports", all_efficacies_path)
   |
-= link_to "Add Pre-Survey Part 1 Results", new_presurveys_part1_path
-| 
-= link_to "Add Pre-Survey Part 2 Results", new_presurveys_part2_path
+= link_to "Add Pre-Survey Results", new_presurvey_path
 | 
 = link_to "Add Post-Survey Results", new_postsurvey_path
 | 
@@ -36,29 +34,21 @@
 %table.table
   %thead
     %tr
-      %th Pre-Survey Part 1
-      %th Pre-Survey Part 2
+      %th Pre-Surveys
       %th Post-Surveys
   %tbody
     %tr
       %td
         - if @current_user.admin?
-          - Presurvey::Part1.all.each do |survey|
-            = render :partial => "ps1", :locals => {:survey => survey}
+          - Presurvey.all.each do |survey|
+            = render :partial => "pre", :locals => {:survey => survey}
         - else
-          - @current_user.presurvey_part1s.each do |survey|
-            = render :partial => "ps1", :locals => {:survey => survey}
-      %td
-        - if @current_user.admin?
-          - Presurvey::Part2.all.each do |survey|
-            = render :partial => "ps2", :locals => {:survey => survey}
-        - else
-          - @current_user.presurvey_part2s.each do |survey|
-            = render :partial => "ps2", :locals => {:survey => survey}
+          - @current_user.presurveys.each do |survey|
+            = render :partial => "pre", :locals => {:survey => survey}
       %td
         - if @current_user.admin?
           - Postsurvey.all.each do |survey|
-            = render :partial => "ps", :locals => {:survey => survey}
+            = render :partial => "pos", :locals => {:survey => survey}
         - else
           - @current_user.postsurveys.each do |survey|
-            = render :partial => "ps", :locals => {:survey => survey}
+            = render :partial => "pos", :locals => {:survey => survey}
