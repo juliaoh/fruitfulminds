@@ -67,6 +67,13 @@ class ReportsController < ApplicationController
     #{user_id => {'total' => # of students user is entering data for}}
     @presurvey = Presurvey.find_by_id(@course.presurvey_id)
     @postsurvey = Postsurvey.find_by_id(@course.postsurvey_id)
+    calc_subtotals
+    generate_intro_text
+    
+
+  end
+
+  def calc_subtotals
     @presurvey_total = 0
     @postsurvey_total = 0
     @presurvey.total.values.each do |subtotal|
@@ -76,11 +83,8 @@ class ReportsController < ApplicationController
     @postsurvey.total.values.each do |subtotal|
       @postsurvey_total += subtotal
     end
-    generate_intro_text
-    
 
   end
-
 
   def generate_intro_text
     @ambassadors = ""
@@ -90,27 +94,7 @@ class ReportsController < ApplicationController
 
     @college = User.find_by_id(@course.users[0]).college.name
 
-    @main_title = "Fruitful Minds #{@school_name} #{@school_semester} Report"
-    @school_intro_title = "Fruitful Minds at #{@school_name}"
-    @school_intro = "Fruitful Minds held a nutrition lesson series at #{@school_name} during #{@school_semester}" 
-    @school_intro_second = "    #{@course.users.size} students from #{@college} #{was_were(@course.users.size)} selected as Fruitful Minds ambassadors"
-    @school_intro_third = "    During each 50-minute lesson, class facilitators delivered the curriculum material through lectures, games, and various interactive activities."
-    @strength_weakness_title = "Strengths and Weaknesses of FM Lessons at #{@school_name}"
-    efficacy_data = generate_data('Efficacy')
-    efficacy_str_weak = generate_strengths(efficacy_data)
-    generate_efficacy_graph(efficacy_data)
-    @efficacy_str = efficacy_str_weak[0] #hash {q_name => msg}
-    @efficacy_weak = efficacy_str_weak[1]
-    objective_data = generate_data('Multiple Choice')
-    generate_objective_graph(objective_data)
-    objective_str_weak = generate_strengths(objective_data)
-    @objective_str = objective_str_weak[0]
-    @objective_weak = objective_str_weak[1]
-    @eval_intro_first = "Prior to the 7-week curriculum, a pre-curriculum survey was distributed to assess the students\' knowledge in nutrition; a very similar survey was administered during the final class. The goal of the surveys was to determine the retention of key learning objectives from the Fruitful Minds program."
-    @eval_intro_second = "On average, students have shown a #{@efficacy}% improvement after going through seven weeks of classes." 
-    @eval_intro_third = "The survey results are shown below. The first graph shows the average scores in each of the six nutrition topics covered in the curriculum (see graph 1). Note that the number of questions in each category varies. The second graph shows students\' overall performance on the pre-curriculum surveys and post-curriculum survey (see graph 2). #{@school_semester.presurvey_part1s[0].number_students} took the pre-curriculum survey, and #{@school_semester.postsurveys[0].number_students} students took the post-curriculum surveys."
-
-    @ambassadorNoteTitle = "Ambassador Notes: "
+    
     #@objectives is a hash of
     #Section name => objective description
     @objectives = {}
@@ -131,9 +115,36 @@ class ReportsController < ApplicationController
 
     @improvement_intro = "#{@presurvey_total} students took the pre-curriculum survey and #{@postsurvey_total} students took the post-curriculum survey. These were not necessarily the same students. However, on average, students showed significant increases in their agreement that they could"
   
+  end
+
+  def assign_titles
+    @main_title = "Fruitful Minds #{@school_name} #{@school_semester} Report"
+    @school_intro_title = "Fruitful Minds at #{@school_name}"
+    @school_intro = "Fruitful Minds held a nutrition lesson series at #{@school_name} during #{@school_semester}" 
+    @school_intro_second = "    #{@course.users.size} students from #{@college} #{was_were(@course.users.size)} selected as Fruitful Minds ambassadors"
+    @school_intro_third = "    During each 50-minute lesson, class facilitators delivered the curriculum material through lectures, games, and various interactive activities."
+    @strength_weakness_title = "Strengths and Weaknesses of FM Lessons at #{@school_name}"
+    assign_efficacy_titles
+
+    @ambassadorNoteTitle = "Ambassador Notes: "
 
   end
 
+  def assign_efficacy_titles
+    efficacy_data = generate_data('Efficacy')
+    efficacy_str_weak = generate_strengths(efficacy_data)
+    generate_efficacy_graph(efficacy_data)
+    @efficacy_str = efficacy_str_weak[0] #hash {q_name => msg}
+    @efficacy_weak = efficacy_str_weak[1]
+    objective_data = generate_data('Multiple Choice')
+    generate_objective_graph(objective_data)
+    objective_str_weak = generate_strengths(objective_data)
+    @objective_str = objective_str_weak[0]
+    @objective_weak = objective_str_weak[1]
+    @eval_intro_first = "Prior to the 7-week curriculum, a pre-curriculum survey was distributed to assess the students\' knowledge in nutrition; a very similar survey was administered during the final class. The goal of the surveys was to determine the retention of key learning objectives from the Fruitful Minds program."
+    @eval_intro_second = "On average, students have shown a #{@efficacy}% improvement after going through seven weeks of classes." 
+    @eval_intro_third = "The survey results are shown below. The first graph shows the average scores in each of the six nutrition topics covered in the curriculum (see graph 1). Note that the number of questions in each category varies. The second graph shows students\' overall performance on the pre-curriculum surveys and post-curriculum survey (see graph 2). #{@school_semester.presurvey_part1s[0].number_students} took the pre-curriculum survey, and #{@school_semester.postsurveys[0].number_students} students took the post-curriculum surveys."
+  end
 
   def generate_pdf
     if not params[:amb_note].blank?
@@ -157,20 +168,7 @@ class ReportsController < ApplicationController
   end
 
 
-
-
-  def generate_objective_graph(data_list)
-    #data_list is a list of hashes [{presurvey},{postsurvey}]
-    #hashes are {q_id => value}
-
-    axes = []
-    labels = ""
-    @objectives.keys.each do |section_name|
-      axes.push(section_name)
-      labels += section_name+"|"
-    end
-    labels.chomp('|')
-
+  def format_objective_data(data_list)
     data = []
     combined_data = []
     @max = 0
@@ -191,8 +189,27 @@ class ReportsController < ApplicationController
         @combined_max = combined_list.compact.max
       end
     end
-    
+    return data, combined_data
+
+  end
+
+  def generate_objective_graph(data_list)
+    #data_list is a list of hashes [{presurvey},{postsurvey}]
+    #hashes are {q_id => value}
+
+    axes = []
+    labels = ""
+    @objectives.keys.each do |section_name|
+      axes.push(section_name)
+      labels += section_name+"|"
+    end
+    labels.chomp('|')
+
+    data = []
+    combined_data = []
+    data, combined_data = format_objective_data(data_list)
     @improvement = combined_data[1] - combined_data[0]
+
     @nutrition_chart = Gchart.bar(:size => '1000x300', 
                                 :title => "Average Survey Score in Six Nutrition Topics",
                                 :legend => ['Pre', 'Post'],
