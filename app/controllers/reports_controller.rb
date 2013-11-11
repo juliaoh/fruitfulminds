@@ -94,6 +94,30 @@ class ReportsController < ApplicationController
 
     @college = User.find_by_id(@course.users[0]).college.name
 
+    
+    #@objectives is a hash of
+    #Section name => objective description
+    @objectives = {}
+    @curriculum.sections.each do |section_id|
+      section = Section.find_by_id(section_id)
+      section_name = section.name
+      section_objective = section.objective
+      if section.stype != 'Efficacy'
+        @objectives[section_name] = section.objective
+      end
+    end
+
+    @objectivesTable = @objectives.map do |section_name, objective|
+      [
+      section_name, objective
+      ]
+    end
+
+    @improvement_intro = "#{@presurvey_total} students took the pre-curriculum survey and #{@postsurvey_total} students took the post-curriculum survey. These were not necessarily the same students. However, on average, students showed significant increases in their agreement that they could"
+  
+  end
+
+  def assign_titles
     @main_title = "Fruitful Minds #{@school_name} #{@school_semester} Report"
     @school_intro_title = "Fruitful Minds at #{@school_name}"
     @school_intro = "Fruitful Minds held a nutrition lesson series at #{@school_name} during #{@school_semester}" 
@@ -115,26 +139,6 @@ class ReportsController < ApplicationController
     @eval_intro_third = "The survey results are shown below. The first graph shows the average scores in each of the six nutrition topics covered in the curriculum (see graph 1). Note that the number of questions in each category varies. The second graph shows students\' overall performance on the pre-curriculum surveys and post-curriculum survey (see graph 2). #{@school_semester.presurvey_part1s[0].number_students} took the pre-curriculum survey, and #{@school_semester.postsurveys[0].number_students} students took the post-curriculum surveys."
 
     @ambassadorNoteTitle = "Ambassador Notes: "
-    #@objectives is a hash of
-    #Section name => objective description
-    @objectives = {}
-    @curriculum.sections.each do |section_id|
-      section = Section.find_by_id(section_id)
-      section_name = section.name
-      section_objective = section.objective
-      if section.stype != 'Efficacy'
-        @objectives[section_name] = section.objective
-      end
-    end
-
-    @objectivesTable = @objectives.map do |section_name, objective|
-      [
-      section_name, objective
-      ]
-    end
-
-    @improvement_intro = "#{@presurvey_total} students took the pre-curriculum survey and #{@postsurvey_total} students took the post-curriculum survey. These were not necessarily the same students. However, on average, students showed significant increases in their agreement that they could"
-  
 
   end
 
@@ -202,7 +206,7 @@ class ReportsController < ApplicationController
     combined_data = []
     data, combined_data = format_objective_data(data_list)
     @improvement = combined_data[1] - combined_data[0]
-    
+
     @nutrition_chart = Gchart.bar(:size => '1000x300', 
                                 :title => "Average Survey Score in Six Nutrition Topics",
                                 :legend => ['Pre', 'Post'],
