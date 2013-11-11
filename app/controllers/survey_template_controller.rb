@@ -1,7 +1,7 @@
 class SurveyTemplateController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:create]
   def index
-    @survey_template = Curriculum.all
+    @survey_templates = Curriculum.all
   end
   def new
   end
