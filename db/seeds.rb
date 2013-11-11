@@ -43,6 +43,16 @@ SchoolSemester.create!({:school_id => 11, :name => "Fall", :year => 2012})
 SchoolSemester.create!({:school_id => 12, :name => "Fall", :year => 2012})
 SchoolSemester.create!({:school_id => 13, :name => "Fall", :year => 2012})
 
+
+Curriculum.create!({:name=>'Test Curriculum 1'})
+Section.create!({:name=>'Section 1',:stype=>'Multiple Choice',:objective=>'Section 1 objective', :curriculum_id=>1})
+Section.create!({:name=>'Section 2', :stype=>'Efficacy', :curriculum_id=>1})
+Question.create!({:name=>'S1Q1',:qtype=>'Multiple Choice',:msg1=>'S1Q1 stronk',:msg2=>'S1Q1 weaaak', :section_id=>1})
+Question.create!({:name=>'S1Q2',:qtype=>'Multiple Choice',:msg1=>'S1Q2 stronk',:msg2=>'S1Q2 weaaak', :section_id=>1})
+Question.create!({:name=>'S2Q1',:qtype=>'Efficacy',:msg1=>'S2Q1 stronk',:msg2=>'S2Q1 weaaak', :section_id=>2})
+
+Course.create!({:semester =>"Fall 2013", :total_students=>25, :school_id=>2, :curriculum_id=>1, :presurvey_id=>1, :postsurvey_id=>1})
+
 StaticContent.create!({
                    :intro_title => "Intro to Fruitful Minds",
                    :introduction => "Fruitful Minds is a start up, non-profit organization providing nutrition education to youth at greatest risk for obesity and related illnesses.  The program recruits young people with a passion for health and education from local colleges and universities like UC Berkeley to develop curriculum and instruct children through classroom presentation, after school sports programs and summer camps.  While many nutrition programs exist today, Fruitful Minds is unique in its targeting of at-risk youth, customized approach and use of college students to deliver the program.  The goal of Fruitful Minds is to identify elementary schools, middle schools, and community centers where a nutrition education component is lacking and partner with existing sports, cooking or gardening programs to form a complete education focused on ending the escalating rate of obesity among at-risk youth.",
