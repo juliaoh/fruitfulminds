@@ -1,0 +1,14 @@
+- @subtitle = "Pre-Survey Results (Part 1)"
+
+%span
+  = form_for @presurvey_fields, :url => {:action => :update}, :html => {:class => "form_to_validate"} do |f|
+    %table
+      %tbody
+        %tr
+          %td{:style => "width: 100px; text-align: center;"}
+            %p Question
+          %td{:style => "width: 100px; text-align: center;"}
+            %p= @current_user.name
+        = render :partial => "presurveys/viewer", :locals => {:f => f}
+
+= button_to "Edit Presurvey", edit_presurvey_path(@presurvey_fields.id), :method => :get, :id => @presurvey_fields.id

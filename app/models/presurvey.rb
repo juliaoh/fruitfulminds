@@ -1,5 +1,9 @@
-module Presurvey
-  def self.table_name_prefix
-    'presurvey_'
-  end
+class Presurvey < ActiveRecord::Base
+  has_many :efficacy, :dependent => :destroy
+  belongs_to :user
+  belongs_to :school_semester
+  serialize :data
+  validates_presence_of :school_semester_id
+
+  delegate :school_name_and_semester, :to => :school_semester
 end
