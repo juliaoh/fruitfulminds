@@ -67,6 +67,9 @@ class ReportsController < ApplicationController
     #{user_id => {'total' => # of students user is entering data for}}
     @presurvey = Presurvey.find_by_id(@course.presurvey_id)
     @postsurvey = Postsurvey.find_by_id(@course.postsurvey_id)
+    if @presurvey.nil? || @postsurvey.nil?
+      flash[:warning] = "Not enough data"
+      redirect_to "/reports/new" and return
     calc_subtotals
     generate_intro_text
     
