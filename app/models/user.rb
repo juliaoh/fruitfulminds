@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   belongs_to :profile
   belongs_to :school_semester
 
+  has_and_belongs_to_many :courses
+
   has_many :presurveys, :through => :school_semester
   has_many :efficacies, :through => :presurveys
   has_many :postsurveys, :through => :school_semester
@@ -36,6 +38,16 @@ class User < ActiveRecord::Base
       user_schools << school if !school.nil?
     end
     user_schools
+  end
+
+  def courses
+    user_courses = []
+    if admin?
+      user_courses = Course.all
+    else
+      user_courses = courses
+    end
+    user_courses
   end
 
   def pendingUser?
