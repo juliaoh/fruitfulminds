@@ -16,14 +16,14 @@
 class ReportsController < ApplicationController
   def new
     #New report page should only list the classes that the ambassador is part of
-    @classes = @current_user.classes
+    @courses = @current_user.courses
 
   end
 
   def create
     #user selects which class to generate a report for
-    @class = Class.find_by_id(params[:class])
-    #@report = Report.create!(:class_id => @class.id)
+    @course = Course.find_by_id(params[:course])
+    #@report = Report.create!(:course_id => @course.id)
     generate_report
   end
 
@@ -40,32 +40,33 @@ class ReportsController < ApplicationController
   end
 
   def generate_report
-    if (defined?(@class)).nil?
-      flash[:warning] = "@class is not defined"
+    if (defined?(@course)).nil?
+      flash[:warning] = "@course is not defined"
       return
     end
 
-    #A class is uniquely defined by 
+    #A course is uniquely defined by 
     #1) School ID (number)
     #2) Semester (string)
     #3) Curriculum ID (number), curriculum corresponds to survey
     #Example: 1, 'Fall 2013', 1 could correspond to Ascend Elementary, 'Fall 2013', 5th Grade Curriculum
 
-    #A class has 
+    #A course has 
     #a list of its ambassadors (list of user ids)
     #presurvey data (id)
     #postsurvey data (id)
     #total_students (int)
-    @school = School.find_by_id(@class.school_id)
+    @course_total = @course.total_students
+    @school = School.find_by_id(@course.school_id)
     @school_name = @school.name
-    @school_semester = @class.school_semester
+    @school_semester = @course.school_semester
     @main_semester_title = @school_semester + " Report"
     @static_content = StaticContent.first
-    @curriculum = Curriculum.find_by_id(@class.curriculum_id)
+    @curriculum = Curriculum.find_by_id(@course.curriculum_id)
     #presurvey.total & postsurvey.total are hashes of
     #{user_id => {'total' => # of students user is entering data for}}
-    @presurvey = Presurvey.find_by_id(@class.presurvey_id)
-    @postsurvey = Postsurvey.find_by_id(@class.postsurvey_id)
+    @presurvey = Presurvey.find_by_id(@course.presurvey_id)
+    @postsurvey = Postsurvey.find_by_id(@course.postsurvey_id)
     @presurvey_total = 0
     @postsurvey_total = 0
     @presurvey.total.values.each do |subtotal|
@@ -83,16 +84,16 @@ class ReportsController < ApplicationController
 
   def generate_intro_text
     @ambassadors = ""
-    @class.users.each do |user_id|
+    @course.users.each do |user_id|
       @ambassadors += User.find_by_id(user_id).name + ", "
     end
 
-    @college = User.find_by_id(@class.users[0]).college.name
+    @college = User.find_by_id(@course.users[0]).college.name
 
     @main_title = "Fruitful Minds #{@school_name} #{@school_semester} Report"
     @school_intro_title = "Fruitful Minds at #{@school_name}"
     @school_intro = "Fruitful Minds held a nutrition lesson series at #{@school_name} during #{@school_semester}" 
-    @school_intro_second = "    #{@class.users.size} students from #{@college} #{was_were(@class.users.size)} selected as Fruitful Minds ambassadors"
+    @school_intro_second = "    #{@course.users.size} students from #{@college} #{was_were(@course.users.size)} selected as Fruitful Minds ambassadors"
     @school_intro_third = "    During each 50-minute lesson, class facilitators delivered the curriculum material through lectures, games, and various interactive activities."
     @strength_weakness_title = "Strengths and Weaknesses of FM Lessons at #{@school_name}"
     efficacy_data = generate_data('Efficacy')
@@ -275,7 +276,7 @@ class ReportsController < ApplicationController
         next if question.qtype != type #skips if not type: 'Efficacy' or 'Multiple Choice'
 
         #value is (ratio of correct answers entered to total number of students) * 100
-        value = (data[q_id]/class_total.to_f) * 100
+        value = (data[q_id]/@course_total.to_f) * 100
         if data.include?(q_id)
           data_hash[q_id] += value
         else
@@ -285,7 +286,7 @@ class ReportsController < ApplicationController
       return data_hash
     end
 
-    @class.users.each do |user_id|
+    @course.users.each do |user_id|
       user_pre_data = @presurvey.data[user_id]
       user_post_data = @postsurvey.data[user_id]
 
