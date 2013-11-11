@@ -12,16 +12,45 @@ Background: Generate report based on survey results
     | ambassador |
 
   And the following users exist:
-    | email              | password | name         | profile_id | school_semester_id |
-    | amirk88@gmail.com  | 123f5    | amir khodaei | 1          |     1     |
-    | john@gmail.com     | 12345    | john smith   | 1          |     2     |
+    | email              | password | name         | profile_id | school_semester_id | course_id |
+    | amirk88@gmail.com  | 123f5    | amir khodaei | 1          |     1              | 1         |
+    | john@gmail.com     | 12345    | john smith   | 1          |     2              | 1         |
 
   And the following schools exist:
     | name    | county  | city     | district |
     | school1 | Alameda | Berkeley | district |
     | school2 | Rowland | Rowland  | district |
 
-  
+  And the following curriculum exist:
+    | name        |
+    | curriculum1 |
+
+  And the following sections exist:
+    | name     | objective      | stype           | curriculum_id |
+    | section1 | test objective | Multiple Choice | 1             |
+    | section2 |                | Efficacy        | 1             |
+
+  And the following questions exist:
+    | name     | qtype           | msg1            | msg2         | section_id |
+    | S1Q1     | Multiple Choice | S1Q1 strong     | S1Q1 weak    | 1          |
+    | S1Q2     | Multiple Choice | S1Q2 strong     | S1Q2 weak    | 1          |
+    | S2Q1     | Efficacy        | S2Q1 strong ef  | S2Q1 weak ef | 2          |
+    | S2Q2     | Efficacy        | S2Q2 strong ef  | S2Q2 weak ef | 2          |
+
+  And the following presurveys exist:
+    | curriculum_id |   data            |    total        |
+    | 1             |   PRESURVEY_DATA  | PRESURVEY_TOTAL |
+
+  And the following postsurveys exist:
+    | curriculum_id | data            |   total           |
+    | 1             | POSTSURVEY_DATA | POSTSURVEY_TOTAL  |
+
+
+
+  And the following courses exist:
+    | school_id | semester    | curriculum_id | total_students  | presurvey_id | postsurvey_id |
+    | 1         | Fall 2013   | 1             | 25              | 1            | 1             |
+
 
   And the following pre-results 1 exist:
     | school_semester_id | section_1_1 | section_1_2 | section_2_1 | section_2_2 | section_2_3 | section_2_4 | section_3_1 | section_3_2 | section_3_3 | section_3_4 | section_3_5 | section_3_6 | section_4_1 | section_4_2 | section_4_3 | number_students |
