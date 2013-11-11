@@ -17,7 +17,9 @@ module NavigationHelpers
     when /^the Add new pre-survey results page$/ then new_presurvey_path
     when /^the Add new post-survey results page$/ then new_postsurvey_path
     when /^the Edit Pre-Survey Results page for survey (.*)$/ then edit_presurvey_path($1)
+    when /^the Show Pre-Survey Results page for survey (.*)$/ then presurvey_path($1)
     when /^the Edit Postsurvey Results page for survey (.*)$/ then edit_postsurvey_path($1)
+    when /^the Show Postsurvey Results page for survey (.*)$/ then postsurvey_path($1)
     when /^the Add New Food Journal page$/ then new_foodjournal_path
     when /^the Edit Food Journal page for journal (.*)$/ then edit_foodjournal_path($1)
     when /^the Add New School page$/ then new_school_path
