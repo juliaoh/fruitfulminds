@@ -31,6 +31,8 @@ module NavigationHelpers
     when /^the reports page$/ then '/reports'
     when /^the generate report page$/ then '/reports/new'
     when /^the cumulative reports page$/ then '/all_efficacies'
+    when /^the survey templates page$/ then '/survey_template'
+    when /^the new survey template page$/ then new_survey_template_path
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

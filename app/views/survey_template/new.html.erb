@@ -7,8 +7,8 @@
       num_questions = parseInt($numquestions.val()) + 1;
       $numquestions.val(num_questions);
       var new_question = '<div id="q'+section_num+'_'+num_questions+'">Question Name <input name="s'+section_num+'q'+num_questions+'name'+'" id="squestion'+section_num+'_'+num_questions+'" /> <input type="button" id="delquestion'+section_num+'_'+num_questions+'" value="X" /><br />';
-      new_question += 'Strength Message:<br /><textarea name="s'+section_num+'q'+num_questions+'strength'+'"></textarea><br />';
-      new_question += 'Weakness Message:<br /><textarea name="s'+section_num+'q'+num_questions+'weakness'+'"></textarea><br /></div>';
+      new_question += 'Strength Message:<br /><textarea id="s'+section_num+'q'+num_questions+'strength" name="s'+section_num+'q'+num_questions+'strength"></textarea><br />';
+      new_question += 'Weakness Message:<br /><textarea id="s'+section_num+'q'+num_questions+'weakness" name="s'+section_num+'q'+num_questions+'weakness'+'"></textarea><br /></div>';
       var $question = $('td#squestion'+section_num);
       $question.append(new_question);
       $('#delquestion'+section_num+'_'+num_questions).click({snum:section_num, qnum:num_questions}, function (e) {
@@ -41,7 +41,6 @@
       $('input#add_question_btn'+num_sections).click(function () { add_question(num_sections); });
     };
     $('#add_section_btn').click(function () { add_section();});
-    $('.form_content').append('Survey Name<input name="surveyname">')
     add_section();
   });
 </script>
@@ -54,6 +53,7 @@ div.section {
 </style>
 <div style="width:400px; margin-left:auto; margin-right:auto">
     <form accept-charset="UTF-8" action="/survey_template" method="post">
+        Survey Name<input id="surveyname" name="surveyname">
         <input type="hidden" name="num_sections" id="num_sections" value="0" />
         <div class="form_content"></div>
         <br /><input id="add_section_btn" type="button" value="Add Section" />

@@ -5,8 +5,14 @@ class SurveyTemplateController < ApplicationController
   end
   def new
   end
+
   def create
-    create_curriculum(params)
+    survey_name = params[:surveyname]
+    if survey_name == nil or survey_name == ''
+      flash[:notice] = "There are blank fields"
+      redirect_to "/survey_template/new" and return
+    end
+    create_curriculum(survey_name)
     num_sections = params[:num_sections].to_i
     (1 .. num_sections).each do |sec_number|
       begin
@@ -21,11 +27,11 @@ class SurveyTemplateController < ApplicationController
         next
       end
     end
+    flash[:notice] = "New Survey successfully added."
     redirect_to "/survey_template"
   end
 
-  def create_curriculum(params)
-    survey_name = params[:surveyname]
+  def create_curriculum(survey_name)
     @survey_template = Curriculum.new(:name => survey_name)
     @survey_template.save
   end
