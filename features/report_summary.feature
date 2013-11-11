@@ -65,13 +65,13 @@ Background: Generate report based on survey results
   And I am on the generate report page
 
   Scenario: See comment textbox on the report summary page
-    Given I select "school1" from "school"
+    Given I select "school1, Fall 2013" from "course"
     And I press "Generate Report"
     Then I should see summary of the report with static contents
     And I should see "Ambassador Note"
 
   Scenario: Add comment to report
-    Given I initiated the report generation for "school1"
+    Given I initiated the report generation for "school1, Fall 2013"
     And I fill in "Ambassador Note" with "This is an ambassador comment"
     #And I press "Add Comments and Generate pdf"
     #Then I should be on the portal page
