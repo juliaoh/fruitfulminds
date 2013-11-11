@@ -62,7 +62,6 @@ class ReportsController < ApplicationController
     #{user_id => {'total' => # of students user is entering data for}}
     @presurvey = Presurvey.find_by_id(@class.presurvey_id)
     @postsurvey = Postsurvey.find_by_id(@class.postsurvey_id)
-
     @presurvey_total = 0
     @postsurvey_total = 0
     @presurvey.total.values.each do |subtotal|
@@ -73,6 +72,7 @@ class ReportsController < ApplicationController
       @postsurvey_total += subtotal
     end
     generate_intro_text
+    generate
   end
 
 
@@ -110,11 +110,13 @@ class ReportsController < ApplicationController
       section = Section.find_by_id(section_id)
       section_name = section.name
       section_objective = section.objective
-      if section.type != 'Efficacy'
+      if section.stype != 'Efficacy'
         @objectives[section_name] = section.objective
       end
     end
     @improvement_intro = "#{@presurvey_total} students took the pre-curriculum survey and #{@postsurvey_total} students took the post-curriculum survey. These were not necessarily the same students. However, on average, students showed significant increases in their agreement that they could"
+  
+
   end
 
 
@@ -140,7 +142,10 @@ class ReportsController < ApplicationController
   end
 
 
-  def generate_objective_graph(data)
+  def generate_objective_graph(data_list)
+    #data_list is a list of hashes [{presurvey},{postsurvey}]
+    #hashes are {q_id => value}
+
     @axes = []
     @labels = ""
     @objectives.keys.each do |section_name|
@@ -149,9 +154,14 @@ class ReportsController < ApplicationController
     end
     @labels.chomp('|')
 
+    data = []
     @max = 0
-    data.each do |survey_data|
-      if survey_data.compact.max > @max
+    data_list.each do |survey_hash| #formats data to be [[presurvey_values],[postsurvey_values]]
+      survey_list = []
+      survey_hash.values.each do |value|
+        survey_list.push(value)
+      data.push(survey_list)
+      if survey_list.compact.max > @max
         @max = survey_data
       end
     end
@@ -179,7 +189,7 @@ class ReportsController < ApplicationController
     #{user_id => {q_id => value}} 
 
     def calc_values(data, data_hash)
-
+      #helper function
       data.keys.each do |q_id|
         question = Questions.find_by_id(q_id)
         next if question.type != type #skips if not type: 'Efficacy' or 'Multiple Choice'
@@ -204,6 +214,7 @@ class ReportsController < ApplicationController
       presurvey_data = calc_values(user_pre_data, presurvey_data)
       postsurvey_data = calc_values(user_post_data, postsurvey_data)
     end
+    #pre&postsurvey_data are hashes {q_id, value}
     data = [presurvey_data, postsurvey_data]
     return data
   end
