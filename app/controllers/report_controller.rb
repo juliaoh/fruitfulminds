@@ -7,9 +7,9 @@
 #
 #some things that I haven't done (doesn't include everything):
 #calculate size of graph based on # of sections in generate_objective_graph
-#add efficacy graph
 #
 #Done but is kind of complex:
+#add efficacy graph
 #calculate_improvement - calculates overall % improvement for MC/objective sections
 #add overall improvement graph (for objective/mc)
 
@@ -97,7 +97,9 @@ class ReportsController < ApplicationController
     @eval_intro_second = "On average, students have shown a #{@efficacy}% improvement after going through seven weeks of classes." 
     @eval_intro_third = "The survey results are shown below. The first graph shows the average scores in each of the six nutrition topics covered in the curriculum (see graph 1). Note that the number of questions in each category varies. The second graph shows students\' overall performance on the pre-curriculum surveys and post-curriculum survey (see graph 2). #{@school_semester.presurvey_part1s[0].number_students} took the pre-curriculum survey, and #{@school_semester.postsurveys[0].number_students} students took the post-curriculum surveys."
     @strength_weakness_title = "Strengths and Weaknesses of FM Lessons at #{@school_name}"
-    efficacy_str_weak = generate_strengths(generate_data('Efficacy'))
+    efficacy_data = generate_data('Efficacy')
+    efficacy_str_weak = generate_strengths(efficacy_data)
+    generate_efficacy_graph(efficacy_data)
     @efficacy_str = efficacy_str_weak[0] #hash {q_name => msg}
     @efficacy_weak = efficacy_str_weak[1]
     objective_data = generate_data('Multiple Choice')
@@ -146,17 +148,19 @@ class ReportsController < ApplicationController
   end
 
 
+
+
   def generate_objective_graph(data_list)
     #data_list is a list of hashes [{presurvey},{postsurvey}]
     #hashes are {q_id => value}
 
-    @axes = []
-    @labels = ""
+    axes = []
+    labels = ""
     @objectives.keys.each do |section_name|
-      @axes.push(section_name)
-      @labels += section_name+"|"
+      axes.push(section_name)
+      labels += section_name+"|"
     end
-    @labels.chomp('|')
+    labels.chomp('|')
 
     data = []
     combined_data = []
@@ -185,7 +189,7 @@ class ReportsController < ApplicationController
                                 :data => data,
                                 :bar_width_and_spacing => '30,0,23',
                                 :axis_with_labels => 'x,y',
-                                :axis_labels => [@labels],
+                                :axis_labels => [labels],
                                 :stacked => false,
                                 :axis_range => [nil, [0,@max,10]]
                                 )
@@ -200,6 +204,48 @@ class ReportsController < ApplicationController
                               :stacked => false,
                               :axis_range => [[0,@combined_max,10]]
                             )      
+
+
+  end
+
+  def generate_efficacy_graph(data_list)
+    axes = []
+    labels = ""
+    @curriculum.sections.each do |section_id|
+      section = Sections.find_by_id(section_id)
+      next if section.type != 'Efficacy'
+      section.questions.each do |q_id|
+        question = Questions.find_by_id(q_id)
+        labels += question.name + "|"
+        axes.push(question.name)
+      end
+    end
+    labels.chomp "|"
+
+    data = []
+    @max = 0
+    data_list.each do |survey_hash| #formats data to be [[presurvey_values],[postsurvey_values]]
+      survey_list = []
+      survey_hash.values.each do |value|
+        survey_list.push(value)
+      data.push(survey_list)
+      if survey_list.compact.max > @max
+        @max = survey_list.compact.max
+      end
+    end
+
+    @efficacy_chart = Gchart.bar(:size => '500x400', 
+                              :title => "Efficacy Survey Results - Agreement(%)",
+                              :legend => ['Pre', 'Post'],
+                              :bar_colors => '990000,3399CC',
+                              :data => data,
+                              :bar_width_and_spacing => '13,0,10',
+                              :axis_with_labels => 'y,x',
+                              :axis_labels => [labels],
+                              :stacked => false,
+                              :axis_range => [nil, [0,@max,10]],
+                              :orientation => 'horizontal'
+                              )
 
 
   end
