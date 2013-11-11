@@ -3,7 +3,8 @@ class Presurvey < ActiveRecord::Base
   belongs_to :user
   belongs_to :school_semester
   belongs_to :course
-  validates :total, :data, :presence => true
+  serialize :data
+  serialize :total
 
   delegate :school_name_and_semester, :to => :school_semester
 end
