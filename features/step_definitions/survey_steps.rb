@@ -72,10 +72,9 @@ Given /the following postsurveys exist/ do |table|
     total
   end
   table.hashes.each do |result|
-    curriculum_id = result[:curriculum_id]
     total = result[:total]
     data = result[:data]
-    Presurvey.create!(:curriculum_id => curriculum_id, :total=>total, :data=>data)
+    Presurvey.create!(:total=>total, :data=>data)
   end
 end
 
@@ -96,10 +95,9 @@ Given /the following presurveys exist/ do |table|
   end
 
   table.hashes.each do |result|
-    curriculum_id = result[:curriculum_id]
     total = result[:total]
     data = result[:data]
-    Presurvey.create!(:curriculum_id => curriculum_id, :total=>total, :data=>data)
+    Presurvey.create!(:total=>total, :data=>data)
   end
 
 
