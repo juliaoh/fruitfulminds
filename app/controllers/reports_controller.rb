@@ -124,6 +124,13 @@ class ReportsController < ApplicationController
     @school_intro_second = "    #{@course.users.size} students from #{@college} #{was_were(@course.users.size)} selected as Fruitful Minds ambassadors"
     @school_intro_third = "    During each 50-minute lesson, class facilitators delivered the curriculum material through lectures, games, and various interactive activities."
     @strength_weakness_title = "Strengths and Weaknesses of FM Lessons at #{@school_name}"
+    assign_efficacy_titles
+
+    @ambassadorNoteTitle = "Ambassador Notes: "
+
+  end
+
+  def assign_efficacy_titles
     efficacy_data = generate_data('Efficacy')
     efficacy_str_weak = generate_strengths(efficacy_data)
     generate_efficacy_graph(efficacy_data)
@@ -137,11 +144,7 @@ class ReportsController < ApplicationController
     @eval_intro_first = "Prior to the 7-week curriculum, a pre-curriculum survey was distributed to assess the students\' knowledge in nutrition; a very similar survey was administered during the final class. The goal of the surveys was to determine the retention of key learning objectives from the Fruitful Minds program."
     @eval_intro_second = "On average, students have shown a #{@efficacy}% improvement after going through seven weeks of classes." 
     @eval_intro_third = "The survey results are shown below. The first graph shows the average scores in each of the six nutrition topics covered in the curriculum (see graph 1). Note that the number of questions in each category varies. The second graph shows students\' overall performance on the pre-curriculum surveys and post-curriculum survey (see graph 2). #{@school_semester.presurvey_part1s[0].number_students} took the pre-curriculum survey, and #{@school_semester.postsurveys[0].number_students} students took the post-curriculum surveys."
-
-    @ambassadorNoteTitle = "Ambassador Notes: "
-
   end
-
 
   def generate_pdf
     if not params[:amb_note].blank?
