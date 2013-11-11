@@ -1,6 +1,6 @@
 class Section < ActiveRecord::Base
   validates :name, :presence => true
-  validates :type, :presence => true, :inclusion => ["Efficacy", "Multiple Choice"]
+  validates :stype, :presence => true, :inclusion => ["Efficacy", "Multiple Choice"]
   validates :objective, :presence => true, :if => "is_multiple_choice?"
   validates :objective, :inclusion => [nil], :if => "is_not_multiple_choice?"
 
@@ -8,10 +8,16 @@ class Section < ActiveRecord::Base
   belongs_to :curriculum
 
   def is_multiple_choice?
-    type == "Multiple Choice"
+    stype == "Multiple Choice"
   end
 
   def is_not_multiple_choice?
     !is_multiple_choice?
+  end
+
+  def create_and_save_question(options = {})
+    question = Question.new(options)
+    question.qtype = stype
+    question.save
   end
 end

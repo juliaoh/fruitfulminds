@@ -6,10 +6,12 @@
 #            |    |  __|__
 #
 #some things that I haven't done (doesn't include everything):
-#calculate_improvement - calculates overall % improvement for MC/objective sections
 #calculate size of graph based on # of sections in generate_objective_graph
-#add overall improvement graph (for objective/mc)
 #add efficacy graph
+#
+#Done but is kind of complex:
+#calculate_improvement - calculates overall % improvement for MC/objective sections
+#add overall improvement graph (for objective/mc)
 
 class ReportsController < ApplicationController
   def new
@@ -22,7 +24,7 @@ class ReportsController < ApplicationController
     #user selects which class to generate a report for
     @class = Class.find_by_id(params[:class])
     #@report = Report.create!(:class_id => @class.id)
-    generate_text
+    generate_report
   end
 
   #grammar
@@ -37,7 +39,7 @@ class ReportsController < ApplicationController
     end
   end
 
-  def generate_text
+  def generate_report
     if (defined?(@class)).nil?
       flash[:warning] = "@class is not defined"
       return
@@ -62,7 +64,6 @@ class ReportsController < ApplicationController
     #{user_id => {'total' => # of students user is entering data for}}
     @presurvey = Presurvey.find_by_id(@class.presurvey_id)
     @postsurvey = Postsurvey.find_by_id(@class.postsurvey_id)
-
     @presurvey_total = 0
     @postsurvey_total = 0
     @presurvey.total.values.each do |subtotal|
@@ -73,6 +74,8 @@ class ReportsController < ApplicationController
       @postsurvey_total += subtotal
     end
     generate_intro_text
+    
+
   end
 
 
@@ -97,8 +100,9 @@ class ReportsController < ApplicationController
     efficacy_str_weak = generate_strengths(generate_data('Efficacy'))
     @efficacy_str = efficacy_str_weak[0] #hash {q_name => msg}
     @efficacy_weak = efficacy_str_weak[1]
-
-    objective_str_weak = generate_strengths(generate_data('Multiple Choice'))
+    objective_data = generate_data('Multiple Choice')
+    generate_objective_graph(objective_data)
+    objective_str_weak = generate_strengths(objective_data)
     @objective_str = objective_str_weak[0]
     @objective_weak = objective_str_weak[1]
 
@@ -110,11 +114,13 @@ class ReportsController < ApplicationController
       section = Section.find_by_id(section_id)
       section_name = section.name
       section_objective = section.objective
-      if section.type != 'Efficacy'
+      if section.stype != 'Efficacy'
         @objectives[section_name] = section.objective
       end
     end
     @improvement_intro = "#{@presurvey_total} students took the pre-curriculum survey and #{@postsurvey_total} students took the post-curriculum survey. These were not necessarily the same students. However, on average, students showed significant increases in their agreement that they could"
+  
+
   end
 
 
@@ -136,11 +142,14 @@ class ReportsController < ApplicationController
     file = @school_name.gsub! /\s+/, '_'
     file = file.downcase
     @file_name = "#{file}_report.pdf"
-    generate_text
+    generate_report
   end
 
 
-  def generate_objective_graph(data)
+  def generate_objective_graph(data_list)
+    #data_list is a list of hashes [{presurvey},{postsurvey}]
+    #hashes are {q_id => value}
+
     @axes = []
     @labels = ""
     @objectives.keys.each do |section_name|
@@ -149,10 +158,23 @@ class ReportsController < ApplicationController
     end
     @labels.chomp('|')
 
+    data = []
+    combined_data = []
     @max = 0
-    data.each do |survey_data|
-      if survey_data.compact.max > @max
-        @max = survey_data
+    @combined_max = 0
+    data_list.each do |survey_hash| #formats data to be [[presurvey_values],[postsurvey_values]]
+      survey_list = []
+      combined_list = [0]
+      survey_hash.values.each do |value|
+        survey_list.push(value)
+        combined_list[0] += value
+      data.push(survey_list)
+      combined_data.push(combined_list)
+      if survey_list.compact.max > @max
+        @max = survey_list.compact.max
+      end
+      if combined_list.compact.max > @combined_max
+        @combined_max = combined_list.compact.max
       end
     end
     
@@ -166,7 +188,18 @@ class ReportsController < ApplicationController
                                 :axis_labels => [@labels],
                                 :stacked => false,
                                 :axis_range => [nil, [0,@max,10]]
-                                )    
+                                )
+
+    @combined_chart = Gchart.bar(:size => '1000x300', 
+                              :title => "Overall Combined Scores(%)",
+                              :legend => ['Pre-curriculum Results', 'Post-curriculum Results'],
+                              :bar_colors => 'FF3333,990000',
+                              :data => combined_data,
+                              :bar_width_and_spacing => '50,25,25',
+                              :axis_with_labels => 'y',
+                              :stacked => false,
+                              :axis_range => [[0,@combined_max,10]]
+                            )      
 
 
   end
@@ -179,10 +212,10 @@ class ReportsController < ApplicationController
     #{user_id => {q_id => value}} 
 
     def calc_values(data, data_hash)
-
+      #helper function
       data.keys.each do |q_id|
         question = Questions.find_by_id(q_id)
-        next if question.type != type #skips if not type: 'Efficacy' or 'Multiple Choice'
+        next if question.qtype != type #skips if not type: 'Efficacy' or 'Multiple Choice'
 
         #value is (ratio of correct answers entered to total number of students) * 100
         value = (data[q_id]/class_total.to_f) * 100
@@ -204,6 +237,7 @@ class ReportsController < ApplicationController
       presurvey_data = calc_values(user_pre_data, presurvey_data)
       postsurvey_data = calc_values(user_post_data, postsurvey_data)
     end
+    #pre&postsurvey_data are hashes {q_id, value}
     data = [presurvey_data, postsurvey_data]
     return data
   end
