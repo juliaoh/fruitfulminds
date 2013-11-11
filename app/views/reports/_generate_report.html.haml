@@ -1,6 +1,0 @@
-- @subtitle =  "Generate Report"
-
-=form_tag reports_path do
-  =label :school, "School"
-  =select_tag :school, options_from_collection_for_select(@schools, "id", "name")
-  =submit_tag "Generate Report"

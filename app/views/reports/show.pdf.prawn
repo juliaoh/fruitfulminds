@@ -3,7 +3,7 @@ pdf.image "#{Rails.root}/app/assets/images/fm_icon.jpg"
 pdf.text " "
 pdf.text "Fruitful Minds", :align => :left, :size =>18, :style => :bold
 pdf.text " "
-pdf.text @school.name, :align => :left, :size => 18, :style => :bold
+pdf.text @school_name, :align => :left, :size => 18, :style => :bold
 pdf.text " "
 pdf.text @main_semester_title, :align => :left, :size => 18, :style => :bold
 pdf.text " "
@@ -48,14 +48,14 @@ pdf.text " "
 pdf.text @static_contents[:strength_intro], :size => 14, :style => :bold
 pdf.text " "
 
-@strengths.each do |key, strength|
+@objective_str.each do |key, strength|
   pdf.text "#{strength}"
 end
 
 pdf.text " "
 pdf.text @static_contents[:weakness_intro], :size => 14, :style => :bold
 
-@weaknesses.each do |key, weakness|
+@objective_weak.each do |key, weakness|
   pdf.text "#{weakness}"
 end
 
@@ -73,36 +73,24 @@ pdf.image open(URI.escape(@efficacy_chart)), :align => :center
 pdf.text " "
 pdf.text @improvement_intro
 pdf.text " "
-@sig_increase.each do |agree|
-  pdf.text "#{agree}"
-end
-pdf.start_new_page
-pdf.text @static_contents[:slight_increase_header], :style => :bold
-pdf.text " "
-@slight_increase.each do |agree|
-  pdf.text "#{agree}"
+@efficacy_str.each do |q_name, strength|
+  pdf.text "#{q_name}"
 end
 pdf.text " "
 pdf.text @static_contents[:decrease_header], :style => :bold
 pdf.text " "
-@sig_decrease.each do |disagree|
-  pdf.text "#{disagree}"
-end
-pdf.text " "
-pdf.text @static_contents[:slight_decrease_header], :style => :bold
-pdf.text " "
-@slight_decrease.each do |disagree|
-  pdf.text "#{disagree}"
+@efficacy_weak.each do |q_name, weakness|
+  pdf.text "#{q_name}"
 end
 pdf.text " "
 pdf.text @static_contents[:summary_header], :style => :bold
 pdf.text " "
-@sig_inc_map.each do |agree|
-  pdf.text "#{agree}"
+@efficacy_str.each do |q_name, strength|
+  pdf.text "#{strength}"
 end
 pdf.text " "
-@sig_dec_map.each do |disagree|
-  pdf.text "#{disagree}"
+@efficacy_weak.each do |q_name, weakness|
+  pdf.text "#{weakness}"
 end
 pdf.text " "
 pdf.text @ambassadorNoteTitle, :size => 14, :style => :bold
