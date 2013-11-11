@@ -164,10 +164,10 @@ class ReportsController < ApplicationController
     @combined_max = 0
     data_list.each do |survey_hash| #formats data to be [[presurvey_values],[postsurvey_values]]
       survey_list = []
-      combined_list = []
+      combined_list = [0]
       survey_hash.values.each do |value|
         survey_list.push(value)
-        combined_list[0] = combined_list[0] + value ? combined_list[0] : value
+        combined_list[0] += value
       data.push(survey_list)
       combined_data.push(combined_list)
       if survey_list.compact.max > @max
