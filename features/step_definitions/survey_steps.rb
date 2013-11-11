@@ -69,6 +69,7 @@ Given /the following postsurveys exist/ do |table|
       total = nil
     end
   end
+end
 
 Given /the following presurveys exist/ do |table|
   table.map_column!('data') do |data|
@@ -76,9 +77,12 @@ Given /the following presurveys exist/ do |table|
       data = nil
     end
   end
+
+
   table.map_column!('total') do |total|
     if total == 'PRESURVEY_TOTAL'
       total = nil
     end
   end
+end
     
