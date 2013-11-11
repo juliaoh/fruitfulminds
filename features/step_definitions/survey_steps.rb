@@ -99,7 +99,11 @@ Given /the following presurveys exist/ do |table|
     data = {1=>{1=>10,2=>11,3=>4,4=>9}}
     Presurvey.create!(:total=>total, :data=>data)
   end
+end
 
-
+Given /the following courses exist/ do |table|
+  table.hashes.each do |course|
+    Course.create!(course)
+  end
 end
     
