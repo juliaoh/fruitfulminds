@@ -1,12 +1,8 @@
-Given /the following pre-results 1 exist/ do |results_table|
+Given /the following pre-results exist/ do |results_table|
   results_table.hashes.each do |result|
-    Presurvey::Part1.create!(result)
-  end
-end
-
-Given /the following pre-results 2 exist/ do |results_table|
-  results_table.hashes.each do |result|
-    Presurvey::Part2.create!(result)
+    school_id = result[:school_semester_id]
+    result.delete(:school_semeseter_id)
+    Presurvey.create!(:school_semester_id=>school_id, :data=>result)
   end
 end
 
