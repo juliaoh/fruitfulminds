@@ -5,6 +5,14 @@ Given /the following users exist/ do |users_table|
   end
 end
 
+Given /the following users have courses/ do |table|
+  table.hashes.each do |result|
+  user = User.find_by_id(result[:user_id])
+  user.courses = 1
+  user.save!
+  end
+end
+
 Given /^the following school_semesters exist/ do |school_semesters_table|
   school_semesters_table.hashes.each do |school_semester|
     SchoolSemester.create!(school_semester)

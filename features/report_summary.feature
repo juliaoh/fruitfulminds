@@ -44,6 +44,11 @@ Background: Generate report based on survey results
     | amirk88@gmail.com  | 123f5    | amir khodaei | 1          |     1              |
     | john@gmail.com     | 12345    | john smith   | 1          |     2              |
 
+  And the following users have courses:
+    | user_id  | course_id  |
+    | 1        | 1          |
+    
+
   And the following schools exist:
     | name    | county  | city     | district |
     | school1 | Alameda | Berkeley | district |
