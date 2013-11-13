@@ -53,7 +53,7 @@ Background: Generate report based on survey results
     | name        |
     | UC Berkeley |
 
-  And the following colleges has users:
+  And the following colleges have users:
     | college_id | user_id |
     | 1          | 1       |
 
