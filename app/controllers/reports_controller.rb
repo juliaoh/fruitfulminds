@@ -296,7 +296,7 @@ class ReportsController < ApplicationController
     presurvey_data = {}
     postsurvey_data = {}
     #presurvey.data & postsurvey.data are hashes of
-    #{user_id => {q_id => value}} 
+    #{user => {q_id => value}} 
 
     def calc_values(data, data_hash)
       #helper function
@@ -316,13 +316,14 @@ class ReportsController < ApplicationController
       return data_hash
     end
 
-    @course.users.each do |user_id|
-      user_pre_data = @presurvey.data[user_id]
-      user_post_data = @postsurvey.data[user_id]
+    @course.users.each do |user|
+      user_pre_data = @presurvey.data[user.id]
+      user_post_data = @postsurvey.data[user.id]
       puts "user_pre_data then user_post_data"
       puts user_pre_data
       puts user_post_data
-      puts @course
+      puts @course.users
+      puts @course.users[0].id
       #following code works because of invariant:
       #pre&post surveys have the exact same questions
       presurvey_data = calc_values(user_pre_data, presurvey_data)
