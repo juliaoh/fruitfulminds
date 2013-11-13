@@ -99,7 +99,6 @@ class ReportsController < ApplicationController
     @college = User.find_by_id(@course.users[0]).college
     @college = @college.name
     assign_titles
-    assign_efficacy_titles
     
     #@objectives is a hash of
     #Section name => objective description
@@ -119,6 +118,7 @@ class ReportsController < ApplicationController
       ]
     end
 
+    assign_efficacy_titles
     @improvement_intro = "#{@presurvey_total} students took the pre-curriculum survey and #{@postsurvey_total} students took the post-curriculum survey. These were not necessarily the same students. However, on average, students showed significant increases in their agreement that they could"
   
   end
