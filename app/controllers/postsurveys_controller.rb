@@ -20,7 +20,7 @@ class PostsurveysController < ApplicationController
       new_data.each do |qid, num|
         new_data[qid] = Integer(new_data[qid])
       end
-      postsurvey.data = PresurveysController.convert_results(new_data)
+      postsurvey.data[@current_user.id] = PresurveysController.convert_results(new_data)
       postsurvey.save!
       flash[:notice] = "Survey updated successfully."
       redirect_to postsurvey_path(:id => params[:id])
@@ -31,7 +31,9 @@ class PostsurveysController < ApplicationController
   end
 
   def show
-    @postsurvey = Postsurvey.find_by_id(params[:id])
-    @curriculum = Curriculum.find_by_id(@postsurvey.curriculum_id)
+    postsurvey = Postsurvey.find_by_id(params[:id])
+    @postsurvey_data = postsurvey.data
+    @curriculum = Curriculum.find_by_id(postsurvey.curriculum_id)
+    @users = postsurvey.users
   end
 end

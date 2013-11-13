@@ -16,11 +16,11 @@ class PresurveysController < ApplicationController
     begin
       presurvey = Presurvey.find_by_id(params[:id])
       curriculum = Curriculum.find_by_id(presurvey.curriculum_id)
-      new_data = get_results_from_params(curriculum, params)
+      new_data = PresurveysController.get_results_from_params(curriculum, params)
       new_data.each do |qid, num|
         new_data[qid] = Integer(new_data[qid])
       end
-      presurvey.data = convert_results(new_data)
+      presurvey.data[@current_user.id] = PresurveysController.convert_results(new_data)
       presurvey.save!
       flash[:notice] = "Survey updated successfully."
       redirect_to presurvey_path(:id => params[:id])
@@ -31,8 +31,10 @@ class PresurveysController < ApplicationController
   end
 
   def show
-    @presurvey = Presurvey.find_by_id(params[:id])
-    @curriculum = Curriculum.find_by_id(@presurvey.curriculum_id)
+    presurvey = Presurvey.find_by_id(params[:id])
+    @presurvey_data = presurvey.data
+    @curriculum = Curriculum.find_by_id(presurvey.curriculum_id)
+    @users = presurvey.users
   end
 
   def self.get_results_from_params(curriculum, params)

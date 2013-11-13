@@ -6,6 +6,6 @@
       = label_tag section.id, "#{section.name}"
       - section.questions.each do |question|
         = label_tag question.id, "#{question.name}"
-        = text_field_tag question.id, @presurvey_data[question.id]
+        = text_field_tag question.id, @presurvey_data[@current_user.id][question.id]
     %br
     = submit_tag 'Save Changes'

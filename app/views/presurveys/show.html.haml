@@ -1,10 +1,18 @@
 - @subtitle = "Pre-Survey Results"
 
 %span
-  - @curriculum.sections.each do |section|
-    = label_tag section.id, "#{section.name}"
-    - section.questions.each do |question|
-      = label_tag question.id, "#{question.name}"
-      = text_field_tag question.id, @presurvey.data[question.id], :readonly => true
+  %table
+    %tr
+      %th
+      - @users.each do |user|
+        %th= user.name
+    - @curriculum.sections.each do |section|
+      %tr
+        %td= label_tag section.id, "#{section.name}"
+      - section.questions.each do |question|
+        %tr
+          %td= label_tag question.id, "#{question.name}"
+          - @users.each do |user|
+            %td= text_field_tag "#{user.id}_#{question.id}", @presurvey_data[user.id][question.id], :readonly => true
 
 = button_to "Edit Presurvey", edit_presurvey_path(params[:id]), :method => :get, :id => params[:id]
