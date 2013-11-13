@@ -51,8 +51,12 @@ There are a few misleading terms.
 
 1. Presurvey refers to the survey taken by students before the curriculum, or pre-curriculum survey.
 
-2. Classes refer to actual classroom classes, not the computer science term class. Classes are uniquely identified by a combination of School, Semester, and Curriculum (e.g. Ascend Elementary, Fall 2013, 5th Grade Curriculum)
+2. Courses are uniquely identified by a combination of School, Semester, and Curriculum (e.g. Ascend Elementary, Fall 2013, 5th Grade Curriculum)
 
-3. Historical Data reporting ...
+3. Curriculum is also survey_template (5th grade curriculum is 5th grade survey_template)
+
+4. Curriculum has many sections, which have many questions
+
+5. Historical Data reporting ...
 
 Credit: Many parts of the code base has been contributed by a previous CS169 Group 25 from Fall 2012.
