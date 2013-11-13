@@ -296,6 +296,7 @@ class ReportsController < ApplicationController
 
     def calc_values(data, data_hash)
       #helper function
+      return data_hash if data.nil?
       data.keys.each do |q_id|
         question = Question.find_by_id(q_id)
         next if question.qtype != type #skips if not type: 'Efficacy' or 'Multiple Choice'
