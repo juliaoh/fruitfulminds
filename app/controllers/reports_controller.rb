@@ -61,7 +61,7 @@ class ReportsController < ApplicationController
     @school_name = @school.name
     @school_semester = @course.semester
     @main_semester_title = @school_semester + " Report"
-    @static_content = StaticContent.first
+    @static_contents = StaticContent.first
     @curriculum = Curriculum.find_by_id(@course.curriculum_id)
     #presurvey.total & postsurvey.total are hashes of
     #{user_id => {'total' => # of students user is entering data for}}
