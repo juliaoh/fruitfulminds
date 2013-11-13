@@ -43,33 +43,17 @@
         - if @current_user.admin?
           - Course.all.each do |course|
             - survey = Postsurvey.find_by_course_id(course.id)
-<<<<<<< HEAD
-            = link_to "Show Pre-Survey", presurvey_path(survey), :id => survey.id
-        - else
-          - @current_user.courses.each do |course|
-            - survey = Postsurvey.find_by_course_id(course.id)
-            = link_to "Show Pre-Survey", presurvey_path(survey), :id => survey.id
-=======
             = link_to "Show Pre-Survey", presurvey_path(survey), :id => survey.id, class: "btn"
         - else
           - @current_user.courses.each do |course|
             - survey = Postsurvey.find_by_course_id(course.id)
             = link_to "Show Pre-Survey", presurvey_path(survey), :id => survey.id, class: "btn"
->>>>>>> 40e4eee0172cee2022779190219fcd204bd3624e
       %td
         - if @current_user.admin?
           - Course.all.each do |course|
             - survey = Postsurvey.find_by_course_id(course.id)
-<<<<<<< HEAD
-            = link_to "Show Post-Survey", postsurvey_path(survey), :id => survey.id
-        - else
-          - @current_user.courses.each do |course|
-            - survey = Postsurvey.find_by_course_id(course.id)
-            = link_to "Show Post-Survey", postsurvey_path(survey), :id => survey.id
-=======
             = link_to "Show Post-Survey", postsurvey_path(survey), :id => survey.id, class: "btn"
         - else
           - @current_user.courses.each do |course|
             - survey = Postsurvey.find_by_course_id(course.id)
             = link_to "Show Post-Survey", postsurvey_path(survey), :id => survey.id, class: "btn"
->>>>>>> 40e4eee0172cee2022779190219fcd204bd3624e
