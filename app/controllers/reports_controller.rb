@@ -245,6 +245,8 @@ class ReportsController < ApplicationController
   end
 
   def generate_efficacy_graph(data_list)
+    #data_list is a list of hashes [{presurvey},{postsurvey}]
+    #hashes are {q_id => value}
     axes = []
     labels = ""
     @curriculum.sections.each do |section_id|
@@ -268,6 +270,8 @@ class ReportsController < ApplicationController
       data.push(survey_list)
       if survey_list.size > 0 and survey_list.compact.max > @max
         @max = survey_list.compact.max
+      else
+        puts data_list
       end
     end
 
