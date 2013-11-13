@@ -97,6 +97,7 @@ class ReportsController < ApplicationController
     end
 
     @college = User.find_by_id(@course.users[0]).college
+    @college = @college.name
     puts "HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
     puts @college
 
