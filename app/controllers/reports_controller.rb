@@ -136,6 +136,8 @@ class ReportsController < ApplicationController
   end
 
   def generate_pdf
+    @course = Course.find_by_id(params[:course][:id])
+    generate_report
     if not params[:amb_note].blank?
       #make sure ambassador writes some Notes
       session[:amb_note] = params[:amb_note]
