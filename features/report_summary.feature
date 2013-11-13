@@ -15,6 +15,7 @@ Background: Generate report based on survey results
     | name        |
     | curriculum1 |
 
+
   And the following MC sections exist:
     | name     | objective            | stype           | curriculum_id |
     | section1 | test objective       | Multiple Choice | 1             |
@@ -48,6 +49,13 @@ Background: Generate report based on survey results
     | user_id  | course_id  |
     | 1        | 1          |
     
+  And the following colleges exist:
+    | name        |
+    | UC Berkeley |
+
+  And the following colleges has users:
+    | college_id | user_id |
+    | 1          | 1       |
 
   And the following schools exist:
     | name    | county  | city     | district |

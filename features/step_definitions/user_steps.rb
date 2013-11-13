@@ -26,6 +26,15 @@ Given /^the following colleges exist/ do |colleges_table|
   end
 end
 
+Given /^the following colleges have users/ do |table|
+  table.hashes.each do |result|
+    user = User.find_by_id(result[:user_id])
+    college = College.find_by_id(result[:college_id])
+    college.users = [user]
+    college.save!
+  end
+end
+
 Given /^I fill in all of the registration text fields$/ do
   steps %Q{
     Given I fill in "First Name" with "Amir"
