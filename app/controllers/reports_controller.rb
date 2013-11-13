@@ -266,7 +266,7 @@ class ReportsController < ApplicationController
         survey_list.push(value)
       end
       data.push(survey_list)
-      if survey_list.compact.max > @max
+      if not survey_list.nil? and survey_list.compact.max > @max
         @max = survey_list.compact.max
       end
     end
