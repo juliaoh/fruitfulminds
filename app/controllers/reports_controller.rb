@@ -154,7 +154,7 @@ class ReportsController < ApplicationController
 
   def show
     puts "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
-    @school_name = params[:id].chomp("_report")
+    @school_name = params[:id].chomp("_report").gsub! /_/, " "
     puts @school_name
     school = School.find_by_name(@school_name)
     @course = Course.find_by_school_id(school.id)
