@@ -17,7 +17,6 @@ class PostsurveysController < ApplicationController
       postsurvey = Postsurvey.find_by_id(params[:id])
       curriculum = Curriculum.find_by_id(postsurvey.curriculum_id)
       new_data = PresurveysController.get_results_from_params(curriculum, params)
-      PresurveysController.convert_data_to_ints(new_data)
       postsurvey.data[@current_user.id] = PresurveysController.convert_results(new_data)
       postsurvey.save!
       flash[:notice] = "Survey updated successfully."

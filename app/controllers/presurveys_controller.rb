@@ -17,7 +17,6 @@ class PresurveysController < ApplicationController
       presurvey = Presurvey.find_by_id(params[:id])
       curriculum = Curriculum.find_by_id(presurvey.curriculum_id)
       new_data = self.class.get_results_from_params(curriculum, params)
-      self.class.convert_data_to_ints(new_data)
       presurvey.data[@current_user.id] = self.class.convert_results(new_data)
       presurvey.save!
       flash[:notice] = "Survey updated successfully."
@@ -30,9 +29,9 @@ class PresurveysController < ApplicationController
 
   def show
     presurvey = Presurvey.find_by_id(params[:id])
-    @presurvey_data = presurvey.data
     @curriculum = Curriculum.find_by_id(presurvey.curriculum_id)
     @users = presurvey.users
+    @presurvey_data = presurvey.data
   end
 
   def self.get_results_from_params(curriculum, params)
@@ -43,12 +42,6 @@ class PresurveysController < ApplicationController
       end
     end
     return new_data
-  end
-
-  def self.convert_data_to_ints(data)
-    data.each do |qid, num|
-      data[qid] = Integer(data[qid])
-    end
   end
 
   def self.convert_results(data)
