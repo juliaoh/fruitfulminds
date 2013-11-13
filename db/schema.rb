@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(:version => 20131111035944) do
     t.datetime "updated_at"
   end
 
+  create_table "courses_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "course_id"
+  end
+
+  add_index "courses_users", ["course_id"], :name => "index_courses_users_on_course_id"
+  add_index "courses_users", ["user_id", "course_id"], :name => "index_courses_users_on_user_id_and_course_id"
+  add_index "courses_users", ["user_id"], :name => "index_courses_users_on_user_id"
+
   create_table "curriculums", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -286,14 +295,5 @@ ActiveRecord::Schema.define(:version => 20131111035944) do
     t.datetime "updated_at"
     t.string   "college"
   end
-
-  create_table "users_courses", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "course_id"
-  end
-
-  add_index "users_courses", ["course_id"], :name => "index_users_courses_on_course_id"
-  add_index "users_courses", ["user_id", "course_id"], :name => "index_users_courses_on_user_id_and_course_id"
-  add_index "users_courses", ["user_id"], :name => "index_users_courses_on_user_id"
 
 end
