@@ -8,7 +8,7 @@ class ReportsController < ApplicationController
   def create
     #user selects which class to generate a report for
     @course = Course.find_by_id(params[:course])
-    #@report = Report.create!(:course_id => @course.id)
+    @report = Report.create!(:course_id => @course.id)
     generate_report
   end
 
@@ -136,8 +136,11 @@ class ReportsController < ApplicationController
   end
 
   def generate_pdf
+    @report = Report.find_by_id(params[:report][:id])
     @course = Course.find_by_id(params[:course][:id])
     generate_report
+    @report.save
+
     if not params[:amb_note].blank?
       #make sure ambassador writes some Notes
       session[:amb_note] = params[:amb_note]
