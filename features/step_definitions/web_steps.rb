@@ -54,7 +54,7 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
 end
 
 When /^(?:|I )push "([^"]*)"$/ do |button|
-  page.find(button).click
+  find_button(button).click
 end
 
 When /^(?:|I )follow "([^"]*)"$/ do |link|
