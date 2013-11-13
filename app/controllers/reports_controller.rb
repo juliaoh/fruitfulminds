@@ -97,12 +97,9 @@ class ReportsController < ApplicationController
     end
 
     @college = User.find_by_id(@course.users[0]).college
-    puts User.find_by_id(@course.users[0])
-    puts @college
-    puts @college.id
     @college = @college.name
-    puts @college
-
+    assign_titles
+    assign_efficacy_titles
     
     #@objectives is a hash of
     #Section name => objective description
