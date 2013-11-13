@@ -39,14 +39,11 @@ Background: results are to be added to database
   And   I am on the portal page
 
 Scenario: add new survey results to database
-  When I follow "Add Survey Results"
-  Then I should be on the Add new survey results page
-  And I select "post_survey 1"
-  And I fill in "Total Number of Students" with "10"
-  And I fill in "Total Number of Students Entering" with "10"
-  And I fill in "q1" with "1"
-  And I fill in "q2" with "1"
-  And I fill in "q3" with "1"
+  When I press "Show Pre-Survey"
+  When I press "Edit Presurvey"
+  And I fill in "question1" with "10"
+  And I fill in "question2" with "10"
+  And I fill in "question3" with "1"
   And I press "Save Changes"
   Then I should be on the portal page
   And I should see "survey results added"
