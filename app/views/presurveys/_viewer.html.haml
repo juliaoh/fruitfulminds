@@ -1,6 +1,0 @@
-- @presurvey_fields.data.each do |question, result|
-  %tr
-    %td
-      = f.label "#{question}"
-    %td{:style=>"text-align:center;"}
-      = f.text_field "#{question}", :value=>result, :readonly => true, :style => "width: 50px; text-align: Right;", :class => "numeric_input_field"
