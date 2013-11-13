@@ -153,6 +153,7 @@ class ReportsController < ApplicationController
   end
 
   def show
+    puts "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
     @course = Course.find_by_id(params[:course][:id])
     generate_report
   end
