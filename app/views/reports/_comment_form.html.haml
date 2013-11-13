@@ -1,6 +1,6 @@
 =form_tag('reports/generate_pdf', :method => :post) do
   =hidden_field :report, :id
-  =hidden_field :class, :id
+  =hidden_field :course, :id
   =label_tag :amb_note, 'Ambassador Note'
   =text_area_tag 'amb_note'
   =submit_tag "Add Comments and Generate pdf"
