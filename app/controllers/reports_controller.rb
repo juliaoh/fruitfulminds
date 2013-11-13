@@ -154,7 +154,11 @@ class ReportsController < ApplicationController
   end
 
   def show
-    @course = session[:course]
+    puts "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+    @school_name = params[:id].chomp("_report").gsub! /_/, " "
+    puts @school_name
+    school = School.find_by_name(@school_name)
+    @course = Course.find_by_school_id(school.id)
     @report_note = session[:amb_note]
     generate_report
   end
