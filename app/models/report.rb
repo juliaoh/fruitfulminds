@@ -2,6 +2,6 @@
 
 class Report < ActiveRecord::Base
   belongs_to :course
-  validate :class_id, :presence => true
+  validate :course_id, :presence => true
 
 end
