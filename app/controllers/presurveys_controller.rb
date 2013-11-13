@@ -1,8 +1,6 @@
 class PresurveysController < ApplicationController
   def new
     @all_schools = School.all.collect { |s| ["#{s.name}", s.id] }
-    @presurvey_fields = Presurvey.new(params[:presurvey])
-    @efficacy_fields = Efficacy.new(params[:efficacy])
   end
 
   def create
@@ -28,24 +26,32 @@ class PresurveysController < ApplicationController
   end
 
   def edit
-    @presurvey_fields = Presurvey.find(params[:id])
-    @efficacy_fields = Efficacy.find_by_presurvey_id(@presurvey_fields.id)
+    @presurvey = Presurvey.find_by_id(params[:id])
+    @curriculum = Curriculum.find_by_id(@presurvey.curriculum_id)
   end
   
   def update
     begin
-      Presurvey.find(params[:id]).update_attributes!(:data=>params[:presurvey])
-      Efficacy.find_by_presurvey_id(params[:id]).update_attributes!(:number_students => params[:presurvey][:number_students])
-      Efficacy.find_by_presurvey_id(params[:id]).update_attributes!(params[:efficacy])
+      presurvey = Presurvey.find_by_id(params[:id])
+      curriculum = Curriculum.find_by_id(presurvey.curriculum_id)
+      fdata = {}
+      curriculum.sections.each do |section|
+        section.questions.each do |question|
+          fdata[question.id.to_s] = params[question.id.to_s]
+        end
+      end
+      presurvey.data = fdata
+      presurvey.save!
       flash[:notice] = "Survey updated successfully."
       redirect_to presurvey_path(:id => params[:id])
     rescue ActiveRecord::RecordInvalid
       flash[:warning] = "Results failed to add. Incomplete or has invalid characters."
-      redirect_to edit_presurvey_path(:presurvey => params[:presurvey], :efficacy => params[:efficacy])
+      redirect_to edit_presurvey_path
     end
   end
 
   def show
-    @presurvey_fields = Presurvey.find(params[:id])
+    @presurvey = Presurvey.find_by_id(params[:id])
+    @curriculum = Curriculum.find_by_id(@presurvey.curriculum_id)
   end
 end
