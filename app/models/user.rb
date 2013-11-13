@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   belongs_to :profile
   belongs_to :school_semester
+  belongs_to :college
 
   has_and_belongs_to_many :courses
 
