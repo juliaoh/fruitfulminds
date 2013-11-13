@@ -3,7 +3,6 @@ pdf.image "#{Rails.root}/app/assets/images/fm_icon.jpg"
 pdf.text " "
 pdf.text "Fruitful Minds", :align => :left, :size =>18, :style => :bold
 pdf.text " "
-pdf.text @school_name, :align => :left, :size => 18, :style => :bold
 pdf.text " "
 pdf.text @main_semester_title, :align => :left, :size => 18, :style => :bold
 pdf.text " "
