@@ -138,7 +138,6 @@ class ReportsController < ApplicationController
   def generate_pdf
     @report = Report.find_by_id(params[:report][:id])
     @course = Course.find_by_id(params[:course][:id])
-    generate_report
     @report.save
 
     if not params[:amb_note].blank?
