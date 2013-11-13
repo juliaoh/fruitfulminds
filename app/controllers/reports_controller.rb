@@ -307,7 +307,7 @@ class ReportsController < ApplicationController
 
         #value is (ratio of correct answers entered to total number of students) * 100
         value = (data[q_id]/@course_total.to_f) * 100
-        if data.include?(q_id)
+        if data_hash.include?(q_id)
           data_hash[q_id] += value
         else
           data_hash[q_id] = value
