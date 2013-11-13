@@ -53,7 +53,7 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
 end
 
-When /^(?:|I )push "([^"]*)"$/ do |button|
+When /^(?:|I )push button "([^"]*)"$/ do |button|
   click(button)
 end
 
