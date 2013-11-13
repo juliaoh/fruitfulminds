@@ -142,6 +142,7 @@ class ReportsController < ApplicationController
     if not params[:amb_note].blank?
       #make sure ambassador writes some Notes
       session[:amb_note] = params[:amb_note]
+      session[:course] = @course
       @report.save
       save_pdf
       redirect_to "/reports/#{@file_name}"
@@ -153,11 +154,8 @@ class ReportsController < ApplicationController
   end
 
   def show
-    puts "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
-    @school_name = params[:id].chomp("_report").gsub! /_/, " "
-    puts @school_name
-    school = School.find_by_name(@school_name)
-    @course = Course.find_by_school_id(school.id)
+    @course = session[:course]
+    @report_note = session[:amb_note]
     generate_report
   end
 
