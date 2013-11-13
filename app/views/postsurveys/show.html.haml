@@ -1,4 +1,4 @@
-- @subtitle = "Pre-Survey Results"
+- @subtitle = "Post-Survey Results"
 
 %span
   %table
@@ -13,6 +13,6 @@
         %tr
           %td= label_tag question.id, "#{question.name}"
           - @users.each do |user|
-            %td= text_field_tag "#{user.id}_#{question.id}", @presurvey_data[user.id][question.id], :readonly => true
+            %td= text_field_tag "#{user.id}_#{question.id}", @postsurvey_data[user.id][question.id], :readonly => true
 
-= button_to "Edit Presurvey", edit_presurvey_path(params[:id]), :method => :get, :id => params[:id]
+= button_to "Edit Postsurvey", edit_postsurvey_path(params[:id]), :method => :get, :id => params[:id]

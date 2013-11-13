@@ -53,6 +53,10 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
 end
 
+When /^(?:|I )push "([^"]*)"$/ do |button|
+  find_button(button).click
+end
+
 When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
@@ -72,6 +76,9 @@ When /^I fill in for javascript "([^"]*)" with "([^"]*)"$/ do |field, value|
   page.evaluate_script "document.getElementById(\"#{field}\").value = \"#{value}\""
 end
 
+When /^I press the css button "([^\"]*)"$/ do |element|
+  locate(:css, element).click
+end
 # Use this to fill in an entire form with data from a table. Example:
 #
 #   When I fill in the following:

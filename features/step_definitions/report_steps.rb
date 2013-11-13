@@ -14,9 +14,9 @@ Then /^\s*I should see summary of the report with static contents$/ do
   }
 end
 
-Given /^\s*I initiated the report generation for "(.*)"$/ do |school|
+Given /^\s*I initiated the report generation for "(.*)"$/ do |course|
   steps %Q{
-    Given I select "#{school}" from "school"
+    Given I select "#{course}" from "course"
     And I press "Generate Report"
   }
 end

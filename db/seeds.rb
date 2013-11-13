@@ -22,6 +22,7 @@ School.create!({:name => "Washington Elementary", :county => "Alameda", :city =>
 School.create!({:name => "Willard Middle", :county => "Alameda", :district => "BUSD", :city => "Berkeley"})
 
 College.create!({:name=>'UC Berkeley'})
+<<<<<<< HEAD
 College.create!({:name=>'Vegetable College'})
 College.create!({:name=>'College of the Fruits'})
 
@@ -43,6 +44,12 @@ User.create!({:name => "fm ambassador account", :email => "user@fruitfulminds.or
 User.create!({:name => "another fm ambassador account", :email => "ambassador@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 1, :college_id => 1, :course_ids => [1]})
 
 User.create!({:name => "pending ambassador account", :email => "pendingambassador@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 0, :college_id => 1, :pending_course_id => 1})
+=======
+User.create!({:name => "admin account", :email => "admin@fruitfulminds.org", :password => "password", :profile_id => 1, :college_id=> 1})
+User.create!({:name => "another admin account", :email => "admin2@fruitfulminds.org", :password => "password", :profile_id => 1, :college_id=> 1})
+User.create!({:name => "fm ambassador account", :email => "user@fruitfulminds.org", :password => "password", :school_semester_id => 1, :profile_id => 2, :college_id=> 1})
+User.create!({:name => "another fm ambassador account", :email => "ambassador@fruitfulminds.org", :password => "password", :school_semester_id => 1, :profile_id => 2, :college_id => 1})
+>>>>>>> 40e4eee0172cee2022779190219fcd204bd3624e
 
 School.create!({:name => "Haven's Elementary", :county => "Alameda", :city => "Piedmont", :district => "PUSD"})
 School.create!({:name => "Ascend School (Elementary)", :county => "Alameda", :city => "Oakland", :district => "OUSD"})
@@ -75,9 +82,15 @@ SchoolSemester.create!({:school_id => 13, :name => "Fall", :year => 2012})
 
 
 
+<<<<<<< HEAD
 
 Presurvey.create!({:course_id => 1, :curriculum_id => 1, :school_semester_id => 1, :data=>{1=>1, 2=>2, 3=>3}})
 Postsurvey.create!({:course_id => 1, :curriculum_id => 1, :school_semester_id => 1, :data=>{1=>1, 2=>2, 3=>3}})
+=======
+Presurvey.create!({:course_id => 1, :curriculum_id => 1, :school_semester_id => 1, :data=>{1=>{1=>1, 2=>2, 3=>3}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
+Postsurvey.create!({:course_id => 1, :curriculum_id => 1, :school_semester_id => 1, :data=>{1=>{1=>4, 2=>6, 3=>9}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
+Course.create!({:semester =>"Fall 2013", :total_students=>25, :school_id=>2, :curriculum_id=>1, :presurvey_id=>1, :postsurvey_id=>1, :users=>[User.find_by_id(1), User.find_by_id(4)]})
+>>>>>>> 40e4eee0172cee2022779190219fcd204bd3624e
 
 StaticContent.create!({
                    :intro_title => "Intro to Fruitful Minds",

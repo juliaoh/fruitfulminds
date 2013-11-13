@@ -1,7 +1,7 @@
 class CreateReport < ActiveRecord::Migration
   def change
     create_table :reports do |t|
-      t.references :school_semester
+      t.references :course
       t.text "main_title"
       t.text "school_intro_title"
       t.text "school_introduction"

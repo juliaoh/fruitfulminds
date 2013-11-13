@@ -1,11 +1,11 @@
-- @subtitle = "Edit Postsurvey Results"
-- section_and_num_questions = {1 => 2, 2 => 4, 3 => 6, 4 => 3, 5 => 2, 6 => 4}
+- @subtitle = "Edit Post-Survey Results"
 
 %span
-  = form_for @postsurvey_fields, :url => {:action => :update}, :html => {:class => "form_to_validate"} do |f|
-    = render :partial => "admin/schools"
-    = render :partial => "presurveys/sections", :locals => {:f => f, :section_and_num_questions => section_and_num_questions}
-    = fields_for @efficacy_fields do |e|
-      = render :partial => "presurveys/efficacy", :locals => {:e => e, :num_questions => 10}
-    #submit
-      = submit_tag 'Save Changes'
+  = form_tag("/postsurveys/#{params[:id]}", method: "put") do
+    - @curriculum.sections.each do |section|
+      = label_tag section.id, "#{section.name}"
+      - section.questions.each do |question|
+        = label_tag question.id, "#{question.name}"
+        = text_field_tag question.id, @postsurvey_data[@current_user.id][question.id]
+    %br
+    = submit_tag 'Save Changes'

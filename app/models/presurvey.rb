@@ -7,4 +7,5 @@ class Presurvey < ActiveRecord::Base
   serialize :data
   serialize :total
 
+  delegate :users, :to => :course
 end

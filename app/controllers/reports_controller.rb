@@ -1,29 +1,13 @@
-#temporary file, will replace reports_controller.rb later
-#                    __ __
-#            |    |    |
-#            |____|    |
-#            |    |    |
-#            |    |  __|__
-#
-#some things that I haven't done (doesn't include everything):
-#calculate size of graph based on # of sections in generate_objective_graph
-#
-#Done but is kind of complex:
-#add efficacy graph
-#calculate_improvement - calculates overall % improvement for MC/objective sections
-#add overall improvement graph (for objective/mc)
 
 class ReportsController < ApplicationController
   def new
     #New report page should only list the classes that the ambassador is part of
     @courses = @current_user.courses
-
   end
 
   def create
     #user selects which class to generate a report for
     @course = Course.find_by_id(params[:course])
-    #@report = Report.create!(:course_id => @course.id)
     generate_report
   end
 
@@ -44,7 +28,6 @@ class ReportsController < ApplicationController
       flash[:warning] = "@course is not defined"
       return
     end
-
     #A course is uniquely defined by 
     #1) School ID (number)
     #2) Semester (string)
@@ -61,7 +44,7 @@ class ReportsController < ApplicationController
     @school_name = @school.name
     @school_semester = @course.semester
     @main_semester_title = @school_semester + " Report"
-    @static_content = StaticContent.first
+    @static_contents = StaticContent.first
     @curriculum = Curriculum.find_by_id(@course.curriculum_id)
     #presurvey.total & postsurvey.total are hashes of
     #{user_id => {'total' => # of students user is entering data for}}
@@ -98,9 +81,6 @@ class ReportsController < ApplicationController
 
     @college = User.find_by_id(@course.users[0]).college
     @college = @college.name
-    puts "HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
-    puts @college
-
     
     #@objectives is a hash of
     #Section name => objective description
@@ -120,6 +100,7 @@ class ReportsController < ApplicationController
       ]
     end
 
+    assign_titles
     @improvement_intro = "#{@presurvey_total} students took the pre-curriculum survey and #{@postsurvey_total} students took the post-curriculum survey. These were not necessarily the same students. However, on average, students showed significant increases in their agreement that they could"
   
   end
@@ -154,6 +135,8 @@ class ReportsController < ApplicationController
   end
 
   def generate_pdf
+    @course = Course.find_by_id(params[:course][:id])
+
     if not params[:amb_note].blank?
       #make sure ambassador writes some Notes
       session[:amb_note] = params[:amb_note]
@@ -161,17 +144,26 @@ class ReportsController < ApplicationController
       redirect_to "/reports/#{@file_name}"
       return
     else
-      flash[:warning] = "Please enter ambassador notes"
+      flash[:warning] = "Could not generate the PDF report: Please enter ambassador notes"
       redirect_to new_report_path and return
     end
   end
 
+  def show
+    @school_name = params[:id].chomp("_report").gsub! /_/, " "
+    school = School.find_by_name(@school_name)
+    @course = Course.find_by_school_id(school.id)
+    @report_note = session[:amb_note]
+    generate_report
+  end
+
+
   def save_pdf
+    generate_report
     @report_note = session[:amb_note]
     file = @school_name.gsub! /\s+/, '_'
     file = file.downcase
     @file_name = "#{file}_report.pdf"
-    generate_report
   end
 
 
@@ -244,11 +236,13 @@ class ReportsController < ApplicationController
   end
 
   def generate_efficacy_graph(data_list)
+    #data_list is a list of hashes [{presurvey},{postsurvey}]
+    #hashes are {q_id => value}
     axes = []
     labels = ""
     @curriculum.sections.each do |section_id|
       section = Section.find_by_id(section_id)
-      next if section.type != 'Efficacy'
+      next if section.stype != 'Efficacy'
       section.questions.each do |q_id|
         question = Question.find_by_id(q_id)
         labels += question.name + "|"
@@ -265,7 +259,7 @@ class ReportsController < ApplicationController
         survey_list.push(value)
       end
       data.push(survey_list)
-      if survey_list.compact.max > @max
+      if survey_list.size > 0 and survey_list.compact.max > @max
         @max = survey_list.compact.max
       end
     end
@@ -291,17 +285,18 @@ class ReportsController < ApplicationController
     presurvey_data = {}
     postsurvey_data = {}
     #presurvey.data & postsurvey.data are hashes of
-    #{user_id => {q_id => value}} 
-
+    #{user => {q_id => value}} 
+    @type = type
     def calc_values(data, data_hash)
       #helper function
+      return data_hash if data.nil?
       data.keys.each do |q_id|
         question = Question.find_by_id(q_id)
-        next if question.qtype != type #skips if not type: 'Efficacy' or 'Multiple Choice'
+        next if question.qtype != @type #skips if not type: 'Efficacy' or 'Multiple Choice'
 
         #value is (ratio of correct answers entered to total number of students) * 100
         value = (data[q_id]/@course_total.to_f) * 100
-        if data.include?(q_id)
+        if data_hash.include?(q_id)
           data_hash[q_id] += value
         else
           data_hash[q_id] = value
@@ -310,10 +305,9 @@ class ReportsController < ApplicationController
       return data_hash
     end
 
-    @course.users.each do |user_id|
-      user_pre_data = @presurvey.data[user_id]
-      user_post_data = @postsurvey.data[user_id]
-
+    @course.users.each do |user|
+      user_pre_data = @presurvey.data[user.id]
+      user_post_data = @postsurvey.data[user.id]
       #following code works because of invariant:
       #pre&post surveys have the exact same questions
       presurvey_data = calc_values(user_pre_data, presurvey_data)
