@@ -48,21 +48,17 @@
         - if @current_user.admin?
           - Course.all.each do |course|
             - survey = Postsurvey.find_by_course_id(course.id)
-            = link_to presurvey_path(survey), :id => survey.id do
-              %input{type: "submit", id: survey.id, value: "Show"}
+            = link_to "Show Pre-Survey", presurvey_path(survey), :id => survey.id class: "btn"
         - else
           - @current_user.courses.each do |course|
             - survey = Postsurvey.find_by_course_id(course.id)
-            = link_to presurvey_path(survey), :id => survey.id do
-              %input{type: "submit", id: survey.id, value: "Show"}
+            = link_to "Show Pre-Survey", presurvey_path(survey), :id => survey.id class: "btn"
       %td
         - if @current_user.admin?
           - Course.all.each do |course|
             - survey = Postsurvey.find_by_course_id(course.id)
-            = link_to postsurvey_path(survey), :id => survey.id do
-              %input{type: "submit", id: survey.id, value: "Show Post-Survey"}
+            = link_to "Show Post-Survey", postsurvey_path(survey), :id => survey.id class: "btn"
         - else
           - @current_user.courses.each do |course|
             - survey = Postsurvey.find_by_course_id(course.id)
-            = link_to postsurvey_path(survey), :id => survey.id do
-              %input{type: "submit", id: survey.id, value: "Show Post-Survey"}
+            = link_to "Show Post-Survey", postsurvey_path(survey), :id => survey.id class: "btn"
