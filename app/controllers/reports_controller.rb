@@ -153,11 +153,11 @@ class ReportsController < ApplicationController
   end
 
   def save_pdf
+    generate_report
     @report_note = session[:amb_note]
     file = @school_name.gsub! /\s+/, '_'
     file = file.downcase
     @file_name = "#{file}_report.pdf"
-    generate_report
   end
 
 
