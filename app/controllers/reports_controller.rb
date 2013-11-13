@@ -249,7 +249,7 @@ class ReportsController < ApplicationController
     labels = ""
     @curriculum.sections.each do |section_id|
       section = Section.find_by_id(section_id)
-      next if section.type != 'Efficacy'
+      next if section.stype != 'Efficacy'
       section.questions.each do |q_id|
         question = Question.find_by_id(q_id)
         labels += question.name + "|"
