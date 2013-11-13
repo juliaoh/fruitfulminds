@@ -138,12 +138,12 @@ class ReportsController < ApplicationController
   def generate_pdf
     @report = Report.find_by_id(params[:report][:id])
     @course = Course.find_by_id(params[:course][:id])
-    @report.save
 
     if not params[:amb_note].blank?
       #make sure ambassador writes some Notes
       session[:amb_note] = params[:amb_note]
       save_pdf
+      @report.save
       redirect_to "/reports/#{@file_name}"
       return
     else
