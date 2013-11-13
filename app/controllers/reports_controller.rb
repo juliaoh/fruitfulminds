@@ -297,13 +297,13 @@ class ReportsController < ApplicationController
     postsurvey_data = {}
     #presurvey.data & postsurvey.data are hashes of
     #{user => {q_id => value}} 
-
+    @type = type
     def calc_values(data, data_hash)
       #helper function
       return data_hash if data.nil?
       data.keys.each do |q_id|
         question = Question.find_by_id(q_id)
-        next if question.qtype != type #skips if not type: 'Efficacy' or 'Multiple Choice'
+        next if question.qtype != @type #skips if not type: 'Efficacy' or 'Multiple Choice'
 
         #value is (ratio of correct answers entered to total number of students) * 100
         value = (data[q_id]/@course_total.to_f) * 100
