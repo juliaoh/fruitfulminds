@@ -1,13 +1,10 @@
 - @subtitle = "Add Presurvey Results"
-- section_and_num_questions = {1 => 2, 2 => 4, 3 => 6, 4 => 3, 5 => 2, 6 => 4}
 
 %span
-  = form_for @presurvey_fields, :url => {:action => :create}, :html => {:class => "form_to_validate"} do |f|
-    = render :partial => "admin/schools"
-    %p Enter the correct number for each section.
-    = render :partial => "presurveys/sections", :locals => {:f => f, :section_and_num_questions => section_and_num_questions}
-    = fields_for @efficacy_fields do |e|
-      = render :partial => "presurveys/efficacy", :locals => {:e => e, :num_questions => 10}
-    #submit
-      = submit_tag 'Save Changes'
-
+  = form_tag("/presurveys", method: "post") do
+    = label_tag :school_id, "School"
+    = select_tag :school_id, options_for_select(@all_schools)
+    - @all_curriculums[0].sections.each do |section|
+      = label_tag(section.id, "#{section.name}")
+      = text_field_tag(section.id) 
+    = submit_tag("SDFSDFS")

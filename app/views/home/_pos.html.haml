@@ -1,7 +1,1 @@
-- survey.data.each do |user,data|
-  - data.each do |q_id, value|
-    -question = Question.find_by_id(q_id).name
-    = "#{question}: #{value}"
-    %br
-
-= button_to "Edit Post-Survey", edit_postsurvey_path(survey), :method => :get, :id => "edit_post_survey_#{survey.id}"
+= button_to "Show Post-Survey", postsurvey_path(survey), :method => :get, :id => survey.id

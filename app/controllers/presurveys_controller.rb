@@ -1,6 +1,6 @@
 class PresurveysController < ApplicationController
   def new
-    @all_schools = School.all
+    @all_schools = School.all.collect { |s| ["#{s.name}", s.id] }
     @presurvey_fields = Presurvey.new(params[:presurvey])
     @efficacy_fields = Efficacy.new(params[:efficacy])
   end

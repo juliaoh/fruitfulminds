@@ -49,9 +49,17 @@ Section.create!({:name=>'Section 1',:stype=>'Multiple Choice',:objective=>'Secti
 Section.create!({:name=>'Section 2', :stype=>'Efficacy', :curriculum_id=>1})
 Question.create!({:name=>'S1Q1',:qtype=>'Multiple Choice',:msg1=>'S1Q1 stronk',:msg2=>'S1Q1 weaaak', :section_id=>1})
 Question.create!({:name=>'S1Q2',:qtype=>'Multiple Choice',:msg1=>'S1Q2 stronk',:msg2=>'S1Q2 weaaak', :section_id=>1})
+Question.create!({:name=>'S2Q1',:qtype=>'Efficacy',:msg1=>'S2Q1 stronk',:msg2=>'S2Q1 weaaak', :section_id=>1})
+Curriculum.create!({:name=>'Test Curriculum 2'})
+Section.create!({:name=>'Section 1',:stype=>'Multiple Choice',:objective=>'Section 1 objective', :curriculum_id=>2})
+Section.create!({:name=>'Section 2', :stype=>'Efficacy', :curriculum_id=>1})
+Question.create!({:name=>'S1Q1',:qtype=>'Multiple Choice',:msg1=>'S1Q1 stronk',:msg2=>'S1Q1 weaaak', :section_id=>2})
+Question.create!({:name=>'S1Q2',:qtype=>'Multiple Choice',:msg1=>'S1Q2 stronk',:msg2=>'S1Q2 weaaak', :section_id=>2})
 Question.create!({:name=>'S2Q1',:qtype=>'Efficacy',:msg1=>'S2Q1 stronk',:msg2=>'S2Q1 weaaak', :section_id=>2})
 
 Course.create!({:semester =>"Fall 2013", :total_students=>25, :school_id=>2, :curriculum_id=>1, :presurvey_id=>1, :postsurvey_id=>1})
+Presurvey.create!({:course_id => 1, :curriculum_id => 1, :school_semester_id => 1})
+Postsurvey.create!({:course_id => 1, :curriculum_id => 1, :school_semester_id => 1})
 
 StaticContent.create!({
                    :intro_title => "Intro to Fruitful Minds",

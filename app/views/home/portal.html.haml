@@ -36,21 +36,33 @@
 %table.table
   %thead
     %tr
+      %th School Course
       %th Pre-Surveys
       %th Post-Surveys
   %tbody
     %tr
       %td
         - if @current_user.admin?
-          - Presurvey.all.each do |survey|
-            = render :partial => "pre", :locals => {:survey => survey}
+          - Course.all.each do |course|
+            = "#{course.name}"
         - else
-          - @current_user.presurveys.each do |survey|
-            = render :partial => "pre", :locals => {:survey => survey}
+          - @current_user.courses.each do |course|
+            = "#{course.name}"
       %td
         - if @current_user.admin?
-          - Postsurvey.all.each do |survey|
-            = render :partial => "pos", :locals => {:survey => survey}
+          - Course.all.each do |course|
+            - survey = Postsurvey.find_by_course_id(course.id)
+            = button_to "Show Pre-Survey", presurvey_path(survey), :method => :get, :id => survey.id
         - else
-          - @current_user.postsurveys.each do |survey|
-            = render :partial => "pos", :locals => {:survey => survey}
+          - @current_user.courses.each do |course|
+            - survey = Postsurvey.find_by_course_id(course.id)
+            = button_to "Show Pre-Survey", presurvey_path(survey), :method => :get, :id => survey.id
+      %td
+        - if @current_user.admin?
+          - Course.all.each do |course|
+            - survey = Postsurvey.find_by_course_id(course.id)
+            = button_to "Show Post-Survey", postsurvey_path(survey), :method => :get, :id => survey.id
+        - else
+          - @current_user.courses.each do |course|
+            - survey = Postsurvey.find_by_course_id(course.id)
+            = button_to "Show Post-Survey", postsurvey_path(survey), :method => :get, :id => survey.id

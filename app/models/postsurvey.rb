@@ -2,7 +2,9 @@ class Postsurvey < ActiveRecord::Base
   has_many :efficacy, :dependent => :destroy
   belongs_to :user
   belongs_to :school_semester
+  belongs_to :course
+  belongs_to :curriculum
   serialize :data
   serialize :total
-  belongs_to :course
+
 end
