@@ -11,7 +11,7 @@ Profile.create!(:label => "ambassador")
 College.create!({:name=>'UC Berkeley'})
 User.create!({:name => "admin account", :email => "admin@fruitfulminds.org", :password => "password", :profile_id => 1})
 User.create!({:name => "another admin account", :email => "admin2@fruitfulminds.org", :password => "password", :profile_id => 1})
-User.create!({:name => "fm ambassador account", :email => "user@fruitfulminds.org", :password => "password", :school_semester_id => 1, :profile_id => 2})
+User.create!({:name => "fm ambassador account", :email => "user@fruitfulminds.org", :password => "password", :school_semester_id => 1, :profile_id => 2, :college_id=> 1})
 User.create!({:name => "another fm ambassador account", :email => "ambassador@fruitfulminds.org", :password => "password", :school_semester_id => 1, :profile_id => 2})
 
 School.create!({:name => "Haven's Elementary", :county => "Alameda", :city => "Piedmont", :district => "PUSD"})
@@ -51,9 +51,9 @@ Question.create!({:name=>'S1Q1',:qtype=>'Multiple Choice',:msg1=>'S1Q1 stronk',:
 Question.create!({:name=>'S1Q2',:qtype=>'Multiple Choice',:msg1=>'S1Q2 stronk',:msg2=>'S1Q2 weaaak', :section_id=>1})
 Question.create!({:name=>'S2Q1',:qtype=>'Efficacy',:msg1=>'S2Q1 stronk',:msg2=>'S2Q1 weaaak', :section_id=>2})
 
-Course.create!({:semester =>"Fall 2013", :total_students=>25, :school_id=>2, :curriculum_id=>1, :presurvey_id=>1, :postsurvey_id=>1})
-Presurvey.create!({:course_id => 1, :curriculum_id => 1, :school_semester_id => 1, :data=>{1=>1, 2=>2, 3=>3}})
-Postsurvey.create!({:course_id => 1, :curriculum_id => 1, :school_semester_id => 1, :data=>{1=>1, 2=>2, 3=>3}})
+Course.create!({:semester =>"Fall 2013", :total_students=>25, :school_id=>2, :curriculum_id=>1, :presurvey_id=>1, :postsurvey_id=>1, :users=>[User.find_by_id(3)]})
+Presurvey.create!({:course_id => 1, :curriculum_id => 1, :school_semester_id => 1, :data=>{3=>{1=>1, 2=>2, 3=>3}}, :total=>{3=>25}})
+Postsurvey.create!({:course_id => 1, :curriculum_id => 1, :school_semester_id => 1, :data=>{3=>{1=>4, 2=>6, 3=>9}}, :total=>{3=>25}})
 
 StaticContent.create!({
                    :intro_title => "Intro to Fruitful Minds",
