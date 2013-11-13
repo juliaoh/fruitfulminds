@@ -152,6 +152,10 @@ class ReportsController < ApplicationController
     end
   end
 
+  def show
+    generate_report
+  end
+
   def save_pdf
     generate_report
     @report_note = session[:amb_note]
