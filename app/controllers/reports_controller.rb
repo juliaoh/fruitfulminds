@@ -1,23 +1,8 @@
-#temporary file, will replace reports_controller.rb later
-#                    __ __
-#            |    |    |
-#            |____|    |
-#            |    |    |
-#            |    |  __|__
-#
-#some things that I haven't done (doesn't include everything):
-#calculate size of graph based on # of sections in generate_objective_graph
-#
-#Done but is kind of complex:
-#add efficacy graph
-#calculate_improvement - calculates overall % improvement for MC/objective sections
-#add overall improvement graph (for objective/mc)
 
 class ReportsController < ApplicationController
   def new
     #New report page should only list the classes that the ambassador is part of
     @courses = @current_user.courses
-
   end
 
   def create
@@ -44,7 +29,6 @@ class ReportsController < ApplicationController
       flash[:warning] = "@course is not defined"
       return
     end
-
     #A course is uniquely defined by 
     #1) School ID (number)
     #2) Semester (string)
@@ -117,7 +101,7 @@ class ReportsController < ApplicationController
       ]
     end
 
-    assign_efficacy_titles
+    assign_titles
     @improvement_intro = "#{@presurvey_total} students took the pre-curriculum survey and #{@postsurvey_total} students took the post-curriculum survey. These were not necessarily the same students. However, on average, students showed significant increases in their agreement that they could"
   
   end
@@ -146,8 +130,6 @@ class ReportsController < ApplicationController
     objective_str_weak = generate_strengths(objective_data)
     @objective_str = objective_str_weak[0]
     @objective_weak = objective_str_weak[1]
-    puts "objective_str"
-    puts @objective_str_weak
     @eval_intro_first = "Prior to the 7-week curriculum, a pre-curriculum survey was distributed to assess the students\' knowledge in nutrition; a very similar survey was administered during the final class. The goal of the surveys was to determine the retention of key learning objectives from the Fruitful Minds program."
     @eval_intro_second = "On average, students have shown a #{@efficacy}% improvement after going through seven weeks of classes." 
     @eval_intro_third = "The survey results are shown below. The first graph shows the average scores in each of the six nutrition topics covered in the curriculum (see graph 1). Note that the number of questions in each category varies. The second graph shows students\' overall performance on the pre-curriculum surveys and post-curriculum survey (see graph 2). #{@presurvey_total} took the pre-curriculum survey, and #{@postsurvey_total} students took the post-curriculum surveys."
@@ -269,8 +251,6 @@ class ReportsController < ApplicationController
       data.push(survey_list)
       if survey_list.size > 0 and survey_list.compact.max > @max
         @max = survey_list.compact.max
-      else
-        puts data_list
       end
     end
 
@@ -318,11 +298,6 @@ class ReportsController < ApplicationController
     @course.users.each do |user|
       user_pre_data = @presurvey.data[user.id]
       user_post_data = @postsurvey.data[user.id]
-      puts "user_pre_data then user_post_data"
-      puts user_pre_data
-      puts user_post_data
-      puts @course.users
-      puts @course.users[0].id
       #following code works because of invariant:
       #pre&post surveys have the exact same questions
       presurvey_data = calc_values(user_pre_data, presurvey_data)
