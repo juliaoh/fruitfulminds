@@ -20,7 +20,7 @@ class PresurveysController < ApplicationController
       new_data.each do |qid, num|
         new_data[qid] = Integer(new_data[qid])
       end
-      presurvey.data = new_data
+      presurvey.data = convert_results(new_data)
       presurvey.save!
       flash[:notice] = "Survey updated successfully."
       redirect_to presurvey_path(:id => params[:id])
@@ -35,7 +35,7 @@ class PresurveysController < ApplicationController
     @curriculum = Curriculum.find_by_id(@presurvey.curriculum_id)
   end
 
-  def get_results_from_params(curriculum, params)
+  def self.get_results_from_params(curriculum, params)
     new_data = {}
     curriculum.sections.each do |section|
       section.questions.each do |question|
@@ -44,4 +44,11 @@ class PresurveysController < ApplicationController
     end
     return new_data
   end
+
+  def self.convert_results(data)
+    data.each do |qid, num|
+      data[qid] = Integer(data[qid])
+    end
+    return data
+  end 
 end
