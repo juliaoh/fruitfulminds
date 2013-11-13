@@ -138,11 +138,12 @@ class ReportsController < ApplicationController
   def generate_pdf
     @report = Report.find_by_id(params[:report][:id])
     @course = Course.find_by_id(params[:course][:id])
-    @report.save
 
     if not params[:amb_note].blank?
       #make sure ambassador writes some Notes
       session[:amb_note] = params[:amb_note]
+      session[:course] = @course
+      @report.save
       save_pdf
       redirect_to "/reports/#{@file_name}"
       return
@@ -152,12 +153,23 @@ class ReportsController < ApplicationController
     end
   end
 
+  def show
+    puts "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+    @school_name = params[:id].chomp("_report").gsub! /_/, " "
+    puts @school_name
+    school = School.find_by_name(@school_name)
+    @course = Course.find_by_school_id(school.id)
+    @report_note = session[:amb_note]
+    generate_report
+  end
+
+
   def save_pdf
+    generate_report
     @report_note = session[:amb_note]
     file = @school_name.gsub! /\s+/, '_'
     file = file.downcase
     @file_name = "#{file}_report.pdf"
-    generate_report
   end
 
 
