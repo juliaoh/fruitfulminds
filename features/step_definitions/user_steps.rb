@@ -30,7 +30,7 @@ Given /^the following colleges have users/ do |table|
   table.hashes.each do |result|
     user = User.find_by_id(result[:user_id])
     college = College.find_by_id(result[:college_id])
-    user.college = [colelge]
+    user.college = [college]
     user.save!
   end
 end
