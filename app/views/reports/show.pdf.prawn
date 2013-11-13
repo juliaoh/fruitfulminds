@@ -95,5 +95,5 @@ end
 pdf.text " "
 pdf.text @ambassadorNoteTitle, :size => 14, :style => :bold
 pdf.text " "
-pdf.text @reportNote
+pdf.text @report_note
 
