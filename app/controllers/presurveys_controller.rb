@@ -16,12 +16,7 @@ class PresurveysController < ApplicationController
     begin
       presurvey = Presurvey.find_by_id(params[:id])
       curriculum = Curriculum.find_by_id(presurvey.curriculum_id)
-      new_data = {}
-      curriculum.sections.each do |section|
-        section.questions.each do |question|
-          new_data[question.id] = params[question.id.to_s]
-        end
-      end
+      new_data = get_results_from_params(curriculum, params)
       new_data.each do |qid, num|
         new_data[qid] = Integer(new_data[qid])
       end
@@ -38,5 +33,15 @@ class PresurveysController < ApplicationController
   def show
     @presurvey = Presurvey.find_by_id(params[:id])
     @curriculum = Curriculum.find_by_id(@presurvey.curriculum_id)
+  end
+
+  def get_results_from_params(curriculum, params)
+    new_data = {}
+    curriculum.sections.each do |section|
+      section.questions.each do |question|
+        new_data[question.id] = params[question.id.to_s]
+      end
+    end
+    return new_data
   end
 end
