@@ -7,20 +7,16 @@
         %th Name
         %th Email
         %th College
-        %th School
-        %th Semester
-        %th Year
+        %th Course
         %th Approve
         %th Disapprove
     %tbody
       - @pending_users.each do |user|
         %tr
-          %td= user[:name]
-          %td= user[:email]
-          %td= select_tag "colleges[#{user[:id]}]", options_for_select(College.all.collect { |s| ["#{s.name}", s.id ]}, :selected => user[:college_name]), :style => "width: 150px;"
-          %td= select_tag "school[#{user[:id]}]", options_for_select(School.all.collect { |s| ["#{s.name}, #{s.city}, #{s.county}", s.id ] }, :selected => user[:school_name]), :style => "width: 350px;"
-          %td= select_tag "semester_names[#{user[:id]}]", options_for_select(%w[Fall Winter Spring Summer], :selected => user[:semester_name]), :style => "width: 85px;"
-          %td= select_year(user[:semester_year], {:field_name => user[:id], :start_year => 2005, :end_year => Time.now.year + 5}, {:style => "width: 75px;"} )
+          %td= user.name
+          %td= user.email
+          %td= select_tag "colleges[#{user[:id]}]", options_for_select(College.all.collect { |s| ["#{s.name}", s.id ]}, :selected => user.college.name), :style => "width: 125px;"
+          %td= select_tag "courses[#{user[:id]}]", options_for_select(Course.where(:active => true).collect { |c| [c.name, c.id ] }, :selected => Course.find_by_id(user.pending_course_id).name), :style => "width: 375px;"         
           %td= check_box_tag "approves[#{user[:id]}]", 1, false, :id => "approves_#{user[:id]}", :style => "width: 30px;"
           %td= check_box_tag "disapproves[#{user[:id]}]", 1, false, :id => "disapproves_#{user[:id]}", :style => "width: 30px;"
   = submit_tag 'Update', :id => 'update_submit', :style => "margin: 10px;"

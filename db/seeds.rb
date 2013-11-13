@@ -6,18 +6,48 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Profile.create!(:label => "admin")
-Profile.create!(:label => "ambassador")
+School.create!({:name => "Haven's Elementary", :county => "Alameda", :city => "Piedmont", :district => "PUSD"})
+School.create!({:name => "Ascend School (Elementary)", :county => "Alameda", :city => "Oakland", :district => "OUSD"})
+School.create!({:name => "Urban Promise Academy (Middle)", :county => "Alameda", :city => "Oakland", :district => "OUSD"})
+School.create!({:name => "Rancho Romero Elementary", :county => "Contra Costa", :city => "Alamo", :district => "SRVUSD"})
+School.create!({:name => "Berkeley Arts Magnet Elementary", :county => "Alameda", :city => "Berkeley", :district => "BUSD"})
+School.create!({:name => "Emerson Elementary", :county => "Alameda", :city => "Berkeley", :district => "BUSD"})
+School.create!({:name => "King Middle", :county => "Alameda", :district => "BUSD", :city => "Berkeley"})
+School.create!({:name => "LeConte Elementary", :county => "Alameda", :city => "Berkeley", :district => "BUSD"})
+School.create!({:name => "Longfellow Middle", :county => "Alameda", :city => "Berkeley", :district => "BUSD"})
+School.create!({:name => "Oxford Elementary", :county => "Alameda", :city => "Berkeley", :district => "BUSD"})
+School.create!({:name => "Realm Charter Middle", :county => "Alameda", :city => "Berkeley", :district => "BUSD"})
+School.create!({:name => "Thousand Oaks Elementary", :county => "Alameda", :city => "Berkeley", :district => "BUSD"})
+School.create!({:name => "Washington Elementary", :county => "Alameda", :city => "Berkeley", :district => "BUSD"})
+School.create!({:name => "Willard Middle", :county => "Alameda", :district => "BUSD", :city => "Berkeley"})
+
 College.create!({:name=>'UC Berkeley'})
-User.create!({:name => "admin account", :email => "admin@fruitfulminds.org", :password => "password", :profile_id => 1})
-User.create!({:name => "another admin account", :email => "admin2@fruitfulminds.org", :password => "password", :profile_id => 1})
-User.create!({:name => "fm ambassador account", :email => "user@fruitfulminds.org", :password => "password", :school_semester_id => 1, :profile_id => 2})
-User.create!({:name => "another fm ambassador account", :email => "ambassador@fruitfulminds.org", :password => "password", :school_semester_id => 1, :profile_id => 2})
+College.create!({:name=>'Vegetable College'})
+College.create!({:name=>'College of the Fruits'})
+
+Course.create!({:semester =>"Fall 2013", :total_students=>25, :school_id=>2, :curriculum_id=>1, :presurvey_id=>1, :postsurvey_id=>1, :active => true})
+Course.create!({:semester =>"Fall 2013", :total_students=>30, :school_id=>5, :curriculum_id=>1, :presurvey_id=>1, :postsurvey_id=>1, :active => true})
+Course.create!({:semester =>"Fall 2013", :total_students=>20, :school_id=>4, :curriculum_id=>1, :presurvey_id=>1, :postsurvey_id=>1, :active => true})
+
+Curriculum.create!({:name=>'Test Curriculum 1'})
+Section.create!({:name=>'Section 1',:stype=>'Multiple Choice',:objective=>'Section 1 objective', :curriculum_id=>1})
+Section.create!({:name=>'Section 2', :stype=>'Efficacy', :curriculum_id=>1})
+Question.create!({:name=>'S1Q1',:qtype=>'Multiple Choice',:msg1=>'S1Q1 stronk',:msg2=>'S1Q1 weaaak', :section_id=>1})
+Question.create!({:name=>'S1Q2',:qtype=>'Multiple Choice',:msg1=>'S1Q2 stronk',:msg2=>'S1Q2 weaaak', :section_id=>1})
+Question.create!({:name=>'S2Q1',:qtype=>'Efficacy',:msg1=>'S2Q1 stronk',:msg2=>'S2Q1 weaaak', :section_id=>2})
+
+
+User.create!({:name => "admin account", :email => "admin@fruitfulminds.org", :password => "password", :profile => "admin", :pending => 1})
+User.create!({:name => "another admin account", :email => "admin2@fruitfulminds.org", :password => "password", :profile => "admin", :pending => 1})
+User.create!({:name => "fm ambassador account", :email => "user@fruitfulminds.org", :password => "password", :profile => "ambassador", :pending => 1, :college_id => 1, :course_ids => [1]})
+User.create!({:name => "another fm ambassador account", :email => "ambassador@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 1, :college_id => 1, :course_ids => [1]})
+
+User.create!({:name => "pending ambassador account", :email => "pendingambassador@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 0, :college_id => 1, :pending_course_id => 1})
 
 School.create!({:name => "Haven's Elementary", :county => "Alameda", :city => "Piedmont", :district => "PUSD"})
 School.create!({:name => "Ascend School (Elementary)", :county => "Alameda", :city => "Oakland", :district => "OUSD"})
 School.create!({:name => "Urban Promise Academy (Middle)", :county => "Alameda", :city => "Oakland", :district => "OUSD"})
-School.create!({:name => "Rancho Romero Elementary", :county => "Contra Costa", :city => "Alamo", :district => "SRVUSD"}) 
+School.create!({:name => "Rancho Romero Elementary", :county => "Contra Costa", :city => "Alamo", :district => "SRVUSD"})
 School.create!({:name => "Berkeley Arts Magnet Elementary", :county => "Alameda", :city => "Berkeley", :district => "BUSD"})
 School.create!({:name => "Emerson Elementary", :county => "Alameda", :city => "Berkeley", :district => "BUSD"})
 School.create!({:name => "King Middle", :county => "Alameda", :district => "BUSD", :city => "Berkeley"})
@@ -44,14 +74,8 @@ SchoolSemester.create!({:school_id => 12, :name => "Fall", :year => 2012})
 SchoolSemester.create!({:school_id => 13, :name => "Fall", :year => 2012})
 
 
-Curriculum.create!({:name=>'Test Curriculum 1'})
-Section.create!({:name=>'Section 1',:stype=>'Multiple Choice',:objective=>'Section 1 objective', :curriculum_id=>1})
-Section.create!({:name=>'Section 2', :stype=>'Efficacy', :curriculum_id=>1})
-Question.create!({:name=>'S1Q1',:qtype=>'Multiple Choice',:msg1=>'S1Q1 stronk',:msg2=>'S1Q1 weaaak', :section_id=>1})
-Question.create!({:name=>'S1Q2',:qtype=>'Multiple Choice',:msg1=>'S1Q2 stronk',:msg2=>'S1Q2 weaaak', :section_id=>1})
-Question.create!({:name=>'S2Q1',:qtype=>'Efficacy',:msg1=>'S2Q1 stronk',:msg2=>'S2Q1 weaaak', :section_id=>2})
 
-Course.create!({:semester =>"Fall 2013", :total_students=>25, :school_id=>2, :curriculum_id=>1, :presurvey_id=>1, :postsurvey_id=>1})
+
 Presurvey.create!({:course_id => 1, :curriculum_id => 1, :school_semester_id => 1, :data=>{1=>1, 2=>2, 3=>3}})
 Postsurvey.create!({:course_id => 1, :curriculum_id => 1, :school_semester_id => 1, :data=>{1=>1, 2=>2, 3=>3}})
 

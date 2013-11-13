@@ -8,13 +8,9 @@
       = label :user, :lastname, "Last Name"
       = text_field :user, :lastname
       = label :user, :college, "College"
-      = select('user', 'college', @college_names, {}, {})
-      = label :school, :name, "School"
-      = select(:school, :name, @school_names, {}, {})
-      = label :semester, :name, "Survey Period"
-      = select('semester', 'name', %w[Fall Winter Spring Summer], {}, {})
-      = label :semester, :year, "Survey Year"
-      = select_year(Date.today, :start_year => 2005, :end_year => Time.now.year + 5)
+      = select(:user, :college, @college_names, {}, {})
+      = label :user, :course, "School"
+      = select(:user, :course, @course_names, {}, {})
 
       = label :user, :email, "Email Address"
       = text_field :user, :email

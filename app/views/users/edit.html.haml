@@ -1,0 +1,14 @@
+- @subtitle = "Edit User"
+
+= form_tag user_path(@user), :method => :put do
+  = label :user, :name, "Name: #{@user.name}"
+  = label :user, :email, "Email: #{@user.email}"
+  = label :college, :name, "College:"
+  = select :college, :name, options_for_select(College.all.collect { |c| [c.name, c.id] }), :selected => @user.college.name
+  = label :course, :name, "Course:"
+  = select :course, :name, options_for_select(Course.where(:active => true).collect { |c| [c.name, c.id ]}), :selected => Course.find_by_id(@user.courses[0])
+  %br
+  = submit_tag 'Update User Info'
+
+
+= button_to 'Delete', user_path({:user => @user}), :method => :delete, :confirm => "Are you sure you want to delete #{@user.name}?"

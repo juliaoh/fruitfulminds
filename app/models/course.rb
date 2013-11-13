@@ -1,14 +1,20 @@
 class Course < ActiveRecord::Base
   validates :semester, :presence => true
   validates :total_students, :presence => true
-  validates :school_id, :presence => true, :numericality => true
-  validates :curriculum_id, :presence => true, :numericality => true
-  validates :presurvey_id, :presence => true, :numericality => true
-  validates :postsurvey_id, :presence => true, :numericality => true
-
+  belongs_to :school
   has_and_belongs_to_many :users
+  has_one :curriculum
+  has_one :presurvey
+  has_one :postsurvey
+
+  validates :active, :presence => true, :inclusion => [true, false]
+
 
   def name
-  	School.find_by_id(school_id).name + " " + semester
+    school.name + ", " + school.county + ", " + school.city + ", " + semester
+  end
+
+  def active?
+    active
   end
 end

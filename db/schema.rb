@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131111035944) do
+ActiveRecord::Schema.define(:version => 20131111003534) do
 
   create_table "colleges", :force => true do |t|
     t.string   "name"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20131111035944) do
     t.integer  "curriculum_id",  :null => false
     t.integer  "presurvey_id",   :null => false
     t.integer  "postsurvey_id",  :null => false
+    t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -291,9 +292,12 @@ ActiveRecord::Schema.define(:version => 20131111035944) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
+    t.integer  "pending"
+    t.integer  "pending_course_id"
+    t.string   "profile"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "college"
+    t.integer  "college_id"
   end
 
 end
