@@ -38,7 +38,7 @@
 
 %table
   %tr
-  - @objective_str.each do |key, strength|
+  - @objective_str.values.each do |strength|
     %tr
       %td= strength
 
@@ -46,7 +46,7 @@
 
 %table
   %tr
-  - @objective_weak.each do |key, weakness|
+  - @objective_weak.values.each do |weakness|
     %tr
       %td= weakness
 %p
@@ -60,7 +60,7 @@
 
 %table
   %tr
-  - @efficacy_str.each do |q_name, strength|
+  - @efficacy_str.keys.each do |q_name|
     %tr
       %td= q_name
 
@@ -68,7 +68,7 @@
 
 %table
   %tr
-  - @efficacy_weak.each do |q_name, weakness|
+  - @efficacy_weak.keys.each do |q_name|
     %tr
       %td= q_name
 
@@ -76,13 +76,13 @@
 
 %table
   %tr
-  - @efficacy_str.each do |q_name, strength|
+  - @efficacy_str.values.each do |strength|
     %tr
       %td= strength
 
 %table
   %tr
-  - @efficacy_weak.each do |q_name, weakness|
+  - @efficacy_weak.values.each do |weakness|
     %tr
       %td= weakness
 
