@@ -96,7 +96,9 @@ class ReportsController < ApplicationController
       @ambassadors += User.find_by_id(user_id).name + ", "
     end
 
-    @college = User.find_by_id(@course.users[0]).college.name
+    @college = User.find_by_id(@course.users[0]).college
+    puts "HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
+    puts @college
 
     
     #@objectives is a hash of
