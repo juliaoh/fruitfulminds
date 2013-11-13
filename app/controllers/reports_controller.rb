@@ -319,7 +319,10 @@ class ReportsController < ApplicationController
     @course.users.each do |user_id|
       user_pre_data = @presurvey.data[user_id]
       user_post_data = @postsurvey.data[user_id]
-
+      puts "user_pre_data then user_post_data"
+      puts user_pre_data
+      puts user_post_data
+      puts @course
       #following code works because of invariant:
       #pre&post surveys have the exact same questions
       presurvey_data = calc_values(user_pre_data, presurvey_data)
