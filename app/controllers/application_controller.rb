@@ -4,10 +4,13 @@ class ApplicationController < ActionController::Base
 
   protected
   def current_user
+    puts session
     @current_user ||= User.find_by_id(session[:user_id])
+    puts @current_user == nil
     if @current_user
-      @school = @current_user.school
+      return
     else
+      print "Redirecting to login path"
       redirect_to login_path
     end
   end

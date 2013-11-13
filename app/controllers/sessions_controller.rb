@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     user = User.where(:email => params[:user][:email]).first
     if user && user.authenticate(params[:user][:password])
-      if user.pendingUser?
+      if user.pending?
         create_handle_pending_user()
       else
         create_handle_admin(user)
@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
 
   def create_handle_admin(user)
     session[:user_id] = user.id
-    if user.admin? and !PendingUser.first.nil?
+    if user.admin? and User.where(:pending => 0).length == 0
       redirect_to pending_users_path and return
     else
       redirect_to '/portal' and return
@@ -34,6 +34,7 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
+    print "HERE"
     redirect_to root_path
   end
 

@@ -8,17 +8,15 @@ class UsersController < ApplicationController
   def show
   end
 
-  # renders sign up page
+   # renders sign up page
   def new
-    @school_names = School.all.collect { |s| ["#{s.name}, #{s.county}, #{s.city}", s.id ] }.sort
-
+    @course_names = Course.where(:active => true).collect { |c| [c.name, c.id ] }.uniq.sort
     @college_names = College.find(:all).map do |college|
       college.name
     end.uniq.sort
   end
 
   def tos
-
   end
 
   def edit
@@ -26,73 +24,64 @@ class UsersController < ApplicationController
 
   def create
     if user_filled_all_fields? params
-
-        firstName = params[:user][:firstname]
-        lastName = params[:user][:lastname]
-        email = params[:user][:email]
-        password = params[:user][:password]
-        confirm = params[:user][:confirm_password]
-        college = params[:user][:college]
-
-
-        school_id = params[:school][:name]
-        school = School.find_by_id(school_id)
-        #schoolCounty = School.find_by_name(schoolName).county
-        #schoolDistrict = School.find_by_name(schoolName).district
-        #schoolCity = School.find_by_name(schoolName).city
-        schoolName = school.name
-        schoolCounty = school.county
-        schoolDistrict = school.district
-        schoolCity = school.city
-
-        semesterName = params[:semester][:name]
-        semesterYear = params[:date][:year]
-
-        tos = params[:tos]
-
-        if tos.nil?
-            flash[:warning] = "You have to accept the TOS in order to register"
-        elsif not valid_email?(email)
-            flash[:warning] = "Not a valid email address"
-        elsif password.length < 6
-            flash[:warning] = "Password must have 6 characters or more"
-        elsif not password.eql? confirm
-            flash[:warning] = "Passwords did not match"
+      user_fields = generate_user_fields(params[:user])
+      if correct_submission?(params)
+        if create_user_if_valid(user_fields)
+          redirect_to login_path and return
         else
-          ActiveRecord::Base.transaction do
-            begin
-            # create user
-            @user = User.create(:name => "#{firstName} #{lastName}",
-                                :email => email,
-                                :password => password,
-                                :college => College.find_by_name(college),
-                                :profile_id => Profile.find_by_label("ambassador").id)
-            # add user's id to :pending_users table
-            PendingUser.create!(:user_id => @user.id,
-                                :school_name => schoolName,
-                                :school_city => schoolCity,
-                                :school_county => schoolCounty,
-                                :school_district => schoolDistrict,
-                                :semester_name => semesterName,
-                                :semester_year => semesterYear)
-            rescue Exception => e
-              @user = nil
-              @user_error = e
-            end
-          end
-          if @user
-            UserMailer.notify_admin(@user).deliver
-            flash[:notice] = "Thank you for registering, a confirmation will be sent to you shortly"
-            redirect_to login_path and return
-          else
-            flash[:warning] = @user_error.message
-          end
+          flash[:warning] = @user_error.message
         end
-        redirect_to signup_path and return
+      end
     else
-        flash[:warning] = "Please fill in all fields"
-        redirect_to signup_path and return
+      flash[:warning] = "Please fill in all fields"
     end
+    redirect_to signup_path and return
+  end
+
+  # Creates a user upon validity.
+  def create_user_if_valid(user_fields)
+    ActiveRecord::Base.transaction do
+      begin
+        @user = User.create!(user_fields)
+        if @user
+          UserMailer.notify_admin(@user).deliver
+          flash[:notice] = "Thank you for registering, a confirmation will be sent to you shortly"
+          return true
+        end
+        return false
+      rescue Exception => e
+        @user = nil
+        @user_error = e
+        return false
+      end
+    end
+  end
+
+   # Checks if submission to create new ambassador is correct
+  def correct_submission?(params)
+    if params[:tos].nil?
+      flash[:warning] = "You have to accept the TOS in order to register"
+    elsif not valid_email?(params[:user][:email])
+      flash[:warning] = "Not a valid email address"
+    elsif params[:user][:password].length < 6
+      flash[:warning] = "Password must have 6 characters or more"
+    elsif not params[:user][:password].eql? params[:user][:confirm_password]
+      flash[:warning] = "Passwords did not match"
+    else
+      return true
+    end
+    return false
+  end
+
+  # Generates the fields required for an ambassador.
+  def generate_user_fields(user_params)
+    return {:name => "#{user_params[:firstname]} #{user_params[:lastname]}",
+            :email => user_params[:email],
+            :password => user_params[:password],
+            :college_id => College.find_by_name(user_params[:college]).id,
+            :pending_course_id => user_params[:course],
+            :pending => 0,
+            :profile => "ambassador" }
   end
 
   def user_filled_all_fields? params_hash
@@ -111,157 +100,108 @@ class UsersController < ApplicationController
   def all_users
     @all_users = []
     User.all.each do |user|
-      if !user.admin? and !PendingUser.find_by_user_id(user.id)
-        @college = College.find_by_id(user.college)
-        if (@college)
-          @collegename = @college.name
-        else
-          @collegename = "N/A"
-        end
-        @all_users << {
-          :id => user.id,
-          :email => user.email,
-          :name => user.name,
-          :college => user.college,
-          :college_name => @collegename,
-          :school_id => user.school_semester.school_id,
-          :semester_name => user.school_semester.name,
-          :semester_year => user.school_semester.year
-        }
+      if !user.admin? and !user.pending?
+        @all_users << user
       end
     end
-  end
-
-  def update_all_users
-    deleted_users = ""
-    updated_users = ""
-
-    if not params[:deletes].nil?
-      params[:deletes].keys.each do |uid|
-        user = User.find_by_id(uid)
-        user.destroy if user && !user.admin?
-      end
-    end
-
-    if not params[:updates].nil?
-      params[:updates].keys.each do |uid|
-
-        # fields that admin might have modified
-        user_college = params[:colleges][uid]
-        school_id = params[:schools][uid]
-        semester_name = params[:semester_names][uid] # Fall, Winter, Spring, Summer
-        semester_year = params[:semester_years][uid] # a 4-digit number, e.g 2012
-
-        semester = SchoolSemester.where(:school_id => school_id, :name => semester_name, :year => semester_year).first
-        # create a new school_semester if a semester with given info does not exist
-        semester = SchoolSemester.create!(:school_id => school_id, :name => semester_name, :year => semester_year) if semester.nil?
-
-        # update user attributes and delete the user from pending_users table
-        user = User.find_by_id(uid)
-        user.college = College.find_by_name(user_college)
-        user.school_semester_id = semester.id
-        user.save
-      end
-    end
-
-    redirect_to all_users_path and return
   end
 
   def pending_users
-    @pending_users = []
-    PendingUser.all.each do |puser|
-      user = User.find(puser.user_id)
-      @college = College.find_by_id(user.college)
-        if (@college)
-          @collegename = @college.name
-        else
-          @collegename = "N/A"
-        end
-      @pending_users << {
-        :id => user.id,
-        :name => user.name,
-        :email => user.email,
-        :college => user.college,
-        :college_name => @collegename,
-        :school_name => puser.school_name,
-        :school_city => puser.school_city,
-        :school_county => puser.school_county,
-        :school_district => puser.school_district,
-        :semester_name => puser.semester_name,
-        :semester_year => puser.semester_year
-      }
-    end
+    @pending_users = User.where(:pending => 0).sort
   end
 
   def update_pending_users
-    approved_users = ""
-    disapproved_users = ""
-
-    # Users to be approved
+    @pending_users = User.where(:pending => 0)
+    @flash_message_hash = {}
     if not params[:approves].nil?
-      params[:approves].keys.each do |uid|
-
-        # fields that admin might have modified
-        user_college = params[:colleges][uid]
-        school_id = params[:school][uid]
-        school = School.find_by_id(school_id)
-        school_name = school.name
-        school_city = school.city
-        school_district = school.district
-        school_county = school.county
-        semester_name = params[:semester_names][uid] # Fall, Winter, Spring, Summer
-        semester_year = params[:date][uid] # a 4-digit number, e.g 2012
-
-        # find school with the given info
-        #puts "name: #{school_name}\tcity: #{school_city}\tdistrict: #{school_district}\tcounty: #{school_county}"
-        school = School.where(
-            "lower(name) = :name and lower(city) = :city and lower(county) = :county and lower(district) = :district",
-            :name => school_name.downcase,
-            :city => school_city.downcase,
-            :district => school_district.downcase,
-            :county => school_county.downcase).first
-        #puts "school: #{school}"
-        #puts "schools:\t#{School.all}"
-        # ask admin to add the school if this is a new school
-        if school.nil?
-          # TODO: Add a link to "Add School"
-          flash[:warning] = "The following school could not be found. Click on \"Add School\" to add a new school"
-          redirect_to pending_users_path and return
-        end
-
-        semester = SchoolSemester.where(:school_id => school.id, :name => semester_name, :year => semester_year).first
-        # create a new school_semester if a semester with given info does not exist
-        semester = SchoolSemester.create!(:school_id => school.id, :name => semester_name, :year => semester_year) if semester.nil?
-
-        # update user attributes and delete the user from pending_users table
-        user = User.find_by_id(uid)
-        user.college = College.find_by_name(user_college)
-        user.school_semester_id = semester.id
-        if user.save
-          delete_pending_user(uid)
-          UserMailer.user_approved_email(user).deliver
-          approved_users << "#{User.find_by_id(uid).name} "
-        end
-      end
+      handle_all_approvals(params)
     end
-
-    # Users to be disapproved
     if not params[:disapproves].nil?
-      params[:disapproves].keys.each do |uid|
-        user = User.find_by_id(uid)
-        disapproved_users << "#{user.name} "
-        UserMailer.user_disapproved_email(user).deliver
-        delete_pending_user(uid)
+      handle_all_disapprovals(params)
+    end
+    handle_flash_message()
+    if User.where(:pending => 0).length == 0
+      redirect_to portal_path and return
+    else
+      redirect_to pending_users_path and return
+    end
+  end
+
+  def handle_all_approvals(params)
+    params[:approves].keys.each do |uid|
+      user = User.find_by_id(uid)
+      handle_approve_user(user, params)
+      @flash_message_hash[user.id] = "#{user.name} was approved.\n"
+      puts "A"
+    end
+  end
+
+  def handle_all_disapprovals(params)
+    params[:disapproves].keys.each do |uid|
+      user = User.find_by_id(uid)
+      if @flash_message_hash.has_key?(user.id)
+        @flash_message_hash[user.id] = "#{user.name} had both the approved and disapproved check boxes marked and hence left unchanged."
+      else
+        @flash_message_hash[user.id] = "#{user.name} was disapproved.\n"
+        handle_disapprove_user(user)
       end
     end
-
-    flash[:notice] = %Q{#{approved_users.eql?("") ? "Nobody " : approved_users}were approved and #{disapproved_users.eql?("") ? "nobody " : disapproved_users}were disapproved}
-    redirect_to pending_users_path and return
   end
 
-  def delete_pending_user(user_id)
-    ActiveRecord::Base.connection.execute(%Q{
-      delete from pending_users where user_id = #{user_id}
-    })
+  def handle_flash_message()
+    flash_message_list = []
+    @flash_message_hash.values.sort.each do |string|
+      if string != ""
+        flash_message_list << string
+      end
+    end
+    if flash_message_list == []
+      flash[:notice] = "Nobody was approved and nobody was disapproved.\n"
+    else
+      flash[:notice] = flash_message_list.join("<br>")
+    end
   end
+
+  def handle_disapprove_user(user)
+    UserMailer.user_disapproved_email(user).deliver
+    user.destroy
+  end
+
+  def handle_approve_user(user,params)
+    begin
+      user.update_attributes!({:college_id => params[:colleges][user.id.to_s].to_i, :pending => 1, :pending_course_id => nil})
+      course = Course.find_by_id(params[:courses][user.id.to_s])
+      course.users << user
+      UserMailer.user_approved_email(user).deliver
+    rescue ActiveRecord::RecordInvalid
+      # impossible
+      puts "better not be here!"
+    end
+  end
+
+  def edit
+    @user = User.find_by_id(params[:id])
+    @college = @user.college
+    @course = @user.courses[0] ## Deal with 1 course right now.
+  end
+
+  def update
+    @user = User.find_by_id(params[:id])
+    newcollege = College.find_by_id(params[:college][:name])
+    newcourse = Course.find_by_id(params[:course][:name])
+    @user.update_attributes!(:college => newcollege)
+    @user.college_id = newcollege.id
+    if not @user.courses[0].nil?
+      @user.courses[0].users.delete(@user) ## Deal with 1 course right now.
+    end
+    newcourse.users << @user
+    redirect_to all_users_path and return
+  end
+
+  def destroy
+    @user = User.find_by_id(params[:id])
+    @user.destroy
+    redirect_to all_users_path and return
+  end
+
 end
