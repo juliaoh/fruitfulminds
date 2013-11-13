@@ -293,7 +293,7 @@ ActiveRecord::Schema.define(:version => 20131111035944) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "college"
+    t.integer  "college_id"
   end
 
 end
