@@ -154,7 +154,9 @@ class ReportsController < ApplicationController
 
   def show
     puts "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
-    @course = Course.find_by_id(params[:course][:id])
+    @school_name = params[:id].chomp("_report")
+    school = School.find_by_name(@school_name)
+    @course = Course.find_by_school_id(school.id)
     generate_report
   end
 
