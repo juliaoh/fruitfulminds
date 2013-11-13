@@ -161,7 +161,7 @@ class ReportsController < ApplicationController
       redirect_to "/reports/#{@file_name}"
       return
     else
-      flash[:warning] = "Please enter ambassador notes"
+      flash[:warning] = "Could not generate PDF: Please enter ambassador notes"
       redirect_to new_report_path and return
     end
   end
