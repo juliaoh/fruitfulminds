@@ -120,12 +120,16 @@
               = image_tag("nav_logo.png")
             %a.brand Fruitful Minds
             %ul.nav
-              %li.active
+              %li{:class=>("active" if  @subtitle == "Portal")}
                 %a{:href=>portal_path} Home
-              %li
-                %a Test 1
-              %li 
-                %a Test 2
+              %li{:class=>("active" if @subtitle == "Users")}
+                %a Users
+              %li{:class=>("active" if @subtitle == "Schools")}
+                %a Schools
+              %li{:class=>("active" if @subtitle == "Colleges")}
+                %a Colleges
+              %li{:class=>("active" if @subtitle == "Reports")}
+                %a Reports
       -else
         %span#header
           %span
