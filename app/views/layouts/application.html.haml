@@ -116,8 +116,8 @@
       -if @current_user
         .navbar
           .navbar-inner
-            %a.brand{:style=>"padding:3px;"}
-              = image_tag("nav_logo.png")
+            %a.brand
+              = image_tag("nav_logo.png") {:style=>"padding:3px;"}
               Fruitful Minds
             %ul.nav
               %li.active
