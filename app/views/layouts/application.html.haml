@@ -5,6 +5,7 @@
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
     = csrf_meta_tags
+    %link{:href => "/favicon.ico", :rel => "shortcut icon"}/
     :css
       .background, #main{
         padding: 10px 20px 10px 20px;
@@ -110,7 +111,6 @@
           }
         });
       });
-    %link{:href => "/favicon.ico", :rel => "shortcut icon"}/
   %body
     %div.background
       -if @current_user
