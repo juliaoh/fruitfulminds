@@ -1,5 +1,15 @@
 - @subtitle = "Portal"
 
+.navbar
+  .navbar-inner
+    %a.brand{:href=>portal_path} Home
+    %ul.nav
+      %li.active
+        %a{:href=>portal_path} Home
+      %li Test 1
+      %li Test 2
+
+
 - if @current_user.admin?
   = link_to("Pending Users", pending_users_path)
   | 
@@ -23,13 +33,7 @@
 %br
 %br
 
-.navbar
-  .navbar-inner
-    %a.brand
-      = link_to "Home", portal_path
-    %ul.nav
-      %li Test 1
-      %li Test 2
+
 
 
 %table.table
