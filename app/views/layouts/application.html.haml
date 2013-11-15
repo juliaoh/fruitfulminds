@@ -113,28 +113,42 @@
     
   %body
     %div.background
-      %span#header
-        %span
-          = image_tag("fm_icon.jpg", :height => "40", :alt => "image not found")
-        %span
-          %span#title Fruitful Minds: 
-          %span#subtitle 
-            = @subtitle
-          %span#user_control
-            - if @current_user
-              - if request.env['PATH_INFO'] != "/portal"
-                %span.user_action#previous
-                  = link_to "Previous", :portal, :method => :get
-              %span.user_info
-                = "Hello #{@current_user.name}"
-              %span.user_action
-                = link_to "Log Out", logout_path, :id => "log_out"
-      - if @current_user and @school
-        %div#survey_options
-          %p= "County: #{@school.county}"
-          %p= "District: #{@school.district}"
-          %p= "City: #{@school.city}"
-          %p= "School Name: #{@school.name}"
+      -if @current_user
+        .navbar
+          .navbar-inner
+            %a.brand 
+              = image_tag("fm_icon.jpg", :height => "40", :alt => "image not found")
+              Fruitful Minds
+            %ul.nav
+              %li.active
+                %a{:href=>portal_path} Home
+              %li
+                %a Test 1
+              %li 
+                %a Test 2
+      -else
+        %span#header
+          %span
+            = image_tag("fm_icon.jpg", :height => "40", :alt => "image not found")
+          %span
+            %span#title Fruitful Minds: 
+            %span#subtitle 
+              = @subtitle
+            %span#user_control
+              - if @current_user
+                - if request.env['PATH_INFO'] != "/portal"
+                  %span.user_action#previous
+                    = link_to "Previous", :portal, :method => :get
+                %span.user_info
+                  = "Hello #{@current_user.name}"
+                %span.user_action
+                  = link_to "Log Out", logout_path, :id => "log_out"
+        - if @current_user and @school
+          %div#survey_options
+            %p= "County: #{@school.county}"
+            %p= "District: #{@school.district}"
+            %p= "City: #{@school.city}"
+            %p= "School Name: #{@school.name}"
 
     #main
       - if flash[:notice]
