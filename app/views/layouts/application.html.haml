@@ -116,9 +116,9 @@
       -if @current_user
         .navbar
           .navbar-inner
-            %a.brand
-              = image_tag("nav_logo.png") {:style=>"padding:3px;"}
-              Fruitful Minds
+            %a.brand{:style=>"padding:3px;"}
+              = image_tag("nav_logo.png")
+            %a.brand Fruitful Minds
             %ul.nav
               %li.active
                 %a{:href=>portal_path} Home
