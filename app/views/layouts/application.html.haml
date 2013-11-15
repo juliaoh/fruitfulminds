@@ -124,31 +124,31 @@
                 %a.dropdown-toggle{"data-toggle" =>"dropdown"} Courses
                 %ul.dropdown-menu
                   %li
-                    %a{:href=>portal_path} Test Drop Down
+                    %a{:href=>portal_path} Show Courses
               -if @current_user.admin?
                 %li.dropdown{:class=>("dropdown active" if @menu == "Users")}
                   %a.dropdown-toggle{"data-toggle" =>"dropdown"}  Users
                   %ul.dropdown-menu
                     %li
-                      %a{:href=>users_path} Test Drop Down
+                      %a{:href=>users_path} Show Users
                 %li.dropdown{:class=>("dropdown active" if @menu == "Schools")}
                   %a.dropdown-toggle{"data-toggle" =>"dropdown"}  Schools
                   %ul.dropdown-menu
                     %li
-                      %a{:href=>schools_path} Test Drop Down
+                      %a{:href=>schools_path} Show Schools
                 %li.dropdown{:class=>("dropdown active" if @menu == "Colleges")}
                   %a.dropdown-toggle{"data-toggle" =>"dropdown"}  Colleges
                   %ul.dropdown-menu
                     %li
-                      %a{:href=>colleges_path} Test Drop Down
+                      %a{:href=>colleges_path} Show Colleges
               %li.dropdown{:class=>("dropdown active" if @menu == "Reports")}
                 %a.dropdown-toggle{"data-toggle" =>"dropdown"}  Reports
                 %ul.dropdown-menu
                   %li
-                    %a{:href=>reports_path} Test Drop Down
+                    %a{:href=>reports_path} Generate Report
             %ul.nav.pull-right
               %li
-                %a Logout
+                %a{:href=>logout_path} Logout
       -else
         %span#header
           %span
