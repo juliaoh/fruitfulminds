@@ -116,9 +116,9 @@
       -if @current_user
         .navbar
           .navbar-inner
-            %a.brand{:href=>portal_path :style=>"padding:3px;"}
+            %a.brand{:href=>portal_path, :style=>"padding:3px;"}
               = image_tag("nav_logo.png")
-            %a.brand{:href=>portal_path :style=>"padding-left:5px;"} Fruitful Minds
+            %a.brand{:href=>portal_path, :style=>"padding-left:5px;"} Fruitful Minds
             %ul.nav
               %li{:class=>("active" if  @subtitle == "Portal")}
                 %a{:href=>portal_path} Courses
