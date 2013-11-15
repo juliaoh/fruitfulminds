@@ -122,32 +122,32 @@
             %ul.nav
               %li.dropdown{:class=>("dropdown active" if  @menu == "Courses")}
                 %a.dropdown-toggle{"data-toggle" =>"dropdown"} Courses
-                %span.caret
+                  %span.caret
                 %ul.dropdown-menu
                   %li
                     %a{:href=>portal_path} Show Courses
               -if @current_user.admin?
                 %li.dropdown{:class=>("dropdown active" if @menu == "Users")}
                   %a.dropdown-toggle{"data-toggle" =>"dropdown"}  Users
-                  %span.caret
+                    %span.caret
                   %ul.dropdown-menu
                     %li
                       %a{:href=>users_path} Show Users
                 %li.dropdown{:class=>("dropdown active" if @menu == "Schools")}
                   %a.dropdown-toggle{"data-toggle" =>"dropdown"}  Schools
-                  %span.caret
+                    %span.caret
                   %ul.dropdown-menu
                     %li
                       %a{:href=>schools_path} Show Schools
                 %li.dropdown{:class=>("dropdown active" if @menu == "Colleges")}
                   %a.dropdown-toggle{"data-toggle" =>"dropdown"}  Colleges
-                  %span.caret
+                    %span.caret
                   %ul.dropdown-menu
                     %li
                       %a{:href=>colleges_path} Show Colleges
               %li.dropdown{:class=>("dropdown active" if @menu == "Reports")}
                 %a.dropdown-toggle{"data-toggle" =>"dropdown"}  Reports
-                %span.caret
+                  %span.caret
                 %ul.dropdown-menu
                   %li
                     %a{:href=>reports_path} Generate Report
