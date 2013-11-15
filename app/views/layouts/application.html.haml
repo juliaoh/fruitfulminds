@@ -118,19 +118,34 @@
           .navbar-inner
             %a.brand{:href=>portal_path, :style=>"padding:3px;"}
               = image_tag("nav_logo.png")
-            %a.brand{:href=>portal_path, :style=>"padding:15px 20px 10px;"} Fruitful Minds
+            %a.brand{:href=>portal_path, :style=>"padding:10px 30px 10px;"} Fruitful Minds
             %ul.nav
-              %li{:class=>("active" if  @subtitle == "Portal")}
-                %a{:href=>portal_path} Courses
+              %li.dropdown{:class=>("dropdown active" if  @subtitle == "Portal")}
+                %a.dropdown-toggle{:data-toggle="dropdown"} Courses
+                %ul.dropdown-menu
+                  %li
+                    %a{:href=>portal_path} Test Drop Down
               -if @current_user.admin?
-                %li{:class=>("active" if @subtitle == "Users")}
-                  %a Users
-                %li{:class=>("active" if @subtitle == "Schools")}
-                  %a Schools
-                %li{:class=>("active" if @subtitle == "Colleges")}
-                  %a Colleges
-              %li{:class=>("active" if @subtitle == "Reports")}
-                %a Reports
+                %li.dropdown{:class=>("dropdown active" if @subtitle == "Users")}
+                  %a.dropdown-toggle{:data-toggle="dropdown"}  Users
+                  %ul.dropdown-menu
+                    %li
+                      %a{:href=>users_path} Test Drop Down
+                %li.dropdown{:class=>("dropdown active" if @subtitle == "Schools")}
+                  %a.dropdown-toggle{:data-toggle="dropdown"}  Schools
+                  %ul.dropdown-menu
+                    %li
+                      %a{:href=>schools_path} Test Drop Down
+                %li.dropdown{:class=>("dropdown active" if @subtitle == "Colleges")}
+                  %a.dropdown-toggle{:data-toggle="dropdown"}  Colleges
+                  %ul.dropdown-menu
+                    %li
+                      %a{:href=>colleges_path} Test Drop Down
+              %li.dropdown{:class=>("dropdown active" if @subtitle == "Reports")}
+                %a.dropdown-toggle{:data-toggle="dropdown"}  Reports
+                %ul.dropdown-menu
+                  %li
+                    %a{:href=>reports_path} Test Drop Down
             %ul.nav.pull-right
               %li
                 %a Logout
