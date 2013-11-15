@@ -116,20 +116,23 @@
       -if @current_user
         .navbar
           .navbar-inner
-            %a.brand{:style=>"padding:3px;"}
+            %a.brand{:href=>portal_path :style=>"padding:3px;"}
               = image_tag("nav_logo.png")
-            %a.brand Fruitful Minds
+            %a.brand{:href=>portal_path :style=>"padding-left:5px;"} Fruitful Minds
             %ul.nav
               %li{:class=>("active" if  @subtitle == "Portal")}
-                %a{:href=>portal_path} Home
-              %li{:class=>("active" if @subtitle == "Users")}
-                %a Users
-              %li{:class=>("active" if @subtitle == "Schools")}
-                %a Schools
-              %li{:class=>("active" if @subtitle == "Colleges")}
-                %a Colleges
+                %a{:href=>portal_path} Courses
+              -if @current_user.admin?
+                %li{:class=>("active" if @subtitle == "Users")}
+                  %a Users
+                %li{:class=>("active" if @subtitle == "Schools")}
+                  %a Schools
+                %li{:class=>("active" if @subtitle == "Colleges")}
+                  %a Colleges
               %li{:class=>("active" if @subtitle == "Reports")}
                 %a Reports
+              %li.pull-right
+                %a Logout
       -else
         %span#header
           %span
