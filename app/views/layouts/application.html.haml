@@ -110,7 +110,7 @@
           }
         });
       });
-    
+
   %body
     %div.background
       -if @current_user
@@ -121,28 +121,28 @@
             %a.brand{:href=>portal_path, :style=>"padding:10px 30px 10px;"} Fruitful Minds
             %ul.nav
               %li.dropdown{:class=>("dropdown active" if  @subtitle == "Portal")}
-                %a.dropdown-toggle{:data-toggle="dropdown"} Courses
+                %a.dropdown-toggle{"data-toggle" =>"dropdown"} Courses
                 %ul.dropdown-menu
                   %li
                     %a{:href=>portal_path} Test Drop Down
               -if @current_user.admin?
                 %li.dropdown{:class=>("dropdown active" if @subtitle == "Users")}
-                  %a.dropdown-toggle{:data-toggle="dropdown"}  Users
+                  %a.dropdown-toggle{"data-toggle" =>"dropdown"}  Users
                   %ul.dropdown-menu
                     %li
                       %a{:href=>users_path} Test Drop Down
                 %li.dropdown{:class=>("dropdown active" if @subtitle == "Schools")}
-                  %a.dropdown-toggle{:data-toggle="dropdown"}  Schools
+                  %a.dropdown-toggle{"data-toggle" =>"dropdown"}  Schools
                   %ul.dropdown-menu
                     %li
                       %a{:href=>schools_path} Test Drop Down
                 %li.dropdown{:class=>("dropdown active" if @subtitle == "Colleges")}
-                  %a.dropdown-toggle{:data-toggle="dropdown"}  Colleges
+                  %a.dropdown-toggle{"data-toggle" =>"dropdown"}  Colleges
                   %ul.dropdown-menu
                     %li
                       %a{:href=>colleges_path} Test Drop Down
               %li.dropdown{:class=>("dropdown active" if @subtitle == "Reports")}
-                %a.dropdown-toggle{:data-toggle="dropdown"}  Reports
+                %a.dropdown-toggle{"data-toggle" =>"dropdown"}  Reports
                 %ul.dropdown-menu
                   %li
                     %a{:href=>reports_path} Test Drop Down
