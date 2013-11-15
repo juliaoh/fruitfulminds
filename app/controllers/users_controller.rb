@@ -113,6 +113,15 @@ class UsersController < ApplicationController
   def update_pending_users
     @pending_users = User.where(:pending => 0)
     @flash_message_hash = {}
+    handle_pending_users(params)
+    if @pending_users.length == 0
+      redirect_to portal_path and return
+    else
+      redirect_to pending_users_path and return
+    end
+  end
+
+  def handle_pending_users(params)
     if not params[:disapproves].nil? and not params[:approves].nil?
       handle_invalid_action(params)
     end
@@ -123,11 +132,6 @@ class UsersController < ApplicationController
       handle_all_disapprovals(params)
     end
     handle_flash_message()
-    if @pending_users.length == 0
-      redirect_to portal_path and return
-    else
-      redirect_to pending_users_path and return
-    end
   end
 
   def handle_invalid_action(params)
@@ -203,12 +207,15 @@ class UsersController < ApplicationController
     newcollege = College.find_by_id(params[:college][:name])
     newcourse = Course.find_by_id(params[:course][:name])
     @user.update_attributes!(:college => newcollege)
-    @user.college_id = newcollege.id
-    if not @user.courses[0].nil?
-      @user.courses[0].users.delete(@user) ## Deal with 1 course right now.
-    end
-    newcourse.users << @user
+    handle_user_course_update(@user, newcourse)
     redirect_to all_users_path and return
+  end
+
+  def handle_user_course_update(user, newcourse)
+    if not user.courses[0].nil?
+      user.courses[0].users.delete(user) ## Deal with 1 course right now.
+    end
+    newcourse.users << user
   end
 
   def destroy
