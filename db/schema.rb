@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131111003534) do
+ActiveRecord::Schema.define(:version => 20131111035944) do
 
   create_table "colleges", :force => true do |t|
     t.string   "name"
@@ -91,29 +91,6 @@ ActiveRecord::Schema.define(:version => 20131111003534) do
   add_index "pending_users", ["user_id"], :name => "index_pending_users_on_user_id", :unique => true
 
   create_table "postsurveys", :force => true do |t|
-    t.integer  "school_semester_id"
-    t.integer  "section_1_1"
-    t.integer  "section_1_2"
-    t.integer  "section_2_1"
-    t.integer  "section_2_2"
-    t.integer  "section_2_3"
-    t.integer  "section_2_4"
-    t.integer  "section_3_1"
-    t.integer  "section_3_2"
-    t.integer  "section_3_3"
-    t.integer  "section_3_4"
-    t.integer  "section_3_5"
-    t.integer  "section_3_6"
-    t.integer  "section_4_1"
-    t.integer  "section_4_2"
-    t.integer  "section_4_3"
-    t.integer  "section_5_1"
-    t.integer  "section_5_2"
-    t.integer  "section_6_1"
-    t.integer  "section_6_2"
-    t.integer  "section_6_3"
-    t.integer  "section_6_4"
-    t.integer  "number_students"
     t.integer  "curriculum_id"
     t.integer  "course_id"
     t.text     "data"
@@ -123,29 +100,6 @@ ActiveRecord::Schema.define(:version => 20131111003534) do
   end
 
   create_table "presurveys", :force => true do |t|
-    t.integer  "school_semester_id"
-    t.integer  "section_1_1"
-    t.integer  "section_1_2"
-    t.integer  "section_2_1"
-    t.integer  "section_2_2"
-    t.integer  "section_2_3"
-    t.integer  "section_2_4"
-    t.integer  "section_3_1"
-    t.integer  "section_3_2"
-    t.integer  "section_3_3"
-    t.integer  "section_3_4"
-    t.integer  "section_3_5"
-    t.integer  "section_3_6"
-    t.integer  "section_4_1"
-    t.integer  "section_4_2"
-    t.integer  "section_4_3"
-    t.integer  "section_5_1"
-    t.integer  "section_5_2"
-    t.integer  "section_6_1"
-    t.integer  "section_6_2"
-    t.integer  "section_6_3"
-    t.integer  "section_6_4"
-    t.integer  "number_students"
     t.integer  "curriculum_id"
     t.integer  "course_id"
     t.text     "data"
@@ -170,7 +124,7 @@ ActiveRecord::Schema.define(:version => 20131111003534) do
   end
 
   create_table "reports", :force => true do |t|
-    t.integer  "school_semester_id"
+    t.integer  "course_id"
     t.text     "main_title"
     t.text     "school_intro_title"
     t.text     "school_introduction"

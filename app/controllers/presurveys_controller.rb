@@ -11,7 +11,7 @@ class PresurveysController < ApplicationController
     end
     @curriculum = Curriculum.find_by_id(presurvey.curriculum_id)
   end
-  
+
   def update
     begin
       presurvey = Presurvey.find_by_id(params[:id])
@@ -30,7 +30,7 @@ class PresurveysController < ApplicationController
   def show
     presurvey = Presurvey.find_by_id(params[:id])
     @curriculum = Curriculum.find_by_id(presurvey.curriculum_id)
-    @users = presurvey.users
+    @users = presurvey.course.users
     @presurvey_data = presurvey.data
   end
 
@@ -49,5 +49,5 @@ class PresurveysController < ApplicationController
       data[qid] = Integer(data[qid])
     end
     return data
-  end 
+  end
 end

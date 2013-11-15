@@ -34,7 +34,6 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    print "HERE"
     redirect_to root_path
   end
 

@@ -4,9 +4,9 @@
   = label :user, :name, "Name: #{@user.name}"
   = label :user, :email, "Email: #{@user.email}"
   = label :college, :name, "College:"
-  = select :college, :name, options_for_select(College.all.collect { |c| [c.name, c.id] }), :selected => @user.college.name
+  = select :college, :name, options_for_select(College.all.collect { |c| [c.name, c.id] }, @college.id)
   = label :course, :name, "Course:"
-  = select :course, :name, options_for_select(Course.where(:active => true).collect { |c| [c.name, c.id ]}), :selected => Course.find_by_id(@user.courses[0])
+  = select :course, :name, options_for_select(Course.where(:active => true).collect { |c| [c.name, c.id ]}, :selected => @course.id)
   %br
   = submit_tag 'Update User Info'
 

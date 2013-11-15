@@ -113,6 +113,9 @@ class UsersController < ApplicationController
   def update_pending_users
     @pending_users = User.where(:pending => 0)
     @flash_message_hash = {}
+    if not params[:disapproves].nil? and not params[:approves].nil?
+      handle_invalid_action(params)
+    end
     if not params[:approves].nil?
       handle_all_approvals(params)
     end
@@ -120,29 +123,39 @@ class UsersController < ApplicationController
       handle_all_disapprovals(params)
     end
     handle_flash_message()
-    if User.where(:pending => 0).length == 0
+    if @pending_users.length == 0
       redirect_to portal_path and return
     else
       redirect_to pending_users_path and return
     end
   end
 
+  def handle_invalid_action(params)
+    puts params
+    keys = params[:approves].keys + params[:disapproves].keys
+    keys.uniq.each do |uid|
+      if params[:approves].has_key?(uid) and params[:disapproves].has_key?(uid)
+        user = User.find_by_id(uid)
+        @flash_message_hash[user.id] = "#{user.name} had both the approved and disapproved check boxes marked and hence left unchanged."
+      end
+    end
+  end
+
   def handle_all_approvals(params)
     params[:approves].keys.each do |uid|
       user = User.find_by_id(uid)
-      handle_approve_user(user, params)
-      @flash_message_hash[user.id] = "#{user.name} was approved.\n"
-      puts "A"
+      if not @flash_message_hash.has_key?(user.id)
+        handle_approve_user(user, params)
+        @flash_message_hash[user.id] = "#{user.name} was approved."
+      end
     end
   end
 
   def handle_all_disapprovals(params)
     params[:disapproves].keys.each do |uid|
       user = User.find_by_id(uid)
-      if @flash_message_hash.has_key?(user.id)
-        @flash_message_hash[user.id] = "#{user.name} had both the approved and disapproved check boxes marked and hence left unchanged."
-      else
-        @flash_message_hash[user.id] = "#{user.name} was disapproved.\n"
+      if not @flash_message_hash.has_key?(user.id)
+        @flash_message_hash[user.id] = "#{user.name} was disapproved."
         handle_disapprove_user(user)
       end
     end
@@ -158,7 +171,7 @@ class UsersController < ApplicationController
     if flash_message_list == []
       flash[:notice] = "Nobody was approved and nobody was disapproved.\n"
     else
-      flash[:notice] = flash_message_list.join("<br>")
+      flash[:notice] = flash_message_list.join("<br>").html_safe
     end
   end
 

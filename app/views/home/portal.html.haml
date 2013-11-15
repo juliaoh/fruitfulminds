@@ -31,29 +31,13 @@
       %th Pre-Surveys
       %th Post-Surveys
   %tbody
+  - @courses.each do |course|
     %tr
       %td
-        - if @current_user.admin?
-          - Course.all.each do |course|
-            = "#{course.name}"
-        - else
-          - @current_user.courses.each do |course|
-            = "#{course.name}"
+        = "#{course.name}"
       %td
-        - if @current_user.admin?
-          - Course.all.each do |course|
-            - survey = Postsurvey.find_by_course_id(course.id)
-            = link_to "Show Pre-Survey", presurvey_path(survey), :id => survey.id, class: "btn"
-        - else
-          - @current_user.courses.each do |course|
-            - survey = Postsurvey.find_by_course_id(course.id)
-            = link_to "Show Pre-Survey", presurvey_path(survey), :id => survey.id, class: "btn"
+        - survey = Postsurvey.find_by_course_id(course.id)
+        = link_to "Show Pre-Survey", presurvey_path(survey), :id => survey.id, class: "btn"
       %td
-        - if @current_user.admin?
-          - Course.all.each do |course|
-            - survey = Postsurvey.find_by_course_id(course.id)
-            = link_to "Show Post-Survey", postsurvey_path(survey), :id => survey.id, class: "btn"
-        - else
-          - @current_user.courses.each do |course|
-            - survey = Postsurvey.find_by_course_id(course.id)
-            = link_to "Show Post-Survey", postsurvey_path(survey), :id => survey.id, class: "btn"
+        - survey = Postsurvey.find_by_course_id(course.id)
+        = link_to "Show Post-Survey", postsurvey_path(survey), :id => survey.id, class: "btn"

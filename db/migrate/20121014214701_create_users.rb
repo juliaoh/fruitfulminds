@@ -11,5 +11,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :profile
       t.timestamps
     end
+    add_index :users, :pending
   end
 end
