@@ -135,6 +135,8 @@
                   %ul.dropdown-menu
                     %li
                       %a{:href=>users_path} Show Users
+                    %li
+                      %a Add New User
                 %li.dropdown{:class=>("dropdown active" if @menu == "Schools")}
                   %a.dropdown-toggle{"data-toggle" =>"dropdown"}  
                     Schools 
@@ -142,6 +144,8 @@
                   %ul.dropdown-menu
                     %li
                       %a{:href=>schools_path} Show Schools
+                    %li
+                      %a Add New School
                 %li.dropdown{:class=>("dropdown active" if @menu == "Colleges")}
                   %a.dropdown-toggle{"data-toggle" =>"dropdown"}  
                     Colleges 
@@ -149,13 +153,19 @@
                   %ul.dropdown-menu
                     %li
                       %a{:href=>colleges_path} Show Colleges
+                    %li
+                      %a Add New College
               %li.dropdown{:class=>("dropdown active" if @menu == "Reports")}
                 %a.dropdown-toggle{"data-toggle" =>"dropdown"}  
                   Reports 
                   %span.caret
                 %ul.dropdown-menu
                   %li
-                    %a{:href=>reports_path} Generate Report
+                    %a{:href=>reports_path} Generate Course Report
+                  -if @current_user.admin?
+                    %li
+                      %a Generate Historical Report
+                    
             %ul.nav.pull-right
               %li
                 %a{:href=>logout_path} Logout
