@@ -7,7 +7,7 @@ class PresurveysController < ApplicationController
         @presurvey_data[Integer(qid)] = num
       end
     else
-      @presurvey_data = presurvey.data
+      @presurvey_data = presurvey.get_data
     end
     @curriculum = Curriculum.find_by_id(presurvey.curriculum_id)
   end
@@ -31,7 +31,7 @@ class PresurveysController < ApplicationController
     presurvey = Presurvey.find_by_id(params[:id])
     @curriculum = Curriculum.find_by_id(presurvey.curriculum_id)
     @users = presurvey.course.users
-    @presurvey_data = presurvey.data
+    @presurvey_data = presurvey.get_data
   end
 
   def self.get_results_from_params(curriculum, params)

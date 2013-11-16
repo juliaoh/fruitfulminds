@@ -10,4 +10,13 @@ class Curriculum < ActiveRecord::Base
     return section
   end
 
+  def get_empty_data
+    data = {}
+    sections.each do |section|
+      section.questions.each do |question|
+        data[question.id] = 0
+      end
+    end
+    return data
+  end
 end

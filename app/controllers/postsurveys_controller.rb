@@ -3,7 +3,7 @@ class PostsurveysController < ApplicationController
     postsurvey = Postsurvey.find_by_id(params[:id])
     @curriculum = Curriculum.find_by_id(postsurvey.curriculum_id)
     if not params[:failed_data]
-      @postsurvey_data = postsurvey.data
+      @postsurvey_data = postsurvey.get_data
     else
       @postsurvey_data = {}
       params[:failed_data].each do |qid, num|
@@ -29,8 +29,8 @@ class PostsurveysController < ApplicationController
 
   def show
     postsurvey = Postsurvey.find_by_id(params[:id])
-    @postsurvey_data = postsurvey.data
+    @postsurvey_data = postsurvey.get_data
     @curriculum = Curriculum.find_by_id(postsurvey.curriculum_id)
-    @users = postsurvey.users
+    @users = postsurvey.course.users
   end
 end

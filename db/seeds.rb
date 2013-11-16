@@ -26,9 +26,9 @@ College.create!({:name=>'Vegetable College'})
 College.create!({:name=>'College of the Fruits'})
 
 Course.create!({:semester =>"Fall 2013", :total_students=>25, :school_id=>1, :curriculum_id=>1, :presurvey_id=>1, :postsurvey_id=>1, :active => true})
-Course.create!({:semester =>"Fall 2013", :total_students=>30, :school_id=>2, :curriculum_id=>1, :presurvey_id=>1, :postsurvey_id=>1, :active => true})
-Course.create!({:semester =>"Fall 2013", :total_students=>20, :school_id=>3, :curriculum_id=>1, :presurvey_id=>1, :postsurvey_id=>1, :active => true})
-Course.create!({:semester =>"Fall 2013", :total_students=>50, :school_id=>4, :curriculum_id=>1, :presurvey_id=>1, :postsurvey_id=>1, :active => true})
+Course.create!({:semester =>"Fall 2013", :total_students=>30, :school_id=>2, :curriculum_id=>1, :presurvey_id=>2, :postsurvey_id=>2, :active => true})
+Course.create!({:semester =>"Fall 2013", :total_students=>20, :school_id=>3, :curriculum_id=>1, :presurvey_id=>3, :postsurvey_id=>3, :active => true})
+Course.create!({:semester =>"Fall 2013", :total_students=>50, :school_id=>4, :curriculum_id=>1, :presurvey_id=>4, :postsurvey_id=>4, :active => true})
 
 Curriculum.create!({:name=>'Test Curriculum 1'})
 Section.create!({:name=>'Section 1',:stype=>'Multiple Choice',:objective=>'Section 1 objective', :curriculum_id=>1})

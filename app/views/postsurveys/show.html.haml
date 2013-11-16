@@ -12,7 +12,7 @@
       - section.questions.each do |question|
         %tr
           %td= label_tag question.id, "#{question.name}"
-          - @users.each do |user|
-            %td= text_field_tag "#{user.id}_#{question.id}", @postsurvey_data[user.id][question.id], :readonly => true
+          - @postsurvey_data.keys.each do |user_id|
+            %td= text_field_tag "#{user_id}_#{question.id}", @postsurvey_data[user_id][question.id], :readonly => true
 
 = button_to "Edit Postsurvey", edit_postsurvey_path(params[:id]), :method => :get, :id => params[:id]
