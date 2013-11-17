@@ -254,4 +254,6 @@ ActiveRecord::Schema.define(:version => 20131111035944) do
     t.integer  "college_id"
   end
 
+  add_index "users", ["pending"], :name => "index_users_on_pending"
+
 end
