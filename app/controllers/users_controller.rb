@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       end
     end
   end
-  
+
   def edit
   end
 
@@ -68,18 +68,20 @@ class UsersController < ApplicationController
 
    # Checks if submission to create new ambassador is correct
   def correct_submission?(params)
-    if params[:tos].nil?
-      flash[:warning] = "You have to accept the TOS in order to register"
-    elsif not valid_email?(params[:user][:email])
-      flash[:warning] = "Not a valid email address"
-    elsif params[:user][:password].length < 6
-      flash[:warning] = "Password must have 6 characters or more"
-    elsif not params[:user][:password].eql? params[:user][:confirm_password]
-      flash[:warning] = "Passwords did not match"
-    else
-      return true
+    conditions = [!params[:tos].nil?,
+                  valid_email?(params[:user][:email]),
+                  !(params[:user][:password].length < 6),
+                  params[:user][:password].eql?(params[:user][:confirm_password])]
+    messages = ["You have to accept the TOS in order to register",
+                "Not a valid email address",
+                "Password must have 6 characters or more",
+                "Passwords did not match"]
+    puts conditions
+    if conditions.include?(false)
+      flash[:warning] = messages[conditions.index(false)]
+      return false
     end
-    return false
+    return true
   end
 
   # Generates the fields required for an ambassador.
