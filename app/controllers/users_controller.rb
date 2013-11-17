@@ -61,27 +61,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # Generates the fields required for an ambassador.
-  def generate_user_fields(user_params)
-    return {:name => "#{user_params[:firstname]} #{user_params[:lastname]}",
-            :email => user_params[:email],
-            :password => user_params[:password],
-            :college_id => College.find_by_name(user_params[:college]).id,
-            :pending_course_id => user_params[:course],
-            :pending => 0,
-            :profile => "ambassador" }
-  end
-
-  def user_filled_all_fields? params_hash
-    params_hash.each do |k,v|
-      return false if v.blank?
-      if k == "user" || k == "school" || k == "semester"
-        v.each {|k2,v2| return false if v2.blank?}
-      end
-    end
-    true
-  end
-
   def update
   end
 
