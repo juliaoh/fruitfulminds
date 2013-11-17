@@ -79,87 +79,11 @@ class UsersController < ApplicationController
 
   def update_pending_users
     @pending_users = User.where(:pending => 0)
-    @flash_message_hash = {}
     handle_pending_users(params)
     if @pending_users.length == 0
       redirect_to portal_path and return
     else
       redirect_to pending_users_path and return
-    end
-  end
-
-  def handle_pending_users(params)
-    if not params[:disapproves].nil? and not params[:approves].nil?
-      handle_invalid_action(params)
-    end
-    if not params[:approves].nil?
-      handle_all_approvals(params)
-    end
-    if not params[:disapproves].nil?
-      handle_all_disapprovals(params)
-    end
-    handle_flash_message()
-  end
-
-  def handle_invalid_action(params)
-    puts params
-    keys = params[:approves].keys + params[:disapproves].keys
-    keys.uniq.each do |uid|
-      if params[:approves].has_key?(uid) and params[:disapproves].has_key?(uid)
-        user = User.find_by_id(uid)
-        @flash_message_hash[user.id] = "#{user.name} had both the approved and disapproved check boxes marked and hence left unchanged."
-      end
-    end
-  end
-
-  def handle_all_approvals(params)
-    params[:approves].keys.each do |uid|
-      user = User.find_by_id(uid)
-      if not @flash_message_hash.has_key?(user.id)
-        handle_approve_user(user, params)
-        @flash_message_hash[user.id] = "#{user.name} was approved."
-      end
-    end
-  end
-
-  def handle_all_disapprovals(params)
-    params[:disapproves].keys.each do |uid|
-      user = User.find_by_id(uid)
-      if not @flash_message_hash.has_key?(user.id)
-        @flash_message_hash[user.id] = "#{user.name} was disapproved."
-        handle_disapprove_user(user)
-      end
-    end
-  end
-
-  def handle_flash_message()
-    flash_message_list = []
-    @flash_message_hash.values.sort.each do |string|
-      if string != ""
-        flash_message_list << string
-      end
-    end
-    if flash_message_list == []
-      flash[:notice] = "Nobody was approved and nobody was disapproved.\n"
-    else
-      flash[:notice] = flash_message_list.join("<br>").html_safe
-    end
-  end
-
-  def handle_disapprove_user(user)
-    UserMailer.user_disapproved_email(user).deliver
-    user.destroy
-  end
-
-  def handle_approve_user(user,params)
-    begin
-      user.update_attributes!({:college_id => params[:colleges][user.id.to_s].to_i, :pending => 1, :pending_course_id => nil})
-      course = Course.find_by_id(params[:courses][user.id.to_s])
-      course.users << user
-      UserMailer.user_approved_email(user).deliver
-    rescue ActiveRecord::RecordInvalid
-      # impossible
-      puts "better not be here!"
     end
   end
 
