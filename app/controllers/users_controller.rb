@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def show
   end
 
-   # renders sign up page
+  # renders sign up page
   def new
     @course_names = Course.where(:active => true).collect { |c| [c.name, c.id ] }.uniq.sort
     @college_names = College.find(:all).map do |college|
