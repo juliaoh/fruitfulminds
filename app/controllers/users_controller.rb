@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def create
     if user_filled_all_fields? params
       user_fields = generate_user_fields(params[:user])
-      if correct_submission?(params)
+      if correct_submission?(params[:tos], params[:user])
         if create_user_if_valid(user_fields)
           redirect_to login_path and return
         else
@@ -62,16 +62,15 @@ class UsersController < ApplicationController
   end
 
    # Checks if submission to create new ambassador is correct
-  def correct_submission?(params)
-    conditions = [!params[:tos].nil?,
-                  valid_email?(params[:user][:email]),
-                  !(params[:user][:password].length < 6),
-                  params[:user][:password].eql?(params[:user][:confirm_password])]
+  def correct_submission?(tos, user_params)
+    conditions = [!tos.nil?,
+                  valid_email?(user_params[:email]),
+                  !(user_params[:password].length < 6),
+                  user_params[:password].eql?(user_params[:confirm_password])]
     messages = ["You have to accept the TOS in order to register",
                 "Not a valid email address",
                 "Password must have 6 characters or more",
                 "Passwords did not match"]
-    puts conditions
     if conditions.include?(false)
       flash[:warning] = messages[conditions.index(false)]
       return false
