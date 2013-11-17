@@ -20,12 +20,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @all_users = []
-    User.all.each do |user|
-      if !user.admin? and !user.pending?
-        @all_users << user
-      end
-    end
+    all_users
   end
 
   def edit
