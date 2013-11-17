@@ -71,6 +71,10 @@ class UsersController < ApplicationController
                 "Not a valid email address",
                 "Password must have 6 characters or more",
                 "Passwords did not match"]
+    return check_conditions(conditions, messages)
+  end
+
+  def check_conditions(conditions, messages)
     if conditions.include?(false)
       flash[:warning] = messages[conditions.index(false)]
       return false
