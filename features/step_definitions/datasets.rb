@@ -8,6 +8,10 @@ Given /^dataset1 is set up$/ do
       | name         |
       | UC Berkeley  |
 
+    And the following curriculum exist:
+      | name        |
+      | curriculum1 |
+
     And the following presurveys exist:
       |   data            |    total        | course_id |
       |   PRESURVEY_DATA  | PRESURVEY_TOTAL |    1      |
@@ -37,6 +41,29 @@ end
 
 
 
+Given /^the no course dataset is set up$/ do
+  steps %Q{
+     Given the following schools exist:
+      | name    | county  | city     | district |
+      | school1 | Alameda | Berkeley | District |
+
+    And the following colleges exist:
+      | name         |
+      | UC Berkeley  |
+
+    And the following curriculum exist:
+      | name        |
+      | curriculum1 |
+
+    And the following users exist:
+      | email                   | password | name          | profile    | pending | college_id | pending_course_id |
+      | admin@gmail.com         | 123f5    | Admin         | admin      | 1       | 1          |                   |
+
+  }
+end
+
+
+
 
 Given /^the no pending user dataset is set up$/ do
   steps %Q{
@@ -47,6 +74,10 @@ Given /^the no pending user dataset is set up$/ do
     And the following colleges exist:
       | name         |
       | UC Berkeley  |
+
+    And the following curriculum exist:
+      | name        |
+      | curriculum1 |
 
     And the following presurveys exist:
       |   data            |    total        | course_id |
