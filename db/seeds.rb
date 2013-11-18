@@ -40,8 +40,8 @@ Question.create!({:name=>'S2Q1',:qtype=>'Efficacy',:msg1=>'S2Q1 stronk',:msg2=>'
 
 User.create!({:name => "admin account", :email => "admin@fruitfulminds.org", :password => "password", :profile => "admin", :pending => 1})
 User.create!({:name => "another admin account", :email => "admin2@fruitfulminds.org", :password => "password", :profile => "admin", :pending => 1})
-User.create!({:name => "fm ambassador account", :email => "user@fruitfulminds.org", :password => "password", :profile => "ambassador", :pending => 1, :college_id => 1, :course_ids => [1]})
-User.create!({:name => "another fm ambassador account", :email => "ambassador@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 1, :college_id => 2, :course_ids => [1]})
+User.create!({:name => "fm ambassador account", :email => "user@fruitfulminds.org", :password => "password", :profile => "ambassador", :pending => 1, :college_id => 1, :course_ids => [1, 2, 3, 4]})
+User.create!({:name => "another fm ambassador account", :email => "ambassador@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 1, :college_id => 2, :course_ids => [1, 2, 3, 4]})
 User.create!({:name => "pending ambassador account", :email => "pendingambassador@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 0, :college_id => 3, :pending_course_id => 1})
 User.create!({:name => "pending ambassador account 2", :email => "pendingambassador2@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 0, :college_id => 1, :pending_course_id => 2})
 User.create!({:name => "pending ambassador account 3", :email => "pendingambassador3@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 0, :college_id => 2, :pending_course_id => 3})
@@ -52,14 +52,14 @@ User.create!({:name => "pending ambassador account 7", :email => "pendingambassa
 User.create!({:name => "pending ambassador account 8", :email => "pendingambassador8@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 0, :college_id => 1, :pending_course_id => 4})
 
 
-Presurvey.create!({:course_id => 1, :curriculum_id => 1, :data=>{1=>{1=>1, 2=>2, 3=>3}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
-Postsurvey.create!({:course_id => 1, :curriculum_id => 1, :data=>{1=>{1=>4, 2=>6, 3=>9}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
-Presurvey.create!({:course_id => 2, :curriculum_id => 1, :data=>{1=>{1=>1, 2=>2, 3=>3}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
-Postsurvey.create!({:course_id => 2, :curriculum_id => 1, :data=>{1=>{1=>4, 2=>6, 3=>9}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
-Presurvey.create!({:course_id => 3, :curriculum_id => 1, :data=>{1=>{1=>1, 2=>2, 3=>3}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
-Postsurvey.create!({:course_id => 3, :curriculum_id => 1, :data=>{1=>{1=>4, 2=>6, 3=>9}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
-Presurvey.create!({:course_id => 4, :curriculum_id => 1, :data=>{1=>{1=>1, 2=>2, 3=>3}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
-Postsurvey.create!({:course_id => 4, :curriculum_id => 1, :data=>{1=>{1=>4, 2=>6, 3=>9}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
+Presurvey.create!({:course_id => 1, :curriculum_id => 1, :data=>{3=>{1=>1, 2=>2, 3=>3}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
+Postsurvey.create!({:course_id => 1, :curriculum_id => 1, :data=>{3=>{1=>4, 2=>6, 3=>9}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
+Presurvey.create!({:course_id => 2, :curriculum_id => 1, :data=>{3=>{1=>1, 2=>2, 3=>3}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
+Postsurvey.create!({:course_id => 2, :curriculum_id => 1, :data=>{3=>{1=>4, 2=>6, 3=>9}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
+Presurvey.create!({:course_id => 3, :curriculum_id => 1, :data=>{3=>{1=>1, 2=>2, 3=>3}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
+Postsurvey.create!({:course_id => 3, :curriculum_id => 1, :data=>{3=>{1=>4, 2=>6, 3=>9}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
+Presurvey.create!({:course_id => 4, :curriculum_id => 1, :data=>{3=>{1=>1, 2=>2, 3=>3}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
+Postsurvey.create!({:course_id => 4, :curriculum_id => 1, :data=>{3=>{1=>4, 2=>6, 3=>9}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
 
 StaticContent.create!({
                    :intro_title => "Intro to Fruitful Minds",
