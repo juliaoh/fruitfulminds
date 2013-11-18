@@ -12,8 +12,8 @@ Background: results are to be added to database
     | ambassador |
 
   And the following users exist:
-    | email              | password | name         | profile | school_semester_id | pending |
-    | amirk88@gmail.com  | 123f5    | amir khodaei | admin   |     0              | 1       |
+    | email              | password | name         | profile | pending |
+    | amirk88@gmail.com  | 123f5    | amir khodaei | admin   | 1       |
 
   And   I am logged in as amir
   And   I am on the Create New Administrator page
