@@ -30,7 +30,7 @@ class PresurveysController < ApplicationController
   def show
     presurvey = Presurvey.find_by_id(params[:id])
     @curriculum = Curriculum.find_by_id(presurvey.curriculum_id)
-    @users = presurvey.course.users
+    @users = presurvey.get_users
     @presurvey_data = presurvey.get_data
   end
 
