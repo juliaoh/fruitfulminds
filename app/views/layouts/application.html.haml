@@ -127,10 +127,11 @@
                 %ul.dropdown-menu
                   %li
                     %a{:href=>portal_path, :id=>"Show Courses"} Show Courses
-                  %li
-                    %a{:href=>survey_template_index_path} Show Curricula
-                  %li
-                    %a{:href=>new_survey_template_path} Add New Curriculum
+                  -if @current_user.admin?
+                    %li
+                      %a{:href=>survey_template_index_path} Show Curricula
+                    %li
+                      %a{:href=>new_survey_template_path} Add New Curriculum
               -if @current_user.admin?
                 %li.dropdown{:class=>("dropdown active" if @menu == "Users")}
                   %a.dropdown-toggle{"data-toggle" =>"dropdown", :id=>"Users"}  
