@@ -75,11 +75,13 @@ Background: Generate report based on survey results
 
 
   Scenario: Use navbar to get to users page
-    When I press "users"
+    When I follow "users"
 
 
 
   Scenario: Use navbar to get to users page
+    When I follow "users"
+
 
   Scenario: Use navbar to get to courses page
 
