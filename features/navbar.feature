@@ -73,28 +73,28 @@ Background: Generate curric, courses, login
 
   And I am logged in as amir
 
-
-  Scenario: Use navbar dropdown to get to users page
+  @javascript
+  Scenario: Use navbar dropdown to get to users page (happy path)
     When I click css id "#Users"
     When I follow "Show Users"
     Then I should be on the users page
 
 
-
-  Scenario: Use navbar dropdown but stay on page
+  @javascript
+  Scenario: Use navbar dropdown but stay on page (sad path)
     When I follow "Users"
     When I follow "Schools"
     Then I should be on the portal page
     Then I should not be on the users page
 
-
-  Scenario: Use navbar dropdown to get to courses page
+  @javascript
+  Scenario: Use navbar dropdown to get to courses page (happy)
     When I click css id "#courses"
     When I follow "Show Courses"
     Then I should be on the courses page
 
-
-  Scenario: Use navbar to return to the home page
+  @javascript
+  Scenario: Use navbar to return to the home page (happy)
     When I click css id "#logo"
     Then I should be on the portal page
 
