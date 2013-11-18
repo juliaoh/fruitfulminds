@@ -74,18 +74,19 @@ Background: Generate report based on survey results
   And I am logged in as amir
 
 
-  Scenario: Use navbar to get to users
+  Scenario: Use navbar to get to users page
     When I press "users"
 
 
 
-  Scenario: See the dropdown if I click users
+  Scenario: Use navbar to get to users page
+
+  Scenario: Use navbar to get to courses page
 
 
-  Scenario: See the dropdown if I click schools
+  Scenario: Use navbar to get to courses page
 
 
-  Scenario: See the dropdown if I click courses
+  Scenario: Use navbar to get to schools page
 
-
-  Scenario: See the dropdown if I click reports
+  Scenario: Use navbar to get to schools page
