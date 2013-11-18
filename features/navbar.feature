@@ -1,10 +1,10 @@
-Feature: Generate a Report Summary
+Feature: Use Navbar Feature
 
-  As an Ambassador
-  So that I can verify the correctness of report and add comments to it
-  I want to view a summary of the report and add comments before generating a pdf version of the report
+  As an Administrator
+  So that I can navigate through the rest of the site easily
+  I want to have access to different sections of the site with a menu
 
-Background: Generate report based on survey results
+Background: Generate curric, courses, login
 
   Given the following profiles exist:
     | label      |
@@ -74,23 +74,27 @@ Background: Generate report based on survey results
   And I am logged in as amir
 
 
-  Scenario: Use navbar to get to users page
+  Scenario: Use navbar dropdown to get to users page
     When I click css id "#Users"
+    When I follow "Show Users"
+    Then I should be on the users page
 
 
 
-  Scenario: Use navbar to get to users page
+  Scenario: Use navbar dropdown but stay on page
     When I follow "Users"
+    When I follow "Schools"
+    Then I should be on the portal page
+    Then I should not be on the users page
 
 
-  Scenario: Use navbar to get to courses page
+  Scenario: Use navbar dropdown to get to courses page
     When I click css id "#courses"
+    When I follow "Show Courses"
+    Then I should be on the courses page
 
-  Scenario: Use navbar to get to courses page
-    When I click css id "#courses"
 
-  Scenario: Use navbar to get to schools page
-    When I click css id "#schools"
+  Scenario: Use navbar to return to the home page
+    When I click css id "#logo"
+    Then I should be on the portal page
 
-  Scenario: Use navbar to get to schools page
-    When I click css id "#schools"
