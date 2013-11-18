@@ -75,12 +75,12 @@ Background: Generate report based on survey results
 
 
   Scenario: Use navbar to get to users page
-    When I click css id "#users"
+    When I click css id "#Users"
 
 
 
   Scenario: Use navbar to get to users page
-    When I click css id "#users"
+    When I follow "Users"
 
 
   Scenario: Use navbar to get to courses page
