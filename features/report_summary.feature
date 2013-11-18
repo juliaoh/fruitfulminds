@@ -35,7 +35,6 @@ Background: Generate report based on survey results
     |   data            |    total        | course_id |
     |   PRESURVEY_DATA  | PRESURVEY_TOTAL | 1         |
 
-
   And the following courses exist:
     | school_id | semester    | curriculum_id | total_students  | presurvey_id | postsurvey_id | active |
     | 1         | Fall 2013   | 1             | 25              | 1            | 1             | true   |

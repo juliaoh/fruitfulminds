@@ -28,12 +28,12 @@ Background: Generate curric, courses, login
     | S2Q2     | Efficacy        | S2Q2 strong ef  | S2Q2 weak ef | 2          |
 
   And the following presurveys exist:
-    |   data            |    total        |
-    |   PRESURVEY_DATA  | PRESURVEY_TOTAL |
+    |   data            |    total        | course_id |
+    |   PRESURVEY_DATA  | PRESURVEY_TOTAL | 1         |
 
   And the following postsurveys exist:
-    | data            |   total           |
-    | POSTSURVEY_DATA | POSTSURVEY_TOTAL  |
+    | data            |   total           | course_id |
+    | POSTSURVEY_DATA | POSTSURVEY_TOTAL  | 1         |
 
 
   And the following courses exist:
@@ -41,7 +41,7 @@ Background: Generate curric, courses, login
     | 1         | Fall 2013   | 1             | 25              | 1            | 1             | true   |
 
   And the following users exist:
-    | email              | password | name         | profile | school_semester_id |
+    | email              | password | name         | profile    | school_semester_id |
     | amirk88@gmail.com  | 123f5    | amir khodaei | admin      |     1              |
     | john@gmail.com     | 12345    | john smith   | 1          |     2              |
 
@@ -75,7 +75,7 @@ Background: Generate curric, courses, login
 
   @javascript
   Scenario: Use navbar dropdown to get to users page (happy path)
-    When I click css id "#Users"
+    When I follow "Users"
     When I click css id "#Show Users"
     Then I should be on the users page
 
