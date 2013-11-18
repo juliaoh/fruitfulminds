@@ -5,7 +5,7 @@ Feature: Admin approves/disapproves new users before they are given access to th
 
   Background:
 
-    Given the data is set up
+    Given dataset1 is set up
     And I am logged in as "admin@gmail.com" with "123f5" as my password
     And I am on the pending users page
 

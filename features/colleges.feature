@@ -6,32 +6,8 @@ Feature: allow admin users to add and modify schools
 
 Background: results are to be added to database
 
-  
-  Given the following schools exist:
-    | name    | county  | city     | district |
-    | school1 | Alameda | Berkeley | District |
-
-  And the following colleges exist:
-    | name        |
-    | UC Berkeley |
-
-  And the following users exist:
-    | email                | password | name         | profile | pending  | 
-    | alwong8@berkeley.edu | aaaaaa   | Alvin Wong   | admin   |     1    |
-
-  And the following schools exist:
-    | name 	| county    | city 	  | district |
-    | "school1" | "Alameda" | "Berkeley"  | District |
-
-  And the following school_semesters exist:
-    | school_id |   name   | year |
-    |     1     |   Fall   | 2011 |
-
-  And the following colleges exist:
-    | name       |
-    | "college1" |
-
-  And   I login as user "alwong8@berkeley.edu" with password "aaaaaa"
+  Given dataset1 is set up
+  And   I am logged in as "admin@gmail.com" with "123f5" as my password
   And   I am on the portal page
 
 Scenario: add new college

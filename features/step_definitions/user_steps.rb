@@ -132,7 +132,7 @@ Given /\s*I login as user "(.*)" with password "(.*)"$/ do |email, pass|
   And I press "Sign In"}
 end
 
-Given /^the data is set up$/ do
+Given /^dataset1 is set up$/ do
   steps %Q{
      Given the following schools exist:
       | name    | county  | city     | district |
