@@ -15,4 +15,4 @@
           - @presurvey_data.keys.each do |user_id|
             %td= text_field_tag "#{user_id}_#{question.id}", @presurvey_data[user_id][question.id], :readonly => true
 
-= button_to "Edit Presurvey", edit_presurvey_path(params[:id]), :method => :get, :id => params[:id]
+= button_to "Edit Pre-Survey", edit_presurvey_path(params[:id]), :method => :get, :id => params[:id]

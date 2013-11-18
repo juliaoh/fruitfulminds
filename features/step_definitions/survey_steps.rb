@@ -97,7 +97,7 @@ Given /the following presurveys exist/ do |table|
   table.hashes.each do |result|
     total = {1=>25}
     data = {1=>{1=>10,2=>11,3=>4,4=>9}}
-    Presurvey.create!(:total=>total, :data=>data, :course_id=>1)
+    Presurvey.create!(:total=>total, :data=>data, :course_id=>1, :curriculum_id=>1)
   end
 end
 
