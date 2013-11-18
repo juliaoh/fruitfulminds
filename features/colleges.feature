@@ -6,14 +6,18 @@ Feature: allow admin users to add and modify schools
 
 Background: results are to be added to database
 
-  Given the following profiles exist:
-    | label      |
-    | admin      |
-    | ambassador |
+  
+  Given the following schools exist:
+    | name    | county  | city     | district |
+    | school1 | Alameda | Berkeley | District |
+
+  And the following colleges exist:
+    | name        |
+    | UC Berkeley |
 
   And the following users exist:
-    | email                | password | name         | profile_id | school_semester_id |
-    | alwong8@berkeley.edu | aaaaaa   | Alvin Wong | 1          |     1     |
+    | email                | password | name         | profile | pending  | 
+    | alwong8@berkeley.edu | aaaaaa   | Alvin Wong   | admin   |     1    |
 
   And the following schools exist:
     | name 	| county    | city 	  | district |
