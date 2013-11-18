@@ -6,11 +6,6 @@ Feature: user logs into his/her portal
 
 Background: users have been added to database
 
-  Given the following profiles exist:
-    | label      |
-    | admin      |
-    | ambassador |
-
   And the following users exist:
     | email              | password | name         | profile_id | school_semester_id |
     | amirk88@gmail.com  | 123f5    | amir khodaei | 1          |                   |

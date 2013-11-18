@@ -36,7 +36,7 @@ class AdminController < ApplicationController
       flash[:warning] = "Passwords did not match"
     else
       begin
-        @user = User.create!(:name => name, :email => email, :password => password, :profile_id => Profile.find_by_label("admin").id)
+        @user = User.create!(:name => name, :email => email, :password => password, :profile => "admin")
         flash[:notice] = "Successfully created new administrator."
         redirect_to portal_path and return
       rescue ActiveRecord::RecordInvalid

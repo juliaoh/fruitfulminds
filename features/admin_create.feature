@@ -6,10 +6,6 @@ Feature: allow admin users to add and modify admins
 
 Background: results are to be added to database
 
-  Given the following profiles exist:
-    | label      |
-    | admin      |
-    | ambassador |
 
   And the following users exist:
     | email              | password | name         | profile | pending |
