@@ -41,8 +41,8 @@ Background: Generate curric, courses, login
     | 1         | Fall 2013   | 1             | 25              | 1            | 1             | true   |
 
   And the following users exist:
-    | email              | password | name         | profile_id | school_semester_id |
-    | amirk88@gmail.com  | 123f5    | amir khodaei | 1          |     1              |
+    | email              | password | name         | profile | school_semester_id |
+    | amirk88@gmail.com  | 123f5    | amir khodaei | admin      |     1              |
     | john@gmail.com     | 12345    | john smith   | 1          |     2              |
 
   And the following users have courses:
