@@ -11,7 +11,7 @@ class Course < ActiveRecord::Base
 
 
   def name
-    school.name + ", " + school.county + ", " + school.city + ", " + semester
+    school.name + ", " + school.city + ", " + school.county + ", " + semester
   end
 
   def active?
