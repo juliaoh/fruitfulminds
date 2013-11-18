@@ -13,6 +13,10 @@ Scenario: Pre-Surveys should have multiple users
   And I follow "Show Pre-Survey"
   Then I should see "Ambassador1"
   And I should see "Ambassador2"
+  And the page should contain the "1_1" field
+  And the page should contain the "1_2" field
+  And the page should contain the "2_1" field
+  And the page should contain the "2_2" field
 
 Scenario: see fellow ambassador's pre-survey edits
   And I follow "Show Pre-Survey"
@@ -44,6 +48,11 @@ Scenario: Post-Surveys should have multiple users
   And I follow "Show Post-Survey"
   Then I should see "Ambassador1"
   And I should see "Ambassador2"
+  And the page should contain the "1_1" field
+  And the page should contain the "1_2" field
+  And the page should contain the "2_1" field
+  And the page should contain the "2_2" field
+
 
 Scenario: see fellow ambassador's post-survey edits
   And I follow "Show Post-Survey"
