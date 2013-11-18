@@ -76,25 +76,25 @@ Background: Generate curric, courses, login
   @javascript
   Scenario: Use navbar dropdown to get to users page (happy path)
     When I click css id "#Users"
-    When I follow "Show Users"
+    When I click css id "#Show Users"
     Then I should be on the users page
 
 
   @javascript
   Scenario: Use navbar dropdown but stay on page (sad path)
-    When I follow "Users"
-    When I follow "Schools"
+    When I click css id "#Users"
+    When I click css id "#Schools"
     Then I should be on the portal page
     Then I should not be on the users page
 
   @javascript
   Scenario: Use navbar dropdown to get to courses page (happy)
-    When I click css id "#courses"
-    When I follow "Show Courses"
+    When I click css id "#Courses"
+    When I click css id "#Show Courses"
     Then I should be on the courses page
 
   @javascript
   Scenario: Use navbar to return to the home page (happy)
-    When I click css id "#logo"
+    When I click css id "#Logo"
     Then I should be on the portal page
 
