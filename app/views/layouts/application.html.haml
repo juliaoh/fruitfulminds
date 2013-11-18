@@ -121,7 +121,7 @@
             %a.brand{:href=>portal_path, :style=>"padding:10px 30px 10px;"} Fruitful Minds
             %ul.nav
               %li.dropdown{:class=>("dropdown active" if  @menu == "Courses")}
-                %a.dropdown-toggle{"data-toggle" =>"dropdown"} 
+                %a.dropdown-toggle{"data-toggle" =>"dropdown", :id=>"Courses"} 
                   Courses 
                   %span.caret
                 %ul.dropdown-menu
@@ -129,7 +129,7 @@
                     %a{:href=>portal_path} Show Courses
               -if @current_user.admin?
                 %li.dropdown{:class=>("dropdown active" if @menu == "Users")}
-                  %a.dropdown-toggle{"data-toggle" =>"dropdown"}  
+                  %a.dropdown-toggle{"data-toggle" =>"dropdown", :id=>"Users"}  
                     Users 
                     %span.caret
                   %ul.dropdown-menu
@@ -138,7 +138,7 @@
                     %li
                       %a Add New User
                 %li.dropdown{:class=>("dropdown active" if @menu == "Schools")}
-                  %a.dropdown-toggle{"data-toggle" =>"dropdown"}  
+                  %a.dropdown-toggle{"data-toggle" =>"dropdown", :id=>"Schools"}  
                     Schools 
                     %span.caret
                   %ul.dropdown-menu
@@ -147,7 +147,7 @@
                     %li
                       %a Add New School
                 %li.dropdown{:class=>("dropdown active" if @menu == "Colleges")}
-                  %a.dropdown-toggle{"data-toggle" =>"dropdown"}  
+                  %a.dropdown-toggle{"data-toggle" =>"dropdown", :id=>"Colleges"}  
                     Colleges 
                     %span.caret
                   %ul.dropdown-menu
@@ -156,7 +156,7 @@
                     %li
                       %a Add New College
               %li.dropdown{:class=>("dropdown active" if @menu == "Reports")}
-                %a.dropdown-toggle{"data-toggle" =>"dropdown"}  
+                %a.dropdown-toggle{"data-toggle" =>"dropdown", :id=>"Reports"}  
                   Reports 
                   %span.caret
                 %ul.dropdown-menu
