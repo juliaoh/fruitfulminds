@@ -31,6 +31,7 @@ Given /^dataset1 is set up$/ do
       | user_id  | course_id  |
       | 1        | 1          |
       | 2        | 1          |
+  }
 end
 
 Given /^the multiple ambassador dataset is set up$/ do
