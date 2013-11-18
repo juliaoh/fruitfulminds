@@ -48,6 +48,7 @@ Feature: user logs into his/her portal
 
   Scenario: A pending user logs in
     Given dataset1 is set up
+    And I am on the login page
     And I fill in "Email" with "pending_user@gmail.com"
     And I fill in "user_password" with "2isd82"
     And I press "Sign In"
@@ -57,6 +58,7 @@ Feature: user logs into his/her portal
 
   Scenario: ambassador logs out
     Given the no pending user dataset is set up
+    And I am on the login page
     Given I fill in "Email" with "admin@gmail.com"
     And I fill in "user_password" with "123f5"
     And I press "Sign In"
@@ -66,6 +68,7 @@ Feature: user logs into his/her portal
 
   Scenario: Incorrect password is entered
     Given the no pending user dataset is set up
+    And I am on the login page
     Given I fill in "Email" with "admin@gmail.com"
     And I fill in "user_password" with "password"
     And I press "Sign In"
@@ -73,6 +76,8 @@ Feature: user logs into his/her portal
     And I should see "Incorrect password! Please try again."
 
   Scenario: Incorrect username is entered
+    Given the no pending user dataset is set up
+    And I am on the login page
     Given I fill in "Email" with "kevinyeun@gmail.com"
     And I fill in "user_password" with "password"
     And I press "Sign In"
