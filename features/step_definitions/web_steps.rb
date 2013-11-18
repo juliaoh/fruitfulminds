@@ -254,6 +254,16 @@ Then /^(?:|I )should be on (.+)$/ do |page_name|
   end
 end
 
+
+Then /^(?:|I )should not be on (.+)$/ do |page_name|
+  current_path = URI.parse(current_url).path
+  if current_path.respond_to? :should
+    current_path.should != path_to(page_name)
+  else
+    assert current_path != path_to(page_name)
+  end
+end
+
 Then /^(?:|I )should have the following query string:$/ do |expected_pairs|
   query = URI.parse(current_url).query
   actual_params = query ? CGI.parse(query) : {}
