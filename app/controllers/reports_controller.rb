@@ -210,7 +210,7 @@ class ReportsController < ApplicationController
     @improvement = combined_data[1] - combined_data[0]
 
     @nutrition_chart = Gchart.bar(:size => '1000x300', 
-                                :title => "Average Survey Score in Six Nutrition Topics",
+                                :title => "Survey Score in Six Nutrition Topics",
                                 :legend => ['Pre', 'Post'],
                                 :bar_colors => '3399CC,99CCFF',
                                 :data => data,
