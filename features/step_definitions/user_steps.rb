@@ -1,7 +1,3 @@
-Given /I infinite loop/ do
-  sleep(9001)
-end
-
 Given /the following users exist/ do |users_table|
   users_table.hashes.each do |user|
 
