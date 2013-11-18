@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
 
   def create_handle_admin(user)
     session[:user_id] = user.id
-    if user.admin? and User.where(:pending => 0).length == 0
+    if user.admin? and User.where(:pending => 0).length != 0
       redirect_to pending_users_path and return
     else
       redirect_to '/portal' and return
