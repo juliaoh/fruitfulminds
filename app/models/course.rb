@@ -3,7 +3,6 @@ class Course < ActiveRecord::Base
   validates :total_students, :presence => true
   belongs_to :school
   has_and_belongs_to_many :users
-  has_one :curriculum
   has_one :presurvey
   has_one :postsurvey
 
@@ -16,5 +15,9 @@ class Course < ActiveRecord::Base
 
   def active?
     active
+  end
+
+  def curriculum
+    Curriculum.find(curriculum_id)
   end
 end
