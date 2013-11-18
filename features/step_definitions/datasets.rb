@@ -31,6 +31,5 @@ Given /^dataset1 is set up$/ do
       | user_id  | course_id  |
       | 1        | 1          |
       | 2        | 1          |
-      | 5        | 1          |
   }
 end

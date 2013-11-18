@@ -11,29 +11,25 @@ Background: results are to be added to database
   And   I am on the portal page
 
 Scenario: add new college
-  When  I follow "Add New College"
-  Then  I should be on the Add New College page
+  Given I am on the Add New College page
   And   I fill in "college_name" with "UCB"
   And   I press "Save Changes"
   Then  I should see "Successfully created college."
 
 Scenario: edit existing college
-  When  I follow "Show All Colleges"
-  Then  I should be on the All Colleges page
+  Given I am on the All Colleges page
   And   I press "edit_college_1"
   And   I fill in "college_name" with "foo"
   And   I press "Save Changes"
   Then  I should see "Successfully updated college."
 
 Scenario: add new college
-  When  I follow "Add New College"
-  Then  I should be on the Add New College page
+  Given I am on the Add New College page
   And   I press "Save Changes"
   Then  I should see "Fields cannot be left blank."
 
 Scenario: edit existing college
-  When  I follow "Show All Colleges"
-  Then  I should be on the All Colleges page
+  Given I am on the All Colleges page
   And   I press "edit_college_1"
   And   I fill in "college_name" with ""
   And   I press "Save Changes"
