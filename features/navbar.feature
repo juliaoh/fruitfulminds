@@ -6,11 +6,6 @@ Feature: Use Navbar Feature
 
 Background: Generate curric, courses, login
 
-  Given the following profiles exist:
-    | label      |
-    | admin      |
-    | ambassador |
-
   And the following curriculum exist:
     | name        |
     | curriculum1 |
@@ -43,7 +38,7 @@ Background: Generate curric, courses, login
   And the following users exist:
     | email              | password | name         | profile    | school_semester_id |
     | amirk88@gmail.com  | 123f5    | amir khodaei | admin      |     1              |
-    | john@gmail.com     | 12345    | john smith   | 1          |     2              |
+    | john@gmail.com     | 12345    | john smith   | ambassador |     2              |
 
   And the following users have courses:
     | user_id  | course_id  |
