@@ -1,7 +1,10 @@
-<% @subtitle = "Add new survey template" %>
+<% @subtitle = "Edit an existing survey template" %>
 <script>
   $( document ).ready(function() {
-    window.add_question = function(section_num) {
+    window.add_question = function(section_num, name, msg1, msg2) {
+      if (name == undefined) name = '';
+      if (msg1 == undefined) msg1 = '';
+      if (msg2 == undefined) msg2 = '';
       var num_sections = $("#num_sections").val();
       $numquestions = $('#snumquestions'+section_num);
       num_questions = parseInt($numquestions.val()) + 1;
@@ -11,37 +14,53 @@
       new_question += 'Weakness Message:<br /><textarea id="s'+section_num+'q'+num_questions+'weakness" name="s'+section_num+'q'+num_questions+'weakness'+'"></textarea><br /></div>';
       var $question = $('td#squestion'+section_num);
       $question.append(new_question);
+      $('#squestion'+section_num+'_'+num_questions).val(name);
+      $('#s'+section_num+'q'+num_questions+'strength').val(msg1);
+      $('#s'+section_num+'q'+num_questions+'weakness').val(msg2);
       $('#delquestion'+section_num+'_'+num_questions).click({snum:section_num, qnum:num_questions}, function (e) {
         $('#q'+e.data.snum+'_'+e.data.qnum).remove();
       });
     };
-    window.add_section = function() {
+    window.add_section = function(sname, stype, sobj) {
+      if (sname == undefined) sname = ''
+      if (stype == undefined) stype = 'Multiple Choice'
+      if (sobj == undefined) sobj = ''
       $num_sections_field = $('#num_sections');
       $num_sections_field.val(parseInt($num_sections_field.val()) + 1);
       var num_sections = $num_sections_field.val();
       var content = '<div class="section" id="section'+num_sections+'">';
-      content += '<input type="hidden" name="snumquestions'+num_sections+'" id="snumquestions'+num_sections+'" value="0" />';
+      content += '<input type="hidden" name="snumquestions'+num_sections+'" id="snumquestions'+num_sections+'" />';
       content += 'Section';
       content += '<table id="section_data'+num_sections+'">';
       content += '<tr><td>Name</td><td><input name="sname'+num_sections+'" id="sname'+num_sections+'" /></td></tr>';
       content += '<tr><td>Type</td><td><select name="stype'+num_sections+'" id="stype'+num_sections+'"><option value="Multiple Choice">Multiple Choice</option><option value="Efficacy">Efficacy</option></select></td></tr>';
-      content += '<tr id="sobjective'+num_sections+'"><td>Objective</td><td><input name="sobjective'+num_sections+'" id="sobjective'+num_sections+'" /></td></tr>';
+      content += '<tr><td>Objective</td><td><input name="sobjective'+num_sections+'" id="sobjective'+num_sections+'" /></td></tr>';
       content += '<tr><td colspan="2" style="height:15px;"></td></tr>';
       content += '<tr><td id="squestion'+num_sections+'" colspan="2"></td></tr>';
       content += '</table>';
       content += '<input type="button" name="add_question_btn'+num_sections+'" id="add_question_btn'+num_sections+'" value="Add Question" /><br />'
       content += '</div>';
       $('.form_content').append(content);
+      $('#snumquestions'+num_sections).val(0);
       $('#stype'+num_sections).change({section_num:num_sections}, function (e) {
         if ($(this).val() == "mc") { $('#sobjective'+e.data.section_num).show(); }
         else { $('#sobjective'+e.data.section_num).hide(); }
       });
       $('#smsg'+num_sections).hide();
-      add_question(num_sections);
+      $('#sname'+num_sections).val(sname);
+      $('#stype'+num_sections).val(stype);
+      $('#sobjective'+num_sections).val(sobj);
       $('input#add_question_btn'+num_sections).click(function () { add_question(num_sections); });
     };
     $('#add_section_btn').click(function () { add_section();});
-    add_section();
+    <% i = 1 %>
+    <% @sections.each do |section| %>
+        add_section("<%= section.name %>", "<%= section.stype %>", "<%= section.objective %>");
+        <% section.questions.each do |question| %>
+            add_question("<%= i %>", "<%= question.name %>", "<%= question.msg1 %>", "<%= question.msg2 %>");
+        <% end %>
+        <% i += 1 %>
+    <% end %>
   });
 </script>
 <style>
@@ -52,8 +71,9 @@ div.section {
 }
 </style>
 <div style="width:400px; margin-left:auto; margin-right:auto">
-    <form accept-charset="UTF-8" action="<%= survey_template_index_path %>" method="post">
-        Survey Name<input id="surveyname" name="surveyname">
+    <form accept-charset="UTF-8" action="<%= survey_template_path(params[:id]) %>" method="post">
+        <input name="_method" type="hidden" value="put">
+        Survey Name<input id="surveyname" name="surveyname" value="<%= @survey_name %>" />
         <input type="hidden" name="num_sections" id="num_sections" value="0" />
         <div class="form_content"></div>
         <br /><input id="add_section_btn" type="button" value="Add Section" />

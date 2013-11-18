@@ -1,9 +1,21 @@
 class SurveyTemplateController < ApplicationController
-  skip_before_filter :verify_authenticity_token, :only => [:create]
+  skip_before_filter :verify_authenticity_token, :only => [:create, :update]
   def index
     @survey_templates = Curriculum.all
   end
   def new
+  end
+  def edit
+    template_fields = Curriculum.find(params[:id])
+    @survey_name = template_fields.name
+    @sections = template_fields.sections
+  end
+  def update
+    Curriculum.find(params[:id]).destroy
+    create
+    if flash[:notice] == "New Survey successfully added."
+        flash[:notice] = "Survey successfully updated."
+    end
   end
 
   def create
@@ -35,6 +47,10 @@ class SurveyTemplateController < ApplicationController
     @survey_template = Curriculum.new(:name => survey_name)
     @survey_template.save
   end
+  def update_curriculum(survey_name)
+    @survey_template = Curriculum.find(params[:id]).update_attributes!(:name => survey_name)
+    @survey_template.save
+  end
 
   def create_question(params, q_name_param)
     question_name = params[(q_name_param+"name").to_sym]
@@ -42,7 +58,6 @@ class SurveyTemplateController < ApplicationController
     wkns_message = params[(q_name_param+"weakness").to_sym]
     @tmp_section.create_and_save_question({:name => question_name, :qtype => @tmp_section.stype, :msg1 => str_message, :msg2 => wkns_message})
   end
-
 
   def create_section(params, sec_number)
     section_name = params["sname#{sec_number}".to_sym].to_s
@@ -54,5 +69,11 @@ class SurveyTemplateController < ApplicationController
     end
     @tmp_section = @survey_template.create_and_save_section(:name => section_name, :stype => section_type, :objective => section_obj)
   end
-
+  
+  def destroy
+    @template = Curriculum.find(params[:id])
+    @template.destroy
+    flash[:notice] = "Template successfully deleted."
+    redirect_to survey_template_index_path
+  end
 end
