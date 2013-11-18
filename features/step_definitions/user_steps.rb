@@ -160,10 +160,12 @@ Given /^the data is set up$/ do
       | approved_user@gmail.com | 12323    | Approved User | ambassador | 1       | 1          |                   |
       | pending_user@gmail.com  | 2isd82   | Pending User  | ambassador | 0       | 1          | 1                 |
       | pending_user2@gmail.com | 2isd82   | Pending User2 | ambassador | 0       | 1          | 1                 |
+      | ambassador1@gmail.com   | 2isd82   | Ambassador1   | ambassador | 1       | 1          |                   |
 
     And the following users have courses:
       | user_id  | course_id  |
       | 1        | 1          |
       | 2        | 1          |
+      | 5        | 1          |
   }
 end
