@@ -5,31 +5,12 @@ Feature: allow admin users to remove schools
   I want to be able to delete schools from the database.
 
 Background: results are to be added to database
-
-  Given the following profiles exist:
-    | label      |
-    | admin      |
-    | ambassador |
-
-  And the following users exist:
-    | email                | password | name         | profile_id | school_semester_id |
-    | alwong8@berkeley.edu | aaaaaa   | Alvin Wong   | 1          |     1     |
-
-  And the following schools exist:
-    | name    | county  | city     | district |
-    | school1 | Alameda | Berkeley | District |
-
-  And the following school_semesters exist:
-    | school_id |   name   | year |
-    |     1     |   Fall   | 2011 |
-
-  And   I login as user "alwong8@berkeley.edu" with password "aaaaaa"
-  And   I am on the portal page
-
+  Given dataset1 is set up
+  And I am logged in as "admin@gmail.com" with "123f5" as my password
+ 
 @javascript
 Scenario: delete existing school - (happy path)
-  When  I follow "Show All Schools"
-  Then  I should be on the All Schools page
+  When  I am on the All Schools page
   And   I press "edit_school_1"
   And   I press "Delete"
   And   I confirm popup
@@ -38,8 +19,7 @@ Scenario: delete existing school - (happy path)
 
 @javascript
 Scenario: delete existing school - cancel (sad path)
-  When  I follow "Show All Schools"
-  Then  I should be on the All Schools page
+  When  I am on the All Schools page
   And   I press "edit_school_1"
   And   I press "Delete"
   And   I dismiss popup
