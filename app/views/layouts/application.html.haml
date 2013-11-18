@@ -136,7 +136,9 @@
                     %li
                       %a{:href=>users_path, :id=>"Show Users"} Show Users
                     %li
-                      %a{:href=>"/users/new"} Add New User
+                      %a{:href=>new_admin_path} Add New Admin
+                    %li
+                      %a{:href=>pending_users_path} Pending Users
                 %li.dropdown{:class=>("dropdown active" if @menu == "Schools")}
                   %a.dropdown-toggle{"data-toggle" =>"dropdown", :id=>"Schools"}  
                     Schools 
@@ -145,7 +147,7 @@
                     %li
                       %a{:href=>schools_path, :id=>"Show Schools"} Show Schools
                     %li
-                      %a Add New School
+                      %a{:href=>new_school_path} Add New School
                 %li.dropdown{:class=>("dropdown active" if @menu == "Colleges")}
                   %a.dropdown-toggle{"data-toggle" =>"dropdown", :id=>"Colleges"}  
                     Colleges 
@@ -154,7 +156,7 @@
                     %li
                       %a{:href=>colleges_path, :id=>"Show Colleges"} Show Colleges
                     %li
-                      %a Add New College
+                      %a{:href=>new_college_path} Add New College
               %li.dropdown{:class=>("dropdown active" if @menu == "Reports")}
                 %a.dropdown-toggle{"data-toggle" =>"dropdown", :id=>"Reports"}  
                   Reports 
