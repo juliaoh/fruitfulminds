@@ -116,52 +116,52 @@
       -if @current_user
         .navbar
           .navbar-inner
-            %a.brand{:href=>portal_path, :style=>"padding:3px;"}
+            %a.brand{:href=>portal_path, :style=>"padding:3px;", :id=>"Logo"}
               = image_tag("nav_logo.png")
             %a.brand{:href=>portal_path, :style=>"padding:10px 30px 10px;"} Fruitful Minds
             %ul.nav
               %li.dropdown{:class=>("dropdown active" if  @menu == "Courses")}
-                %a.dropdown-toggle{"data-toggle" =>"dropdown"} 
+                %a.dropdown-toggle{"data-toggle" =>"dropdown", :id=>"Courses"} 
                   Courses 
                   %span.caret
                 %ul.dropdown-menu
                   %li
-                    %a{:href=>portal_path} Show Courses
+                    %a{:href=>portal_path, :id=>"Show Courses"} Show Courses
               -if @current_user.admin?
                 %li.dropdown{:class=>("dropdown active" if @menu == "Users")}
-                  %a.dropdown-toggle{"data-toggle" =>"dropdown"}  
+                  %a.dropdown-toggle{"data-toggle" =>"dropdown", :id=>"Users"}  
                     Users 
                     %span.caret
                   %ul.dropdown-menu
                     %li
-                      %a{:href=>users_path} Show Users
+                      %a{:href=>users_path, :id=>"Show Users"} Show Users
                     %li
                       %a Add New User
                 %li.dropdown{:class=>("dropdown active" if @menu == "Schools")}
-                  %a.dropdown-toggle{"data-toggle" =>"dropdown"}  
+                  %a.dropdown-toggle{"data-toggle" =>"dropdown", :id=>"Schools"}  
                     Schools 
                     %span.caret
                   %ul.dropdown-menu
                     %li
-                      %a{:href=>schools_path} Show Schools
+                      %a{:href=>schools_path, :id=>"Show Schools"} Show Schools
                     %li
                       %a Add New School
                 %li.dropdown{:class=>("dropdown active" if @menu == "Colleges")}
-                  %a.dropdown-toggle{"data-toggle" =>"dropdown"}  
+                  %a.dropdown-toggle{"data-toggle" =>"dropdown", :id=>"Colleges"}  
                     Colleges 
                     %span.caret
                   %ul.dropdown-menu
                     %li
-                      %a{:href=>colleges_path} Show Colleges
+                      %a{:href=>colleges_path, :id=>"Show Colleges"} Show Colleges
                     %li
                       %a Add New College
               %li.dropdown{:class=>("dropdown active" if @menu == "Reports")}
-                %a.dropdown-toggle{"data-toggle" =>"dropdown"}  
+                %a.dropdown-toggle{"data-toggle" =>"dropdown", :id=>"Reports"}  
                   Reports 
                   %span.caret
                 %ul.dropdown-menu
                   %li
-                    %a{:href=>reports_path} Generate Course Report
+                    %a{:href=>reports_path, :id=>"Generate Reports"} Generate Course Report
                   -if @current_user.admin?
                     %li
                       %a Generate Historical Report

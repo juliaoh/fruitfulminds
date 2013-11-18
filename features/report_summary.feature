@@ -28,17 +28,16 @@ Background: Generate report based on survey results
     | S2Q2     | Efficacy        | S2Q2 strong ef  | S2Q2 weak ef | 2          |
 
   And the following presurveys exist:
-    |   data            |    total        |
-    |   PRESURVEY_DATA  | PRESURVEY_TOTAL |
+    |   data            |    total        | course_id |
+    |   PRESURVEY_DATA  | PRESURVEY_TOTAL | 1         |
 
   And the following postsurveys exist:
-    | data            |   total           |
-    | POSTSURVEY_DATA | POSTSURVEY_TOTAL  |
-
+    |   data            |    total        | course_id |
+    |   PRESURVEY_DATA  | PRESURVEY_TOTAL | 1         |
 
   And the following courses exist:
-    | school_id | semester    | curriculum_id | total_students  | presurvey_id | postsurvey_id |
-    | 1         | Fall 2013   | 1             | 25              | 1            | 1             |
+    | school_id | semester    | curriculum_id | total_students  | presurvey_id | postsurvey_id | active |
+    | 1         | Fall 2013   | 1             | 25              | 1            | 1             | true   |
 
   And the following users exist:
     | email              | password | name         | profile_id | school_semester_id |

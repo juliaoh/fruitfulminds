@@ -96,7 +96,7 @@ module UsersHelper
       end
     end
     if flash_message_list == []
-      flash[:notice] = "Nobody was approved and nobody was disapproved.\n"
+      flash[:notice] = "Nobody was approved or disapproved."
     else
       flash[:notice] = flash_message_list.join("<br>").html_safe
     end

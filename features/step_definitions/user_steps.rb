@@ -9,7 +9,7 @@ Given /the following users have courses/ do |table|
   table.hashes.each do |result|
     user = User.find_by_id(result[:user_id])
     course = Course.find_by_id(result[:course_id])
-    course.users = [user]
+    course.users << user
     course.save!
   end
 end
