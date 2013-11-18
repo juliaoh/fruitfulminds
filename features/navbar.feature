@@ -41,8 +41,8 @@ Background: Generate curric, courses, login
     | 1         | Fall 2013   | 1             | 25              | 1            | 1             | true   |
 
   And the following users exist:
-    | email              | password | name         | profile_id | school_semester_id |
-    | amirk88@gmail.com  | 123f5    | amir khodaei | 1          |     1              |
+    | email              | password | name         | profile | school_semester_id |
+    | amirk88@gmail.com  | 123f5    | amir khodaei | admin      |     1              |
     | john@gmail.com     | 12345    | john smith   | 1          |     2              |
 
   And the following users have courses:
@@ -73,28 +73,28 @@ Background: Generate curric, courses, login
 
   And I am logged in as amir
 
-
-  Scenario: Use navbar dropdown to get to users page
+  @javascript
+  Scenario: Use navbar dropdown to get to users page (happy path)
     When I click css id "#Users"
-    When I follow "Show Users"
+    When I click css id "#Show Users"
     Then I should be on the users page
 
 
-
-  Scenario: Use navbar dropdown but stay on page
-    When I follow "Users"
-    When I follow "Schools"
+  @javascript
+  Scenario: Use navbar dropdown but stay on page (sad path)
+    When I click css id "#Users"
+    When I click css id "#Schools"
     Then I should be on the portal page
     Then I should not be on the users page
 
-
-  Scenario: Use navbar dropdown to get to courses page
-    When I click css id "#courses"
-    When I follow "Show Courses"
+  @javascript
+  Scenario: Use navbar dropdown to get to courses page (happy)
+    When I click css id "#Courses"
+    When I click css id "#Show Courses"
     Then I should be on the courses page
 
-
-  Scenario: Use navbar to return to the home page
-    When I click css id "#logo"
+  @javascript
+  Scenario: Use navbar to return to the home page (happy)
+    When I click css id "#Logo"
     Then I should be on the portal page
 
