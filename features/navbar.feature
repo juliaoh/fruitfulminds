@@ -75,7 +75,7 @@ Background: Generate curric, courses, login
 
   @javascript
   Scenario: Use navbar dropdown to get to users page (happy path)
-    When I click css id "#Users"
+    When I follow "Users"
     When I click css id "#Show Users"
     Then I should be on the users page
 
