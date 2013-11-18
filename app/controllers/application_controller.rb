@@ -4,9 +4,7 @@ class ApplicationController < ActionController::Base
 
   protected
   def current_user
-    puts session
     @current_user ||= User.find_by_id(session[:user_id])
-    puts @current_user == nil
     if @current_user
       return
     else
