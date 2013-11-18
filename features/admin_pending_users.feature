@@ -4,18 +4,10 @@ Feature: Admin approves/disapproves new users before they are given access to th
   I want to approve/disapprove a new user's request to access the ambassador portal
 
   Background:
-    Given the following profiles exist:
-      | label      |
-      | admin      |
-      | ambassador |
 
-    And the following schools exist:
+    Given the following schools exist:
       | name    | county  | city     | district |
       | school1 | Alameda | Berkeley | District |
-
-    And the following school_semesters exist:
-      | school_id | name | year |
-      | 1         | Fall | 2012 |
 
     And the following colleges exist:
       | name         |
@@ -34,19 +26,17 @@ Feature: Admin approves/disapproves new users before they are given access to th
       | 1         | Fall 2013   | 1             | 25              | 1            | 1             | true   |
 
     And the following users exist:
-      | email                   | password | name          | profile    | pending | college_id |
-      | admin@gmail.com         | 123f5    | Admin         | admin      | 1       | 1          |
-      | approved_user@gmail.com | 12323    | Approved User | ambassador | 1       | 1          |
-      | pending_user@gmail.com  | 2isd82   | Pending User  | ambassador | 0       | 1          |
-      | pending_user2@gmail.com | 2isd82   | Pending User2 | ambassador | 0       | 1          |
+      | email                   | password | name          | profile    | pending | college_id | pending_course_id |
+      | admin@gmail.com         | 123f5    | Admin         | admin      | 1       | 1          |                   |
+      | approved_user@gmail.com | 12323    | Approved User | ambassador | 1       | 1          |                   |
+      | pending_user@gmail.com  | 2isd82   | Pending User  | ambassador | 0       | 1          | 1                 |
+      | pending_user2@gmail.com | 2isd82   | Pending User2 | ambassador | 0       | 1          | 1                 |
 
     And the following users have courses:
       | user_id  | course_id  |
       | 1        | 1          |
       | 2        | 1          |
-      | 3        | 1          |
 
-    And "Pending User" is a pending user for school "school1" and semester "Fall, 2012"
     And I am logged in as "admin@gmail.com" with "123f5" as my password
     And I am on the pending users page
 
