@@ -9,8 +9,8 @@ $(document).ready(function() {
 </script>
 <a id="add_new_survey_btn" href="<%= new_survey_template_path %>">Add new survey</a>
 <hr />
-<% if @survey_template != nil %>
-<%  @survey_template.each do |template| %>
-<a href="#"><%=  template.name %></a><br />
+<% if @survey_templates != nil %>
+<%  @survey_templates.each do |template| %>
+<a href="<%= edit_survey_template_path(template.id) %>"><%= template.name %> (<%= template.id %>)</a><br />
 <%  end %>
 <% end %>

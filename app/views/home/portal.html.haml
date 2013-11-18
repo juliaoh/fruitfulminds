@@ -33,6 +33,7 @@
   %thead
     %tr
       %th School Course
+      %th Curriculum
       %th Pre-Surveys
       %th Post-Surveys
   %tbody
@@ -40,6 +41,8 @@
     %tr
       %td
         = "#{course.name}"
+      %td
+        = "#{course.curriculum.name}"
       %td
         - survey = Postsurvey.find_by_course_id(course.id)
         = link_to "Show Pre-Survey", presurvey_path(survey), :id => survey.id, class: "btn"
