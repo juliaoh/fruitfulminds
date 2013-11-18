@@ -5,7 +5,7 @@ Feature: work with other ambassadors to input data
   I want multiple ambassadors to be assigned to courses
 
 Background:
-  Given the data is set up
+  Given dataset1 is set up
 
 Scenario: Pre-Surveys should have multiple users
-  Given 
+  Given I am logged in as "ambassador1@gmail.com" with "2isd82" as my password
