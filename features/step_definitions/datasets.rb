@@ -9,12 +9,13 @@ Given /^dataset1 is set up$/ do
       | UC Berkeley  |
 
     And the following presurveys exist:
-      |   data            |    total        |
-      |   PRESURVEY_DATA  | PRESURVEY_TOTAL |
+      |   data            |    total        | course_id |
+      |   PRESURVEY_DATA  | PRESURVEY_TOTAL |    1      |
 
     And the following postsurveys exist:
-      | data            |   total           |
-      | POSTSURVEY_DATA | POSTSURVEY_TOTAL  |
+      | data            |   total           | course_id |
+      | POSTSURVEY_DATA | POSTSURVEY_TOTAL  |    1      |
+
 
     And the following courses exist:
       | school_id | semester    | curriculum_id | total_students  | presurvey_id | postsurvey_id | active |
@@ -48,12 +49,12 @@ Given /^the no pending user dataset is set up$/ do
       | UC Berkeley  |
 
     And the following presurveys exist:
-      |   data            |    total        |
-      |   PRESURVEY_DATA  | PRESURVEY_TOTAL |
+      |   data            |    total        | course_id |
+      |                   |     15          |    1      |
 
     And the following postsurveys exist:
-      | data            |   total           |
-      | POSTSURVEY_DATA | POSTSURVEY_TOTAL  |
+      | data            |   total           | course_id |
+      |                 |    15             |    1      |
 
     And the following courses exist:
       | school_id | semester    | curriculum_id | total_students  | presurvey_id | postsurvey_id | active |

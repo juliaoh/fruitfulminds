@@ -23,8 +23,8 @@ Feature: user logs into his/her portal
     And I fill in "user_password" with "123f5"
     And I press "Sign In"
     Then I should be on the pending users page
-    And I should see "pendinguser@gmail.com"
-    And I should see "pendinguser2@gmail.com"
+    And I should see "pending_user@gmail.com"
+    And I should see "pending_user2@gmail.com"
 
   Scenario: An ambassador logs in with no pending users
     Given the no pending user dataset is set up
