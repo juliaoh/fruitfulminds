@@ -1,5 +1,8 @@
 - @subtitle = "Edit Pre-Survey Results"
 
 %span
-  = form_tag("/presurveys/#{params[:id]}", method: "put") do
-    = render partial: "presurveys/edit_content"
+  = form_tag("/presurveys/#{params[:id]}", method: "put", :class => "form_to_validate") do
+    - if @current_user.admin?
+      = render partial: "presurveys/admin_edit_content"
+    - else
+      = render partial: "presurveys/ambassador_edit_content"

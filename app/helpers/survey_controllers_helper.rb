@@ -1,82 +1,81 @@
 module SurveyControllersHelper
   def edit
-    model = controller_name.classify.constantize
-    survey = model.find_by_id(params[:id])
     if params[:failed_data]
-      setup_failed_data(survey, params)
+      setup_failed_data(params)
     else
-      setup_regular_data(survey, params)
+      setup_data(params)
     end
   end
 
   def update
     begin
-      model = controller_name.classify.constantize
-      survey = model.find_by_id(params[:id])
-      curriculum = Curriculum.find_by_id(survey.curriculum_id)
-      new_data = get_data(curriculum, params)
-      new_subtotal = params["student_subtotal"]
-      new_absolute_total = params["absolute_total_students"]
-      save_results(survey, new_data, new_subtotal, new_absolute_total)
+      save_results(params)
       flash[:notice] = "Survey updated successfully."
       redirect_to :action=>"show"
     rescue ArgumentError
       flash[:warning] = "Results failed to add. Incomplete or has invalid characters."
-      redirect_to :action=>"edit", :failed_data => new_data, :failed_subtotal => new_subtotal, :failed_absolute_total => new_absolute_total
+      redirect_to :action=>"edit", :failed_data => params[:new_data]
     end
   end
 
   def show
-    model = controller_name.classify.constantize
-    survey = model.find_by_id(params[:id])
-    @school_name = survey.course.name
-    @absolute_total = survey.course.total_students
-    @curriculum = Curriculum.find_by_id(survey.curriculum_id)
-    @users = survey.course.users
-    @survey_data = survey.get_data
-    @survey_total = survey.get_subtotal
+    setup_data(params)
   end
 
 
   protected
 
-  def setup_failed_data(survey, params)
+
+  def setup_data(params)
+    model = controller_name.classify.constantize
+    survey = model.includes({:course=> [:school, :users]}, :curriculum).find_by_id(params[:id])
+    course = survey.course
+    @school_name = course.name
+    @absolute_total = course.total_students
+    @curriculum = survey.curriculum
+    @users = course.users
+    @survey_data = survey.get_data
+    @survey_total = survey.get_subtotal
+  end
+
+  def setup_failed_data(params)
+    model = controller_name.classify.constantize
+    survey = model.includes({:course=> [:school, :users]}, :curriculum).find_by_id(params[:id])
+    course = survey.course
+    @absolute_total = params[:failed_data].delete("absolute_total_students")
+    @survey_total = {}
     @survey_data = {}
-    params[:failed_data].each do |qid, num|
-      @survey_data[Integer(qid)] = num
-    end
-    @student_subtotal = params[:failed_subtotal]
-    @absolute_total = params[:failed_absolute_total]
-    @curriculum = Curriculum.find_by_id(survey.curriculum_id)
-    @school_name = survey.course.name
-  end
-
-  def setup_regular_data(survey, params)
-    @survey_data = survey.get_data[@current_user.id]
-    @student_subtotal = survey.get_subtotal[@current_user.id]
-    @absolute_total = survey.course.total_students
-    @curriculum = Curriculum.find_by_id(survey.curriculum_id)
-    @school_name = survey.course.name
-  end
-
-  def get_data(curriculum, params)
-    new_data = {}
-    curriculum.sections.each do |section|
-      section.questions.each do |question|
-        new_data[question.id] = params[question.id.to_s]
+    params[:failed_data].each do |userid, questions|
+      uid = Integer(userid)
+      @survey_total[uid] = questions.delete("student_subtotal")
+      @survey_data[uid] = {}
+      questions.each do |qid, num|
+        @survey_data[uid][Integer(qid)] = num
       end
     end
-    return new_data
+    @school_name = course.name
+    @curriculum = survey.curriculum
+    @users = course.users
   end
 
-  def save_results(survey, new_data, new_subtotal, new_absolute_total)
-    new_data.each do |qid, num|
-      new_data[qid] = Integer(new_data[qid])
+  def save_results(params)
+    model = controller_name.classify.constantize
+    survey = model.includes({:course => [:users]}, :curriculum).find_by_id(params[:id])
+    curriculum = survey.curriculum
+    course = survey.course
+    users = course.users
+    new_data = Marshal.load(Marshal.dump(params[:new_data]))
+    course.total_students = Integer(new_data.delete("absolute_total_students"))
+    if not @current_user.admin?
+      users.select! { |user| user.id == @current_user.id }
     end
-    survey.data[@current_user.id] = new_data
-    survey.total[@current_user.id] = Integer(new_subtotal)
-    survey.course.total_students = Integer(new_absolute_total)
+    users.each do |user|
+      survey.total[user.id] = Integer(new_data["#{user.id}"].delete("student_subtotal"))
+      new_data["#{user.id}"].each do |qid, num|
+        survey.data[user.id][Integer(qid)] = Integer(num)
+      end
+    end
     survey.save!
-    survey.course.save!
+    course.save!
   end
 end

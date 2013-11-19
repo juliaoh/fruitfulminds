@@ -2,4 +2,7 @@
 
 %span
   = form_tag("/postsurveys/#{params[:id]}", method: "put") do
-    = render partial: "presurveys/edit_content"
+    - if @current_user.admin?
+      = render partial: "presurveys/admin_edit_content"
+    - else
+      = render partial: "presurveys/ambassador_edit_content"
