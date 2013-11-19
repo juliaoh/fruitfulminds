@@ -3,19 +3,10 @@ module SurveyControllersHelper
     model = controller_name.classify.constantize
     survey = model.find_by_id(params[:id])
     if params[:failed_data]
-      @survey_data = {}
-      params[:failed_data].each do |qid, num|
-        @survey_data[Integer(qid)] = num
-      end
-      @student_subtotal = params[:failed_subtotal]
-      @absolute_total = params[:failed_absolute_total]
+      setup_failed_data(survey, params)
     else
-      @survey_data = survey.get_data[@current_user.id]
-      @student_subtotal = survey.get_subtotal[@current_user.id]
-      @absolute_total = survey.course.total_students
+      setup_regular_data(survey, params)
     end
-    @curriculum = Curriculum.find_by_id(survey.curriculum_id)
-    @school_name = survey.course.name
   end
 
   def update
@@ -23,14 +14,10 @@ module SurveyControllersHelper
       model = controller_name.classify.constantize
       survey = model.find_by_id(params[:id])
       curriculum = Curriculum.find_by_id(survey.curriculum_id)
-      new_data = get_results_from_params(curriculum, params)
+      new_data = get_data(curriculum, params)
       new_subtotal = params["student_subtotal"]
       new_absolute_total = params["absolute_total_students"]
-      survey.data[@current_user.id] = convert_results(new_data)
-      survey.total[@current_user.id] = Integer(new_subtotal)
-      survey.course.total_students = Integer(new_absolute_total)
-      survey.save!
-      survey.course.save!
+      save_results(survey, new_data, new_subtotal, new_absolute_total)
       flash[:notice] = "Survey updated successfully."
       redirect_to :action=>"show"
     rescue ArgumentError
@@ -50,7 +37,29 @@ module SurveyControllersHelper
     @survey_total = survey.get_subtotal
   end
 
-  def get_results_from_params(curriculum, params)
+
+  protected
+
+  def setup_failed_data(survey, params)
+    @survey_data = {}
+    params[:failed_data].each do |qid, num|
+      @survey_data[Integer(qid)] = num
+    end
+    @student_subtotal = params[:failed_subtotal]
+    @absolute_total = params[:failed_absolute_total]
+    @curriculum = Curriculum.find_by_id(survey.curriculum_id)
+    @school_name = survey.course.name
+  end
+
+  def setup_regular_data(survey, params)
+    @survey_data = survey.get_data[@current_user.id]
+    @student_subtotal = survey.get_subtotal[@current_user.id]
+    @absolute_total = survey.course.total_students
+    @curriculum = Curriculum.find_by_id(survey.curriculum_id)
+    @school_name = survey.course.name
+  end
+
+  def get_data(curriculum, params)
     new_data = {}
     curriculum.sections.each do |section|
       section.questions.each do |question|
@@ -60,10 +69,14 @@ module SurveyControllersHelper
     return new_data
   end
 
-  def convert_results(data)
-    data.each do |qid, num|
-      data[qid] = Integer(data[qid])
+  def save_results(survey, new_data, new_subtotal, new_absolute_total)
+    new_data.each do |qid, num|
+      new_data[qid] = Integer(new_data[qid])
     end
-    return data
+    survey.data[@current_user.id] = new_data
+    survey.total[@current_user.id] = Integer(new_subtotal)
+    survey.course.total_students = Integer(new_absolute_total)
+    survey.save!
+    survey.course.save!
   end
 end
