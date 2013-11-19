@@ -4,5 +4,5 @@ class Presurvey < ActiveRecord::Base
   serialize :data
   serialize :total
 
-  include SurveysHelper
+  include SurveyModelsHelper
 end

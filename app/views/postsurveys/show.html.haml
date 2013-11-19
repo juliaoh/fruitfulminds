@@ -1,26 +1,5 @@
 - @subtitle = "Post-Survey Results"
 
-%span
-  %table
-    %tr
-      = label_tag "school_name", "#{@school_name}"
-      = label_tag "absolute_total_students", "Total students"
-      = text_field_tag "absolute_total_students", @absolute_total, :readonly => true
-    %tr
-      %th
-      - @users.each do |user|
-        %th= user.name
-    %tr
-      %td= "Student Subtotal"
-      - @postsurvey_data.keys.each do |user_id|
-        %td= text_field_tag "#{user_id}_student_subtotal", @postsurvey_total[user_id], :readonly => true
-    - @curriculum.sections.each do |section|
-      %tr
-        %td= label_tag section.id, "#{section.name}"
-      - section.questions.each do |question|
-        %tr
-          %td= label_tag question.id, "#{question.name}"
-          - @postsurvey_data.keys.each do |user_id|
-            %td= text_field_tag "#{user_id}_#{question.id}", @postsurvey_data[user_id][question.id], :readonly => true
+= render "presurveys/show_content"
 
 = button_to "Edit Post-Survey", edit_postsurvey_path(params[:id]), :method => :get, :id => params[:id]
