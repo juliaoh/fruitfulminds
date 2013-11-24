@@ -33,21 +33,33 @@ Background: results are to be added to database
 
 @javascript
 Scenario: go to a survey edit page and click save
-  When I follow "Survey Templates"
-  Then I should be on the survey templates page
+  When I am on the survey templates page
   When I follow "Test Survey"
-  Then I should be on the edit survey template page
   And I press "Save Changes"
   Then I should be on the survey templates page
   And I should see "Survey successfully updated."
 
 Scenario: edit question with no name results to a sad path
-  When I follow "Survey Templates"
-  Then I should be on the survey templates page
+  When I am on the survey templates page
   When I follow "Test Survey"
-  Then I should be on the edit survey template page
   And I fill in "surveyname" with ""
   And I press "Save Changes"
   Then I should see "There are blank fields"
   Then I should be on the new survey template page
-  
+ 
+@javascript
+Scenario: Add a section to the survey
+  When I am on the survey templates page
+  When I follow "Test Survey"
+  And I press "Add Section"
+  And I fill in for javascript "sname1" with "Section 1"
+  And I fill in for javascript "stype1" with "Efficacy"
+  And I fill in "sobjective1" with "Seeing students are learning"
+  And I press "Add Question"
+  And I fill in "s1q1name" with "Section 1 Question 1"
+  And I fill in "s1q1strength" with "Students agree"
+  And I fill in "s1q1weakness" with "Students do not agree with anything at all"
+  And I press "Save Changes"
+  Then I should be on the survey templates page
+  And I should see "Survey successfully updated."
+

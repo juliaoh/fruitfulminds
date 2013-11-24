@@ -64,7 +64,7 @@ Background: Generate report based on survey results
 
   And the following school_semesters exist:
     | school_id | name | year |
-    | 1         | Fall | 2011 |
+    | 1         | Fall | 2013 |
 
   And the following static content exists:
     | intro_title | introduction | objectives_title | strength_weakness_intro | strength_intro | weakness_intro | eval_title | summary |
@@ -72,15 +72,15 @@ Background: Generate report based on survey results
 
   And I am logged in as amir
   And I am on the generate report page
-
+  @javascript
   Scenario: See comment textbox on the report summary page
-    Given I select "school1 Fall 2013" from "course"
+    Given I select "school1, Berkeley, Alameda, Fall 2013" from "course"
     And I press "Generate Report"
     Then I should see summary of the report with static contents
     And I should see "Ambassador Note"
 
   Scenario: Add comment to report
-    Given I initiated the report generation for "school1 Fall 2013"
+    Given I initiated the report generation for "school1, Berkeley, Alameda, Fall 2013"
     And I fill in "Ambassador Note" with "This is an ambassador comment"
     #And I press "Add Comments and Generate pdf"
     #Then I should be on the portal page

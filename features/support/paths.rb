@@ -23,6 +23,7 @@ module NavigationHelpers
     when /^the generate report page$/ then '/reports/new'
     when /^the survey templates page$/ then '/survey_template'
     when /^the new survey template page$/ then new_survey_template_path
+    when /^the edit survey template page$/ then edit_survey_template_path
     when /^the logout page$/ then logout_path
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

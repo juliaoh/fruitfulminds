@@ -10,6 +10,7 @@ Background: results are to be added to database
   And I am logged in as "approved_user@gmail.com" with "12323" as my password
   And I am on the portal page
 
+
 Scenario: add new survey results to database
   When I follow "Show Pre-Survey"
   When I press "Edit Pre-Survey"
