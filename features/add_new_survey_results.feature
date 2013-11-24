@@ -6,41 +6,13 @@ Feature: add survey results
 
 Background: results are to be added to database
 
-  Given the following profiles exist:
-    | label      |
-    | admin      |
-    | ambassador |
-
-  And the following users exist:
-    | email              | password | name         | profile_id | school_semester_id |
-    | amirk88@gmail.com  | 123f5    | amir khodaei | 1          |     1              |
-
-  And the following schools exist:
-    | name 	| county    | city 	  | district |
-    | "school1" | "Alameda" | "Berkeley"  | District |
-
-  And the following school_semesters exist:
-    | school_id | name | year |
-    |     1     | Fall | 2011 |
-
-  And the following curriculum exist:
-    | name        |
-    | curriculum1 |
-    | curriculum2 |
-    
-  And the following questions exist:
-    | name      |   qtype     |  msg1   |  msg2  |
-    | question1 |   Efficacy  |    A    |   D    |
-    | question2 |   Efficacy  |    B    |   E    |
-    | question3 |   Efficacy  |    C    |   F    |
-
-
-  And   I am logged in as amir
+  Given dataset1 is set up
+  And   I am logged in as "admin@gmail.com" with "123f5" as my password
   And   I am on the portal page
 
 Scenario: add new survey results to database
   When I follow "Show Pre-Survey"
-  When I press "Edit Presurvey"
+  When I press "Edit Pre-Survey"
   And I fill in "question1" with "10"
   And I fill in "question2" with "10"
   And I fill in "question3" with "1"
