@@ -80,9 +80,19 @@ When /^I fill in for javascript "([^"]*)" with "([^"]*)"$/ do |field, value|
   page.evaluate_script "document.getElementById(\"#{field}\").value = \"#{value}\""
 end
 
-When /^I press the css button "([^\"]*)"$/ do |element|
-  locate(:css, element).click
+#When /^I press the css button "([^\"]*)"$/ do |element|
+#  locate(:css, element).click
+#end
+
+When  /^I select the css button "([^\"]*)" from "([^\"]*)"$/ do |element, menu|
+  #find("##{menu}").click
+  #select(element, :from => menu )
+  page.find(:xpath, "//[@id = '#{element}']/option[@value = '#{menu}']").click
+
+
+
 end
+
 # Use this to fill in an entire form with data from a table. Example:
 #
 #   When I fill in the following:
@@ -253,6 +263,7 @@ Then /^(?:|I )should be on (.+)$/ do |page_name|
     assert_equal path_to(page_name), current_path
   end
 end
+
 
 
 Then /^(?:|I )should not be on (.+)$/ do |page_name|

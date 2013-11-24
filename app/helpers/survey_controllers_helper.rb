@@ -22,9 +22,7 @@ module SurveyControllersHelper
     setup_data(params)
   end
 
-
   protected
-
 
   def setup_data(params)
     model = controller_name.classify.constantize

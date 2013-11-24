@@ -33,19 +33,17 @@ Background: results are to be added to database
 
 @javascript
 Scenario: go to a survey edit page and click save
-  When I follow "Survey Templates"
-  Then I should be on the survey templates page
+  When I am on the survey templates page
   When I follow "Test Survey"
-  Then I should be on the edit survey template page
+  #Then I should be on the edit survey template page
   And I press "Save Changes"
   Then I should be on the survey templates page
   And I should see "Survey successfully updated."
 
 Scenario: edit question with no name results to a sad path
-  When I follow "Survey Templates"
-  Then I should be on the survey templates page
+  When I am on the survey templates page
   When I follow "Test Survey"
-  Then I should be on the edit survey template page
+  #Then I should be on the edit survey template page
   And I fill in "surveyname" with ""
   And I press "Save Changes"
   Then I should see "There are blank fields"

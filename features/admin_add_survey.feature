@@ -28,10 +28,7 @@ Background: results are to be added to database
 
 @javascript
 Scenario: add new survey results to a new survey record in database
-  When I follow "Survey Templates"
-  Then I should be on the survey templates page
-  When I follow "Add new survey"
-  Then I should be on the new survey template page
+  When I am on the new survey template page
   And I fill in "surveyname" with "Survey 1"
   And I fill in for javascript "sname1" with "Section 1"
   And I fill in for javascript "stype1" with "Multiple Choice"
@@ -56,11 +53,8 @@ Scenario: add new survey results to a new survey record in database
   And I should see "New Survey successfully added."
 
 Scenario: question with no name results to a sad path
-  When I follow "Survey Templates"
-  Then I should be on the survey templates page
-  When I follow "Add new survey"
+  When I am on the new survey template page
   Then I should be on the new survey template page
   And I press "Save Changes"
   Then I should see "There are blank fields"
   Then I should be on the new survey template page
-  
