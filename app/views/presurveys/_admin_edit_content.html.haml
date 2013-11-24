@@ -1,0 +1,23 @@
+%table
+  %tr
+    = label_tag "school_name", "#{@school_name}"
+    = label_tag "new_data[absolute_total_students]", "Total students"
+    = text_field_tag "new_data[absolute_total_students]", @absolute_total, class: "numeric_input_field"
+  %tr
+    %th
+    - @users.each do |user|
+      %th= user.name
+  %tr
+    %td= "Student Subtotal"
+    - @users.each do |user|
+      %td= text_field_tag "new_data[#{user.id}][student_subtotal]", @survey_total[user.id], class: "numeric_input_field"
+  - @curriculum.sections.each do |section|
+    %tr
+      %td= label_tag section.id, "#{section.name}"
+    - section.questions.each do |question|
+      %tr
+        %td= label_tag question.id, "#{question.name}"
+        - @users.each do |user|
+          %td= text_field_tag "new_data[#{user.id}][#{question.id}]", @survey_data[user.id][question.id], class: "numeric_input_field"
+
+= submit_tag 'Save Changes'

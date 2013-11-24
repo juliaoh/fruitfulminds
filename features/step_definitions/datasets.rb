@@ -12,6 +12,15 @@ Given /^dataset1 is set up$/ do
       | name        |
       | curriculum1 |
 
+    And the following MC sections exist:
+      | name     | objective            | stype           | curriculum_id |
+      | section1 | test objective       | Multiple Choice | 1             |
+
+    And the following questions exist:
+      | name     | qtype           | msg1            | msg2         | section_id |
+      | S1Q1     | Multiple Choice | S1Q1 strong     | S1Q1 weak    | 1          |
+      | S1Q2     | Multiple Choice | S1Q2 strong     | S1Q2 weak    | 1          |
+
     And the following presurveys exist:
       |   data            |    total        | course_id |
       |   PRESURVEY_DATA  | PRESURVEY_TOTAL |    1      |

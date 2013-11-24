@@ -5,6 +5,7 @@ module SurveyModelsHelper
         data[user.id] = curriculum.get_empty_data
       end
     end
+    save!
     return data
   end
 
@@ -14,6 +15,7 @@ module SurveyModelsHelper
         total[user.id] = 0
       end
     end
+    save!
     return total
   end
 end

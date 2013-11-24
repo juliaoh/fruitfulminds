@@ -21,8 +21,8 @@ Scenario: Pre-Surveys should have multiple users
 Scenario: see fellow ambassador's pre-survey edits
   And I follow "Show Pre-Survey"
   And I press "Edit Pre-Survey"
-  And I fill in "1" with "55"
-  And I fill in "2" with "56"
+  And I fill in "new_data[2][1]" with "55"
+  And I fill in "new_data[2][2]" with "56"
   And I press "Save Changes"
   And I am on the logout page
   And I am logged in as "ambassador2@gmail.com" with "qwerty" as my password
@@ -34,8 +34,8 @@ Scenario: see fellow ambassador's pre-survey edits
 Scenario: not see rival ambassador's pre-survey edits (sad path)
   And I follow "Show Pre-Survey"
   And I press "Edit Pre-Survey"
-  And I fill in "1" with "55"
-  And I fill in "2" with "56"
+  And I fill in "new_data[2][1]" with "55"
+  And I fill in "new_data[2][2]" with "56"
   And I press "Save Changes"
   And I am on the logout page
   And I am logged in as "ambassador3@gmail.com" with "qwerty" as my password
@@ -57,8 +57,8 @@ Scenario: Post-Surveys should have multiple users
 Scenario: see fellow ambassador's post-survey edits
   And I follow "Show Post-Survey"
   And I press "Edit Post-Survey"
-  And I fill in "1" with "55"
-  And I fill in "2" with "56"
+  And I fill in "new_data[2][1]" with "55"
+  And I fill in "new_data[2][2]" with "56"
   And I press "Save Changes"
   And I am on the logout page
   And I am logged in as "ambassador2@gmail.com" with "qwerty" as my password
@@ -70,8 +70,8 @@ Scenario: see fellow ambassador's post-survey edits
 Scenario: not see rival ambassador's post-survey edits (sad path)
   And I follow "Show Post-Survey"
   And I press "Edit Post-Survey"
-  And I fill in "1" with "55"
-  And I fill in "2" with "56"
+  And I fill in "new_data[2][1]" with "55"
+  And I fill in "new_data[2][2]" with "56"
   And I press "Save Changes"
   And I am on the logout page
   And I am logged in as "ambassador3@gmail.com" with "qwerty" as my password
