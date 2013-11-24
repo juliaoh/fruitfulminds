@@ -5,26 +5,8 @@ Feature: Administrator survey creation
 
 Background: results are to be added to database
 
-  Given the following profiles exist:
-    | label      |
-    | admin      |
-    | ambassador |
-
-  And the following users exist:
-    | email              | password | name         | profile_id | school_semester_id |
-    | admin@gmail.com         | 123f5    | Admin         | 1          |                    |
-    | amirk88@gmail.com  | 123f5    | amir khodaei | 1          |     1              |
-
-  And the following schools exist:
-    | name 	| county    | city 	  | district |
-    | "school1" | "Alameda" | "Berkeley"  | District |
-
-  And the following school_semesters exist:
-    | school_id | name | year |
-    |     1     | Fall | 2011 |
-
+  Given dataset1 is set up
   And I am logged in as "admin@gmail.com" with "123f5" as my password
-  And I am on the portal page
 
 @javascript
 Scenario: add new survey results to a new survey record in database
@@ -54,7 +36,6 @@ Scenario: add new survey results to a new survey record in database
 
 Scenario: question with no name results to a sad path
   When I am on the new survey template page
-  Then I should be on the new survey template page
   And I press "Save Changes"
   Then I should see "There are blank fields"
   Then I should be on the new survey template page
