@@ -24,6 +24,7 @@ require 'cgi'
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
 
+#Capybara.ignore_hidden_elements = false
 module WithinHelpers
   def with_scope(locator)
     locator ? within(*selector_for(locator)) { yield } : yield
@@ -49,8 +50,14 @@ When /^(?:|I )go to (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
+When /^(?:|I )click on navbar "([^"]*)"$/ do |id|
+  sleep(4)
+  page.execute_script('jQuery("'+id+'").parent().toggleClass("open");')
+  sleep(4)
+end
+
 When /^(?:|I )click css id "([^"]*)"$/ do |id|
-  find(id).click
+  find(id).click# rescue find(id, :visible => false).click
 end
 
 When /^(?:|I )press "([^"]*)"$/ do |button|

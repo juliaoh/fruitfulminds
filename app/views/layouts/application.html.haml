@@ -126,7 +126,7 @@
                   %span.caret
                 %ul.dropdown-menu
                   %li
-                    %a{:href=>portal_path, :id=>"Show Courses"} Show Courses
+                    %a{:href=>portal_path, :id=>"ShowCourses"} Show Courses
                   -if @current_user.admin?
                     %li
                       %a{:href=>survey_template_index_path} Show Curricula
@@ -139,7 +139,7 @@
                     %span.caret
                   %ul.dropdown-menu
                     %li
-                      %a{:href=>users_path, :id=>"Show Users"} Show Users
+                      %a{:href=>users_path, :id=>"ShowUsers"} Show Users
                     %li
                       %a{:href=>new_admin_path} Add New Admin
                     %li

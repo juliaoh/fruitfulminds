@@ -19,6 +19,7 @@ module NavigationHelpers
     when /^the All Schools page$/ then schools_path
     when /^the All Colleges page$/ then colleges_path
     when /^the Create New Administrator page$/ then new_admin_path
+    when /^the courses page$/ then portal_path
     when /^the reports page$/ then '/reports'
     when /^the generate report page$/ then '/reports/new'
     when /^the survey templates page$/ then '/survey_template'

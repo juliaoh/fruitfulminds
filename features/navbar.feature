@@ -51,6 +51,7 @@ Background: Generate curric, courses, login
   And the following colleges have users:
     | college_id | user_id |
     | 1          | 1       |
+    | 1          | 2       |
 
   And the following schools exist:
     | name    | county  | city     | district |
@@ -70,22 +71,22 @@ Background: Generate curric, courses, login
 
   @javascript
   Scenario: Use navbar dropdown to get to users page (happy path)
-    When I follow "Users"
-    When I click css id "#Show Users"
+    When I click on navbar "#Users"
+    When I click css id "#ShowUsers"
     Then I should be on the users page
 
 
   @javascript
   Scenario: Use navbar dropdown but stay on page (sad path)
-    When I click css id "#Users"
+    When I click on navbar "#Users"
     When I click css id "#Schools"
     Then I should be on the portal page
     Then I should not be on the users page
 
   @javascript
   Scenario: Use navbar dropdown to get to courses page (happy)
-    When I click css id "#Courses"
-    When I click css id "#Show Courses"
+    When I click on navbar "#Courses"
+    When I click css id "#ShowCourses"
     Then I should be on the courses page
 
   @javascript
