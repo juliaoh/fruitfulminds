@@ -220,6 +220,7 @@ class ReportsController < ApplicationController
     combined_data = []
     data, combined_data = format_objective_data(data_list)
     @improvement = combined_data[1] - combined_data[0]
+    @improvement = @improvement[0]
     prescore = combined_data[0]
     postscore = combined_data[1]
 
@@ -283,11 +284,12 @@ class ReportsController < ApplicationController
                               :legend => ['Pre', 'Post'],
                               :bar_colors => '990000,3399CC',
                               :data => data,
-                              :bar_width_and_spacing => '13,0,10',
+                              :bar_width_and_spacing => '50,0,25',
                               :axis_with_labels => 'y,x',
                               :axis_labels => [labels],
                               :stacked => false,
                               :axis_range => [nil, [0,@max,10]],
+
                               )
 
 
