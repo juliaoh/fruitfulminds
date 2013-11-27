@@ -7,8 +7,7 @@
       num_questions = parseInt($numquestions.val()) + 1;
       $numquestions.val(num_questions);
       var new_question = '<div id="q'+section_num+'_'+num_questions+'">Question Name <input name="s'+section_num+'q'+num_questions+'name'+'" id="squestion'+section_num+'_'+num_questions+'" /> <input type="button" id="delquestion'+section_num+'_'+num_questions+'" value="X" /><br />';
-      new_question += 'Strength Message:<br /><textarea id="s'+section_num+'q'+num_questions+'strength" name="s'+section_num+'q'+num_questions+'strength"></textarea><br />';
-      new_question += 'Weakness Message:<br /><textarea id="s'+section_num+'q'+num_questions+'weakness" name="s'+section_num+'q'+num_questions+'weakness'+'"></textarea><br /></div>';
+      new_question += 'Message:<br /><textarea id="s'+section_num+'q'+num_questions+'msg" name="s'+section_num+'q'+num_questions+'msg"></textarea><br />';
       var $question = $('td#squestion'+section_num);
       $question.append(new_question);
       $('#delquestion'+section_num+'_'+num_questions).click({snum:section_num, qnum:num_questions}, function (e) {
@@ -58,6 +57,8 @@ div.section {
         <div class="form_content"></div>
         <br /><input id="add_section_btn" type="button" value="Add Section" />
         <hr />
+        <label><input type="checkbox" name="publish" id="publish" value="true" />Publish (THIS CANNOT BE UNDONE!!)</label>
+        <br />
         <input type="submit" value="Save Changes" />
     </form>
 </div>

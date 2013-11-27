@@ -42,10 +42,9 @@ Given /the following questions exist/ do |table|
   table.hashes.each do |result|
     name = result[:name]
     qtype = result[:qtype]
-    msg1 = result[:msg1]
-    msg2 = result[:msg2]
+    msg = result[:msg]
     section_id = result[:section_id]
-    Question.create!(:name=>name, :qtype=>qtype, :msg1=>msg1, :msg2=>msg2, :section_id=>section_id)
+    Question.create!(:name=>name, :qtype=>qtype, :msg=>msg, :section_id=>section_id)
   end
 end
 
