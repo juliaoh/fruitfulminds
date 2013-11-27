@@ -110,7 +110,7 @@ class ReportsController < ApplicationController
     @school_intro_title = "Fruitful Minds at #{@school_name}"
     @school_intro = "Fruitful Minds held a nutrition lesson series at #{@school_name} during #{@school_semester}" 
     @school_intro_second = "    #{@course.users.size} students from #{@college} #{was_were(@course.users.size)} selected as Fruitful Minds ambassadors"
-    @school_intro_third = "    During each 50-minute lesson, class facilitators delivered the curriculum material through lectures, games, and various interactive activities."
+    @school_intro_third = "    During each lesson, class facilitators delivered the curriculum material through lectures, games, and various interactive activities."
     @strength_weakness_title = "Strengths and Weaknesses of FM Lessons at #{@school_name}"
     assign_efficacy_titles
 
@@ -129,8 +129,8 @@ class ReportsController < ApplicationController
     objective_str_weak = generate_strengths(objective_data)
     @objective_str = objective_str_weak[0]
     @objective_weak = objective_str_weak[1]
-    @eval_intro_first = "Prior to the 7-week curriculum, a pre-curriculum survey was distributed to assess the students\' knowledge in nutrition; a very similar survey was administered during the final class. The goal of the surveys was to determine the retention of key learning objectives from the Fruitful Minds program."
-    @eval_intro_second = "On average, students have shown a #{@efficacy}% improvement after going through seven weeks of classes." 
+    @eval_intro_first = "Prior to the curriculum, a pre-curriculum survey was distributed to assess the students\' knowledge in nutrition; a very similar survey was administered during the final class. The goal of the surveys was to determine the retention of key learning objectives from the Fruitful Minds program."
+    @eval_intro_second = "On average, students have shown a #{@improvement}% improvement after going through seven weeks of classes." 
     @eval_intro_third = "The survey results are shown below. The first graph shows the average scores in each of the six nutrition topics covered in the curriculum (see graph 1). Note that the number of questions in each category varies. The second graph shows students\' overall performance on the pre-curriculum surveys and post-curriculum survey (see graph 2). #{@presurvey_total} took the pre-curriculum survey, and #{@postsurvey_total} students took the post-curriculum surveys."
   end
 
@@ -223,7 +223,7 @@ class ReportsController < ApplicationController
 
     @combined_chart = Gchart.bar(:size => '1000x300', 
                               :title => "Overall Combined Scores(%)",
-                              :legend => ['Pre-curriculum Results', 'Post-curriculum Results'],
+                              :legend => ['Pre-curriculum Results (' + combined_data[0] + '%)', 'Post-curriculum Results ' + combined_data[1] + '%)'],
                               :bar_colors => 'FF3333,990000',
                               :data => combined_data,
                               :bar_width_and_spacing => '50,25,25',
@@ -274,7 +274,6 @@ class ReportsController < ApplicationController
                               :axis_labels => [labels],
                               :stacked => false,
                               :axis_range => [nil, [0,@max,10]],
-                              :orientation => 'horizontal'
                               )
 
 
@@ -345,7 +344,7 @@ class ReportsController < ApplicationController
     weaknesses = {}
     sorted_data[0..4].each do |info_list|
       question = Question.find_by_id(info_list[0])
-      strengths[question.name] = question.msg1 #strength message
+      strengths[question.name] = question.msg #message
     end
 
     weak_count = 0
@@ -355,7 +354,7 @@ class ReportsController < ApplicationController
       info_list = sorted_data[index]
       if info_list[2] #check if possible to be weakness
         question = Question.find_by_id(info_list[0])
-        weaknesses[question.name] = question.msg2 #weakness message
+        weaknesses[question.name] = question.msg #message
         weak_count = weak_count + 1
       end
       index = index - 1
