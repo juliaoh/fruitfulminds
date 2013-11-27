@@ -220,6 +220,9 @@ class ReportsController < ApplicationController
     combined_data = []
     data, combined_data = format_objective_data(data_list)
     @improvement = combined_data[1] - combined_data[0]
+    puts combined_data[1]
+    puts combined_data[0]
+    puts '.......asdf'
 
     @nutrition_chart = Gchart.bar(:size => '1000x300', 
                                 :title => "Survey Score in Six Nutrition Topics",
@@ -322,8 +325,12 @@ class ReportsController < ApplicationController
       user_post_data = @postsurvey.data[user.id]
       #following code works because of invariant:
       #pre&post surveys have the exact same questions
-      @presurvey_subtotal += @presurvey.total[user.id]
-      @postsurvey_subtotal += @postsurvey.total[user.id]
+      if not @presurvey.total[user.id].nil?
+        @presurvey_subtotal += @presurvey.total[user.id]
+      end
+      if not @postsurvey.total[user.id].nil?
+        @postsurvey_subtotal += @postsurvey.total[user.id]
+      end
       presurvey_data = calc_values(user_pre_data, presurvey_data)
       postsurvey_data = calc_values(user_post_data, postsurvey_data)
     end
