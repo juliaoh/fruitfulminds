@@ -21,14 +21,13 @@ table#pending_users {
   margin: 10px;
   border-collapse: collapse;
   width: 100%;
-  border-bottom: 2px solid black;
 }
 table#pending_users th {
-  border: 2px solid white;
   font-weight: bold;
   background-color: wheat;
 }
 table#pending_users th, table#pending_users td {
+  border: 2px solid black;
   padding: 4px;
   text-align: left;
 }
