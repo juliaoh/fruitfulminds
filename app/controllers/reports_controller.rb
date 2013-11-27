@@ -401,11 +401,11 @@ class ReportsController < ApplicationController
     end
 
     if not @presurvey_subtotal == @course_total
-      @warnings.push("WARNING: Expected #{@course_total} students for the course, but only #{@presurvey_subtotal} entries recorded for presurvey results so far.")
+      @warnings.push("WARNING: Expected #{@course_total} students for the course, but there are #{@presurvey_subtotal} entries recorded for presurvey results so far.")
     end
 
     if not @postsurvey_subtotal == @course_total
-      @warnings.push("WARNING: Expected #{@course_total} students for the course, but only #{@postsurvey_subtotal} entries recorded for postsurvey results so far.")
+      @warnings.push("WARNING: Expected #{@course_total} students for the course, but there are #{@postsurvey_subtotal} entries recorded for postsurvey results so far.")
     end
 
     if @warnings.length > 0
