@@ -87,7 +87,9 @@ StaticContent.create!({
                    :slight_increase_header => "There was a slight increase in agreement that students could",
                    :decrease_header => "There was a significant decrease in agreement that students could",
                    :slight_decrease_header => "There was a slight decrease in agreement that students could",
+                   :comp_header => "Students were compentent prior to the curriculum in the following areas",
                    :summary_header => "Summary of findings:",
+
                    :increase_1_2 => "Healthy snack demonstrations were found to be effective because students learned how they could prepare healthy snacks on their own to eat at home. They also felt that they could make the snacks and bring them to school to eat.",
                    :increase_1 => "Healthy snack demonstrations were found to be effective because students learned how they could prepare healthy snacks on their own to eat at home.",
                    :increase_2 => "Healthy snack demonstrations were found to be effective in increasing confidence that students could prepare healthy snacks to bring to school.",
