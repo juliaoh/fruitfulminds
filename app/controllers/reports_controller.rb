@@ -220,9 +220,8 @@ class ReportsController < ApplicationController
     combined_data = []
     data, combined_data = format_objective_data(data_list)
     @improvement = combined_data[1] - combined_data[0]
-    puts combined_data[1]
-    puts combined_data[0]
-    puts '.......asdf'
+    prescore = combined_data[0]
+    postscore = combined_data[1]
 
     @nutrition_chart = Gchart.bar(:size => '1000x300', 
                                 :title => "Survey Score in Six Nutrition Topics",
@@ -238,7 +237,7 @@ class ReportsController < ApplicationController
 
     @combined_chart = Gchart.bar(:size => '1000x300', 
                               :title => "Overall Combined Scores(%)",
-                              :legend => ['Pre-curriculum Results (' + combined_data[0] + '%)', 'Post-curriculum Results ' + combined_data[1] + '%)'],
+                              :legend => ['Pre-curriculum Results (' + prescore + '%)', 'Post-curriculum Results ' + postscore + '%)'],
                               :bar_colors => 'FF3333,990000',
                               :data => combined_data,
                               :bar_width_and_spacing => '50,25,25',
