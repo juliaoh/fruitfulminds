@@ -285,7 +285,7 @@ class ReportsController < ApplicationController
                               :bar_colors => '990000,3399CC',
                               :data => data,
                               :bar_width_and_spacing => '50,0,25',
-                              :axis_with_labels => 'y,x',
+                              :axis_with_labels => 'x,y',
                               :axis_labels => [labels],
                               :stacked => false,
                               :axis_range => [nil, [0,@max,10]],
