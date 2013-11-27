@@ -18,4 +18,13 @@ module SurveyModelsHelper
     save!
     return total
   end
+
+  def current_or_all_users(current_user)
+    if not current_user.admin?
+      users = course.users.select do |user|
+        user.id == current_user.id
+      end
+    end
+    return users
+  end
 end

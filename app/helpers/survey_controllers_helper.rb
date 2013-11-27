@@ -67,35 +67,25 @@ module SurveyControllersHelper
     setup_model(params) do |model, survey, course|
       new_data = Marshal.load(Marshal.dump(params[:new_data]))
       course.total_students = Integer(new_data.delete("absolute_total_students"))
-      if not @current_user.admin?
-        users = @users.select do |user|
-          user.id == @current_user.id
-        end
-      end
-      users.each do |user|
+      survey.current_or_all_users(@current_user).each do |user|
         survey.total[user.id] = Integer(new_data["#{user.id}"].delete("student_subtotal"))
         new_data["#{user.id}"].each do |qid, num|
           survey.data[user.id][Integer(qid)] = Integer(num)
         end
       end
-      check_results(course.total_students, survey.total, new_data)
+      check_results(survey, course.total_students, survey.total, new_data)
       survey.save!
       course.save!
     end
   end
 
-  def check_results(absolute_total, totals, new_data)
+  def check_results(survey, absolute_total, totals, new_data)
     total = 0
     @users.each do |user|
       total += totals[user.id]
     end
     raise TotalError unless total <= absolute_total
-    if not @current_user.admin?
-      users = @users.select do |user|
-        user.id == @current_user.id
-      end
-    end
-    users.each do |user|
+    survey.current_or_all_users(@current_user).each do |user|
       new_data["#{user.id}"].each do |qid, num|
         raise TotalError unless Integer(num) <= totals[user.id]
       end
