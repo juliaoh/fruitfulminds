@@ -1,34 +1,6 @@
 - @subtitle = "Portal"
 - @menu = "Courses"
 
-
-
-- if @current_user.admin?
-  = link_to("Pending Users", pending_users_path)
-  | 
-  = link_to("Survey Templates", survey_template_index_path)
-  | 
-  = link_to("Add New School", new_school_path)
-  | 
-  = link_to("Show All Schools", schools_path)
-  |
-  = link_to("Add New College", new_college_path)
-  |
-  = link_to("Show All Colleges", colleges_path)
-  | 
-  = link_to("Add New Administrator", new_admin_path)
-  |
-  = link_to("All Users", all_users_path)
-  |
-  = link_to("Cumulative Reports", all_efficacies_path)
-  |
-= link_to "Preview Report/Add Ambassador Comments", new_report_path
-%br
-%br
-
-
-
-
 %table.table
   %thead
     %tr

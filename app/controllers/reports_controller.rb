@@ -225,7 +225,7 @@ class ReportsController < ApplicationController
     postscore = combined_data[1]
 
     @nutrition_chart = Gchart.bar(:size => '1000x300', 
-                                :title => "Survey Score in Six Nutrition Topics",
+                                :title => "Survey Score in Nutrition Topics(%)",
                                 :legend => ['Pre', 'Post'],
                                 :bar_colors => '3399CC,99CCFF',
                                 :data => data,
