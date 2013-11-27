@@ -4,7 +4,10 @@
   %br
   In order to generate a PDF report, add comments at the bottom of the page
 
--# = render :partial => 'generate_report'
+- if @warning_flag == true
+  - @warnings.each do |message|
+    %p= message
+  %p= "If necessary, please add ambassador notes to explain the warnings."
 
 
 

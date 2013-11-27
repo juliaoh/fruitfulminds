@@ -48,6 +48,7 @@ class ReportsController < ApplicationController
     @main_semester_title = @school_semester + " Report"
     @static_contents = StaticContent.first
     @curriculum = Curriculum.find_by_id(@course.curriculum_id)
+    @warnings = []
     @warning_flag = false
     #presurvey.total & postsurvey.total are hashes of
     #{user_id => {'total' => # of students user is entering data for}}
@@ -385,7 +386,23 @@ class ReportsController < ApplicationController
   end
 
   def generate_warnings()
+    if @presurvey_subtotal > @postsurvey_subtotal
+      @warnings.push("WARNING: Potentially skewed data due to less students taking postsurvey than students taking presurvey")
+    elsif @presurvey_subtotal < @postsurvey_subtotal
+      @warnings.push("WARNING: Potentially skewed data due to more students taking postsurvey than students taking presurvey")
+    end
 
+    if not @presurvey_subtotal == @course_total
+      @warnings.push("WARNING: Expected #{@course_total} students for the course, but only #{@presurvey_subtotal} entries recorded for presurvey results so far.")
+    end
+
+    if not @postsurvey_subtotal == @course_total
+      @warnings.push("WARNING: Expected #{@course_total} students for the course, but only #{@postsurvey_subtotal} entries recorded for postsurvey results so far.")
+    end
+
+    if @warnings.length > 0
+      @warning_flag = true
+    end
 
   end
 
