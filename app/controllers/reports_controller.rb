@@ -237,7 +237,7 @@ class ReportsController < ApplicationController
 
     @combined_chart = Gchart.bar(:size => '1000x300', 
                               :title => "Overall Combined Scores(%)",
-                              :legend => ['Pre-curriculum Results (' + prescore + '%)', 'Post-curriculum Results ' + postscore + '%)'],
+                              :legend => ['Pre-curriculum Results (' + prescore.to_s + '%)', 'Post-curriculum Results ' + postscore.to_s + '%)'],
                               :bar_colors => 'FF3333,990000',
                               :data => combined_data,
                               :bar_width_and_spacing => '50,25,25',
