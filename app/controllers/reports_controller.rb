@@ -322,8 +322,12 @@ class ReportsController < ApplicationController
       user_post_data = @postsurvey.data[user.id]
       #following code works because of invariant:
       #pre&post surveys have the exact same questions
-      @presurvey_subtotal += @presurvey.total[user.id]
-      @postsurvey_subtotal += @postsurvey.total[user.id]
+      if not @presurvey.total[user.id].nil?
+        @presurvey_subtotal += @presurvey.total[user.id]
+      end
+      if not @postsurvey.total[user.id].nil?
+        @postsurvey_subtotal += @postsurvey.total[user.id]
+      end
       presurvey_data = calc_values(user_pre_data, presurvey_data)
       postsurvey_data = calc_values(user_post_data, postsurvey_data)
     end

@@ -68,6 +68,7 @@ StaticContent.create!({
                    :strength_weakness_intro => "Based on the pre- and post-curriculum surveys, as well as feedback from the ambassadors, we identified areas of strength and weaknesses. Below is a list of strengths and weaknesses of the class series:",
                    :strength_intro => "Strengths:",
                    :weakness_intro => "Weaknesses:",
+                   :comp_intro => "Competencies:",
                    :eval_title => "Curriculum Evaluations",
                    :summary => "Based on our evaluation, we plan to spend more time developing the concepts that proved to be incompletely understood at the completion of the lesson series, and include more in-class activities that reinforce these learning objectives.",
                    :behavior_title => "Behavior/Efficacy Section",
@@ -82,6 +83,7 @@ StaticContent.create!({
                    :agree_8 => "Read a nutrition label to figure out whether or not a food item is as healthy as the advertisement says",
                    :agree_9 => "Want to buy and eat junk food after watching an advertisement",
                    :agree_10 => "Ignore an advertisement for junk food after watching it",
+                   :increase_header => "There was an increase in agreement that students could",
                    :slight_increase_header => "There was a slight increase in agreement that students could",
                    :decrease_header => "There was a significant decrease in agreement that students could",
                    :slight_decrease_header => "There was a slight decrease in agreement that students could",
@@ -128,11 +130,5 @@ StaticContent.create!({
                    :decrease_9 => "There was less agreement that students would want to eat and buy junk food after watching advertisements.",
                    :decrease_10 => "Lessons about media were not effective for students. Students were less confident that they could ignore advertisements for junk food.",
 
-                   :food_journal_header => "Food Journals:",
-                   :food_journal_intro => "Students also kept food journals throughout the lessons to measure increases or decreases in fruit, vegetable, sugary drinks, and water intake.",
-                   :fj_increase_header => "There was a significant increase in the average number of servings between week 1 and week 8 for",
-                   :fj_decrease_header => "There was a significant decrease in the average number of servings between week 1 and week 8 for",
-                   :fj_unfavorable_header => "FOR UNFAVORABLE:",
-                   :fj_nonsig_header => "FOR NON-SIGNIFICANT:",
-                   :fj_favorable_header => "FOR FAVORABLE:"
+                   
                   })
