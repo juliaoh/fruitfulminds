@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    all_users
+    redirect_to all_users_path
   end
 
   def edit
