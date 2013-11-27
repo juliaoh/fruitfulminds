@@ -1,14 +1,32 @@
 - @subtitle = "Edit User"
-
 = form_tag user_path(@user), :method => :put do
   = label :user, :name, "Name: #{@user.name}"
   = label :user, :email, "Email: #{@user.email}"
   = label :college, :name, "College:"
   = select :college, :name, options_for_select(College.all.collect { |c| [c.name, c.id] }, @college.id)
-  = label :course, :name, "Course:"
-  = select :course, :name, options_for_select(Course.where(:active => true).collect { |c| [c.name, c.id ]}, :selected => @course.id)
   %br
   = submit_tag 'Update User Info'
 
+= label :courses, :name, "Courses:"
+%table
+  - @user.courses.each do |course|
+    %tr
+      %td
+        %li= course.name
+      %td= button_to "Remove", remove_course_path({:user => @user, :course => course}), :confirm => "Are you sure you want to remove #{course.name}?"
 
-= button_to 'Delete', user_path({:user => @user}), :method => :delete, :confirm => "Are you sure you want to delete #{@user.name}?"
+= form_tag add_course_path(@user), :method => :put do
+  %h4= "Add Course"
+  = label :school, :name, "School:"
+  = select :school, :name, options_for_select(School.all.collect { |s| [s.name, s.id] })
+  = label :semester, :name, "Semester:"
+  = select :semester, :name, options_for_select(["fal"])
+  = label :year, :name, "Year:"
+  = select :year, :name, options_for_select(["party like its 2012"])
+  = label :curriculum, :name, "Curriculum:"
+  = select :curriculum, :name, options_for_select(Curriculum.all.collect { |c| [c.name, c.id] })
+  %br
+  = submit_tag "Add"
+
+
+= button_to 'Delete User', user_path({:user => @user}), :method => :delete, :confirm => "Are you sure you want to delete #{@user.name}?"
