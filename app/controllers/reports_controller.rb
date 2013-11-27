@@ -220,6 +220,9 @@ class ReportsController < ApplicationController
     combined_data = []
     data, combined_data = format_objective_data(data_list)
     @improvement = combined_data[1] - combined_data[0]
+    puts combined_data[1]
+    puts combined_data[0]
+    puts '.......asdf'
 
     @nutrition_chart = Gchart.bar(:size => '1000x300', 
                                 :title => "Survey Score in Six Nutrition Topics",
