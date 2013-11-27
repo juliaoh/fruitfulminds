@@ -12,6 +12,9 @@ module SurveyControllersHelper
       save_results(params)
       flash[:notice] = "Survey updated successfully."
       redirect_to :action=>"show"
+    rescue TotalError
+      flash[:warning] = "Survey results invalid.  Total numbers inconsistent with data."
+      redirect_to :action=>"edit", :failed_data => params[:new_data]
     rescue ArgumentError
       flash[:warning] = "Results failed to add. Incomplete or has invalid characters."
       redirect_to :action=>"edit", :failed_data => params[:new_data]
@@ -23,6 +26,8 @@ module SurveyControllersHelper
   end
 
   protected
+
+  class TotalError < StandardError; end
 
   def setup_data(params)
     model = controller_name.classify.constantize
@@ -59,13 +64,14 @@ module SurveyControllersHelper
   def save_results(params)
     model = controller_name.classify.constantize
     survey = model.includes({:course => [:users]}, :curriculum).find_by_id(params[:id])
-    curriculum = survey.curriculum
     course = survey.course
     users = course.users
     new_data = Marshal.load(Marshal.dump(params[:new_data]))
     course.total_students = Integer(new_data.delete("absolute_total_students"))
     if not @current_user.admin?
-      users.select! { |user| user.id == @current_user.id }
+      users = users.select do |user|
+        user.id == @current_user.id
+      end
     end
     users.each do |user|
       survey.total[user.id] = Integer(new_data["#{user.id}"].delete("student_subtotal"))
@@ -73,7 +79,26 @@ module SurveyControllersHelper
         survey.data[user.id][Integer(qid)] = Integer(num)
       end
     end
+    check_results(course.users, course.total_students, survey.total, new_data)
     survey.save!
     course.save!
+  end
+
+  def check_results(users, absolute_total, totals, new_data)
+    total = 0
+    users.each do |user|
+      total += totals[user.id]
+    end
+    raise TotalError unless total <= absolute_total
+    if not @current_user.admin?
+      users.select! do |user|
+        user.id == @current_user.id
+      end
+    end
+    users.each do |user|
+      new_data["#{user.id}"].each do |qid, num|
+        raise TotalError unless Integer(num) <= totals[user.id]
+      end
+    end  
   end
 end
