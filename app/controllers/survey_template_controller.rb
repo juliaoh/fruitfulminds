@@ -1,12 +1,14 @@
 class SurveyTemplateController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:create, :update]
   def index
-    @survey_templates = Curriculum.all
+    @unpublished_templates = Curriculum.where(:published => false)
+    @published_templates = Curriculum.where(:published => true)
   end
   def new
   end
   def edit
     template_fields = Curriculum.find(params[:id])
+    @published = template_fields.published
     @survey_name = template_fields.name
     @sections = template_fields.sections
   end
@@ -24,7 +26,13 @@ class SurveyTemplateController < ApplicationController
       flash[:notice] = "There are blank fields"
       redirect_to "/survey_template/new" and return
     end
-    create_curriculum(survey_name)
+    puts "Has key: " + params.has_key?(:publish).to_s
+    if params.has_key?(:publish)
+      published = true
+    else
+      published = false
+    end
+    create_curriculum(survey_name, published)
     num_sections = params[:num_sections].to_i
     (1 .. num_sections).each do |sec_number|
       begin
@@ -43,8 +51,8 @@ class SurveyTemplateController < ApplicationController
     redirect_to "/survey_template"
   end
 
-  def create_curriculum(survey_name)
-    @survey_template = Curriculum.new(:name => survey_name)
+  def create_curriculum(survey_name, published)
+    @survey_template = Curriculum.new(:name => survey_name, :published => published)
     @survey_template.save
   end
   def update_curriculum(survey_name)
@@ -54,9 +62,8 @@ class SurveyTemplateController < ApplicationController
 
   def create_question(params, q_name_param)
     question_name = params[(q_name_param+"name").to_sym]
-    str_message = params[(q_name_param+"strength").to_sym]
-    wkns_message = params[(q_name_param+"weakness").to_sym]
-    @tmp_section.create_and_save_question({:name => question_name, :qtype => @tmp_section.stype, :msg1 => str_message, :msg2 => wkns_message})
+    message = params[(q_name_param+"msg").to_sym]
+    @tmp_section.create_and_save_question({:name => question_name, :qtype => @tmp_section.stype, :msg => message})
   end
 
   def create_section(params, sec_number)

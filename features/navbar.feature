@@ -16,11 +16,11 @@ Background: Generate curric, courses, login
     | section1 | test objective       | Multiple Choice | 1             |
 
   And the following questions exist:
-    | name     | qtype           | msg1            | msg2         | section_id |
-    | S1Q1     | Multiple Choice | S1Q1 strong     | S1Q1 weak    | 1          |
-    | S1Q2     | Multiple Choice | S1Q2 strong     | S1Q2 weak    | 1          |
-    | S2Q1     | Efficacy        | S2Q1 strong ef  | S2Q1 weak ef | 2          |
-    | S2Q2     | Efficacy        | S2Q2 strong ef  | S2Q2 weak ef | 2          |
+    | name     | qtype           | msg            | section_id |
+    | S1Q1     | Multiple Choice | S1Q1 weak      | 1          |
+    | S1Q2     | Multiple Choice | S1Q2 strong    | 1          |
+    | S2Q1     | Efficacy        | S2Q1 strong ef | 2          |
+    | S2Q2     | Efficacy        | S2Q2 strong ef | 2          |
 
   And the following presurveys exist:
     |   data            |    total        | course_id |
