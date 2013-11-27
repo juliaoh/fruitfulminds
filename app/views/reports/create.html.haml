@@ -34,8 +34,8 @@
 %h4= image_tag @combined_chart
 %h4= @strength_weakness_title
 %p= @static_contents[:strength_weakness_intro]
-%h4= @static_contents[:strength_intro]
 
+%h4= @static_contents[:strength_intro]
 %table
   %tr
   - @objective_str.values.each do |strength|
@@ -43,12 +43,19 @@
       %td= strength
 
 %h4= @static_contents[:weakness_intro]
-
 %table
   %tr
   - @objective_weak.values.each do |weakness|
     %tr
       %td= weakness
+
+%h4= @static_contents[:comp_intro]
+%table
+  %tr
+  - @objective_comp.values.each do |comp|
+    %tr
+      %td= comp
+
 %p
 %p= @static_contents[:summary]
 
@@ -58,6 +65,7 @@
 
 %p= @improvement_intro
 
+%h5= @static_contents[:increase_header]
 %table
   %tr
   - @efficacy_str.keys.each do |q_name|
@@ -65,12 +73,18 @@
       %td= q_name
 
 %h5= @static_contents[:decrease_header]
-
 %table
   %tr
   - @efficacy_weak.keys.each do |q_name|
     %tr
       %td= q_name
+
+%h5= @static_contents[:comp_header]
+%table
+  %tr
+  - @efficacy_comp.keys.each do |q_name|
+  %tr
+    %td= q_name
 
 %h5= @static_contents[:summary_header]
 

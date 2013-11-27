@@ -120,15 +120,17 @@ class ReportsController < ApplicationController
 
   def assign_efficacy_titles
     efficacy_data = generate_data('Efficacy')
-    efficacy_str_weak = generate_strengths(efficacy_data)
+    efficacy_stats = generate_strengths(efficacy_data)
     generate_efficacy_graph(efficacy_data)
-    @efficacy_str = efficacy_str_weak[0] #hash {q_name => msg}
-    @efficacy_weak = efficacy_str_weak[1]
+    @efficacy_str = efficacy_stats[0] #hash {q_name => msg}
+    @efficacy_weak = efficacy_stats[1]
+    @efficacy_comp = efficacy_stats[2]
     objective_data = generate_data('Multiple Choice')
     generate_objective_graph(objective_data)
-    objective_str_weak = generate_strengths(objective_data)
-    @objective_str = objective_str_weak[0]
-    @objective_weak = objective_str_weak[1]
+    objective_stats = generate_strengths(objective_data)
+    @objective_str = objective_stats[0]
+    @objective_weak = objective_stats[1]
+    @objective_comp = objective_stats[2]
     @eval_intro_first = "Prior to the curriculum, a pre-curriculum survey was distributed to assess the students\' knowledge in nutrition; a very similar survey was administered during the final class. The goal of the surveys was to determine the retention of key learning objectives from the Fruitful Minds program."
     @eval_intro_second = "On average, students have shown a #{@improvement}% improvement after going through seven weeks of classes." 
     @eval_intro_third = "The survey results are shown below. The first graph shows the average scores in each of the six nutrition topics covered in the curriculum (see graph 1). Note that the number of questions in each category varies. The second graph shows students\' overall performance on the pre-curriculum surveys and post-curriculum survey (see graph 2). #{@presurvey_total} took the pre-curriculum survey, and #{@postsurvey_total} students took the post-curriculum surveys."
@@ -145,7 +147,7 @@ class ReportsController < ApplicationController
       return
     else
       flash[:warning] = "Could not generate the PDF report: Please enter ambassador notes"
-      redirect_to new_report_path and return
+      redirect_to new_report_path
     end
   end
 
@@ -320,6 +322,9 @@ class ReportsController < ApplicationController
 
 
   def generate_strengths(data_list)
+    strengths = {}
+    weaknesses = {}
+    comps = {}
     #method can be used for either efficacy or MC questions
     #data_list is [presurvey_data, postsurvey_data], use generate_data to get this
     #pre/postsurvey_data is {q_id => percent value}
@@ -333,15 +338,17 @@ class ReportsController < ApplicationController
       post_value = postsurvey_data[q_id]
       delta = post_value - pre_value
       #not considered a weakness if starting value is 90%
-      possible_weakness = ((pre_value < 90) and (delta > 0))
+      possible_weakness = (((pre_value >= 90) and (post_value < 90)) or pre_value < 90) 
+      if (pre_value >= 90 and post_value >= 90)
+        question = Question.find_by_id(q_id)
+        comps[question.name] = question.msg
+      end 
       info_list = [q_id, delta, possible_weakness]
       data.push(info_list)
     end
 
     #info_list is [q_id, delta, possible_weakness]
     sorted_data = data.sort_by {|info_list| [info_list[1]]}
-    strengths = {}
-    weaknesses = {}
     sorted_data[0..4].each do |info_list|
       question = Question.find_by_id(info_list[0])
       strengths[question.name] = question.msg #message
@@ -362,7 +369,7 @@ class ReportsController < ApplicationController
 
     #returns a list of hashes [{q_name => str message},{q_name => weak messages}]
     #q_name should be something like "Section 6 Question 4"
-    return [strengths, weaknesses]
+    return [strengths, weaknesses, comps]
   end
 
 

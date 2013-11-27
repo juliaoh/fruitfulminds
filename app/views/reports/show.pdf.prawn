@@ -59,6 +59,14 @@ pdf.text @static_contents[:weakness_intro], :size => 14, :style => :bold
   pdf.text "#{weakness}"
 end
 
+pdf.text " "
+pdf.text @static_contents[:comp_intro], :size => 14, :style => :bold
+
+@objective_comp.values.each do |comp|
+  pdf.text "#{comp}"
+end
+
+
 
 pdf.text " "
 pdf.text @static_contents[:summary]
@@ -73,6 +81,9 @@ pdf.image open(URI.escape(@efficacy_chart)), :align => :center
 pdf.text " "
 pdf.text @improvement_intro
 pdf.text " "
+
+pdf.text @static_contents[:increase_header], :style => :bold
+pdf.text " "
 @efficacy_str.keys.each do |q_name|
   pdf.text "#{q_name}"
 end
@@ -83,6 +94,12 @@ pdf.text " "
   pdf.text "#{q_name}"
 end
 pdf.text " "
+pdf.text @static_contents[:comp_header], :style => :bold
+pdf.text " "
+@efficacy_comp.keys.each do |q_name|
+  pdf.text "#{q_name}"
+end
+pdf.text " " 
 pdf.text @static_contents[:summary_header], :style => :bold
 pdf.text " "
 @efficacy_str.values.each do |strength|
