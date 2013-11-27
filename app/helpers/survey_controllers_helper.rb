@@ -67,15 +67,19 @@ module SurveyControllersHelper
     setup_model(params) do |model, survey, course|
       new_data = Marshal.load(Marshal.dump(params[:new_data]))
       course.total_students = Integer(new_data.delete("absolute_total_students"))
-      survey.current_or_all_users(@current_user).each do |user|
-        survey.total[user.id] = Integer(new_data["#{user.id}"].delete("student_subtotal"))
-        new_data["#{user.id}"].each do |qid, num|
-          survey.data[user.id][Integer(qid)] = Integer(num)
-        end
-      end
+      convert_data(survey, new_data)
       check_results(survey, course.total_students, survey.total, new_data)
       survey.save!
       course.save!
+    end
+  end
+
+  def convert_data(survey, new_data)
+    survey.current_or_all_users(@current_user).each do |user|
+      survey.total[user.id] = Integer(new_data["#{user.id}"].delete("student_subtotal"))
+      new_data["#{user.id}"].each do |qid, num|
+        survey.data[user.id][Integer(qid)] = Integer(num)
+      end
     end
   end
 
