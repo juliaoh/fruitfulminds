@@ -40,23 +40,32 @@ class ReportsController < ApplicationController
     #postsurvey data (id)
     #total_students (int)
     @course_total = @course.total_students
+    @presurvey_subtotal = 0
+    @postsurvey_subtotal = 0
     @school = School.find_by_id(@course.school_id)
     @school_name = @school.name
     @school_semester = @course.semester
     @main_semester_title = @school_semester + " Report"
     @static_contents = StaticContent.first
     @curriculum = Curriculum.find_by_id(@course.curriculum_id)
+    @warning_flag = false
     #presurvey.total & postsurvey.total are hashes of
     #{user_id => {'total' => # of students user is entering data for}}
     @presurvey = Presurvey.find_by_id(@course.presurvey_id)
     @postsurvey = Postsurvey.find_by_id(@course.postsurvey_id)
-    if @presurvey.nil? || @postsurvey.nil?
-      flash[:warning] = "Not enough data"
+    if @presurvey.nil? and @postsurvey.nil?
+      flash[:warning] = "Empty presurvey and postsurvey results. Cannot generate report."
+      redirect_to "/reports/new" and return
+    elsif @presurvey.nil?
+      flash[:warning] = "Empty presurvey results. Cannot generate report."
+      redirect_to "/reports/new" and return
+    elsif @postsurvey.nil?
+      flash[:warning] = "Empty postsurvey results. Cannot generate report."
       redirect_to "/reports/new" and return
     end
     calc_subtotals
     generate_intro_text
-    
+    generate_warnings
 
   end
 
@@ -290,6 +299,7 @@ class ReportsController < ApplicationController
     @type = type
     def calc_values(data, data_hash)
       #helper function
+      #data expected to be from @presurvey.data[user.id] or @postsurvey.data[user.id]
       return data_hash if data.nil?
       data.keys.each do |q_id|
         question = Question.find_by_id(q_id)
@@ -311,6 +321,8 @@ class ReportsController < ApplicationController
       user_post_data = @postsurvey.data[user.id]
       #following code works because of invariant:
       #pre&post surveys have the exact same questions
+      @presurvey_subtotal += @presurvey.total[user.id]
+      @postsurvey_subtotal += @postsurvey.total[user.id]
       presurvey_data = calc_values(user_pre_data, presurvey_data)
       postsurvey_data = calc_values(user_post_data, postsurvey_data)
     end
@@ -370,6 +382,11 @@ class ReportsController < ApplicationController
     #returns a list of hashes [{q_name => str message},{q_name => weak messages}]
     #q_name should be something like "Section 6 Question 4"
     return [strengths, weaknesses, comps]
+  end
+
+  def generate_warnings()
+
+
   end
 
 
