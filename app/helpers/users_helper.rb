@@ -110,7 +110,7 @@ module UsersHelper
 
   def handle_approve_user(user,params)
     begin
-      course = Course.find_by_school_id_and_semester_and_curriculum_id(params[:school][user.id], params[:semester][user.id], params[:curriculum][user.id])
+      course = Course.find_by_school_id_and_semester_and_curriculum_id(params[:school][user.id.to_s], params[:semester][user.id.to_s], params[:curriculum][user.id.to_s])
       if course.nil?
         course = create_course(user,params)
       end
@@ -125,19 +125,27 @@ module UsersHelper
 
   def create_course(user,params)
     if valid_course(user,params)
-      course = Course.create!(:school_id => params[:school][user.id],
-                          :semester => params[:semester][user.id],
-                          :curriculum_id => params[:curriculum][user.id]
-                          )
+      presurvey = Presurvey.create!(:curriculum_id => params[:curriculum][user.id.to_s])
+      postsurvey = Postsurvey.create!(:curriculum_id => params[:curriculum][user.id.to_s])
+      course = Course.create!(:school_id => params[:school][user.id.to_s],
+                              :semester => params[:semester][user.id.to_s],
+                              :curriculum_id => params[:curriculum][user.id.to_s],
+                              :presurvey_id => presurvey.id,
+                              :postsurvey_id => postsurvey.id
+                              )
+      presurvey.course_id = course.id
+      postsurvey.course_id = course.id
+      presurvey.save!
+      postsurvey.save!
     end
   end
 
   def valid_course(user,params)
     begin
-      Integer(params[:school][user.id])
-      Integer(params[:curriculum][user.id])
+      Integer(params[:school][user.id.to_s])
+      Integer(params[:curriculum][user.id.to_s])
       true
-    rescue ArgumentError
+    rescue ArgumentError, TypeError
       false
     end
   end
