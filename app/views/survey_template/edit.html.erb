@@ -17,6 +17,9 @@
       $('#delquestion'+section_num+'_'+num_questions).click({snum:section_num, qnum:num_questions}, function (e) {
         $('#q'+e.data.snum+'_'+e.data.qnum).remove();
       });
+      $('#delsection'+section_num).click({snum:section_num}, function (e) {
+        $('#s'+e.data.snum).remove();
+      });
     };
     window.add_section = function(sname, stype, sobj) {
       if (sname == undefined) sname = ''
@@ -28,6 +31,7 @@
       var content = '<div class="section" id="section'+num_sections+'">';
       content += '<input type="hidden" name="snumquestions'+num_sections+'" id="snumquestions'+num_sections+'" />';
       content += 'Section';
+      content += '<input type="button" id="'delsection'+section_num" value="X" /><br />';
       content += '<table id="section_data'+num_sections+'">';
       content += '<tr><td>Name</td><td><input name="sname'+num_sections+'" id="sname'+num_sections+'" /></td></tr>';
       content += '<tr><td>Type</td><td><select name="stype'+num_sections+'" id="stype'+num_sections+'"><option value="Multiple Choice">Multiple Choice</option><option value="Efficacy">Efficacy</option></select></td></tr>';
