@@ -114,8 +114,10 @@ module UsersHelper
       if course.nil?
         course = create_course(user,params)
       end
+      puts "WTFUX"
       user.update_attributes!({:college_id => params[:college][user.id.to_s].to_i, :pending => 1, :pending_school_id => nil, :pending_semester => nil})
       course.users << user
+      course.save!
       UserMailer.user_approved_email(user).deliver
     rescue ActiveRecord::RecordInvalid
       # impossible
@@ -130,13 +132,16 @@ module UsersHelper
       course = Course.create!(:school_id => params[:school][user.id.to_s],
                               :semester => params[:semester][user.id.to_s],
                               :curriculum_id => params[:curriculum][user.id.to_s],
+                              :total_students => 0,
                               :presurvey_id => presurvey.id,
-                              :postsurvey_id => postsurvey.id
+                              :postsurvey_id => postsurvey.id,
+                              :active => true
                               )
       presurvey.course_id = course.id
       postsurvey.course_id = course.id
       presurvey.save!
       postsurvey.save!
+      return course
     end
   end
 
