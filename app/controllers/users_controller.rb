@@ -118,10 +118,8 @@ class UsersController < ApplicationController
   def remove_course
     user = User.find_by_id(params[:user])
     course = Course.find_by_id(params[:course])
-    user.courses.delete(course)
     course.users.delete(user)
     course.save!
-    user.save!
     redirect_to edit_user_path(params[:user])
   end
 end
