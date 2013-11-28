@@ -50,8 +50,7 @@
       $('#stype'+num_sections).val(stype);
       $('#sobjective'+num_sections).val(sobj);
       $('input#add_question_btn'+num_sections).click(function () { add_question(num_sections); });
-      $('#delsection'+section_num).click({snum:section_num}, function (e) {
-        console.log(e.data.snum);
+      $('#delsection'+num_sections).click({snum:num_sections}, function (e) {
         $('#section'+e.data.snum).remove();
       });
     };

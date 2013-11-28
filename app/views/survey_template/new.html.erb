@@ -40,7 +40,7 @@
       $('#smsg'+num_sections).hide();
       add_question(num_sections);
       $('input#add_question_btn'+num_sections).click(function () { add_question(num_sections); });
-      $('#delsection'+section_num).click({snum:section_num}, function (e) {
+      $('#delsection'+num_sections).click({snum:num_sections}, function (e) {
         $('#s'+e.data.snum).remove();
       });
     };
