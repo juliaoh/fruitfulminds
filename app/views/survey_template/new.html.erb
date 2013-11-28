@@ -41,7 +41,7 @@
       add_question(num_sections);
       $('input#add_question_btn'+num_sections).click(function () { add_question(num_sections); });
       $('#delsection'+num_sections).click({snum:num_sections}, function (e) {
-        $('#s'+e.data.snum).remove();
+        $('#section'+e.data.snum).remove();
       });
     };
     $('#add_section_btn').click(function () { add_section();});
