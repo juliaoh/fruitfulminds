@@ -13,12 +13,15 @@
       $('#delquestion'+section_num+'_'+num_questions).click({snum:section_num, qnum:num_questions}, function (e) {
         $('#q'+e.data.snum+'_'+e.data.qnum).remove();
       });
+      $('#delsection'+section_num).click({snum:section_num}, function (e) {
+        $('#s'+e.data.snum).remove();
+      });
     };
     window.add_section = function() {
       $num_sections_field = $('#num_sections');
       $num_sections_field.val(parseInt($num_sections_field.val()) + 1);
       var num_sections = $num_sections_field.val();
-      var content = '<div class="section" id="section'+num_sections+'">';
+      var content = '<div class="section" id="section'+num_sections+'"><input type="button" id="'delsection'+section_num" value="X" /><br />';
       content += '<input type="hidden" name="snumquestions'+num_sections+'" id="snumquestions'+num_sections+'" value="0" />';
       content += 'Section';
       content += '<table id="section_data'+num_sections+'">';
