@@ -110,18 +110,34 @@ module UsersHelper
 
   def handle_approve_user(user,params)
     begin
+      add_course_to_user!(user, params)
+      user.update_attributes!({:college_id => params[:college][user.id.to_s].to_i, :pending => 1, :pending_school_id => nil, :pending_semester => nil})
+      UserMailer.user_approved_email(user).deliver
+    rescue ActiveRecord::RecordInvalid
+        # impossible
+      puts "better not be here!"
+    end
+  end
+
+  def handle_add_course_to_user(user, params)
+    begin
+      add_course_to_user!(user, params)
+    rescue
+      # impossible
+      puts "here be not better!"
+    end
+  end
+
+  def add_course_to_user!(user, params)
+    if not params[:curriculum][user.id.to_s] == ""
       course = Course.find_by_school_id_and_semester_and_curriculum_id(params[:school][user.id.to_s], params[:semester][user.id.to_s], params[:curriculum][user.id.to_s])
       if course.nil?
         course = create_course(user,params)
+      elsif course.users.include?(user)
+        return
       end
-      puts "WTFUX"
-      user.update_attributes!({:college_id => params[:college][user.id.to_s].to_i, :pending => 1, :pending_school_id => nil, :pending_semester => nil})
       course.users << user
       course.save!
-      UserMailer.user_approved_email(user).deliver
-    rescue ActiveRecord::RecordInvalid
-      # impossible
-      puts "better not be here!"
     end
   end
 

@@ -15,14 +15,14 @@
         %li= course.name
       %td= button_to "Remove", remove_course_path({:user => @user, :course => course}), :confirm => "Are you sure you want to remove #{course.name}?"
 
-= form_tag add_course_path(@user), :method => :put do
+= form_tag add_course_path({:user => @user}), :method => :put do
   %h4= "Add Course"
-  = label :school, :name, "School:"
-  = select :school, :name, options_for_select(School.all.collect { |s| [s.name, s.id] })
-  = label :semester, :name, "Semester:"
-  = select :semester, :name, options_for_select(["Spring #{Time.now.year-1}", "Fall #{Time.now.year-1}", "Spring #{Time.now.year}", "Fall #{Time.now.year}", "Spring #{Time.now.year+1}", "Fall #{Time.now.year+1}"])
-  = label :curriculum, :name, "Curriculum:"
-  = select :curriculum, :name, options_for_select(Curriculum.all.collect { |c| [c.name, c.id] })
+  = label_tag "School"
+  = select_tag "school[#{@user.id}]", options_for_select(School.all.collect { |s| ["#{s.name}, #{s.city}, #{s.county}", s.id]}), :style => "width: 325px;"
+  = label_tag "Semester"
+  = select_tag "semester[#{@user.id}]", options_for_select(["Spring #{Time.now.year}", "Fall #{Time.now.year}", "Spring #{Time.now.year+1}", "Fall #{Time.now.year+1}"]), :style => "width: 125px;"
+  = label_tag "Curriculum"
+  = select_tag "curriculum[#{@user.id}]", options_for_select(Curriculum.all.collect { |curriculum| [curriculum.name, curriculum.id] }), :style => "width: 150px;"
   %br
   = submit_tag "Add"
 

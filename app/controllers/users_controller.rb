@@ -122,4 +122,10 @@ class UsersController < ApplicationController
     course.save!
     redirect_to edit_user_path(params[:user])
   end
+
+  def add_course
+    user = User.find_by_id(params[:user])
+    handle_add_course_to_user(user,params)
+    redirect_to edit_user_path(params[:user])
+  end
 end
