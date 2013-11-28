@@ -13,9 +13,7 @@
       $('#delquestion'+section_num+'_'+num_questions).click({snum:section_num, qnum:num_questions}, function (e) {
         $('#q'+e.data.snum+'_'+e.data.qnum).remove();
       });
-      $('#delsection'+section_num).click({snum:section_num}, function (e) {
-        $('#s'+e.data.snum).remove();
-      });
+      
     };
     window.add_section = function() {
       $num_sections_field = $('#num_sections');
@@ -42,6 +40,9 @@
       $('#smsg'+num_sections).hide();
       add_question(num_sections);
       $('input#add_question_btn'+num_sections).click(function () { add_question(num_sections); });
+      $('#delsection'+section_num).click({snum:section_num}, function (e) {
+        $('#s'+e.data.snum).remove();
+      });
     };
     $('#add_section_btn').click(function () { add_section();});
     add_section();

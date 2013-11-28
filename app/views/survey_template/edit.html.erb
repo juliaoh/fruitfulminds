@@ -17,10 +17,7 @@
       $('#delquestion'+section_num+'_'+num_questions).click({snum:section_num, qnum:num_questions}, function (e) {
         $('#q'+e.data.snum+'_'+e.data.qnum).remove();
       });
-      $('#delsection'+section_num).click({snum:section_num}, function (e) {
-        console.log(e.data.snum);
-        $('#section'+e.data.snum).remove();
-      });
+
     };
     window.add_section = function(sname, stype, sobj) {
       if (sname == undefined) sname = ''
@@ -53,6 +50,10 @@
       $('#stype'+num_sections).val(stype);
       $('#sobjective'+num_sections).val(sobj);
       $('input#add_question_btn'+num_sections).click(function () { add_question(num_sections); });
+      $('#delsection'+section_num).click({snum:section_num}, function (e) {
+        console.log(e.data.snum);
+        $('#section'+e.data.snum).remove();
+      });
     };
     $('#add_section_btn').click(function () { add_section();});
     <% i = 1 %>
