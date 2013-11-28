@@ -13,6 +13,7 @@
       $('#delquestion'+section_num+'_'+num_questions).click({snum:section_num, qnum:num_questions}, function (e) {
         $('#q'+e.data.snum+'_'+e.data.qnum).remove();
       });
+      
     };
     window.add_section = function() {
       $num_sections_field = $('#num_sections');
@@ -20,7 +21,8 @@
       var num_sections = $num_sections_field.val();
       var content = '<div class="section" id="section'+num_sections+'">';
       content += '<input type="hidden" name="snumquestions'+num_sections+'" id="snumquestions'+num_sections+'" value="0" />';
-      content += 'Section';
+      content += 'Section ';
+      content += '<input type="button" id="delsection'+num_sections+'" value="X" /><br />';
       content += '<table id="section_data'+num_sections+'">';
       content += '<tr><td>Name</td><td><input name="sname'+num_sections+'" id="sname'+num_sections+'" /></td></tr>';
       content += '<tr><td>Type</td><td><select name="stype'+num_sections+'" id="stype'+num_sections+'"><option value="Multiple Choice">Multiple Choice</option><option value="Efficacy">Efficacy</option></select></td></tr>';
@@ -38,6 +40,9 @@
       $('#smsg'+num_sections).hide();
       add_question(num_sections);
       $('input#add_question_btn'+num_sections).click(function () { add_question(num_sections); });
+      $('#delsection'+num_sections).click({snum:num_sections}, function (e) {
+        $('#section'+e.data.snum).remove();
+      });
     };
     $('#add_section_btn').click(function () { add_section();});
     add_section();
