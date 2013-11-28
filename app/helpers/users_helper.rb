@@ -147,7 +147,10 @@ module UsersHelper
                                     :data => {},
                                     :total => {}
                                     )
-      postsurvey = Postsurvey.create!(:curriculum_id => params[:curriculum][user.id.to_s])
+      postsurvey = Postsurvey.create!(:curriculum_id => params[:curriculum][user.id.to_s],
+                                    :data => {},
+                                    :total => {}
+                                    )
       course = Course.create!(
                               :school_id => params[:school][user.id.to_s],
                               :semester => params[:semester][user.id.to_s],

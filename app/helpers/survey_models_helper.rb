@@ -1,5 +1,8 @@
 module SurveyModelsHelper
   def get_data
+    if data.nil?
+      data = {}
+    end
     course.users.each do |user|
       if not data.has_key?(user.id)
         data[user.id] = curriculum.get_empty_data
@@ -10,6 +13,9 @@ module SurveyModelsHelper
   end
 
   def get_subtotal
+    if total.nil?
+      total = {}
+    end
     course.users.each do |user|
       if not total.has_key?(user.id)
         total[user.id] = 0
