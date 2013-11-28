@@ -8,6 +8,10 @@ class ReportsController < ApplicationController
   def create
     #user selects which class to generate a report for
     @course = Course.find_by_id(params[:course])
+    if @course.nil?
+      flash[:warning] = "Course not found"
+      redirect_to "/reports/new" and return
+    end
     generate_report
   end
 
