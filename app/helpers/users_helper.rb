@@ -26,7 +26,7 @@ module UsersHelper
             :password => user_params[:password],
             :college_id => College.find_by_name(user_params[:college]).id,
             :pending_school_id => user_params[:school],
-            :pending_semester => user_params[:semester] + " " + user_params[:year],
+            :pending_semester => user_params[:semester],
             :pending => 0,
             :profile => "ambassador" }
   end
