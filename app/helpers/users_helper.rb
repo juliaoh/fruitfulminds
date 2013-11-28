@@ -25,7 +25,8 @@ module UsersHelper
             :email => user_params[:email],
             :password => user_params[:password],
             :college_id => College.find_by_name(user_params[:college]).id,
-            :pending_course_id => user_params[:course],
+            :pending_school_id => user_params[:school],
+            :pending_semester => user_params[:semester] + " " + user_params[:year],
             :pending => 0,
             :profile => "ambassador" }
   end
@@ -109,7 +110,7 @@ module UsersHelper
 
   def handle_approve_user(user,params)
     begin
-      user.update_attributes!({:college_id => params[:colleges][user.id.to_s].to_i, :pending => 1, :pending_course_id => nil})
+      user.update_attributes!({:college_id => params[:college][user.id.to_s].to_i, :pending => 1, :pending_school_id => nil, :pending_semester => nil})
       course = Course.find_by_id(params[:courses][user.id.to_s])
       course.users << user
       UserMailer.user_approved_email(user).deliver

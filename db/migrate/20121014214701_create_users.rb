@@ -7,7 +7,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :password_digest
       t.integer :pending
-      t.integer :pending_course_id
+      t.integer :pending_school_id
+      t.integer :pending_semester
       t.string :profile
       t.timestamps
     end

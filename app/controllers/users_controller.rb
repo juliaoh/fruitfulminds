@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   # renders sign up page
   def new
-    @course_names = Course.where(:active => true).collect { |c| [c.name, c.id ] }.uniq.sort
+    @school_names = School.all.collect { |s| ["#{s.name}, #{s.city}, #{s.county}", s.id ] }.uniq.sort
     @college_names = College.find(:all).map do |college|
       college.name
     end.uniq.sort

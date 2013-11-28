@@ -42,14 +42,10 @@ User.create!({:name => "admin account", :email => "admin@fruitfulminds.org", :pa
 User.create!({:name => "another admin account", :email => "admin2@fruitfulminds.org", :password => "password", :profile => "admin", :pending => 1})
 User.create!({:name => "fm ambassador account", :email => "user@fruitfulminds.org", :password => "password", :profile => "ambassador", :pending => 1, :college_id => 1, :course_ids => [1, 2, 3, 4]})
 User.create!({:name => "another fm ambassador account", :email => "ambassador@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 1, :college_id => 2, :course_ids => [1, 2, 3, 4]})
-User.create!({:name => "pending ambassador account", :email => "pendingambassador@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 0, :college_id => 3, :pending_course_id => 1})
-User.create!({:name => "pending ambassador account 2", :email => "pendingambassador2@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 0, :college_id => 1, :pending_course_id => 2})
-User.create!({:name => "pending ambassador account 3", :email => "pendingambassador3@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 0, :college_id => 2, :pending_course_id => 3})
-User.create!({:name => "pending ambassador account 4", :email => "pendingambassador4@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 0, :college_id => 1, :pending_course_id => 4})
-User.create!({:name => "pending ambassador account 5", :email => "pendingambassador5@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 0, :college_id => 1, :pending_course_id => 1})
-User.create!({:name => "pending ambassador account 6", :email => "pendingambassador6@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 0, :college_id => 1, :pending_course_id => 2})
-User.create!({:name => "pending ambassador account 7", :email => "pendingambassador7@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 0, :college_id => 1, :pending_course_id => 3})
-User.create!({:name => "pending ambassador account 8", :email => "pendingambassador8@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 0, :college_id => 1, :pending_course_id => 4})
+User.create!({:name => "pending ambassador account", :email => "pendingambassador@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 0, :college_id => 3, :pending_school_id => 1, :pending_semester => "Fall 2013"})
+User.create!({:name => "pending ambassador account 2", :email => "pendingambassador2@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 0, :college_id => 1, :pending_school_id => 2, :pending_semester => "Fall 2013"})
+User.create!({:name => "pending ambassador account 3", :email => "pendingambassador3@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 0, :college_id => 2, :pending_school_id => 3, :pending_semester => "Fall 2013"})
+User.create!({:name => "pending ambassador account 4", :email => "pendingambassador4@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 0, :college_id => 1, :pending_school_id => 4, :pending_semester => "Fall 2013"})
 
 
 Presurvey.create!({:course_id => 1, :curriculum_id => 1, :data=>{3=>{1=>1, 2=>2, 3=>3}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})

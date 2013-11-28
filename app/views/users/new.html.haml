@@ -9,9 +9,12 @@
       = text_field :user, :lastname
       = label :user, :college, "College"
       = select(:user, :college, @college_names, {}, {})
-      = label :user, :course, "School"
-      = select(:user, :course, @course_names, {}, {})
-
+      = label :user, :school, "School"
+      = select(:user, :school, @school_names, {}, {})
+      = label :user, :semester, "Semester"
+      = select(:user, :semester, ["Spring #{Time.now.year}", "Fall #{Time.now.year}", "Spring #{Time.now.year+1}", "Fall #{Time.now.year+1}"], {}, {})
+      = label :user, :year, "Year"
+      = select(:user, :year, ["#{Time.now.year}", "#{Time.now.year+1}"], {}, {})
       = label :user, :email, "Email Address"
       = text_field :user, :email
 
