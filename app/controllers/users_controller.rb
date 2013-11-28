@@ -123,6 +123,5 @@ class UsersController < ApplicationController
     course.save!
     user.save!
     redirect_to edit_user_path(params[:user])
-
   end
 end

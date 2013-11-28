@@ -110,8 +110,11 @@ module UsersHelper
 
   def handle_approve_user(user,params)
     begin
+      course = Course.find_by_school_id_and_semester_and_curriculum_id(params[:school][user.id], params[:semester][user.id], params[:curriculum][user.id])
+      if course.nil?
+        course = create_course(user,params)
+      end
       user.update_attributes!({:college_id => params[:college][user.id.to_s].to_i, :pending => 1, :pending_school_id => nil, :pending_semester => nil})
-      course = Course.find_by_id(params[:courses][user.id.to_s])
       course.users << user
       UserMailer.user_approved_email(user).deliver
     rescue ActiveRecord::RecordInvalid
@@ -120,4 +123,22 @@ module UsersHelper
     end
   end
 
+  def create_course(user,params)
+    if valid_course(user,params)
+      course = Course.create!(:school_id => params[:school][user.id],
+                          :semester => params[:semester][user.id],
+                          :curriculum_id => params[:curriculum][user.id]
+                          )
+    end
+  end
+
+  def valid_course(user,params)
+    begin
+      Integer(params[:school][user.id])
+      Integer(params[:curriculum][user.id])
+      true
+    rescue ArgumentError
+      false
+    end
+  end
 end
