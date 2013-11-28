@@ -21,6 +21,7 @@ module UsersHelper
 
     # Generates the fields required for an ambassador.
   def generate_user_fields(user_params)
+    adsfasef
     return {:name => "#{user_params[:firstname]} #{user_params[:lastname]}",
             :email => user_params[:email],
             :password => user_params[:password],
