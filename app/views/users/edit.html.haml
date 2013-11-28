@@ -20,9 +20,7 @@
   = label :school, :name, "School:"
   = select :school, :name, options_for_select(School.all.collect { |s| [s.name, s.id] })
   = label :semester, :name, "Semester:"
-  = select :semester, :name, options_for_select(["fal"])
-  = label :year, :name, "Year:"
-  = select :year, :name, options_for_select(["party like its 2012"])
+  = select :semester, :name, options_for_select(["Spring #{Time.now.year-1}", "Fall #{Time.now.year-1}", "Spring #{Time.now.year}", "Fall #{Time.now.year}", "Spring #{Time.now.year+1}", "Fall #{Time.now.year+1}"])
   = label :curriculum, :name, "Curriculum:"
   = select :curriculum, :name, options_for_select(Curriculum.all.collect { |c| [c.name, c.id] })
   %br
