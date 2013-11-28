@@ -18,7 +18,8 @@
         $('#q'+e.data.snum+'_'+e.data.qnum).remove();
       });
       $('#delsection'+section_num).click({snum:section_num}, function (e) {
-        $('#s'+e.data.snum).remove();
+        console.log(e.data.snum);
+        $('#section'+e.data.snum).remove();
       });
     };
     window.add_section = function(sname, stype, sobj) {
