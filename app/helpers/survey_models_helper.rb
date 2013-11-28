@@ -24,6 +24,8 @@ module SurveyModelsHelper
       users = course.users.select do |user|
         user.id == current_user.id
       end
+    else
+      users = course.users
     end
     return users
   end

@@ -9,8 +9,17 @@ $(document).ready(function() {
 </script>
 <a id="add_new_survey_btn" href="<%= new_survey_template_path %>">Add new survey</a>
 <hr />
-<% if @survey_templates != nil %>
-<%  @survey_templates.each do |template| %>
+Not yet published surveys:<br />
+<% if @unpublished_templates != nil %>
+<%  @unpublished_templates.each do |template| %>
 <a href="<%= edit_survey_template_path(template.id) %>"><%= template.name %> (<%= template.id %>)</a><br />
 <%  end %>
 <% end %>
+<hr />
+Published surveys:<br />
+<% if @published_templates != nil %>
+<%  @published_templates.each do |template| %>
+<a href="<%= edit_survey_template_path(template.id) %>"><%= template.name %> (<%= template.id %>) [Read Only]</a><br />
+<%  end %>
+<% end %>
+

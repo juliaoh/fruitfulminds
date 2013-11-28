@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20131111035944) do
 
   create_table "curriculums", :force => true do |t|
     t.string   "name"
+    t.boolean  "published",  :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -115,8 +116,7 @@ ActiveRecord::Schema.define(:version => 20131111035944) do
   create_table "questions", :force => true do |t|
     t.string   "name",        :null => false
     t.string   "qtype",       :null => false
-    t.string   "msg1"
-    t.string   "msg2"
+    t.string   "msg"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"

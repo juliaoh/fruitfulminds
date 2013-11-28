@@ -96,9 +96,9 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by_id(params[:id])
     newcollege = College.find_by_id(params[:college][:name])
-    newcourse = Course.find_by_id(params[:course][:name])
+    #newcourse = Course.find_by_id(params[:course][:name])
     @user.update_attributes!(:college => newcollege)
-    handle_user_course_update(@user, newcourse)
+    #handle_user_course_update(@user, newcourse)
     redirect_to all_users_path and return
   end
 
@@ -115,4 +115,13 @@ class UsersController < ApplicationController
     redirect_to all_users_path and return
   end
 
+  def remove_course
+    user = User.find_by_id(params[:user])
+    course = Course.find_by_id(params[:course])
+    user.courses.delete(course)
+    course.users.delete(user)
+    course.save!
+    user.save!
+    redirect_to edit_user_path(params[:user])
+  end
 end

@@ -10,6 +10,7 @@ class CreateStaticContents < ActiveRecord::Migration
       t.text "strength_weakness_intro"
       t.text "strength_intro"
       t.text "weakness_intro"
+      t.text "comp_intro"
       t.text "summary"
       t.text "behavior_title"
       t.text "behavior_intro"
@@ -24,7 +25,9 @@ class CreateStaticContents < ActiveRecord::Migration
       t.text "agree_9"
       t.text "agree_10"
       t.text "slight_increase_header"
+      t.text "increase_header"
       t.text "decrease_header"
+      t.text "comp_header"
       t.text "slight_decrease_header"
       t.text "summary_header"
       t.text "increase_1_2"
@@ -67,13 +70,7 @@ class CreateStaticContents < ActiveRecord::Migration
       t.text "decrease_8"
       t.text "decrease_9"
       t.text "decrease_10"
-      t.text "food_journal_header"
-      t.text "food_journal_intro"
-      t.text "fj_increase_header"
-      t.text "fj_decrease_header"
-      t.text "fj_unfavorable_header"
-      t.text "fj_nonsig_header"
-      t.text "fj_favorable_header"
+
 
       t.timestamps
     end

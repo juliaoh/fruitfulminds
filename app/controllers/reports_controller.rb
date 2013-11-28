@@ -220,9 +220,12 @@ class ReportsController < ApplicationController
     combined_data = []
     data, combined_data = format_objective_data(data_list)
     @improvement = combined_data[1] - combined_data[0]
+    @improvement = @improvement[0]
+    prescore = combined_data[0]
+    postscore = combined_data[1]
 
     @nutrition_chart = Gchart.bar(:size => '1000x300', 
-                                :title => "Survey Score in Six Nutrition Topics",
+                                :title => "Survey Score in Nutrition Topics(%)",
                                 :legend => ['Pre', 'Post'],
                                 :bar_colors => '3399CC,99CCFF',
                                 :data => data,
@@ -235,7 +238,7 @@ class ReportsController < ApplicationController
 
     @combined_chart = Gchart.bar(:size => '1000x300', 
                               :title => "Overall Combined Scores(%)",
-                              :legend => ['Pre-curriculum Results (' + combined_data[0] + '%)', 'Post-curriculum Results ' + combined_data[1] + '%)'],
+                              :legend => ['Pre-curriculum Results (' + prescore[0].to_s + '%)', 'Post-curriculum Results (' + postscore[0].to_s + '%)'],
                               :bar_colors => 'FF3333,990000',
                               :data => combined_data,
                               :bar_width_and_spacing => '50,25,25',
@@ -281,11 +284,12 @@ class ReportsController < ApplicationController
                               :legend => ['Pre', 'Post'],
                               :bar_colors => '990000,3399CC',
                               :data => data,
-                              :bar_width_and_spacing => '13,0,10',
-                              :axis_with_labels => 'y,x',
+                              :bar_width_and_spacing => '50,0,25',
+                              :axis_with_labels => 'x,y',
                               :axis_labels => [labels],
                               :stacked => false,
                               :axis_range => [nil, [0,@max,10]],
+
                               )
 
 
@@ -322,8 +326,12 @@ class ReportsController < ApplicationController
       user_post_data = @postsurvey.data[user.id]
       #following code works because of invariant:
       #pre&post surveys have the exact same questions
-      @presurvey_subtotal += @presurvey.total[user.id]
-      @postsurvey_subtotal += @postsurvey.total[user.id]
+      if not @presurvey.total[user.id].nil?
+        @presurvey_subtotal += @presurvey.total[user.id]
+      end
+      if not @postsurvey.total[user.id].nil?
+        @postsurvey_subtotal += @postsurvey.total[user.id]
+      end
       presurvey_data = calc_values(user_pre_data, presurvey_data)
       postsurvey_data = calc_values(user_post_data, postsurvey_data)
     end
@@ -393,11 +401,11 @@ class ReportsController < ApplicationController
     end
 
     if not @presurvey_subtotal == @course_total
-      @warnings.push("WARNING: Expected #{@course_total} students for the course, but only #{@presurvey_subtotal} entries recorded for presurvey results so far.")
+      @warnings.push("WARNING: Expected #{@course_total} students for the course, but there are #{@presurvey_subtotal} entries recorded for presurvey results so far.")
     end
 
     if not @postsurvey_subtotal == @course_total
-      @warnings.push("WARNING: Expected #{@course_total} students for the course, but only #{@postsurvey_subtotal} entries recorded for postsurvey results so far.")
+      @warnings.push("WARNING: Expected #{@course_total} students for the course, but there are #{@postsurvey_subtotal} entries recorded for postsurvey results so far.")
     end
 
     if @warnings.length > 0

@@ -30,12 +30,12 @@ Course.create!({:semester =>"Fall 2013", :total_students=>30, :school_id=>2, :cu
 Course.create!({:semester =>"Fall 2013", :total_students=>20, :school_id=>3, :curriculum_id=>1, :presurvey_id=>3, :postsurvey_id=>3, :active => true})
 Course.create!({:semester =>"Fall 2013", :total_students=>50, :school_id=>4, :curriculum_id=>1, :presurvey_id=>4, :postsurvey_id=>4, :active => true})
 
-Curriculum.create!({:name=>'Test Curriculum 1'})
+Curriculum.create!({:name=>'Test Curriculum 1', :published=>true})
 Section.create!({:name=>'Section 1',:stype=>'Multiple Choice',:objective=>'Section 1 objective', :curriculum_id=>1})
 Section.create!({:name=>'Section 2', :stype=>'Efficacy', :curriculum_id=>1})
-Question.create!({:name=>'S1Q1',:qtype=>'Multiple Choice',:msg1=>'S1Q1 stronk',:msg2=>'S1Q1 weaaak', :section_id=>1})
-Question.create!({:name=>'S1Q2',:qtype=>'Multiple Choice',:msg1=>'S1Q2 stronk',:msg2=>'S1Q2 weaaak', :section_id=>1})
-Question.create!({:name=>'S2Q1',:qtype=>'Efficacy',:msg1=>'S2Q1 stronk',:msg2=>'S2Q1 weaaak', :section_id=>2})
+Question.create!({:name=>'S1Q1',:qtype=>'Multiple Choice',:msg=>'S1Q1 stronk', :section_id=>1})
+Question.create!({:name=>'S1Q2',:qtype=>'Multiple Choice',:msg=>'S1Q2 weaaak', :section_id=>1})
+Question.create!({:name=>'S2Q1',:qtype=>'Efficacy',:msg=>'S2Q1 stronk', :section_id=>2})
 
 
 User.create!({:name => "admin account", :email => "admin@fruitfulminds.org", :password => "password", :profile => "admin", :pending => 1})
@@ -64,6 +64,7 @@ StaticContent.create!({
                    :strength_weakness_intro => "Based on the pre- and post-curriculum surveys, as well as feedback from the ambassadors, we identified areas of strength and weaknesses. Below is a list of strengths and weaknesses of the class series:",
                    :strength_intro => "Strengths:",
                    :weakness_intro => "Weaknesses:",
+                   :comp_intro => "Competencies:",
                    :eval_title => "Curriculum Evaluations",
                    :summary => "Based on our evaluation, we plan to spend more time developing the concepts that proved to be incompletely understood at the completion of the lesson series, and include more in-class activities that reinforce these learning objectives.",
                    :behavior_title => "Behavior/Efficacy Section",
@@ -78,10 +79,13 @@ StaticContent.create!({
                    :agree_8 => "Read a nutrition label to figure out whether or not a food item is as healthy as the advertisement says",
                    :agree_9 => "Want to buy and eat junk food after watching an advertisement",
                    :agree_10 => "Ignore an advertisement for junk food after watching it",
+                   :increase_header => "There was an increase in agreement that students could",
                    :slight_increase_header => "There was a slight increase in agreement that students could",
                    :decrease_header => "There was a significant decrease in agreement that students could",
                    :slight_decrease_header => "There was a slight decrease in agreement that students could",
+                   :comp_header => "Students were compentent prior to the curriculum in the following areas",
                    :summary_header => "Summary of findings:",
+
                    :increase_1_2 => "Healthy snack demonstrations were found to be effective because students learned how they could prepare healthy snacks on their own to eat at home. They also felt that they could make the snacks and bring them to school to eat.",
                    :increase_1 => "Healthy snack demonstrations were found to be effective because students learned how they could prepare healthy snacks on their own to eat at home.",
                    :increase_2 => "Healthy snack demonstrations were found to be effective in increasing confidence that students could prepare healthy snacks to bring to school.",
@@ -124,11 +128,5 @@ StaticContent.create!({
                    :decrease_9 => "There was less agreement that students would want to eat and buy junk food after watching advertisements.",
                    :decrease_10 => "Lessons about media were not effective for students. Students were less confident that they could ignore advertisements for junk food.",
 
-                   :food_journal_header => "Food Journals:",
-                   :food_journal_intro => "Students also kept food journals throughout the lessons to measure increases or decreases in fruit, vegetable, sugary drinks, and water intake.",
-                   :fj_increase_header => "There was a significant increase in the average number of servings between week 1 and week 8 for",
-                   :fj_decrease_header => "There was a significant decrease in the average number of servings between week 1 and week 8 for",
-                   :fj_unfavorable_header => "FOR UNFAVORABLE:",
-                   :fj_nonsig_header => "FOR NON-SIGNIFICANT:",
-                   :fj_favorable_header => "FOR FAVORABLE:"
+                   
                   })

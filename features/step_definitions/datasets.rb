@@ -17,9 +17,9 @@ Given /^dataset1 is set up$/ do
       | section1 | test objective       | Multiple Choice | 1             |
 
     And the following questions exist:
-      | name     | qtype           | msg1            | msg2         | section_id |
-      | S1Q1     | Multiple Choice | S1Q1 strong     | S1Q1 weak    | 1          |
-      | S1Q2     | Multiple Choice | S1Q2 strong     | S1Q2 weak    | 1          |
+      | name     | qtype           | msg            | section_id |
+      | S1Q1     | Multiple Choice | S1Q1 strong    | 1          |
+      | S1Q2     | Multiple Choice | S1Q2 weak      | 1          |
 
     And the following presurveys exist:
       |   data            |    total        | course_id |
@@ -137,9 +137,9 @@ Given /^the multiple ambassador dataset is set up$/ do
       | section1 | test objective       | Multiple Choice | 1             |
 
     And the following questions exist:
-      | name     | qtype           | msg1            | msg2         | section_id |
-      | S1Q1     | Multiple Choice | S1Q1 strong     | S1Q1 weak    | 1          |
-      | S1Q2     | Multiple Choice | S1Q2 strong     | S1Q2 weak    | 1          |
+      | name     | qtype           | msg          | section_id |
+      | S1Q1     | Multiple Choice | S1Q1 strong  | 1          |
+      | S1Q2     | Multiple Choice | S1Q2 strong  | 1          |
 
   And the following presurveys exist:
     |   data            |    total        | course_id |
