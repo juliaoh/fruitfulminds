@@ -140,7 +140,7 @@ class ReportsController < ApplicationController
       flash[:warning] = "Not enough data"
       redirect_to "/reports/new" and return
     elsif efficacy_data[0].keys.length != @questions['Efficacy'].length or efficacy_data[1].keys.length != @questions['Efficacy'].length
-      flash[:warning] = "Not enough data1 " + @questions['Efficacy'].length + ' ' + efficacy_data[0].keys.length
+      flash[:warning] = "Not enough data1 " + @questions['Efficacy'].length.to_s + ' ' + efficacy_data[0].keys.length.to_s
       redirect_to "/reports/new" and return
     elsif objective_data[0].keys.length != @questions['Multiple Choice'].length or objective_data[1].keys.length != @questions['Multiple Choice'].length
       flash[:warning] = "Not enough data2"
