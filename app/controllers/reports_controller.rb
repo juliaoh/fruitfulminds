@@ -181,7 +181,7 @@ class ReportsController < ApplicationController
 
   def generate_pdf
     @course = Course.find_by_id(params[:course][:id])
-    session[:course] = @course
+    session[:course] = @course.id
     if not params[:amb_note].blank?
       #make sure ambassador writes some Notes
       session[:amb_note] = params[:amb_note]
@@ -197,7 +197,8 @@ class ReportsController < ApplicationController
   def show
     @school_name = params[:id].chomp("_report").gsub! /_/, " "
     school = School.find_by_name(@school_name)
-    @course = session[:course]
+    course_id = session[:course]
+    @course = Course.find_by_id(course_id)
     @report_note = session[:amb_note]
     generate_report
   end
