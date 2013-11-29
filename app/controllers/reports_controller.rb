@@ -252,8 +252,8 @@ class ReportsController < ApplicationController
         section_question_count += 1
         total_question_count += 1
       end
-      pre_data.push(section_pre_total/question_count)
-      post_data.push(section_post_total/question_count)
+      pre_data.push(section_pre_total/section_question_count)
+      post_data.push(section_post_total/section_question_count)
     end
     pre_combined[0] /= total_question_count
     post_combined[0] /= total_question_count
