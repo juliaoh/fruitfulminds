@@ -31,8 +31,9 @@ Section.create!({:name=>'Food Groups', :stype=>'Multiple Choice', :objective=>'T
 Section.create!({:name=>'Nutrients', :stype=>'Multiple Choice', :objective=>'Discuss the metabolic functions of different nutrients; examine the quantities of fats, sugars, fiber and protein in various types of food.', :curriculum_id=>2})
 Section.create!({:name=>'Nutrition Labeling', :stype=>'Multiple Choice', :objective=>'Teach students how to read and understand food labels to determine which foods are healthier than others.', :curriculum_id=>2})
 Section.create!({:name=>'Food Advertising', :stype=>'Multiple Choice', :objective=>'Explore the role that advertisements play in influencing consumers’ choice of food; let students know how to make healthy food choices based on knowledge rather than misleading advertisements.', :curriculum_id=>2})
-Section.create!({:name=>'Exercise, Energy, and Nutrition', :stype=>'Efficacy', :curriculum_id=>2})
-# :objective=>'Identify the connection between food and energy, and the role that physical activities play in overall health and longevity.', 
+Section.create!({:name=>'Exercise, Energy, and Nutrition', :stype=>'Multiple Choice', :objective=>'Identify the connection between food and energy, and the role that physical activities play in overall health and longevity.', :curriculum_id=>2})
+Section.create!({:name=>'Efficacy Questions', :stype=>'Efficacy', :curriculum_id=>2})
+
 #Section.create!({:name=>'Review Lesson', :stype=>'Efficacy',  :curriculum_id=>2})
 #:objective=>'Review major concepts covered in the previous lessons. Students are given a chance to practice problem-solving in different scenarios given the knowledge they have in nutrition.',
 Question.create!({:name=>'Section 1 Question 1', :qtype=>'Multiple Choice', :section_id=> 1, :msg=>'Factors that may lead to type 2 diabetes'})
@@ -57,10 +58,23 @@ Question.create!({:name=>'Section 4 Question 3', :qtype=>'Multiple Choice', :sec
 Question.create!({:name=>'Section 5 Question 1', :qtype=>'Multiple Choice', :section_id=> 5, :msg=>'The goals of food advertisements as well as the techniques that food companies use to promote their products'})
 Question.create!({:name=>'Section 5 Question 2', :qtype=>'Multiple Choice', :section_id=> 5, :msg=>'How to distinguish between the advertising and factual components on a food package'})
 
-Question.create!({:name=>'Section 6 Question 1', :qtype=>'Efficacy', :section_id=> 6, :msg=>'The benefits of physical activity'})
-Question.create!({:name=>'Section 6 Question 2', :qtype=>'Efficacy', :section_id=> 6, :msg=>'The recommended amount of exercise'})
-Question.create!({:name=>'Section 6 Question 3', :qtype=>'Efficacy', :section_id=> 6, :msg=>'The different types of physical activity'})
-Question.create!({:name=>'Section 6 Question 4', :qtype=>'Efficacy', :section_id=> 6, :msg=>'Energy balance and the consequences of consuming excess energy'})
+Question.create!({:name=>'Section 6 Question 1', :qtype=>'Multiple Choice', :section_id=> 6, :msg=>'The benefits of physical activity'})
+Question.create!({:name=>'Section 6 Question 2', :qtype=>'Multiple Choice', :section_id=> 6, :msg=>'The recommended amount of exercise'})
+Question.create!({:name=>'Section 6 Question 3', :qtype=>'Multiple Choice', :section_id=> 6, :msg=>'The different types of physical activity'})
+Question.create!({:name=>'Section 6 Question 4', :qtype=>'Multiple Choice', :section_id=> 6, :msg=>'Energy balance and the consequences of consuming excess energy'})
+
+Question.create!({:name=>'S7Q1', :qtype=>'Efficacy', :section_id=> 7, :msg=>'Prepare a healthy snack to eat at home'})
+Question.create!({:name=>'S7Q2', :qtype=>'Efficacy', :section_id=> 7, :msg=>'Prepare a healthy snack to take and eat at school'})
+Question.create!({:name=>'S7Q3', :qtype=>'Efficacy', :section_id=> 7, :msg=>'Eat at least 1 fruit at home at least 4 times a week'})
+Question.create!({:name=>'S7Q4', :qtype=>'Efficacy', :section_id=> 7, :msg=>'Eat at least 1 vegetable at home at least 4 times a week'})
+Question.create!({:name=>'S7Q5', :qtype=>'Efficacy', :section_id=> 7, :msg=>'Feel comfortable talking with parent and/or guardian about food'})
+Question.create!({:name=>'S7Q6', :qtype=>'Efficacy', :section_id=> 7, :msg=>'Feel comfortable asking parent and/or guardian to buy junk food'})
+Question.create!({:name=>'S7Q7', :qtype=>'Efficacy', :section_id=> 7, :msg=>'Feel comfortable asking parent and/or guardian to buy healthy snacks'})
+Question.create!({:name=>'S7Q8', :qtype=>'Efficacy', :section_id=> 7, :msg=>'Read a nutrition label to figure out whether or not a food item is as healthy as the advertisement says'})
+Question.create!({:name=>'S7Q9', :qtype=>'Efficacy', :section_id=> 7, :msg=>'Ignore an advertisement for junk food after watching it'})
+Question.create!({:name=>'S7Q10', :qtype=>'Efficacy', :section_id=> 7, :msg=>'Want to buy and eat junk food after watching an advertisement'})
+
+
 
 Section.create!({:name=>'Section 1',:stype=>'Multiple Choice',:objective=>'Section 1 objective', :curriculum_id=>1})
 Section.create!({:name=>'Section 2', :stype=>'Efficacy', :curriculum_id=>1})
@@ -93,18 +107,18 @@ StaticContent.create!({
                    :introduction => "Fruitful Minds is a start up, non-profit organization providing nutrition education to youth at greatest risk for obesity and related illnesses.  The program recruits young people with a passion for health and education from local colleges and universities like UC Berkeley to develop curriculum and instruct children through classroom presentation, after school sports programs and summer camps.  While many nutrition programs exist today, Fruitful Minds is unique in its targeting of at-risk youth, customized approach and use of college students to deliver the program.  The goal of Fruitful Minds is to identify elementary schools, middle schools, and community centers where a nutrition education component is lacking and partner with existing sports, cooking or gardening programs to form a complete education focused on ending the escalating rate of obesity among at-risk youth.",
                    :objectives_title => "Fruitful Minds 7-Week Lesson Objectives",
                    :strength_weakness_intro => "Based on the pre- and post-curriculum surveys, as well as feedback from the ambassadors, we identified areas of strength and weaknesses. Below is a list of strengths and weaknesses of the class series:",
-                   :strength_intro => "Strengths:",
-                   :weakness_intro => "Weaknesses:",
-                   :comp_intro => "Competencies:",
+                   :strength_intro => "Students showed strength in learning:",
+                   :weakness_intro => "Students showed weakness in learning:",
+                   :comp_intro => "Prior to the curriculum students were competent in:",
                    :eval_title => "Curriculum Evaluations",
                    :summary => "Based on our evaluation, we plan to spend more time developing the concepts that proved to be incompletely understood at the completion of the lesson series, and include more in-class activities that reinforce these learning objectives.",
                    :behavior_title => "Behavior/Efficacy Section",
                    :behavior_intro => "In addition to examining improvements in curriculum knowledge, Fruitful Minds measures efficacy by seeing whether the lessons have been effective in increasing student ability to make changes in their own lives. Students rated their agreement with statements about their confidence in their ability to improve their diet and activity habits as part of the pre and post surveys.",
-                   :increase_header => "There was an increase in agreement that students could",
+                   :increase_header => "There was most increase in agreement that students could",
                    :slight_increase_header => "There was a slight increase in agreement that students could",
-                   :decrease_header => "There was a significant decrease in agreement that students could",
+                   :decrease_header => "There was decrease or least increase in agreement that students could",
                    :slight_decrease_header => "There was a slight decrease in agreement that students could",
-                   :comp_header => "Students were compentent prior to the curriculum in the following areas",
+                   :comp_header => "Prior to the curriculum students were already confident that they could",
                    :summary_header => "Summary of findings:",
 
                   

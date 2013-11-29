@@ -118,7 +118,7 @@ class ReportsController < ApplicationController
     end
 
     assign_titles
-    @improvement_intro = "#{@presurvey_total} students took the pre-curriculum survey and #{@postsurvey_total} students took the post-curriculum survey. These were not necessarily the same students. However, on average, students showed significant increases in their agreement that they could"
+    @improvement_intro = "#{@presurvey_total} students took the pre-curriculum survey and #{@postsurvey_total} students took the post-curriculum survey. These were not necessarily the same students."
   
   end
 
@@ -167,7 +167,7 @@ class ReportsController < ApplicationController
       @objective_comp = objective_stats[2]
       @eval_intro_first = "Prior to the curriculum, a pre-curriculum survey was distributed to assess the students\' knowledge in nutrition; a very similar survey was administered during the final class. The goal of the surveys was to determine the retention of key learning objectives from the Fruitful Minds program."
       @eval_intro_second = "On average, students have shown a #{@improvement}% improvement after going through seven weeks of classes." 
-      @eval_intro_third = "The survey results are shown below. The first graph shows the average scores in each of the six nutrition topics covered in the curriculum (see graph 1). Note that the number of questions in each category varies. The second graph shows students\' overall performance on the pre-curriculum surveys and post-curriculum survey (see graph 2). #{@presurvey_total} took the pre-curriculum survey, and #{@postsurvey_total} students took the post-curriculum surveys."
+      @eval_intro_third = "The survey results are shown below. The first graph shows the average scores in each of the six nutrition topics covered in the curriculum (see graph 1). Note that the number of questions in each category varies. The second graph shows students\' overall performance on the pre-curriculum surveys and post-curriculum survey (see graph 2). #{@presurvey_total} students took the pre-curriculum survey, and #{@postsurvey_total} students took the post-curriculum surveys."
     end
     
 
