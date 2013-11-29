@@ -56,16 +56,16 @@ Question.create!({:name=>'Section 4 Question 3', :qtype=>'Multiple Choice', :sec
 Question.create!({:name=>'Section 5 Question 1', :qtype=>'Multiple Choice', :section_id=> 5, :msg=>'The goals of food advertisements as well as the techniques that food companies use to promote their products'})
 Question.create!({:name=>'Section 5 Question 2', :qtype=>'Multiple Choice', :section_id=> 5, :msg=>'How to distinguish between the advertising and factual components on a food package'})
 
-Question.create!({:name=>'Section 6 Question 1', :qtype=>'Multiple Choice', :section_id=> 6, :msg=>'The benefits of physical activity'})
-Question.create!({:name=>'Section 6 Question 2', :qtype=>'Multiple Choice', :section_id=> 6, :msg=>'The recommended amount of exercise'})
-Question.create!({:name=>'Section 6 Question 3', :qtype=>'Multiple Choice', :section_id=> 6, :msg=>'The different types of physical activity'})
-Question.create!({:name=>'Section 6 Question 4', :qtype=>'Multiple Choice', :section_id=> 6, :msg=>'Energy balance and the consequences of consuming excess energy'})
+Question.create!({:name=>'Section 6 Question 1', :qtype=>'Efficacy', :section_id=> 6, :msg=>'The benefits of physical activity'})
+Question.create!({:name=>'Section 6 Question 2', :qtype=>'Efficacy', :section_id=> 6, :msg=>'The recommended amount of exercise'})
+Question.create!({:name=>'Section 6 Question 3', :qtype=>'Efficacy', :section_id=> 6, :msg=>'The different types of physical activity'})
+Question.create!({:name=>'Section 6 Question 4', :qtype=>'Efficacy', :section_id=> 6, :msg=>'Energy balance and the consequences of consuming excess energy'})
 
 Section.create!({:name=>'Section 1',:stype=>'Multiple Choice',:objective=>'Section 1 objective', :curriculum_id=>1})
 Section.create!({:name=>'Section 2', :stype=>'Efficacy', :curriculum_id=>1})
 Question.create!({:name=>'S1Q1',:qtype=>'Multiple Choice',:msg=>'S1Q1 stronk', :section_id=>8})
-Question.create!({:name=>'S1Q2',:qtype=>'Multiple Choice',:msg=>'S1Q2 weaaak', :section_id=>9})
-Question.create!({:name=>'S2Q1',:qtype=>'Efficacy',:msg=>'S2Q1 stronk', :section_id=>2})
+Question.create!({:name=>'S1Q2',:qtype=>'Multiple Choice',:msg=>'S1Q2 weaaak', :section_id=>8})
+Question.create!({:name=>'S2Q1',:qtype=>'Efficacy',:msg=>'S2Q1 stronk', :section_id=>9})
 
 
 User.create!({:name => "admin account", :email => "admin@fruitfulminds.org", :password => "password", :profile => "admin", :pending => 1})
