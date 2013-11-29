@@ -205,7 +205,7 @@ class ReportsController < ApplicationController
 
 
   def format_objective_data(data_list)
-    #data_list is [presurvey,postsurvey]
+    #data_list is [{presurvey},{postsurvey}]
     #pre/postsurvey are {q_id => value}
     #this function will sum up the q_values for each section
     #also returns combined_data which sums up q_values for all pre vs post
@@ -230,11 +230,14 @@ class ReportsController < ApplicationController
       section.questions.each do |q_id|
         puts data_list[0][q_id]
         puts data_list[1][q_id]
-        question = Question.find_by_id(q_id)
+        #question = Question.find_by_id(q_id)
         puts question.msg
         puts question.name
         puts section.name
         puts "NOOOOOOOOOOOOOOOOOOOOOO"
+        if data_list[0][q_id].nil? or data_list[0][q_id].nil?
+          redirect_to "/reports/new" and return
+        end
         section_pre_total += data_list[0][q_id]
         section_post_total += data_list[1][q_id]
         pre_combined[0] += data_list[0][q_id]
