@@ -345,6 +345,7 @@ class ReportsController < ApplicationController
 
     data = []
     @max = 0
+    graph_height = 0
     data_list.each do |survey_hash| #formats data to be [[presurvey_values],[postsurvey_values]]
       survey_list = []
       graph_height = 0
