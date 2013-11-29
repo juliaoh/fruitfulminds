@@ -224,7 +224,7 @@ class ReportsController < ApplicationController
     post_combined = [0]
     questions = ""
     data_list[0].keys.each do |q_id|
-      questions += " " + Question.find_by_id(q_id).name
+      questions += " " + Question.find_by_id(q_id).name + " qid: " + q_id.to_s
     end
     values = ""
     data_list[0].values.each do |v|
@@ -239,13 +239,8 @@ class ReportsController < ApplicationController
       section.questions.each do |q_id|
         
         if data_list[0][q_id].nil? or data_list[1][q_id].nil?
-          puts data_list[0][q_id]
-          puts data_list[1][q_id]
           question = Question.find_by_id(q_id)
-          puts question.msg
-          puts question.name
-          puts section.name
-          flash[:warning] = question.msg + question.name + section.name + "|||" + questions + "|||" + values
+          flash[:warning] = "qid: "+ q_id.to_s + question.msg + question.name + section.name + "|||" + questions + "|||" + values
           redirect_to "/reports/new" and return
         end
         section_pre_total += data_list[0][q_id]
