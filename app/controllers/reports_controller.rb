@@ -493,17 +493,19 @@ class ReportsController < ApplicationController
   end
 
   def generate_warnings()
+    @presurvey_subtotal /= 2
+    @postsurvey_subtotal /= 2
     if @presurvey_subtotal > @postsurvey_subtotal
       @warnings.push("WARNING: Potentially skewed data due to less students taking postsurvey than students taking presurvey")
     elsif @presurvey_subtotal < @postsurvey_subtotal
       @warnings.push("WARNING: Potentially skewed data due to more students taking postsurvey than students taking presurvey")
     end
 
-    if not @presurvey_subtotal/2 == @course_total
+    if not @presurvey_subtotal == @course_total
       @warnings.push("WARNING: Expected #{@course_total} students for the course, but there are #{@presurvey_subtotal} entries recorded for presurvey results so far.")
     end
 
-    if not @postsurvey_subtotal/2 == @course_total
+    if not @postsurvey_subtotal == @course_total
       @warnings.push("WARNING: Expected #{@course_total} students for the course, but there are #{@postsurvey_subtotal} entries recorded for postsurvey results so far.")
     end
 
