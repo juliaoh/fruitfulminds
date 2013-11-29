@@ -236,6 +236,7 @@ class ReportsController < ApplicationController
           puts question.msg
           puts question.name
           puts section.name
+          flash[:warning] = question.msg + question.name + section.name
           puts "NOOOOOOOOOOOOOOOOOOOOOO"
           redirect_to "/reports/new" and return
         end
