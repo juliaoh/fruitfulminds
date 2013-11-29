@@ -231,11 +231,13 @@ class ReportsController < ApplicationController
       values += " " + v.to_s
     end
 
+    total_question_count = 0
     @curriculum.sections.each do |section_id|
       section = Section.find_by_id(section_id)
       next if section.stype != 'Multiple Choice'
       section_pre_total = 0
       section_post_total = 0
+      section_question_count = 0
       section.questions.each do |question|
         q_id = question.id
         if data_list[0][q_id].nil? or data_list[1][q_id].nil?
@@ -247,11 +249,14 @@ class ReportsController < ApplicationController
         section_post_total += data_list[1][q_id]
         pre_combined[0] += data_list[0][q_id]
         post_combined[0] += data_list[1][q_id]
+        section_question_count += 1
+        total_question_count += 1
       end
-      pre_data.push(section_pre_total)
-      post_data.push(section_post_total)
+      pre_data.push(section_pre_total/question_count)
+      post_data.push(section_post_total/question_count)
     end
-
+    pre_combined[0] /= total_question_count
+    post_combined[0] /= total_question_count
     @max = [pre_data.compact.max, post_data.compact.max].max
     @combined_max = [pre_combined[0], post_combined[0]].max
     data = [pre_data, post_data]
