@@ -356,7 +356,7 @@ class ReportsController < ApplicationController
       end
     end
 
-    @efficacy_chart = Gchart.bar(:size => '500x200', 
+    @efficacy_chart = Gchart.bar(:size => '500x160', 
                               :title => "Efficacy Survey Results - Agreement(%)",
                               :legend => ['Pre', 'Post'],
                               :bar_colors => '990000,3399CC',
