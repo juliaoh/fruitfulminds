@@ -236,8 +236,8 @@ class ReportsController < ApplicationController
       next if section.stype != 'Multiple Choice'
       section_pre_total = 0
       section_post_total = 0
-      section.questions.each do |q_id|
-        
+      section.questions.each do |question|
+        q_id = question.id
         if data_list[0][q_id].nil? or data_list[1][q_id].nil?
           question = Question.find_by_id(q_id)
           flash[:warning] = "qid: "+ q_id.to_s + question.msg + question.name + section.name + "|||" + questions + "|||" + values
