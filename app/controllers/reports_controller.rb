@@ -144,10 +144,7 @@ class ReportsController < ApplicationController
     @efficacy_weak = efficacy_stats[1]
     @efficacy_comp = efficacy_stats[2]
     objective_data = generate_data('Multiple Choice')
-    if objective_data.nil?
-      flash[:warning] = "Not enough data"
-      redirect_to "/reports/new" and return
-    end
+    
     generate_objective_graph(objective_data)
     objective_stats = generate_strengths(objective_data)
     @objective_str = objective_stats[0]
