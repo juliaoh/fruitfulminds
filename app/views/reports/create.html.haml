@@ -44,7 +44,7 @@
   - @objective_str.values.each do |strength|
     %tr
       %ul
-        %li strength
+        %li= strength
 
 %h4= @static_contents[:weakness_intro]
 %table
@@ -52,7 +52,7 @@
   - @objective_weak.values.each do |weakness|
     %tr
       %ul
-        %li weakness
+        %li= weakness
 
 %h4= @static_contents[:comp_intro]
 %table
@@ -60,7 +60,7 @@
   - @objective_comp.values.each do |comp|
     %tr
       %ul
-        %li comp
+        %li= comp
 
 %p
 %p= @static_contents[:summary]
@@ -77,7 +77,7 @@
   - @efficacy_str.values.each do |q_msg|
     %tr
       %ul
-        %li q_msg
+        %li= q_msg
 
 %h5= @static_contents[:decrease_header]
 %table
@@ -85,7 +85,7 @@
   - @efficacy_weak.values.each do |q_msg|
     %tr
       %ul
-        %li q_msg
+        %li= q_msg
 
 %h5= @static_contents[:comp_header]
 %table
@@ -93,7 +93,7 @@
   - @efficacy_comp.values.each do |q_msg|
     %tr
       %ul
-        %li q_msg
+        %li= q_msg
 
 %h5= @static_contents[:summary_header]
 
