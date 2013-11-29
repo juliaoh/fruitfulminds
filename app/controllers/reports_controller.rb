@@ -52,6 +52,7 @@ class ReportsController < ApplicationController
     @main_semester_title = @school_semester + " Report"
     @static_contents = StaticContent.first
     @curriculum = Curriculum.find_by_id(@course.curriculum_id)
+    @questions = {}
     @warnings = []
     @warning_flag = false
     #presurvey.total & postsurvey.total are hashes of
