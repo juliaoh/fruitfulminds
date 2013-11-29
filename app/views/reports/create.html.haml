@@ -71,37 +71,33 @@
 %h5= @static_contents[:increase_header]
 %table
   %tr
-  - @efficacy_str.keys.each do |q_name|
+  - @efficacy_str.values.each do |q_msg|
     %tr
-      %td= q_name
+      %td= q_msg
 
 %h5= @static_contents[:decrease_header]
 %table
   %tr
-  - @efficacy_weak.keys.each do |q_name|
+  - @efficacy_weak.values.each do |q_msg|
     %tr
-      %td= q_name
+      %td= q_msg
 
 %h5= @static_contents[:comp_header]
 %table
   %tr
-  - @efficacy_comp.keys.each do |q_name|
+  - @efficacy_comp.values.each do |q_msg|
     %tr
-      %td= q_name
+      %td= q_msg
 
 %h5= @static_contents[:summary_header]
 
 %table
   %tr
-  - @efficacy_str.values.each do |strength|
+  - @summary_messages.each do |msg|
     %tr
-      %td= strength
+      %td= msg
 
-%table
-  %tr
-  - @efficacy_weak.values.each do |weakness|
-    %tr
-      %td= weakness
+
 
 
 

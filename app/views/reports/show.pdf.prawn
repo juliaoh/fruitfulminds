@@ -84,30 +84,26 @@ pdf.text " "
 
 pdf.text @static_contents[:increase_header], :style => :bold
 pdf.text " "
-@efficacy_str.keys.each do |q_name|
-  pdf.text "#{q_name}"
+@efficacy_str.values.each do |q_msg|
+  pdf.text "#{q_msg}"
 end
 pdf.text " "
 pdf.text @static_contents[:decrease_header], :style => :bold
 pdf.text " "
-@efficacy_weak.keys.each do |q_name|
-  pdf.text "#{q_name}"
+@efficacy_weak.values.each do |q_msg|
+  pdf.text "#{q_msg}"
 end
 pdf.text " "
 pdf.text @static_contents[:comp_header], :style => :bold
 pdf.text " "
-@efficacy_comp.keys.each do |q_name|
-  pdf.text "#{q_name}"
+@efficacy_comp.values.each do |q_msg|
+  pdf.text "#{q_msg}"
 end
 pdf.text " " 
 pdf.text @static_contents[:summary_header], :style => :bold
 pdf.text " "
-@efficacy_str.values.each do |strength|
-  pdf.text "#{strength}"
-end
-pdf.text " "
-@efficacy_weak.values.each do |weakness|
-  pdf.text "#{weakness}"
+@summary_messages.each do |msg|
+  pdf.text "#{msg}"
 end
 pdf.text " "
 pdf.text @ambassadorNoteTitle, :size => 14, :style => :bold

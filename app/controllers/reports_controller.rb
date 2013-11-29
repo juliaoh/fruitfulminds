@@ -71,7 +71,9 @@ class ReportsController < ApplicationController
     end
     calc_subtotals
     generate_intro_text
+    generate_summary
     generate_warnings
+    
 
   end
 
@@ -347,19 +349,24 @@ class ReportsController < ApplicationController
 
     data = []
     @max = 0
+    combined_data = []
     graph_height = 0
     data_list.each do |survey_hash| #formats data to be [[presurvey_values],[postsurvey_values]]
+      combined = 0
       survey_list = []
       graph_height = 0
       survey_hash.values.each do |value|
         survey_list.push(value)
+        combined += value
         graph_height += 39
       end
+      combined_data.push(combined)
       data.push(survey_list)
       if survey_list.size > 0 and survey_list.compact.max > @max
         @max = survey_list.compact.max
       end
     end
+    @efficacy_improvement = combined_data[1] - combined_data[0]
     size = '500x' + graph_height.to_s
     @efficacy_chart = Gchart.bar(:size => size, 
                               :title => "Efficacy Survey Results - Agreement(%)",
@@ -513,6 +520,16 @@ class ReportsController < ApplicationController
 
     if @warnings.length > 0
       @warning_flag = true
+    end
+
+  end
+
+  def generate_summary()
+    @summary_messages = []
+    if @efficacy_improvement > 50%
+      @summary_messages.push("Students showed great increases in confidence that they could perform healthy behaviors.")
+    elsif @efficacy_improvement > 0%
+      @summary_messages.push("Students trended towards increasing confidence that they could perform healthy behaviors.")
     end
 
   end
