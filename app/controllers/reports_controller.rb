@@ -205,26 +205,43 @@ class ReportsController < ApplicationController
 
 
   def format_objective_data(data_list)
+    #data_list is [presurvey,postsurvey]
+    #pre/postsurvey are {q_id => value}
+    #this function will sum up the q_values for each section
+    #also returns combined_data which sums up q_values for all pre vs post
+    # returns [data, combined_data]
+    # format of data and combined data is [[presurvey],[postsurvey]]
+    # where pre/post are just a list of values e.g. data = [[2,4,5],[5,8,9]]
+
     data = []
     combined_data = []
+
     @max = 0
     @combined_max = 0
-    data_list.each do |survey_hash| #formats data to be [[presurvey_values],[postsurvey_values]]
-      survey_list = []
-      combined_list = [0]
-      survey_hash.values.each do |value|
-        survey_list.push(value)
-        combined_list[0] += value
+    pre_data = []
+    post_data = []
+    pre_combined = [0]
+    post_combined = [0]
+    @curriculum.sections.each do |section_id|
+      section = Section.find_by_id(section_id)
+      next if section.stype != 'Multiple Choice'
+      section_pre_total = 0
+      section_post_total = 0
+      section.questions.each do |q_id|
+        question = Question.find_by_id(q_id)
+        section_pre_total += data_list[0][q_id]
+        section_post_total += data_list[1][q_id]
+        pre_combined[0] += data_list[0][q_id]
+        post_combined[0] += data_list[1][q_id]
       end
-      data.push(survey_list)
-      combined_data.push(combined_list)
-      if survey_list.compact.max > @max
-        @max = survey_list.compact.max
-      end
-      if combined_list.compact.max > @combined_max
-        @combined_max = combined_list.compact.max
-      end
+      pre_data.push(section_pre_total)
+      post_data.push(section_post_total)
     end
+
+    @max = [pre_data.compact.max, post_data.compact.max].max
+    @combined_max = [pre_combined[0], post_combined[0]].max
+    data = [pre_data, post_data]
+    combined_data = [pre_combined, post_combined]
     return data, combined_data
 
   end
@@ -232,6 +249,12 @@ class ReportsController < ApplicationController
   def generate_objective_graph(data_list)
     #data_list is a list of hashes [{presurvey},{postsurvey}]
     #hashes are {q_id => value}
+    #graph should be 
+    #y-axis: % value
+    #x-axis SECTIONS (not q_id/questions)
+
+    
+
     if data_list.nil?
       return
     end
@@ -327,6 +350,10 @@ class ReportsController < ApplicationController
 
   def generate_data(type)
     #type should be either 'Efficacy' or 'Multiple Choice'
+    #returns [presurvey_data, postsurvey_data]
+    #where pre&postsurvey_data are hashes {q_id, value}
+    #and value is % correct answers entered to total number of students
+
     presurvey_data = {}
     postsurvey_data = {}
     #presurvey.data & postsurvey.data are hashes of
@@ -375,7 +402,7 @@ class ReportsController < ApplicationController
       presurvey_data = calc_values(user_pre_data, presurvey_data)
       postsurvey_data = calc_values(user_post_data, postsurvey_data)
     end
-    #pre&postsurvey_data are hashes {q_id, value}
+    
     data = [presurvey_data, postsurvey_data]
     
     return data
