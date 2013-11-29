@@ -196,7 +196,6 @@ class ReportsController < ApplicationController
 
   def show
     @school_name = params[:id].chomp("_report").gsub! /_/, " "
-    school = School.find_by_name(@school_name)
     course_id = session[:course]
     @course = Course.find_by_id(course_id)
     @report_note = session[:amb_note]

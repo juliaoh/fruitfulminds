@@ -99,7 +99,7 @@ pdf.text " "
 @efficacy_comp.values.each do |q_msg|
   pdf.text "•#{q_msg}"
 end
-pdf.text " " 
+pdf.start_new_page
 pdf.text @static_contents[:summary_header], :style => :bold
 pdf.text " "
 @summary_messages.each do |msg|
