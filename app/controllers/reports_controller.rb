@@ -363,8 +363,8 @@ class ReportsController < ApplicationController
       post_value = postsurvey_data[q_id]
       delta = post_value - pre_value
       #not considered a weakness if starting value is 90%
-      possible_weakness = (((pre_value >= 90) and (post_value < 90)) or pre_value < 90) 
-      if (pre_value >= 90 and post_value >= 90)
+      possible_weakness = (((pre_value >= 80) and (post_value < 80)) or pre_value < 80) 
+      if (pre_value >= 80 and post_value >= 80)
         question = Question.find_by_id(q_id)
         comps[question.name] = question.msg
       end 
