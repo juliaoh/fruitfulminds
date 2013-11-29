@@ -49,21 +49,21 @@ pdf.text @static_contents[:strength_intro], :size => 14, :style => :bold
 pdf.text " "
 
 @objective_str.values.each do |strength|
-  pdf.text "#{strength}"
+  pdf.text "•#{strength}"
 end
 
 pdf.text " "
 pdf.text @static_contents[:weakness_intro], :size => 14, :style => :bold
 
 @objective_weak.values.each do |weakness|
-  pdf.text "#{weakness}"
+  pdf.text "•#{weakness}"
 end
 
 pdf.text " "
 pdf.text @static_contents[:comp_intro], :size => 14, :style => :bold
 
 @objective_comp.values.each do |comp|
-  pdf.text "#{comp}"
+  pdf.text "•#{comp}"
 end
 
 
@@ -85,19 +85,19 @@ pdf.text " "
 pdf.text @static_contents[:increase_header], :style => :bold
 pdf.text " "
 @efficacy_str.values.each do |q_msg|
-  pdf.text "#{q_msg}"
+  pdf.text "•#{q_msg}"
 end
 pdf.text " "
 pdf.text @static_contents[:decrease_header], :style => :bold
 pdf.text " "
 @efficacy_weak.values.each do |q_msg|
-  pdf.text "#{q_msg}"
+  pdf.text "•#{q_msg}"
 end
 pdf.text " "
 pdf.text @static_contents[:comp_header], :style => :bold
 pdf.text " "
 @efficacy_comp.values.each do |q_msg|
-  pdf.text "#{q_msg}"
+  pdf.text "•#{q_msg}"
 end
 pdf.text " " 
 pdf.text @static_contents[:summary_header], :style => :bold
