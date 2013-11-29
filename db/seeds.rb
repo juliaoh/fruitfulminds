@@ -32,7 +32,7 @@ Section.create!({:name=>'Nutrients', :stype=>'Multiple Choice', :objective=>'Dis
 Section.create!({:name=>'Nutrition Labeling', :stype=>'Multiple Choice', :objective=>'Teach students how to read and understand food labels to determine which foods are healthier than others.', :curriculum_id=>2})
 Section.create!({:name=>'Food Advertising', :stype=>'Multiple Choice', :objective=>'Explore the role that advertisements play in influencing consumers’ choice of food; let students know how to make healthy food choices based on knowledge rather than misleading advertisements.', :curriculum_id=>2})
 Section.create!({:name=>'Exercise, Energy, and Nutrition', :stype=>'Multiple Choice', :objective=>'Identify the connection between food and energy, and the role that physical activities play in overall health and longevity.', :curriculum_id=>2})
-Section.create!({:name=>'Review Lesson', :stype=>'Multiple Choice', :objective=>'Review major concepts covered in the previous lessons. Students are given a chance to practice problem-solving in different scenarios given the knowledge they have in nutrition.', :curriculum_id=>2})
+Section.create!({:name=>'Review Lesson', :stype=>'Efficacy', :objective=>'Review major concepts covered in the previous lessons. Students are given a chance to practice problem-solving in different scenarios given the knowledge they have in nutrition.', :curriculum_id=>2})
 
 Question.create!({:name=>'Section 1 Question 1', :qtype=>'Multiple Choice', :section_id=> 1, :msg=>'Factors that may lead to type 2 diabetes'})
 Question.create!({:name=>'Section 1 Question 2', :qtype=>'Multiple Choice', :section_id=> 1, :msg=>' Poor diet and lack of exercise increase risk for many diseases regardless of one’s body size'})
