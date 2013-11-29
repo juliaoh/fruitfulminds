@@ -213,7 +213,9 @@ class ReportsController < ApplicationController
   def generate_objective_graph(data_list)
     #data_list is a list of hashes [{presurvey},{postsurvey}]
     #hashes are {q_id => value}
-
+    if data_list.nil?
+      return
+    end
     axes = []
     labels = ""
     @objectives.keys.each do |section_name|
@@ -259,6 +261,9 @@ class ReportsController < ApplicationController
   def generate_efficacy_graph(data_list)
     #data_list is a list of hashes [{presurvey},{postsurvey}]
     #hashes are {q_id => value}
+    if data_list.nil?
+      return
+    end
     axes = []
     labels = ""
     @curriculum.sections.each do |section_id|
