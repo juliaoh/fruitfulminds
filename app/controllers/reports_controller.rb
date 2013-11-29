@@ -137,19 +137,24 @@ class ReportsController < ApplicationController
     
     efficacy_stats = generate_strengths(efficacy_data)
     generate_efficacy_graph(efficacy_data)
-    @efficacy_str = efficacy_stats[0] #hash {q_name => msg}
-    @efficacy_weak = efficacy_stats[1]
-    @efficacy_comp = efficacy_stats[2]
+    if not efficacy_stats.nil?
+      @efficacy_str = efficacy_stats[0] #hash {q_name => msg}
+      @efficacy_weak = efficacy_stats[1]
+      @efficacy_comp = efficacy_stats[2]
+    end
+
     objective_data = generate_data('Multiple Choice')
     
     generate_objective_graph(objective_data)
     objective_stats = generate_strengths(objective_data)
-    @objective_str = objective_stats[0]
-    @objective_weak = objective_stats[1]
-    @objective_comp = objective_stats[2]
-    @eval_intro_first = "Prior to the curriculum, a pre-curriculum survey was distributed to assess the students\' knowledge in nutrition; a very similar survey was administered during the final class. The goal of the surveys was to determine the retention of key learning objectives from the Fruitful Minds program."
-    @eval_intro_second = "On average, students have shown a #{@improvement}% improvement after going through seven weeks of classes." 
-    @eval_intro_third = "The survey results are shown below. The first graph shows the average scores in each of the six nutrition topics covered in the curriculum (see graph 1). Note that the number of questions in each category varies. The second graph shows students\' overall performance on the pre-curriculum surveys and post-curriculum survey (see graph 2). #{@presurvey_total} took the pre-curriculum survey, and #{@postsurvey_total} students took the post-curriculum surveys."
+    if not objective_stats.nil?
+      @objective_str = objective_stats[0]
+      @objective_weak = objective_stats[1]
+      @objective_comp = objective_stats[2]
+      @eval_intro_first = "Prior to the curriculum, a pre-curriculum survey was distributed to assess the students\' knowledge in nutrition; a very similar survey was administered during the final class. The goal of the surveys was to determine the retention of key learning objectives from the Fruitful Minds program."
+      @eval_intro_second = "On average, students have shown a #{@improvement}% improvement after going through seven weeks of classes." 
+      @eval_intro_third = "The survey results are shown below. The first graph shows the average scores in each of the six nutrition topics covered in the curriculum (see graph 1). Note that the number of questions in each category varies. The second graph shows students\' overall performance on the pre-curriculum surveys and post-curriculum survey (see graph 2). #{@presurvey_total} took the pre-curriculum survey, and #{@postsurvey_total} students took the post-curriculum surveys."
+    end
   end
 
   def generate_pdf
