@@ -362,12 +362,12 @@ class ReportsController < ApplicationController
                               :legend => ['Pre', 'Post'],
                               :bar_colors => '990000,3399CC',
                               :data => data,
-                              :bar_width_and_spacing => '10,0,23',
+                              :bar_width_and_spacing => '10,0,5',
                               :axis_with_labels => 'y,x',
                               :axis_labels => [labels],
                               :stacked => false,
                               :axis_range => [nil, [0,@max,10]],
-
+                              :orientation => 'horizontal'
                               )
 
 
