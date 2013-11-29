@@ -135,6 +135,15 @@ class ReportsController < ApplicationController
 
   def assign_efficacy_titles
     efficacy_data = generate_data('Efficacy')
+    objective_data = generate_data('Multiple Choice')
+    if efficacy_data.nil? or objective_data.nil?
+      redirect_to "reports/new" and return
+    elsif efficacy_data[0].keys.length != @questions['Efficacy'].length or efficacy_data[1].keys.length != @questions['Efficacy'].length
+      redirect_to "reports/new" and return
+    elsif objective_data[0].keys.length != @questions['Multiple Choice'].length or objective_data[1].keys.length != @questions['Multiple Choice'].length
+      redirect_to "reports/new" and return
+    end
+
     
     efficacy_stats = generate_strengths(efficacy_data)
     generate_efficacy_graph(efficacy_data)
@@ -144,7 +153,6 @@ class ReportsController < ApplicationController
       @efficacy_comp = efficacy_stats[2]
     end
 
-    objective_data = generate_data('Multiple Choice')
     
     generate_objective_graph(objective_data)
     objective_stats = generate_strengths(objective_data)
@@ -156,13 +164,7 @@ class ReportsController < ApplicationController
       @eval_intro_second = "On average, students have shown a #{@improvement}% improvement after going through seven weeks of classes." 
       @eval_intro_third = "The survey results are shown below. The first graph shows the average scores in each of the six nutrition topics covered in the curriculum (see graph 1). Note that the number of questions in each category varies. The second graph shows students\' overall performance on the pre-curriculum surveys and post-curriculum survey (see graph 2). #{@presurvey_total} took the pre-curriculum survey, and #{@postsurvey_total} students took the post-curriculum surveys."
     end
-    if efficacy_data.nil? or objective_data.nil?
-      redirect_to "reports/new" and return
-    elsif efficacy_data[0].keys.length != @questions['Efficacy'].length or efficacy_data[1].keys.length != @questions['Efficacy'].length
-      redirect_to "reports/new" and return
-    elsif objective_data[0].keys.length != @questions['Multiple Choice'].length or objective_data[1].keys.length != @questions['Multiple Choice'].length
-      redirect_to "reports/new" and return
-    end
+    
 
   end
 
