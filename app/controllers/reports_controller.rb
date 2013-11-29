@@ -222,6 +222,10 @@ class ReportsController < ApplicationController
     post_data = []
     pre_combined = [0]
     post_combined = [0]
+    questions = ""
+    data_list[0].keys.each do |q_id|
+      questions += " " + Question.find_by_id(q_id).name
+    end
     @curriculum.sections.each do |section_id|
       section = Section.find_by_id(section_id)
       next if section.stype != 'Multiple Choice'
@@ -236,7 +240,7 @@ class ReportsController < ApplicationController
           puts question.msg
           puts question.name
           puts section.name
-          flash[:warning] = question.msg + question.name + section.name + data_list[0].keys.length.to_s
+          flash[:warning] = question.msg + question.name + section.name + "  " + questions
           redirect_to "/reports/new" and return
         end
         section_pre_total += data_list[0][q_id]
