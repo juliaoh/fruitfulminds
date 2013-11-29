@@ -325,6 +325,16 @@ class ReportsController < ApplicationController
       return data_hash
     end
 
+    question_list = []
+    @curriculum.sections.each do |section_id|
+      section = Section.find_by_id(section_id)
+      next if section.stype != @type
+      section.questions.each do |q_id|
+        question = Question.find_by_id(q_id)
+        question_list.push(question)
+      end
+    end
+
     @course.users.each do |user|
       user_pre_data = @presurvey.data[user.id]
       user_post_data = @postsurvey.data[user.id]
@@ -341,6 +351,9 @@ class ReportsController < ApplicationController
     end
     #pre&postsurvey_data are hashes {q_id, value}
     data = [presurvey_data, postsurvey_data]
+    if not presurvey_data.keys.length == question_list.length or not postsurvey_data.keys.length == question_list.length
+      flash[:warning] = "Incomplete data entry by 1 or more ambassadors"
+      redirect_to "/reports/new" and return 
     return data
   end
 
