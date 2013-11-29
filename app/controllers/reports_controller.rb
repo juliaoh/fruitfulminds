@@ -280,6 +280,9 @@ class ReportsController < ApplicationController
     axes = []
     labels = ""
     @objectives.keys.each do |section_name|
+      if section_name.length > 12
+        section_name = section_name[0..11] + "..."
+      end
       axes.push(section_name)
       labels += section_name+"|"
     end
