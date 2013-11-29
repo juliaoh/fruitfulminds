@@ -364,6 +364,10 @@ class ReportsController < ApplicationController
     strengths = {}
     weaknesses = {}
     comps = {}
+    if data_list.nil?
+      flash[:warning] = "Not enough data"
+      redirect_to "/reports/new" and return
+    end
     #method can be used for either efficacy or MC questions
     #data_list is [presurvey_data, postsurvey_data], use generate_data to get this
     #pre/postsurvey_data is {q_id => percent value}
