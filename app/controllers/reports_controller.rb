@@ -134,12 +134,20 @@ class ReportsController < ApplicationController
 
   def assign_efficacy_titles
     efficacy_data = generate_data('Efficacy')
+    if efficacy_data.nil?
+      flash[:warning] = "Not enough data"
+      redirect_to "/reports/new" and return
+    end
     efficacy_stats = generate_strengths(efficacy_data)
     generate_efficacy_graph(efficacy_data)
     @efficacy_str = efficacy_stats[0] #hash {q_name => msg}
     @efficacy_weak = efficacy_stats[1]
     @efficacy_comp = efficacy_stats[2]
     objective_data = generate_data('Multiple Choice')
+    if objective_data.nil?
+      flash[:warning] = "Not enough data"
+      redirect_to "/reports/new" and return
+    end
     generate_objective_graph(objective_data)
     objective_stats = generate_strengths(objective_data)
     @objective_str = objective_stats[0]
@@ -364,10 +372,7 @@ class ReportsController < ApplicationController
     strengths = {}
     weaknesses = {}
     comps = {}
-    if data_list.nil?
-      flash[:warning] = "Not enough data"
-      redirect_to "/reports/new" and return
-    end
+
     #method can be used for either efficacy or MC questions
     #data_list is [presurvey_data, postsurvey_data], use generate_data to get this
     #pre/postsurvey_data is {q_id => percent value}
