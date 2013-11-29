@@ -347,16 +347,18 @@ class ReportsController < ApplicationController
     @max = 0
     data_list.each do |survey_hash| #formats data to be [[presurvey_values],[postsurvey_values]]
       survey_list = []
+      graph_height = 0
       survey_hash.values.each do |value|
         survey_list.push(value)
+        graph_height += 39
       end
       data.push(survey_list)
       if survey_list.size > 0 and survey_list.compact.max > @max
         @max = survey_list.compact.max
       end
     end
-
-    @efficacy_chart = Gchart.bar(:size => '500x160', 
+    size = '500x' + graph_height.to_s
+    @efficacy_chart = Gchart.bar(:size => size, 
                               :title => "Efficacy Survey Results - Agreement(%)",
                               :legend => ['Pre', 'Post'],
                               :bar_colors => '990000,3399CC',
