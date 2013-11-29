@@ -228,7 +228,12 @@ class ReportsController < ApplicationController
       section_pre_total = 0
       section_post_total = 0
       section.questions.each do |q_id|
-        question = Question.find_by_id(q_id)
+        if data_list[0][q_id].nil? or data_list[1][q_id].nil?
+          question = Question.find_by_id(q_id)
+          puts question.msg
+          puts question.name
+          puts section.name
+          puts "NOOOOOOOOOOOOOOOOOOOOOO"
         section_pre_total += data_list[0][q_id]
         section_post_total += data_list[1][q_id]
         pre_combined[0] += data_list[0][q_id]
