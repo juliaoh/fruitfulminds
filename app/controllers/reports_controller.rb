@@ -322,7 +322,6 @@ class ReportsController < ApplicationController
                               :axis_range => [[0,@combined_max,10]]
                             )      
 
-
   end
 
   def generate_efficacy_graph(data_list)
@@ -497,11 +496,11 @@ class ReportsController < ApplicationController
       @warnings.push("WARNING: Potentially skewed data due to more students taking postsurvey than students taking presurvey")
     end
 
-    if not @presurvey_subtotal == @course_total
+    if not @presurvey_subtotal/2 == @course_total
       @warnings.push("WARNING: Expected #{@course_total} students for the course, but there are #{@presurvey_subtotal} entries recorded for presurvey results so far.")
     end
 
-    if not @postsurvey_subtotal == @course_total
+    if not @postsurvey_subtotal/2 == @course_total
       @warnings.push("WARNING: Expected #{@course_total} students for the course, but there are #{@postsurvey_subtotal} entries recorded for postsurvey results so far.")
     end
 
