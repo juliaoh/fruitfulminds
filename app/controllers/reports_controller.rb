@@ -279,12 +279,14 @@ class ReportsController < ApplicationController
     end
     axes = []
     labels = ""
+    graph_width = 100
     @objectives.keys.each do |section_name|
       if section_name.length > 12
         section_name = section_name[0..11] + "..."
       end
       axes.push(section_name)
       labels += section_name+"|"
+      graph_width += 83
     end
     labels.chomp('|')
 
@@ -295,11 +297,11 @@ class ReportsController < ApplicationController
       return
     end
     @improvement = combined_data[1] - combined_data[0]
-    @improvement = @improvement[0]
+    @improvement = @improvement[0].round(2)
     prescore = combined_data[0]
     postscore = combined_data[1]
-
-    @nutrition_chart = Gchart.bar(:size => '1000x300', 
+    size = graph_width.to_s + 'x300'
+    @nutrition_chart = Gchart.bar(:size => size, 
                                 :title => "Survey Score in Nutrition Topics(%)",
                                 :legend => ['Pre', 'Post'],
                                 :bar_colors => '3399CC,99CCFF',
@@ -313,7 +315,7 @@ class ReportsController < ApplicationController
 
     @combined_chart = Gchart.bar(:size => '1000x300', 
                               :title => "Overall Combined Scores(%)",
-                              :legend => ['Pre-curriculum Results (' + prescore[0].to_s + '%)', 'Post-curriculum Results (' + postscore[0].to_s + '%)'],
+                              :legend => ['Pre-curriculum Results (' + prescore[0].round(2).to_s + '%)', 'Post-curriculum Results (' + postscore[0].round(2).to_s + '%)'],
                               :bar_colors => 'FF3333,990000',
                               :data => combined_data,
                               :bar_width_and_spacing => '50,25,25',
