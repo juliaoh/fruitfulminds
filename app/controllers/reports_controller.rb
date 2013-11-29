@@ -350,15 +350,15 @@ class ReportsController < ApplicationController
     data = []
     @max = 0
     combined_data = []
-    graph_height = 0
+    graph_height = 60
     data_list.each do |survey_hash| #formats data to be [[presurvey_values],[postsurvey_values]]
       combined = 0
       survey_list = []
-      graph_height = 0
+      graph_height = 60
       survey_hash.values.each do |value|
         survey_list.push(value)
         combined += value
-        graph_height += 39
+        graph_height += 25
       end
       combined_data.push(combined)
       data.push(survey_list)
