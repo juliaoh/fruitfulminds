@@ -63,8 +63,8 @@ Question.create!({:name=>'Section 6 Question 4', :qtype=>'Multiple Choice', :sec
 
 Section.create!({:name=>'Section 1',:stype=>'Multiple Choice',:objective=>'Section 1 objective', :curriculum_id=>1})
 Section.create!({:name=>'Section 2', :stype=>'Efficacy', :curriculum_id=>1})
-Question.create!({:name=>'S1Q1',:qtype=>'Multiple Choice',:msg=>'S1Q1 stronk', :section_id=>1})
-Question.create!({:name=>'S1Q2',:qtype=>'Multiple Choice',:msg=>'S1Q2 weaaak', :section_id=>1})
+Question.create!({:name=>'S1Q1',:qtype=>'Multiple Choice',:msg=>'S1Q1 stronk', :section_id=>8})
+Question.create!({:name=>'S1Q2',:qtype=>'Multiple Choice',:msg=>'S1Q2 weaaak', :section_id=>9})
 Question.create!({:name=>'S2Q1',:qtype=>'Efficacy',:msg=>'S2Q1 stronk', :section_id=>2})
 
 
