@@ -155,6 +155,14 @@ class ReportsController < ApplicationController
       @eval_intro_second = "On average, students have shown a #{@improvement}% improvement after going through seven weeks of classes." 
       @eval_intro_third = "The survey results are shown below. The first graph shows the average scores in each of the six nutrition topics covered in the curriculum (see graph 1). Note that the number of questions in each category varies. The second graph shows students\' overall performance on the pre-curriculum surveys and post-curriculum survey (see graph 2). #{@presurvey_total} took the pre-curriculum survey, and #{@postsurvey_total} students took the post-curriculum surveys."
     end
+    if efficacy_data.nil? or objective_data.nil?
+      redirect_to "reports/new" and return
+    elsif efficacy_data[0].keys.length != @questions['Efficacy'].length or efficacy_data[1].keys.length != @questions['Efficacy'].length
+      redirect_to "reports/new" and return
+    elsif objective_data[0].keys.length != @questions['Multiple Choice'].length or objective_data[1].keys.length != @questions['Multiple Choice'].length
+      redirect_to "reports/new" and return
+    end
+
   end
 
   def generate_pdf
@@ -337,13 +345,13 @@ class ReportsController < ApplicationController
       return data_hash
     end
 
-    question_list = []
+    @questions[@type] = []
     @curriculum.sections.each do |section_id|
       section = Section.find_by_id(section_id)
       next if section.stype != @type
       section.questions.each do |q_id|
         question = Question.find_by_id(q_id)
-        question_list.push(question)
+        @questions[@type].push(question)
       end
     end
 
@@ -363,10 +371,7 @@ class ReportsController < ApplicationController
     end
     #pre&postsurvey_data are hashes {q_id, value}
     data = [presurvey_data, postsurvey_data]
-    if not presurvey_data.keys.length == question_list.length or not postsurvey_data.keys.length == question_list.length
-      flash[:warning] = "Incomplete data entry by 1 or more ambassadors"
-      redirect_to "/reports/new" and return
-    end
+    
     return data
   end
 
