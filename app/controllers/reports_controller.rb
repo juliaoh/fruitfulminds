@@ -137,14 +137,14 @@ class ReportsController < ApplicationController
     efficacy_data = generate_data('Efficacy')
     objective_data = generate_data('Multiple Choice')
     if efficacy_data.nil? or objective_data.nil?
-      redirect_to "reports/new" and return
+      redirect_to "/reports/new" and return
     elsif efficacy_data[0].keys.length != @questions['Efficacy'].length or efficacy_data[1].keys.length != @questions['Efficacy'].length
-      redirect_to "reports/new" and return
+      redirect_to "/reports/new" and return
     elsif objective_data[0].keys.length != @questions['Multiple Choice'].length or objective_data[1].keys.length != @questions['Multiple Choice'].length
-      redirect_to "reports/new" and return
+      redirect_to "/reports/new" and return
     end
 
-    
+
     efficacy_stats = generate_strengths(efficacy_data)
     generate_efficacy_graph(efficacy_data)
     if not efficacy_stats.nil?
