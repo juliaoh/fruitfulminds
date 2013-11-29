@@ -526,9 +526,9 @@ class ReportsController < ApplicationController
 
   def generate_summary()
     @summary_messages = []
-    if @efficacy_improvement[0] > 50%
+    if @efficacy_improvement > 50
       @summary_messages.push("Students showed great increases in confidence that they could perform healthy behaviors.")
-    elsif @efficacy_improvement[0] > 0%
+    elsif @efficacy_improvement > 0
       @summary_messages.push("Students trended towards increasing confidence that they could perform healthy behaviors.")
     end
 
