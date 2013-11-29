@@ -43,21 +43,24 @@
   %tr
   - @objective_str.values.each do |strength|
     %tr
-      %td= •strength
+      %td= %ul
+        %li strength
 
 %h4= @static_contents[:weakness_intro]
 %table
   %tr
   - @objective_weak.values.each do |weakness|
     %tr
-      %td= •weakness
+      %td= %ul
+        %li weakness
 
 %h4= @static_contents[:comp_intro]
 %table
   %tr
   - @objective_comp.values.each do |comp|
     %tr
-      %td= •comp
+      %td= %ul
+        %li comp
 
 %p
 %p= @static_contents[:summary]
@@ -73,21 +76,24 @@
   %tr
   - @efficacy_str.values.each do |q_msg|
     %tr
-      %td= •q_msg
+      %td= %ul
+        %li q_msg
 
 %h5= @static_contents[:decrease_header]
 %table
   %tr
   - @efficacy_weak.values.each do |q_msg|
     %tr
-      %td= •q_msg
+      %td= %ul
+        %li q_msg
 
 %h5= @static_contents[:comp_header]
 %table
   %tr
   - @efficacy_comp.values.each do |q_msg|
     %tr
-      %td= •q_msg
+      %td= %ul
+        %li q_msg
 
 %h5= @static_contents[:summary_header]
 
