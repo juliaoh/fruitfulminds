@@ -234,6 +234,7 @@ class ReportsController < ApplicationController
           puts question.name
           puts section.name
           puts "NOOOOOOOOOOOOOOOOOOOOOO"
+        end
         section_pre_total += data_list[0][q_id]
         section_post_total += data_list[1][q_id]
         pre_combined[0] += data_list[0][q_id]
