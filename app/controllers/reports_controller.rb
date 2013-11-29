@@ -236,8 +236,7 @@ class ReportsController < ApplicationController
           puts question.msg
           puts question.name
           puts section.name
-          flash[:warning] = question.msg + question.name + section.name
-          puts "NOOOOOOOOOOOOOOOOOOOOOO"
+          flash[:warning] = question.msg + question.name + section.name + data_list[0].keys.length.to_s
           redirect_to "/reports/new" and return
         end
         section_pre_total += data_list[0][q_id]
