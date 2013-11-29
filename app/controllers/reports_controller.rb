@@ -278,6 +278,9 @@ class ReportsController < ApplicationController
     data = []
     combined_data = []
     data, combined_data = format_objective_data(data_list)
+    if data.nil? or combined_data.nil?
+      return
+    end
     @improvement = combined_data[1] - combined_data[0]
     @improvement = @improvement[0]
     prescore = combined_data[0]
