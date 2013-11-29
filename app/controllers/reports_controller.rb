@@ -353,7 +353,8 @@ class ReportsController < ApplicationController
     data = [presurvey_data, postsurvey_data]
     if not presurvey_data.keys.length == question_list.length or not postsurvey_data.keys.length == question_list.length
       flash[:warning] = "Incomplete data entry by 1 or more ambassadors"
-      redirect_to "/reports/new" and return 
+      redirect_to "/reports/new" and return
+    end
     return data
   end
 
