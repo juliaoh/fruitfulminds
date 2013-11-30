@@ -142,10 +142,10 @@ class ReportsController < ApplicationController
       flash[:warning] = "Not enough data"
       redirect_to "/reports/new" and return
     elsif efficacy_data[0].keys.length != @questions['Efficacy'].length or efficacy_data[1].keys.length != @questions['Efficacy'].length
-      flash[:warning] = "Not enough data1 " + @questions['Efficacy'].length.to_s + ' ' + efficacy_data[0].keys.length.to_s
+      flash[:warning] = "Not enough data"
       redirect_to "/reports/new" and return
     elsif objective_data[0].keys.length != @questions['Multiple Choice'].length or objective_data[1].keys.length != @questions['Multiple Choice'].length
-      flash[:warning] = "Not enough data2"
+      flash[:warning] = "Not enough data"
       redirect_to "/reports/new" and return
     end
 
@@ -250,7 +250,7 @@ class ReportsController < ApplicationController
         q_id = question.id
         if data_list[0][q_id].nil? or data_list[1][q_id].nil?
           question = Question.find_by_id(q_id)
-          flash[:warning] = "qid: "+ q_id.to_s + question.msg + question.name + section.name + "|||" + questions + "|||" + values
+          flash[:warning] = "Unexpected error with data (Check if data is incomplete)"
           redirect_to "/reports/new" and return
         end
         section_pre_total += data_list[0][q_id]
