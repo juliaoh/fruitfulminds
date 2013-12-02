@@ -73,7 +73,7 @@ Background: Generate curric, courses, login
   Scenario: Use navbar dropdown to get to users page (happy path)
     When I click on navbar "#Users"
     When I click css id "#ShowUsers"
-    Then I should be on the users page
+    Then I should be on the all_users page
 
 
   @javascript
