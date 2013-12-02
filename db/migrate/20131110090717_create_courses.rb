@@ -7,7 +7,7 @@ class CreateCourses < ActiveRecord::Migration
       t.integer :curriculum_id, :null => false;
       t.integer :presurvey_id, :null => false;
       t.integer :postsurvey_id, :null => false;
-      t.boolean :active
+      t.integer :active, :null => false;
       t.timestamps
     end
   end

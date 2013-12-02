@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 20131111035944) do
     t.integer  "curriculum_id",  :null => false
     t.integer  "presurvey_id",   :null => false
     t.integer  "postsurvey_id",  :null => false
-    t.boolean  "active"
+    t.integer  "active",         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

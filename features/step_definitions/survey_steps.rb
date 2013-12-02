@@ -71,7 +71,7 @@ Given /the following postsurveys exist/ do |table|
     total
   end
   table.hashes.each do |result|
-    total = {1=>25} 
+    total = {1=>25}
     data = {1=>{1=>20,2=>18,3=>24,4=>25}}
     Postsurvey.create!(:total=>total, :data=>data, :course_id=>result["course_id"], :curriculum_id=>1)
   end
@@ -105,4 +105,4 @@ Given /the following courses exist/ do |table|
     Course.create!(course)
   end
 end
-    
+

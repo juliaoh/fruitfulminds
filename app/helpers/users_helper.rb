@@ -41,7 +41,7 @@ module UsersHelper
     true
   end
 
-    def handle_pending_users(params)
+  def handle_pending_users(params)
     flash_message_hash = {}
     if not params[:disapproves].nil? and not params[:approves].nil?
       flash_message_hash = handle_invalid_action(params, flash_message_hash)
@@ -158,7 +158,7 @@ module UsersHelper
                               :total_students => 0,
                               :presurvey_id => presurvey.id,
                               :postsurvey_id => postsurvey.id,
-                              :active => true
+                              :active => 1
                               )
       presurvey.course_id = course.id
       postsurvey.course_id = course.id

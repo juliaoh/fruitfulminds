@@ -6,7 +6,7 @@ class Course < ActiveRecord::Base
   has_one :presurvey
   has_one :postsurvey
 
-  validates :active, :presence => true, :inclusion => [true, false]
+  validates :active, :presence => true, :inclusion => [0,1]
 
 
   def name
@@ -14,7 +14,7 @@ class Course < ActiveRecord::Base
   end
 
   def active?
-    active
+    active == 1
   end
 
   def curriculum
