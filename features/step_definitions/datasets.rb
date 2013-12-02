@@ -176,9 +176,9 @@ end
 Given /^the sorting database is set up$/ do
   steps %Q{
      Given the following schools exist:
-      | name    | county  | city     | district |
-      | School1 | Alameda | Berkeley | District |
-      | Fruit   | Fruit   | Fruit    | Fruit    |
+      | name           | county  | city     | district |
+      | School1        | Alameda | Berkeley | District |
+      | Fruity Pebbles | Fruit   | Fruit    | Fruit    |
 
     And the following colleges exist:
       | name         |
