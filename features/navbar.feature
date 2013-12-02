@@ -75,7 +75,6 @@ Background: Generate curric, courses, login
     When I click css id "#ShowUsers"
     Then I should be on the all users page
 
-
   @javascript
   Scenario: Use navbar dropdown but stay on page (sad path)
     When I click on navbar "#Users"
