@@ -40,7 +40,8 @@ Given /^I fill in all of the registration text fields$/ do
     And I fill in "Last Name" with "Kirigaya"
     And I fill in "Email Address" with "sao@sao.com"
     And I select "UC Berkeley" from "College"
-    And I select "school1, Berkeley, Alameda, Fall 2013" from "School"
+    And I select "school1, Berkeley, Alameda" from "School"
+    And I select "Fall 2013" from "Semester"
     And I fill in "user_password" with "password"
     And I fill in "user_confirm_password" with "password"
   }
@@ -52,7 +53,8 @@ Given /^I fill in all registration fields except password fields$/ do
     And I fill in "Last Name" with "Kirigaya"
     And I fill in "Email Address" with "sao@sao.com"
     And I select "UC Berkeley" from "College"
-    And I select "school1, Berkeley, Alameda, Fall 2013" from "School"
+    And I select "school1, Berkeley, Alameda" from "School"
+    And I select "Fall 2013" from "Semester"
   }
 end
 

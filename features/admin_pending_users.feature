@@ -17,7 +17,8 @@ Feature: Admin approves/disapproves new users before they are given access to th
     And I should see "pending_user@gmail.com"
     And I should see "Pending User"
     And I should see "UC Berkeley"
-    And I should see "school1, Berkeley, Alameda, Fall 2013"
+    And I should see "school1, Berkeley, Alameda"
+    And I should see "Fall 2013"
 
   Scenario: Admin approves a pending user
     And I approve "Pending User"

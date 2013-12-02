@@ -35,11 +35,11 @@ Given /^dataset1 is set up$/ do
       | 1         | Fall 2013   | 1             | 25              | 1            | 1             | true   |
 
     And the following users exist:
-      | email                   | password | name          | profile    | pending | college_id | pending_course_id |
-      | admin@gmail.com         | 123f5    | Admin         | admin      | 1       | 1          |                   |
-      | approved_user@gmail.com | 12323    | Approved User | ambassador | 1       | 1          |                   |
-      | pending_user@gmail.com  | 2isd82   | Pending User  | ambassador | 0       | 1          | 1                 |
-      | pending_user2@gmail.com | 2isd82   | Pending User2 | ambassador | 0       | 1          | 1                 |
+      | email                   | password | name          | profile    | pending | college_id | pending_school_id | pending_semester |
+      | admin@gmail.com         | 123f5    | Admin         | admin      | 1       | 1          |                   |                  |
+      | approved_user@gmail.com | 12323    | Approved User | ambassador | 1       | 1          |                   |                  |
+      | pending_user@gmail.com  | 2isd82   | Pending User  | ambassador | 0       | 1          | 1                 | Fall 2013        |
+      | pending_user2@gmail.com | 2isd82   | Pending User2 | ambassador | 0       | 1          | 1                 | Fall 2013        |
 
     And the following users have courses:
       | user_id  | course_id  |
@@ -101,9 +101,9 @@ Given /^the no pending user dataset is set up$/ do
       | 1         | Fall 2013   | 1             | 25              | 1            | 1             | true   |
 
     And the following users exist:
-      | email                   | password | name          | profile    | pending | college_id | pending_course_id |
-      | admin@gmail.com         | 123f5    | Admin         | admin      | 1       | 1          |                   |
-      | approved_user@gmail.com | 12323    | Approved User | ambassador | 1       | 1          |                   |
+      | email                   | password | name          | profile    | pending | college_id | pending_school_id | pending_semester |
+      | admin@gmail.com         | 123f5    | Admin         | admin      | 1       | 1          |                   |                  |
+      | approved_user@gmail.com | 12323    | Approved User | ambassador | 1       | 1          |                   |                  |
 
     And the following users have courses:
       | user_id  | course_id  |
@@ -157,11 +157,11 @@ Given /^the multiple ambassador dataset is set up$/ do
       | 2         | Fall 2013   | 1             | 25              | 2            | 2             | true   |
 
     And the following users exist:
-      | email                   | password | name          | profile    | pending | college_id | pending_course_id |
-      | admin@gmail.com         | 123f5    | Admin         | admin      | 1       | 1          |                   |
-      | ambassador1@gmail.com   | qwerty   | Ambassador1   | ambassador | 1       | 1          |                   |
-      | ambassador2@gmail.com   | qwerty   | Ambassador2   | ambassador | 1       | 1          |                   |
-      | ambassador3@gmail.com   | qwerty   | Ambassador3   | ambassador | 1       | 1          |                   |
+      | email                   | password | name          | profile    | pending | college_id | pending_school_id | pending_semester |
+      | admin@gmail.com         | 123f5    | Admin         | admin      | 1       | 1          |                   |                  |
+      | ambassador1@gmail.com   | qwerty   | Ambassador1   | ambassador | 1       | 1          |                   |                  |
+      | ambassador2@gmail.com   | qwerty   | Ambassador2   | ambassador | 1       | 1          |                   |                  |
+      | ambassador3@gmail.com   | qwerty   | Ambassador3   | ambassador | 1       | 1          |                   |                  |
 
     And the following users have courses:
       | user_id  | course_id  |
