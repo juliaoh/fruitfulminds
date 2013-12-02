@@ -14,8 +14,9 @@ Background: results are to be added to database
 Scenario: add new survey results to database
   When I follow "Show Pre-Survey"
   When I press "Edit Pre-Survey"
-  And I fill in "new_data[2][1]" with "10"
-  And I fill in "new_data[2][2]" with "10"
+  And I fill in "new_data[absolute_total_students]" with "35"
+  And I fill in "new_data[2][student_subtotal]" with "5"
+  And I fill in "new_data[2][1]" with "2"
+  And I fill in "new_data[2][2]" with "3"
   And I press "Save Changes"
   Then I should see "Survey updated successfully."
-
