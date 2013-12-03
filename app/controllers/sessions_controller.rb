@@ -18,7 +18,10 @@ class SessionsController < ApplicationController
     end
   end
 
-  def create_handle_deactivated
+  def create_handle_deactivated_user()
+    flash[:warning] = "Your account has been deactivated. Please contact an administrator to reactivate your account."
+    redirect_to login_path and return
+  end
 
   def create_handle_pending_user()
     flash[:warning] = %Q{
