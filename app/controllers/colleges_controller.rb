@@ -2,7 +2,7 @@ class CollegesController < ApplicationController
   before_filter :admin_only
 
   def index
-    @all_colleges = College.all
+    @all_colleges = College.all(:order => :name)
   end
 
   def new
