@@ -70,9 +70,9 @@ module UsersHelper
   def handle_all_approvals(params, flash_message_hash)
     params[:approves].keys.each do |uid|
       user = User.find_by_id(uid)
-      if not flash_message_hash.has_key?(user.id)
+      if not flash_message_hash.has_key?(uid)
         handle_approve_user(user, params)
-        flash_message_hash[user.id] = "#{user.name} was approved."
+        flash_message_hash[uid] = "#{user.name} was approved."
       end
     end
     return flash_message_hash
@@ -81,8 +81,8 @@ module UsersHelper
   def handle_all_disapprovals(params, flash_message_hash)
     params[:disapproves].keys.each do |uid|
       user = User.find_by_id(uid)
-      if not flash_message_hash.has_key?(user.id)
-        flash_message_hash[user.id] = "#{user.name} was disapproved."
+      if not flash_message_hash.has_key?(uid)
+        flash_message_hash[uid] = "#{user.name} was disapproved."
         handle_disapprove_user(user)
       end
     end
