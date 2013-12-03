@@ -154,10 +154,13 @@ class ReportsController < ApplicationController
     generate_efficacy_graph(efficacy_data)
     if not efficacy_stats.nil?
       @efficacy_str = efficacy_stats[0] #hash {q_name => msg}
+      if @efficacy_str.keys.length == 0
+        @efficacy_str['N/A'] = 'Students show no significant increase in agreement'
+      end
       @efficacy_weak = efficacy_stats[1]
       @efficacy_comp = efficacy_stats[2]
       if @efficacy_comp.keys.length == 0
-        @efficacy_comp['N/A'] = 'N/A'
+        @efficacy_comp['N/A'] = 'Students did not show competency in any areas of Fruitful Minds teaching prior to the lessons.'
       end
     end
 
@@ -166,10 +169,13 @@ class ReportsController < ApplicationController
     objective_stats = generate_strengths(objective_data)
     if not objective_stats.nil?
       @objective_str = objective_stats[0] #hash {q_name => msg}
+      if @objective_str.keys.length == 0
+        @objective_str['N/A'] = 'Students show no strengths'
+      end
       @objective_weak = objective_stats[1]
       @objective_comp = objective_stats[2]
       if @objective_comp.keys.length == 0
-        @objective_comp['N/A'] = 'N/A'
+        @objective_comp['N/A'] = 'Students did not show competency in any areas of Fruitful Minds teaching prior to the lessons.'
       end
       @eval_intro_first = "Prior to the curriculum, a pre-curriculum survey was distributed to assess the students\' knowledge in nutrition; a very similar survey was administered during the final class. The goal of the surveys was to determine the retention of key learning objectives from the Fruitful Minds program."
       @eval_intro_second = "On average, students have shown a #{@improvement}% improvement after going through seven weeks of classes." 
@@ -480,7 +486,7 @@ class ReportsController < ApplicationController
       post_value = postsurvey_data[q_id]
       delta = post_value - pre_value
       #not considered a weakness if starting value is 90%
-      possible_weakness = (((pre_value >= 80) and (post_value < 80)) or pre_value < 80) 
+      possible_weakness = (((pre_value >= 80) and (post_value < 80)) or pre_value < 80)
       if (pre_value >= 80 and post_value >= 80)
         question = Question.find_by_id(q_id)
         comps[question.name] = question.msg
@@ -493,7 +499,9 @@ class ReportsController < ApplicationController
     sorted_data = data.sort_by {|info_list| [info_list[1]]}
     sorted_data[0..4].each do |info_list|
       question = Question.find_by_id(info_list[0])
-      strengths[question.name] = question.msg #message
+      if info_list[1] > 0 #infolist[1]  is the delta
+        strengths[question.name] = question.msg
+      end
     end
 
     weak_count = 0
