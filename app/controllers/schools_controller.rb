@@ -2,7 +2,7 @@ class SchoolsController < ApplicationController
   before_filter :admin_only
 
   def index
-    @all_schools = School.all
+    @all_schools = School.all(:order=>:name)
   end
 
   def new
