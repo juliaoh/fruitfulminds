@@ -5,8 +5,10 @@ class SessionsController < ApplicationController
   def create
     user = User.where(:email => params[:user][:email]).first
     if user && user.authenticate(params[:user][:password])
-      if user.pending?
+      if user.pending == 0
         create_handle_pending_user()
+      elsif user.pending == 2
+        create_handle_deactivated_user()
       else
         create_handle_admin(user)
       end
@@ -15,6 +17,8 @@ class SessionsController < ApplicationController
       redirect_to login_path
     end
   end
+
+  def create_handle_deactivated
 
   def create_handle_pending_user()
     flash[:warning] = %Q{
