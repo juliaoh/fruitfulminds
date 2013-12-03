@@ -305,10 +305,10 @@ class ReportsController < ApplicationController
       return
     end
     @improvement = combined_data[1] - combined_data[0]
-    if not @improvement.nil?
+    if not @improvement[0].nil?
       @improvement = @improvement[0].round(2)
     else
-      @improvement = 0
+      @improvement[0] = 0
     end
     prescore = combined_data[0]
     postscore = combined_data[1]
@@ -377,8 +377,8 @@ class ReportsController < ApplicationController
       end
     end
     @efficacy_improvement = combined_data[1] - combined_data[0]
-    if @efficacy_improvement.nil?
-      @efficacy_improvement = 0
+    if @efficacy_improvement[0].nil?
+      @efficacy_improvement[0] = 0
     end
     size = '500x' + graph_height.to_s
     @efficacy_chart = Gchart.bar(:size => size, 
