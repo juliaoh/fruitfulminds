@@ -3,7 +3,7 @@
   = label :user, :name, "Name: #{@user.name}"
   = label :user, :email, "Email: #{@user.email}"
   = label :college, :name, "College:"
-  = select :college, :name, options_for_select(College.all.collect { |c| [c.name, c.id] }, @college.id)
+  = select :college, :name, options_for_select(College.all.collect { |c| [c.name, c.id] }.sort, @college.id)
   %br
   = submit_tag 'Update User Info'
 
@@ -18,11 +18,11 @@
 = form_tag add_course_path({:user => @user}), :method => :put do
   %h4= "Add Course"
   = label_tag "School"
-  = select_tag "school[#{@user.id}]", options_for_select(School.all.collect { |s| ["#{s.name}, #{s.city}, #{s.county}", s.id]}), :style => "width: 325px;"
+  = select_tag "school[#{@user.id}]", options_for_select(School.all.collect { |s| ["#{s.name}, #{s.city}, #{s.county}", s.id]}.sort), :style => "width: 325px;"
   = label_tag "Semester"
   = select_tag "semester[#{@user.id}]", options_for_select(["Spring #{Time.now.year-1}", "Fall #{Time.now.year-1}", "Spring #{Time.now.year}", "Fall #{Time.now.year}", "Spring #{Time.now.year+1}", "Fall #{Time.now.year+1}"]), :style => "width: 125px;"
   = label_tag "Curriculum"
-  = select_tag "curriculum[#{@user.id}]", options_for_select(Curriculum.all.collect { |curriculum| [curriculum.name, curriculum.id] }), :style => "width: 150px;"
+  = select_tag "curriculum[#{@user.id}]", options_for_select(Curriculum.all.collect { |curriculum| [curriculum.name, curriculum.id] }.sort), :style => "width: 150px;"
   %br
   = submit_tag "Add"
 
