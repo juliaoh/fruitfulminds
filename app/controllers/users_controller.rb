@@ -63,7 +63,9 @@ class UsersController < ApplicationController
   end
 
   def all_users
-    @all_users = filter_users("all")
+    users = filter_users("all")
+    @active_users = users.select { |user| user.pending == 1 }
+    @inactive_users = users.select { |user| user.pending == 2 }
   end
 
   def pending_users
