@@ -35,7 +35,7 @@ module SurveyControllersHelper
     course = survey.course
     @school_name = course.name
     @users = course.users
-    if not @users.exists?(@current_user)
+    if not @users.exists?(@current_user) and not @current_user.admin?
       redirect_to portal_path
       flash[:warning] = "You do not have access to that course"
       return

@@ -11,7 +11,7 @@
       %th Pre-Surveys
       %th Post-Surveys
   %tbody
-  - @courses.each do |course|
+  - @active_courses.each do |course|
     %tr
       %td
         = "#{course.name}"
@@ -24,4 +24,26 @@
         - survey = Postsurvey.find_by_course_id(course.id)
         = link_to "Show Post-Survey", postsurvey_path(survey), :id => survey.id, class: "btn"
 
-= link_to "Show Inactive Courses", inactive_courses_path, class: "btn"
+%h4
+  = "Inactive Courses for #{@current_user.name}"
+%table.table
+  %thead
+    %tr
+      %th School Course
+      %th Curriculum
+      %th Pre-Surveys
+      %th Post-Surveys
+  %tbody
+  - @inactive_courses.each do |course|
+    %tr
+      %td
+        = "#{course.name}"
+      %td
+        = "#{course.curriculum.name}"
+      %td
+        - survey = Postsurvey.find_by_course_id(course.id)
+        = link_to "Show Pre-Survey", presurvey_path(survey), :id => survey.id, class: "btn"
+      %td
+        - survey = Postsurvey.find_by_course_id(course.id)
+        = link_to "Show Post-Survey", postsurvey_path(survey), :id => survey.id, class: "btn"
+
