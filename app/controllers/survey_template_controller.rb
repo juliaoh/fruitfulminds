@@ -1,4 +1,5 @@
 class SurveyTemplateController < ApplicationController
+  before_filter :admin_only
   skip_before_filter :verify_authenticity_token, :only => [:create, :update]
   def index
     @unpublished_templates = Curriculum.where(:published => false)

@@ -35,6 +35,11 @@ module SurveyControllersHelper
     course = survey.course
     @school_name = course.name
     @users = course.users
+    if not @users.exists?(@current_user)
+      redirect_to portal_path
+      flash[:warning] = "You do not have access to that course"
+      return
+    end
     @curriculum = survey.curriculum
     yield(model, survey, course)
   end

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include UsersHelper
   skip_before_filter :current_user, :only => [:new, :create, :tos]
-  before_filter :admin_only, :only => [:index, :all_users, :update_all_users, :pending_user, :update_pending_user, :delete_pending_user]
+  before_filter :admin_only, :only => [:index, :all_users, :update_all_users, :pending_users, :update_pending_user, :delete_pending_user]
   before_filter :logged_in, :only => [:new]
 
   # show user info and profile
