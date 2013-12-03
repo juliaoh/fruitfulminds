@@ -5,6 +5,7 @@ class Course < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_one :presurvey
   has_one :postsurvey
+  has_one :report
 
   validates :active, :presence => true, :inclusion => [0,1]
 
