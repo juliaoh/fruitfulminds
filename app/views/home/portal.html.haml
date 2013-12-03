@@ -1,6 +1,8 @@
 - @subtitle = "Portal"
 - @menu = "Courses"
 
+%h4
+  = "Active Courses for #{@current_user.name}"
 %table.table
   %thead
     %tr
@@ -21,3 +23,5 @@
       %td
         - survey = Postsurvey.find_by_course_id(course.id)
         = link_to "Show Post-Survey", postsurvey_path(survey), :id => survey.id, class: "btn"
+
+= link_to "Show Inactive Courses", inactive_courses_path, class: "btn"
