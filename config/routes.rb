@@ -9,6 +9,7 @@ Fruitfulminds::Application.routes.draw do
   resources :schools
   resources :colleges
   resources :admin
+  resources :historical
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
