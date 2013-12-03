@@ -143,4 +143,11 @@ class UsersController < ApplicationController
     flash[:notice] = "#{user.name} has been deactivated."
     redirect_to all_users_path
   end
+
+  def activate_user
+    user = User.find_by_id(params[:user])
+    user.update_attributes!(:pending => 1)
+    flash[:notice] = "#{user.name} has been activated."
+    redirect_to all_users_path
+  end
 end

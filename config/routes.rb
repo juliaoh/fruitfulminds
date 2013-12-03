@@ -29,6 +29,7 @@ Fruitfulminds::Application.routes.draw do
   match "all_users" => "users#all_users", :as => "all_users", :via => :get
   match "update_all_users" => "users#update_all_users", :as => "update_all_users", :via => :post
   match "deactivate_user" => "users#deactivate_user", :as => "deactivate_user"
+  match "activate_user" => "users#activate_user", :as => "activate_user"
   match "all_efficacies" => "reports#all_efficacies", :as => "all_efficacies", :via => :get
   root :to => redirect('/portal')
 
