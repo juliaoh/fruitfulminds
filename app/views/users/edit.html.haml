@@ -38,3 +38,6 @@
   %br
   = submit_tag "Add"
 
+%h4
+  = "Deactivate User"
+= button_to "Deactivate User", deactivate_user_path({:user => @user}), :confirm => "Are you sure you want to deactivate #{@user.name}?"
