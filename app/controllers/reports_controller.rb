@@ -377,8 +377,8 @@ class ReportsController < ApplicationController
       end
     end
     @efficacy_improvement = combined_data[1] - combined_data[0]
-    if @efficacy_improvement[0].nil?
-      @efficacy_improvement[0] = 0
+    if @efficacy_improvement.nil?
+      @efficacy_improvement = 0
     end
     size = '500x' + graph_height.to_s
     @efficacy_chart = Gchart.bar(:size => size, 
