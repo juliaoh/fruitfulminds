@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(:version => 20131203063213) do
     t.text     "competencies"
     t.string   "admin_message"
     t.string   "report_link"
+    t.string   "semester"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
