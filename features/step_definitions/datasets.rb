@@ -201,10 +201,14 @@ Given /^the sorting database is set up$/ do
     And the following presurveys exist:
       |   data            |    total        | course_id |
       |   PRESURVEY_DATA  | PRESURVEY_TOTAL |    1      |
+      |   PRESURVEY_DATA  | PRESURVEY_TOTAL |    2      |
+      |   PRESURVEY_DATA  | PRESURVEY_TOTAL |    3      |
 
     And the following postsurveys exist:
       | data            |   total           | course_id |
       | POSTSURVEY_DATA | POSTSURVEY_TOTAL  |    1      |
+      | POSTSURVEY_DATA | POSTSURVEY_TOTAL  |    2      |
+      | POSTSURVEY_DATA | POSTSRUVEY_TOTAL  |    3      |
 
 
     And the following courses exist:
