@@ -9,6 +9,7 @@ class Course < ActiveRecord::Base
   validates :active, :presence => true, :inclusion => [0,1]
 
   after_find :check_active
+  #after_create :check_active
 
 
   def name

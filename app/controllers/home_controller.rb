@@ -1,12 +1,13 @@
 class HomeController < ApplicationController
   def portal
+    courses = Course.all
     if @current_user.admin?
-      @active_courses = Course.where(:active => 1)
-      @inactive_courses = Course.where(:active => 0)
+      courses = Course.all
     else
-      @active_courses = @current_user.courses.select { |course| course.active == 1 }
-      @inactive_courses = @current_user.courses.select { |course| course.active == 0 }
+      courses = @current_user.courses
     end
+    @active_courses = courses.select { |course| course.active == 0 }
+    @inactive_courses = courses.select { |course| course.active == 1 }
     @active_courses.sort! do |a, b|
       a.compare_name_and_semester(b)
     end
