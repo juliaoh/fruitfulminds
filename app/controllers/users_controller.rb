@@ -65,16 +65,23 @@ class UsersController < ApplicationController
   end
 
   def all_users
-    @all_users = []
-    User.all.each do |user|
-      if !user.admin? and !user.pending?
-        @all_users << user
-      end
-    end
+    @all_users = filter_users("all")
   end
 
   def pending_users
-    @pending_users = User.where(:pending => 0).sort
+    @pending_users = filter_users("pending")
+  end
+
+  def filter_users(str)
+    ret_users = []
+    User.all(:order=>:name).each do |user|
+      if str == "all" and !user.admin? and !user.pending?
+        ret_users << user
+      elsif str == "pending" and user.pending?
+        ret_users << user
+      end
+    end
+    return ret_users
   end
 
   def update_pending_users
