@@ -2,4 +2,5 @@
 
 = render "presurveys/show_content"
 
-= button_to "Edit Pre-Survey", edit_presurvey_path(params[:id]), :method => :get, :id => params[:id]
+- if @course.active?
+  = button_to "Edit Pre-Survey", edit_presurvey_path(params[:id]), :method => :get, :id => params[:id]

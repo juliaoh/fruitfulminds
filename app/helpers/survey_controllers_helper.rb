@@ -29,19 +29,28 @@ module SurveyControllersHelper
 
   class TotalError < StandardError; end
 
+  def active_only
+    setup_model(params) do |model, survey, course|
+      if not course.active?
+        flash[:warning] = "Course is inactive"
+        redirect_to portal_path
+      end
+    end
+  end
+
   def setup_model(params)
     model = controller_name.classify.constantize
     survey = model.includes({:course=> [:school, :users]}, :curriculum).find_by_id(params[:id])
-    course = survey.course
-    @school_name = course.name
-    @users = course.users
+    @course = survey.course
+    @school_name = @course.name
+    @users = @course.users
     if not @users.exists?(@current_user) and not @current_user.admin?
       redirect_to portal_path
       flash[:warning] = "You do not have access to that course"
       return
     end
     @curriculum = survey.curriculum
-    yield(model, survey, course)
+    yield(model, survey, @course)
   end
 
   def setup_data(params)
