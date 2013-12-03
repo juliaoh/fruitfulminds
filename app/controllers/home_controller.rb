@@ -5,6 +5,7 @@ class HomeController < ApplicationController
     else
       @courses = @current_user.courses.select { |course| course.active == 1 }
     end
+    @courses.sort_by! { |course| course.name }
   end
 
   def inactive_courses
@@ -13,5 +14,6 @@ class HomeController < ApplicationController
     else
       @courses = @current_user.courses.select { |course| course.active == 0 }
     end
+    @courses.sort_by! { |course| course.name }
   end
 end
