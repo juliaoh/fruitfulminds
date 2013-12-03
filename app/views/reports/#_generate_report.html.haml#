@@ -1,7 +1,0 @@
-- @subtitle = "Generate Report"
-- @menu = "Reports"
-
-=form_tag reports_path do
-	=label :course, "Course"
-	=select_tag :course, options_for_select(@courses, "id", "name")
-	=submit_tag "Generate Report"
