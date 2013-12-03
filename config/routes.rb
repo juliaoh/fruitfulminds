@@ -24,6 +24,7 @@ Fruitfulminds::Application.routes.draw do
   match "tos" => "users#tos", :as => "tos"
   match "remove_course" => "users#remove_course", :as => "remove_course"
   match "add_course" => "users#add_course", :as => "add_course"
+  match "inactive_courses" => "home#inactive_courses", :as => "inactive_courses"
   match "all_users" => "users#all_users", :as => "all_users", :via => :get
   match "update_all_users" => "users#update_all_users", :as => "update_all_users", :via => :post
   match "all_efficacies" => "reports#all_efficacies", :as => "all_efficacies", :via => :get
