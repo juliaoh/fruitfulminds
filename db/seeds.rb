@@ -16,26 +16,17 @@ School.create!({:name => "Washington Elementary", :county => "Alameda", :city =>
 School.create!({:name => "Willard Middle", :county => "Alameda", :district => "BUSD", :city => "Berkeley"})
 
 College.create!({:name=>'UC Berkeley'})
-College.create!({:name=>'Vegetable College'})
-College.create!({:name=>'College of the Fruits'})
 
-Course.create!({:semester =>"Fall 2013", :total_students=>50, :school_id=>1, :curriculum_id=>2, :presurvey_id=>1, :postsurvey_id=>1, :active => 1})
-Course.create!({:semester =>"Fall 2013", :total_students=>30, :school_id=>2, :curriculum_id=>1, :presurvey_id=>2, :postsurvey_id=>2, :active => 1})
-Course.create!({:semester =>"Fall 2013", :total_students=>20, :school_id=>3, :curriculum_id=>1, :presurvey_id=>3, :postsurvey_id=>3, :active => 1})
-Course.create!({:semester =>"Fall 2013", :total_students=>50, :school_id=>4, :curriculum_id=>1, :presurvey_id=>4, :postsurvey_id=>4, :active => 1})
 
-Curriculum.create!({:name=>'Test Curriculum 1', :published=>true})
 Curriculum.create!({:name=>'Official Curriculum', :published=>true})
-Section.create!({:name=>'Nutrition-Related Diseases', :stype=>'Multiple Choice', :objective=>'Discuss the relationship between nutrition and health; teach students that poor diet choices could lead to obesity, diabetes and heart diseases', :curriculum_id=>2})
-Section.create!({:name=>'Food Groups', :stype=>'Multiple Choice', :objective=>'Teach students the importance of nutrition by breaking down food groups and basic nutrition terminologies.', :curriculum_id=>2})
-Section.create!({:name=>'Nutrients', :stype=>'Multiple Choice', :objective=>'Discuss the metabolic functions of different nutrients; examine the quantities of fats, sugars, fiber and protein in various types of food.', :curriculum_id=>2})
-Section.create!({:name=>'Nutrition Labeling', :stype=>'Multiple Choice', :objective=>'Teach students how to read and understand food labels to determine which foods are healthier than others.', :curriculum_id=>2})
-Section.create!({:name=>'Food Advertising', :stype=>'Multiple Choice', :objective=>'Explore the role that advertisements play in influencing consumers’ choice of food; let students know how to make healthy food choices based on knowledge rather than misleading advertisements.', :curriculum_id=>2})
-Section.create!({:name=>'Exercise, Energy, and Nutrition', :stype=>'Multiple Choice', :objective=>'Identify the connection between food and energy, and the role that physical activities play in overall health and longevity.', :curriculum_id=>2})
-Section.create!({:name=>'Efficacy Questions', :stype=>'Efficacy', :curriculum_id=>2})
+Section.create!({:name=>'Nutrition-Related Diseases', :stype=>'Multiple Choice', :objective=>'Discuss the relationship between nutrition and health; teach students that poor diet choices could lead to obesity, diabetes and heart diseases', :curriculum_id=>1})
+Section.create!({:name=>'Food Groups', :stype=>'Multiple Choice', :objective=>'Teach students the importance of nutrition by breaking down food groups and basic nutrition terminologies.', :curriculum_id=>1})
+Section.create!({:name=>'Nutrients', :stype=>'Multiple Choice', :objective=>'Discuss the metabolic functions of different nutrients; examine the quantities of fats, sugars, fiber and protein in various types of food.', :curriculum_id=>1})
+Section.create!({:name=>'Nutrition Labeling', :stype=>'Multiple Choice', :objective=>'Teach students how to read and understand food labels to determine which foods are healthier than others.', :curriculum_id=>1})
+Section.create!({:name=>'Food Advertising', :stype=>'Multiple Choice', :objective=>'Explore the role that advertisements play in influencing consumers’ choice of food; let students know how to make healthy food choices based on knowledge rather than misleading advertisements.', :curriculum_id=>1})
+Section.create!({:name=>'Exercise, Energy, and Nutrition', :stype=>'Multiple Choice', :objective=>'Identify the connection between food and energy, and the role that physical activities play in overall health and longevity.', :curriculum_id=>1})
+Section.create!({:name=>'Efficacy Questions', :stype=>'Efficacy', :curriculum_id=>1})
 
-#Section.create!({:name=>'Review Lesson', :stype=>'Efficacy',  :curriculum_id=>2})
-#:objective=>'Review major concepts covered in the previous lessons. Students are given a chance to practice problem-solving in different scenarios given the knowledge they have in nutrition.',
 Question.create!({:name=>'Section 1 Question 1', :qtype=>'Multiple Choice', :section_id=> 1, :msg=>'Factors that may lead to type 2 diabetes'})
 Question.create!({:name=>'Section 1 Question 2', :qtype=>'Multiple Choice', :section_id=> 1, :msg=>' Poor diet and lack of exercise increase risk for many diseases regardless of one’s body size'})
 
@@ -74,33 +65,7 @@ Question.create!({:name=>'S7Q8', :qtype=>'Efficacy', :section_id=> 7, :msg=>'Rea
 Question.create!({:name=>'S7Q9', :qtype=>'Efficacy', :section_id=> 7, :msg=>'Ignore an advertisement for junk food after watching it'})
 Question.create!({:name=>'S7Q10', :qtype=>'Efficacy', :section_id=> 7, :msg=>'Want to buy and eat junk food after watching an advertisement'})
 
-
-
-Section.create!({:name=>'Section 1',:stype=>'Multiple Choice',:objective=>'Section 1 objective', :curriculum_id=>1})
-Section.create!({:name=>'Section 2', :stype=>'Efficacy', :curriculum_id=>1})
-Question.create!({:name=>'S1Q1',:qtype=>'Multiple Choice',:msg=>'S1Q1 stronk', :section_id=>8})
-Question.create!({:name=>'S1Q2',:qtype=>'Multiple Choice',:msg=>'S1Q2 weaaak', :section_id=>8})
-Question.create!({:name=>'S2Q1',:qtype=>'Efficacy',:msg=>'S2Q1 stronk', :section_id=>9})
-
-
-User.create!({:name => "admin account", :email => "admin@fruitfulminds.org", :password => "password", :profile => "admin", :pending => 1})
-User.create!({:name => "another admin account", :email => "admin2@fruitfulminds.org", :password => "password", :profile => "admin", :pending => 1})
-User.create!({:name => "fm ambassador account", :email => "user@fruitfulminds.org", :password => "password", :profile => "ambassador", :pending => 1, :college_id => 1, :course_ids => [1, 2, 3, 4]})
-User.create!({:name => "another fm ambassador account", :email => "ambassador@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 1, :college_id => 2, :course_ids => [1, 2, 3, 4]})
-User.create!({:name => "pending ambassador account", :email => "pendingambassador@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 0, :college_id => 3, :pending_school_id => 1, :pending_semester => "Fall 2013"})
-User.create!({:name => "pending ambassador account 2", :email => "pendingambassador2@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 0, :college_id => 1, :pending_school_id => 2, :pending_semester => "Fall 2013"})
-User.create!({:name => "pending ambassador account 3", :email => "pendingambassador3@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 0, :college_id => 2, :pending_school_id => 3, :pending_semester => "Fall 2013"})
-User.create!({:name => "pending ambassador account 4", :email => "pendingambassador4@fruitfulminds.org", :password => "password", :profile =>"ambassador", :pending => 0, :college_id => 1, :pending_school_id => 4, :pending_semester => "Fall 2013"})
-
-
-Presurvey.create!({:course_id => 1, :curriculum_id => 2, :data=>{3=>{1=>1, 2=>2, 3=>3}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
-Postsurvey.create!({:course_id => 1, :curriculum_id => 2, :data=>{3=>{1=>4, 2=>6, 3=>9}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
-Presurvey.create!({:course_id => 2, :curriculum_id => 1, :data=>{3=>{1=>1, 2=>2, 3=>3}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
-Postsurvey.create!({:course_id => 2, :curriculum_id => 1, :data=>{3=>{1=>4, 2=>6, 3=>9}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
-Presurvey.create!({:course_id => 3, :curriculum_id => 1, :data=>{3=>{1=>1, 2=>2, 3=>3}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
-Postsurvey.create!({:course_id => 3, :curriculum_id => 1, :data=>{3=>{1=>4, 2=>6, 3=>9}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
-Presurvey.create!({:course_id => 4, :curriculum_id => 1, :data=>{3=>{1=>1, 2=>2, 3=>3}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
-Postsurvey.create!({:course_id => 4, :curriculum_id => 1, :data=>{3=>{1=>4, 2=>6, 3=>9}, 4=>{1=>4, 2=>5, 3=>6}}, :total=>{3=>25}})
+User.create!({:name => "admin account", :email => "admin@fruitfulminds.org", :password => "healthyorangesnack", :profile => "admin", :pending => 1})
 
 StaticContent.create!({
                    :intro_title => "Intro to Fruitful Minds",
@@ -120,7 +85,4 @@ StaticContent.create!({
                    :slight_decrease_header => "There was a slight decrease in agreement that students could",
                    :comp_header => "Prior to the curriculum students were already confident that they could",
                    :summary_header => "Summary of findings:",
-
-                  
-                   
                   })
