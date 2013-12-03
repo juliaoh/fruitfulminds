@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validate :password, :presence => true, :on => :create, :length => {:minimum => 6}
   validate :profile, :presence => true, :inclusion => ["ambassador", "admin"]
   validate :pending, :presence => true, :inclusion => [0, 1, 2]
-  # pending = 0, approved = 1, on request for another course = 2
+  # pending = 0, active = 1, inactive = 2
   strip_attributes
 
   def admin?

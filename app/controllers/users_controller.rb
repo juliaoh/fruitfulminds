@@ -63,7 +63,9 @@ class UsersController < ApplicationController
   end
 
   def all_users
-    @all_users = filter_users("all")
+    users = filter_users("all")
+    @active_users = users.select { |user| user.pending == 1 }
+    @inactive_users = users.select { |user| user.pending == 2 }
   end
 
   def pending_users
@@ -133,5 +135,19 @@ class UsersController < ApplicationController
     user = User.find_by_id(params[:user])
     handle_add_course_to_user(user,params)
     redirect_to edit_user_path(params[:user])
+  end
+
+  def deactivate_user
+    user = User.find_by_id(params[:user])
+    user.update_attributes!(:pending => 2)
+    flash[:notice] = "#{user.name} has been deactivated."
+    redirect_to all_users_path
+  end
+
+  def activate_user
+    user = User.find_by_id(params[:user])
+    user.update_attributes!(:pending => 1)
+    flash[:notice] = "#{user.name} has been activated."
+    redirect_to all_users_path
   end
 end

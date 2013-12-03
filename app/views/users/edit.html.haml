@@ -1,7 +1,12 @@
 - @subtitle = "Edit User"
 
 %h3
-  = "#{@user.name}"
+  - if @user.pending == 0
+    = "#{@user.name} (Pending)"
+  - if @user.pending == 1
+    = "#{@user.name}"
+  - if @user.pending == 2
+    = "#{@user.name} (Inactive)"
 = form_tag user_path(@user), :method => :put do
   = label :user, :name, "Name: #{@user.name}"
   = label :user, :email, "Email: #{@user.email}"
@@ -38,3 +43,11 @@
   %br
   = submit_tag "Add"
 
+- if @user.pending == 1
+  %h4
+    = "Deactivate User"
+  = button_to "Deactivate User", deactivate_user_path({:user => @user}), :confirm => "Are you sure you want to deactivate #{@user.name}?"
+- if @user.pending == 2
+  %h4
+    = "Activate User"
+  = button_to "Activate User", activate_user_path({:user => @user})

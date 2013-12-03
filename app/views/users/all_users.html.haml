@@ -1,21 +1,54 @@
 - @subtitle = "All Users"
 - @menu = "Users"
 
+%h3
+  = "Active Users"
 %table#pending_users
   %thead
     %tr
       %th Name
       %th Email
       %th College
-      %th Course
+      %th Active Courses
       %th Edit
   %tbody
-    - @all_users.each do |user|
+    - @active_users.each do |user|
       %tr
         %td= user.name
         %td= user.email
         %td= user.college.name
         %td 
-          - user.courses.each do |course|
+          - get_active_inactive(user)
+          - @active_courses.each do |course|
             %li= course.name
         %td= link_to 'Edit', edit_user_path(user.id)
+
+%h3
+  = "Inactive Users"
+%table#pending_users
+  %thead
+    %tr
+      %th Name
+      %th Email
+      %th College
+      %th Edit
+  %tbody
+    - @inactive_users.each do |user|
+      %tr
+        %td= user.name
+        %td= user.email
+        %td= user.college.name
+        %td= link_to 'Edit', edit_user_path(user.id)
+
+%h3
+  = "Admins"
+%table#pending_users
+  %thead
+    %tr
+      %th Name
+      %th Email
+  %tbody
+    - User.where(:profile => "admin").each do |user|
+      %tr
+        %td= user.name
+        %td= user.email
