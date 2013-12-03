@@ -14,20 +14,21 @@ class SurveyTemplateController < ApplicationController
     @sections = template_fields.sections
   end
   def update
-    Curriculum.find(params[:id]).destroy
-    create
-    if flash[:notice] == "New Survey successfully added."
-        flash[:notice] = "Survey successfully updated."
+    if create_template
+      Curriculum.find(params[:id]).destroy
+      flash[:notice] = "Survey successfully updated."
+      redirect_to "/survey_template"
+    else
+      flash[:notice] = "There are blank fields"
+      redirect_to edit_survey_template_path(params[:id])
     end
   end
 
-  def create
+  def create_template
     survey_name = params[:surveyname]
     if survey_name == nil or survey_name == ''
-      flash[:notice] = "There are blank fields"
-      redirect_to "/survey_template/new" and return
+      return false
     end
-    puts "Has key: " + params.has_key?(:publish).to_s
     if params.has_key?(:publish)
       published = true
     else
@@ -48,8 +49,16 @@ class SurveyTemplateController < ApplicationController
         next
       end
     end
-    flash[:notice] = "New Survey successfully added."
-    redirect_to "/survey_template"
+    return true
+  end
+  def create
+    if create_template
+      flash[:notice] = "New Survey successfully added."
+      redirect_to "/survey_template"
+    else
+      flash[:notice] = "There are blank fields"
+      redirect_to "/survey_template/new" and return
+    end
   end
 
   def create_curriculum(survey_name, published)
