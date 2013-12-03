@@ -7,6 +7,7 @@ class CreateReports < ActiveRecord::Migration
       t.text :competencies
       t.string :admin_message
       t.string :report_link
+      t.string :semester
       t.timestamps
     end
   end
