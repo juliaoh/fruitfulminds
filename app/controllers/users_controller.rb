@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   include UsersHelper
+  include ActiveCoursesHelper
   skip_before_filter :current_user, :only => [:new, :create, :tos]
   before_filter :admin_only, :only => [:index, :all_users, :update_all_users, :pending_users, :update_pending_user, :delete_pending_user]
   before_filter :logged_in, :only => [:new]
@@ -21,9 +22,6 @@ class UsersController < ApplicationController
 
   def index
     redirect_to all_users_path
-  end
-
-  def edit
   end
 
   def create
@@ -98,6 +96,7 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
     @college = @user.college
     @course = @user.courses[0] ## Deal with 1 course right now.
+    get_active_inactive(@user)
   end
 
   def update

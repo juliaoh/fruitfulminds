@@ -1,4 +1,7 @@
 - @subtitle = "Edit User"
+
+%h3
+  = "#{@user.name}"
 = form_tag user_path(@user), :method => :put do
   = label :user, :name, "Name: #{@user.name}"
   = label :user, :email, "Email: #{@user.email}"
@@ -6,14 +9,23 @@
   = select :college, :name, options_for_select(College.all.collect { |c| [c.name, c.id] }.sort, @college.id)
   %br
   = submit_tag 'Update User Info'
+%br
 
-= label :courses, :name, "Courses:"
-%table
-  - @user.courses.each do |course|
+%h4 
+  = "Active Courses"
+%table.table
+  - @active_courses.each do |course|
     %tr
       %td
         %li= course.name
       %td= button_to "Remove", remove_course_path({:user => @user, :course => course}), :confirm => "Are you sure you want to remove #{course.name}?"
+%h4 
+  = "Inactive Courses"
+%table.table
+  - @inactive_courses.each do |course|
+    %tr
+      %td
+        %li= course.name
 
 = form_tag add_course_path({:user => @user}), :method => :put do
   %h4= "Add Course"
