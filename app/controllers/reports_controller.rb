@@ -32,13 +32,13 @@ class ReportsController < ApplicationController
       flash[:warning] = "@course is not defined"
       return
     end
-    #A course is uniquely defined by 
+    #A course is uniquely defined by
     #1) School ID (number)
     #2) Semester (string)
     #3) Curriculum ID (number), curriculum corresponds to survey
     #Example: 1, 'Fall 2013', 1 could correspond to Ascend Elementary, 'Fall 2013', 5th Grade Curriculum
 
-    #A course has 
+    #A course has
     #a list of its ambassadors (list of user ids)
     #presurvey data (id)
     #postsurvey data (id)
@@ -98,7 +98,7 @@ class ReportsController < ApplicationController
 
     @college = User.find_by_id(@course.users[0]).college
     @college = @college.name
-    
+
     #@objectives is a hash of
     #Section name => objective description
     @objectives = {}
@@ -119,13 +119,13 @@ class ReportsController < ApplicationController
 
     assign_titles
     @improvement_intro = "#{@presurvey_total} students took the pre-curriculum survey and #{@postsurvey_total} students took the post-curriculum survey. These were not necessarily the same students."
-  
+
   end
 
   def assign_titles
     @main_title = "Fruitful Minds #{@school_name} #{@school_semester} Report"
     @school_intro_title = "Fruitful Minds at #{@school_name}"
-    @school_intro = "Fruitful Minds held a nutrition lesson series at #{@school_name} during #{@school_semester}" 
+    @school_intro = "Fruitful Minds held a nutrition lesson series at #{@school_name} during #{@school_semester}"
     @school_intro_second = "    #{@course.users.size} students from #{@college} #{was_were(@course.users.size)} selected as Fruitful Minds ambassadors"
     @school_intro_third = "    During each lesson, class facilitators delivered the curriculum material through lectures, games, and various interactive activities."
     @strength_weakness_title = "Strengths and Weaknesses of FM Lessons at #{@school_name}"
@@ -164,7 +164,7 @@ class ReportsController < ApplicationController
       end
     end
 
-    
+
     generate_objective_graph(objective_data)
     objective_stats = generate_strengths(objective_data)
     if not objective_stats.nil?
@@ -178,10 +178,10 @@ class ReportsController < ApplicationController
         @objective_comp['N/A'] = 'Students did not show competency in any areas of Fruitful Minds teaching prior to the lessons.'
       end
       @eval_intro_first = "Prior to the curriculum, a pre-curriculum survey was distributed to assess the students\' knowledge in nutrition; a very similar survey was administered during the final class. The goal of the surveys was to determine the retention of key learning objectives from the Fruitful Minds program."
-      @eval_intro_second = "On average, students have shown a #{@improvement}% improvement after going through seven weeks of classes." 
+      @eval_intro_second = "On average, students have shown a #{@improvement}% improvement after going through seven weeks of classes."
       @eval_intro_third = "The survey results are shown below. The first graph shows the average scores in each of the six nutrition topics covered in the curriculum (see graph 1). Note that the number of questions in each category varies. The second graph shows students\' overall performance on the pre-curriculum surveys and post-curriculum survey (see graph 2). #{@presurvey_total} students took the pre-curriculum survey, and #{@postsurvey_total} students took the post-curriculum surveys."
     end
-    
+
 
   end
 
@@ -214,7 +214,10 @@ class ReportsController < ApplicationController
     @report_note = session[:amb_note]
     file = @school_name.gsub! /\s+/, '_'
     file = file.downcase
-    @file_name = "#{file}_report.pdf"
+    time = @school_semester.gsub! /\s+/, '_'
+    time = time.downcase
+    @file_name = "#{file}_#{time}_report.pdf"
+    # @file_name = "#{file}_report.pdf"
   end
 
 
@@ -282,11 +285,11 @@ class ReportsController < ApplicationController
   def generate_objective_graph(data_list)
     #data_list is a list of hashes [{presurvey},{postsurvey}]
     #hashes are {q_id => value}
-    #graph should be 
+    #graph should be
     #y-axis: % value
     #x-axis SECTIONS (not q_id/questions)
 
-    
+
 
     if data_list.nil?
       return
@@ -319,7 +322,7 @@ class ReportsController < ApplicationController
     prescore = combined_data[0]
     postscore = combined_data[1]
     size = graph_width.to_s + 'x300'
-    @nutrition_chart = Gchart.bar(:size => size, 
+    @nutrition_chart = Gchart.bar(:size => size,
                                 :title => "Survey Score in Nutrition Topics(%)",
                                 :legend => ['Pre', 'Post'],
                                 :bar_colors => '3399CC,99CCFF',
@@ -331,7 +334,7 @@ class ReportsController < ApplicationController
                                 :axis_range => [nil, [0,@max,10]]
                                 )
 
-    @combined_chart = Gchart.bar(:size => '1000x300', 
+    @combined_chart = Gchart.bar(:size => '1000x300',
                               :title => "Overall Combined Scores(%)",
                               :legend => ['Pre-curriculum Results (' + prescore[0].round(2).to_s + '%)', 'Post-curriculum Results (' + postscore[0].round(2).to_s + '%)'],
                               :bar_colors => 'FF3333,990000',
@@ -340,7 +343,7 @@ class ReportsController < ApplicationController
                               :axis_with_labels => 'y',
                               :stacked => false,
                               :axis_range => [[0,@combined_max,10]]
-                            )      
+                            )
 
   end
 
@@ -387,7 +390,7 @@ class ReportsController < ApplicationController
       @efficacy_improvement = 0
     end
     size = '500x' + graph_height.to_s
-    @efficacy_chart = Gchart.bar(:size => size, 
+    @efficacy_chart = Gchart.bar(:size => size,
                               :title => "Efficacy Survey Results - Agreement(%)",
                               :legend => ['Pre', 'Post'],
                               :bar_colors => '990000,3399CC',
@@ -412,7 +415,7 @@ class ReportsController < ApplicationController
     presurvey_data = {}
     postsurvey_data = {}
     #presurvey.data & postsurvey.data are hashes of
-    #{user => {q_id => value}} 
+    #{user => {q_id => value}}
     @type = type
     def calc_values(data, data_hash)
       #helper function
@@ -457,9 +460,9 @@ class ReportsController < ApplicationController
       presurvey_data = calc_values(user_pre_data, presurvey_data)
       postsurvey_data = calc_values(user_post_data, postsurvey_data)
     end
-    
+
     data = [presurvey_data, postsurvey_data]
-    
+
     return data
   end
 
@@ -479,7 +482,7 @@ class ReportsController < ApplicationController
     presurvey_data = data_list[0]
     postsurvey_data = data_list[1]
     data = []
-    
+
     presurvey_data.keys.each do |q_id|
       #q_id is same for both presurvey & postsurvey questions
       pre_value = presurvey_data[q_id]
@@ -490,7 +493,7 @@ class ReportsController < ApplicationController
       if (pre_value >= 80 and post_value >= 80)
         question = Question.find_by_id(q_id)
         comps[question.name] = question.msg
-      end 
+      end
       info_list = [q_id, delta, possible_weakness]
       data.push(info_list)
     end
@@ -519,6 +522,7 @@ class ReportsController < ApplicationController
 
     #returns a list of hashes [{q_name => str message},{q_name => weak messages}]
     #q_name should be something like "Section 6 Question 4"
+
     return [strengths, weaknesses, comps]
   end
 
