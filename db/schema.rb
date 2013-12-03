@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131203063213) do
+ActiveRecord::Schema.define(:version => 20131203074507) do
 
   create_table "colleges", :force => true do |t|
     t.string   "name"
@@ -128,11 +128,11 @@ ActiveRecord::Schema.define(:version => 20131203063213) do
     t.text     "strengths"
     t.text     "weaknesses"
     t.text     "competencies"
-    t.string   "admin_message"
+    t.string   "ambassador_message"
     t.string   "report_link"
-    t.string   "semester"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "course_id"
   end
 
   create_table "school_semesters", :force => true do |t|
