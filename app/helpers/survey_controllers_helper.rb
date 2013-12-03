@@ -32,7 +32,7 @@ module SurveyControllersHelper
   def active_only
     setup_model(params) do |model, survey, course|
       if not course.active?
-        flash[:warning] = "Course is inactive"
+        flash[:warning] = "Course is inactive."
         redirect_to portal_path
       end
     end
@@ -107,6 +107,6 @@ module SurveyControllersHelper
       new_data["#{user.id}"].each do |qid, num|
         raise TotalError unless Integer(num) <= totals[user.id]
       end
-    end  
+    end
   end
 end
