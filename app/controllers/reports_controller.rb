@@ -11,6 +11,9 @@ class ReportsController < ApplicationController
     if @course.nil?
       flash[:warning] = "Course not found"
       redirect_to "/reports/new" and return
+    elsif @course.users.empty?
+      flash[:warning] = "Course has no data or ambassador assigned"
+      redirect_to "/reports/new" and return 
     end
     generate_report
   end
