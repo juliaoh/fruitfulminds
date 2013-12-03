@@ -1,7 +1,8 @@
+%h4
+  = "#{@school_name}"
 %span
   %table
     %tr
-      = label_tag "school_name", "#{@school_name}"
       = label_tag "absolute_total_students", "Total students"
       = text_field_tag "absolute_total_students", @absolute_total, :readonly => true
     %tr

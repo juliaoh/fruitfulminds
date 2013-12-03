@@ -1,6 +1,7 @@
+%h4
+  = "#{@school_name}"
 %table
   %tr
-    = label_tag "school_name", "#{@school_name}"
     = label_tag "new_data[absolute_total_students]", "Total students"
     = text_field_tag "new_data[absolute_total_students]", @absolute_total, class: "numeric_input_field"
   %tr
