@@ -136,4 +136,10 @@ class UsersController < ApplicationController
     handle_add_course_to_user(user,params)
     redirect_to edit_user_path(params[:user])
   end
+
+  def deactivate_user
+    user = User.find_by_id(params[:user])
+    user.update_attributes!(:pending => 2)
+    redirect_to edit_user_path(params[:user])
+  end
 end
