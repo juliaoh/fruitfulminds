@@ -205,7 +205,7 @@ class ReportsController < ApplicationController
 
   def show
     @report_name = params[:id].chomp("_report")
-    course_id = @report_name.match(\d+$)[0]
+    course_id = @report_name.match(/\d+$/)[0]
     @school_name = @report_name.chomp("_#{course_id}").gsub! /_/, " "
     #course_id = session[:course]
     @course = Course.find_by_id(course_id)
