@@ -18,7 +18,7 @@ School.create!({:name => "Willard Middle", :county => "Alameda", :district => "B
 College.create!({:name=>'UC Berkeley'})
 
 
-Curriculum.create!({:name=>'Official Curriculum', :published=>true})
+Curriculum.create!({:name=>'Standard Curriculum', :published=>true})
 Section.create!({:name=>'Nutrition-Related Diseases', :stype=>'Multiple Choice', :objective=>'Discuss the relationship between nutrition and health; teach students that poor diet choices could lead to obesity, diabetes and heart diseases', :curriculum_id=>1})
 Section.create!({:name=>'Food Groups', :stype=>'Multiple Choice', :objective=>'Teach students the importance of nutrition by breaking down food groups and basic nutrition terminologies.', :curriculum_id=>1})
 Section.create!({:name=>'Nutrients', :stype=>'Multiple Choice', :objective=>'Discuss the metabolic functions of different nutrients; examine the quantities of fats, sugars, fiber and protein in various types of food.', :curriculum_id=>1})
