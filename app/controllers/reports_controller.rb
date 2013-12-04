@@ -194,7 +194,7 @@ class ReportsController < ApplicationController
     if not params[:amb_note].blank?
       #make sure ambassador writes some Notes
       session[:amb_note] = params[:amb_note]
-      save_pdf
+      save_report
       redirect_to "/reports/#{@file_name}"
       return
     else
@@ -204,22 +204,50 @@ class ReportsController < ApplicationController
   end
 
   def show
-    @school_name = params[:id].chomp("_report").gsub! /_/, " "
-    course_id = session[:course]
+    @report_name = params[:id].chomp("_report")
+    course_id = @report_name.match(\d+$)[0]
+    @school_name = @report_name.chomp("_#{course_id}").gsub! /_/, " "
+    #course_id = session[:course]
     @course = Course.find_by_id(course_id)
+    report = Report.find_by_course_id(course_id)
     @report_note = session[:amb_note]
+    if @report_note.nil?
+      if not report.nil?
+        @report_note = report.ambassador_message
+      else
+        @report_note = " "
+      end
+    end
+
     generate_report
   end
 
 
-  def save_pdf
+  def save_report
     generate_report
     @report_note = session[:amb_note]
     file = @school_name.gsub! /\s+/, '_'
     file = file.downcase
     time = @school_semester.gsub! /\s+/, '_'
     time = time.downcase
-    @file_name = "#{file}_#{time}_report.pdf"
+    @file_name = "#{file}_#{time}_#{@course.id}_report.pdf"
+
+    report = Report.find_by_course_id(@course.id)
+    if report.nil?
+      Report.create!({:delta => @improvement, :efficacy_strengths=> @efficacy_str, :efficacy_weaknesses=>@efficacy_weak, :efficacy_competencies=>@efficacy_comp, :strengths=>@objective_str, :weaknesses=>@objective_weak, :competencies=>@objective_comp, :ambassador_message=>@report_note, :report_link=>"/reports/#{@file_name}"}, :course_id=>@course.id)
+    else
+      report.delta = @improvement
+      report.efficacy_strengths = @efficacy_str
+      report.efficacy_weaknesses = @efficacy_weak
+      report.efficacy_competencies = @efficacy_comp
+      report.strengths = @objective_str
+      report.weaknesses = @objective_weak
+      report.competencies = @objective_comp
+      report.ambassador_message = @report_note
+      report.report_link = "/reports/#{@file_name}"
+      report.course_id = @course.id
+      report.save!
+    end
     # @file_name = "#{file}_report.pdf"
   end
 

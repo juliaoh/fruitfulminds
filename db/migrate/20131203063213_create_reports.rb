@@ -5,6 +5,9 @@ class CreateReports < ActiveRecord::Migration
       t.text :strengths
       t.text :weaknesses
       t.text :competencies
+      t.text :efficacy_strengths
+      t.text :efficacy_weaknesses
+      t.text :efficacy_competencies
       t.string :ambassador_message
       t.string :report_link
       t.timestamps
