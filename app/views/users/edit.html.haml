@@ -43,11 +43,11 @@
   %br
   = submit_tag "Add"
 
-- if @user.pending == 1
+- if @user.pending == 1 and not @user.admin?
   %h4
     = "Deactivate User"
   = button_to "Deactivate User", deactivate_user_path({:user => @user}), :confirm => "Are you sure you want to deactivate #{@user.name}?"
-- if @user.pending == 2
+- if @user.pending == 2 and not @user.admin?
   %h4
     = "Activate User"
   = button_to "Activate User", activate_user_path({:user => @user})
