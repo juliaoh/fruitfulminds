@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   # renders sign up page
   def new
-    @school_names = get_school_names
+    @school_names
     @college_names = College.find(:all).map do |college|
       college.name
     end.uniq.sort
