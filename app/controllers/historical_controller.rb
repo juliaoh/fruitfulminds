@@ -1,9 +1,9 @@
 class HistoricalController < ApplicationController
   before_filter :admin_only
+  include SchoolsHelper
 
   def new
-    @schools = School.all.collect { |s|
-      ["#{s.name}, #{s.city}, #{s.county}", s.id ] }.uniq.sort
+    @schools = get_school_names
     @times = Course.all.collect { |t| ["#{t.semester}", t.id] }.uniq.sort
   end
 

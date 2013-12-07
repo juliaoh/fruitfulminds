@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   include UsersHelper
   include ActiveCoursesHelper
+  include SchoolsHelper
   skip_before_filter :current_user, :only => [:new, :create, :tos]
   before_filter :admin_only, :only => [:index, :all_users, :update_all_users, :pending_users, :update_pending_user, :delete_pending_user, :edit]
   before_filter :logged_in, :only => [:new]
@@ -11,7 +12,7 @@ class UsersController < ApplicationController
 
   # renders sign up page
   def new
-    @school_names = School.all.collect { |s| ["#{s.name}, #{s.city}, #{s.county}", s.id ] }.uniq.sort
+    @school_names = get_school_names
     @college_names = College.find(:all).map do |college|
       college.name
     end.uniq.sort

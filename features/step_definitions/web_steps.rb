@@ -173,26 +173,18 @@ Then /^(?:|I )should not see \/([^\/]*)\/$/ do |regexp|
   end
 end
 
-Then /^the "([^"]*)" field(?: within (.*))? should contain "([^"]*)"$/ do |field, parent, value|
+Then /^the "([^"]*)" field(?: within (.*))? should( not)? contain "([^"]*)"$/ do |field, parent, not_flag, value|
   with_scope(parent) do
     field = find_field(field)
     field_value = (field.tag_name == 'textarea') ? field.text : field.value
     if field_value.respond_to? :should
-      field_value.should =~ /#{value}/
+      if not_flag.nil?
+        field_value.should =~ /#{value}/
+      else
+        !field_value.should =~ /#{value}/
+      end
     else
       assert_match(/#{value}/, field_value)
-    end
-  end
-end
-
-Then /^the "([^"]*)" field(?: within (.*))? should not contain "([^"]*)"$/ do |field, parent, value|
-  with_scope(parent) do
-    field = find_field(field)
-    field_value = (field.tag_name == 'textarea') ? field.text : field.value
-    if field_value.respond_to? :should_not
-      field_value.should_not =~ /#{value}/
-    else
-      assert_no_match(/#{value}/, field_value)
     end
   end
 end
