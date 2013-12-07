@@ -281,6 +281,18 @@ class ReportsController < ApplicationController
       values += " " + v.to_s
     end
 
+    total_question_count = format_objective_data_helper()
+    pre_combined[0] /= total_question_count
+    post_combined[0] /= total_question_count
+    @max = [pre_data.compact.max, post_data.compact.max].max
+    @combined_max = [pre_combined[0], post_combined[0]].max
+    data = [pre_data, post_data]
+    combined_data = [pre_combined, post_combined]
+    return data, combined_data
+  end
+
+
+  def format_objective_data_helper
     total_question_count = 0
     @curriculum.sections.each do |section_id|
       section = Section.find_by_id(section_id)
@@ -305,14 +317,7 @@ class ReportsController < ApplicationController
       pre_data.push(section_pre_total/section_question_count)
       post_data.push(section_post_total/section_question_count)
     end
-    pre_combined[0] /= total_question_count
-    post_combined[0] /= total_question_count
-    @max = [pre_data.compact.max, post_data.compact.max].max
-    @combined_max = [pre_combined[0], post_combined[0]].max
-    data = [pre_data, post_data]
-    combined_data = [pre_combined, post_combined]
-    return data, combined_data
-
+    return total_question_count
   end
 
   def generate_objective_graph(data_list)
