@@ -1,4 +1,9 @@
 module CoursesHelper
+
+  def find_course_by_school_id_and_semester_and_curriculum_id (user, params)
+    Course.find_by_school_id_and_semester_and_curriculum_id(params[:school][user.id.to_s], params[:semester][user.id.to_s], params[:curriculum][user.id.to_s])
+  end
+
   def create_course(user,params)
     if valid_course(user,params)
       presurvey = create_presurvey(user,params)

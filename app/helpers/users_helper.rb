@@ -132,7 +132,7 @@ module UsersHelper
 
   def add_course_to_user!(user, params)
     if not params[:curriculum][user.id.to_s] == ""
-      course = Course.find_by_school_id_and_semester_and_curriculum_id(params[:school][user.id.to_s], params[:semester][user.id.to_s], params[:curriculum][user.id.to_s])
+      course = find_course_by_school_id_and_semester_and_curriculum_id(user, params)
       if course.nil?
         course = create_course(user,params)
       elsif course.users.include?(user)
