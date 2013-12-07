@@ -103,10 +103,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by_id(params[:id])
-    newcollege = College.find_by_id(params[:college][:name])
-    #newcourse = Course.find_by_id(params[:course][:name])
-    @user.update_attributes!(:college => newcollege)
-    #handle_user_course_update(@user, newcourse)
+    @user.update_attributes!(:college_id => params[:college], :name => params[:name], :email => params[:email])
+    flash[:notice] = "#{@user.name} has been updated."
     redirect_to all_users_path and return
   end
 
