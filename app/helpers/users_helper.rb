@@ -1,4 +1,6 @@
 module UsersHelper
+  include CoursesHelper
+
   def correct_submission?(tos, user_params)
     conditions = [!tos.nil?,
                   valid_email?(user_params[:email]),
@@ -138,33 +140,6 @@ module UsersHelper
       end
       course.users << user
       course.save!
-    end
-  end
-
-  def create_course(user,params)
-    if valid_course(user,params)
-      presurvey = Presurvey.create!(:curriculum_id => params[:curriculum][user.id.to_s],
-                                    :data => {},
-                                    :total => {}
-                                    )
-      postsurvey = Postsurvey.create!(:curriculum_id => params[:curriculum][user.id.to_s],
-                                    :data => {},
-                                    :total => {}
-                                    )
-      course = Course.create!(
-                              :school_id => params[:school][user.id.to_s],
-                              :semester => params[:semester][user.id.to_s],
-                              :curriculum_id => params[:curriculum][user.id.to_s],
-                              :total_students => 0,
-                              :presurvey_id => presurvey.id,
-                              :postsurvey_id => postsurvey.id,
-                              :active => 1
-                              )
-      presurvey.course_id = course.id
-      postsurvey.course_id = course.id
-      presurvey.save!
-      postsurvey.save!
-      return course
     end
   end
 
