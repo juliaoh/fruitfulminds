@@ -137,17 +137,18 @@ class UsersController < ApplicationController
     redirect_to edit_user_path(params[:user])
   end
 
-  def deactivate_user
+  def activate_or_deactivate_user(pending, message)
     user = User.find_by_id(params[:user])
-    user.update_attributes!(:pending => 2)
-    flash[:notice] = "#{user.name} has been deactivated."
+    user.update_attributes!(:pending => pending)
+    flash[:notice] = "#{user.name} has been #{message}."
     redirect_to all_users_path
   end
 
+  def deactivate_user
+    activate_or_deactivate_user(2, "deactivated")
+  end
+
   def activate_user
-    user = User.find_by_id(params[:user])
-    user.update_attributes!(:pending => 1)
-    flash[:notice] = "#{user.name} has been activated."
-    redirect_to all_users_path
+    activate_or_deactivate_user(1, "activated")
   end
 end
