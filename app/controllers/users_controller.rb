@@ -103,9 +103,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by_id(params[:id])
+    if valid_email?(params[:email])
+      flash[:warning] = "Email address is invalid"
+      redirect_to edit_user_path and return
+    end
     @user.update_attributes!(:college_id => params[:college], :name => params[:name], :email => params[:email])
     flash[:notice] = "#{@user.name} has been updated."
-    redirect_to all_users_path and return
+    redirect_to all_users_path
   end
 
   def handle_user_course_update(user, newcourse)
