@@ -151,8 +151,11 @@ class ReportsController < ApplicationController
       flash[:warning] = "Not enough data"
       redirect_to "/reports/new" and return
     end
+    efficacy_stats_handler(efficacy_data)
+    objective_stats_handler(objective_data)
+  end
 
-
+  def efficacy_stats_handler(efficacy_data)
     efficacy_stats = generate_strengths(efficacy_data)
     generate_efficacy_graph(efficacy_data)
     if not efficacy_stats.nil?
@@ -166,8 +169,9 @@ class ReportsController < ApplicationController
         @efficacy_comp['N/A'] = 'Students did not show competency in any areas of Fruitful Minds teaching prior to the lessons.'
       end
     end
+  end
 
-
+  def objective_stats_handler(objective_data)
     generate_objective_graph(objective_data)
     objective_stats = generate_strengths(objective_data)
     if not objective_stats.nil?
@@ -184,8 +188,6 @@ class ReportsController < ApplicationController
       @eval_intro_second = "On average, students have shown a #{@improvement}% improvement after going through seven weeks of classes."
       @eval_intro_third = "The survey results are shown below. The first graph shows the average scores in each of the six nutrition topics covered in the curriculum (see graph 1). Note that the number of questions in each category varies. The second graph shows students\' overall performance on the pre-curriculum surveys and post-curriculum survey (see graph 2). #{@presurvey_total} students took the pre-curriculum survey, and #{@postsurvey_total} students took the post-curriculum surveys."
     end
-
-
   end
 
   def generate_pdf
