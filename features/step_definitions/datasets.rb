@@ -214,8 +214,7 @@ Given /^the sorting database is set up$/ do
     And the following courses exist:
       | school_id | semester    | curriculum_id | total_students  | presurvey_id | postsurvey_id | active |
       | 1         | Fall 2013   | 1             | 25              | 1            | 1             | 1      |
-      | 2         | Fall 2012   | 1             | 25              | 1            | 1             | 0      |
-      | 2         | Fall 2013   | 1             | 25              | 1            | 1             | 1      |
+      | 2         | Fall 2013   | 1             | 25              | 2            | 2             | 1      |
 
     And the following users exist:
       | email                   | password | name          | profile    | pending | college_id | pending_school_id | pending_semester |
@@ -228,7 +227,7 @@ Given /^the sorting database is set up$/ do
     And the following users have courses:
       | user_id  | course_id  |
       | 2        | 1          |
-      | 3        | 1          |
+      | 3        | 2          |
   }
 end
 
