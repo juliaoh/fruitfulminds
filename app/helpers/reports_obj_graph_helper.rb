@@ -127,7 +127,7 @@ module ReportsObjGraphHelper
     return data, combined_data
   end
 
-    def format_objective_data_helper(data_list, pre_combined, post_combined, pre_data, post_data)
+  def format_objective_data_helper(data_list, pre_combined, post_combined, pre_data, post_data)
     total_question_count = 0
     @curriculum.sections.each do |section_id|
       section = Section.find_by_id(section_id)
@@ -137,11 +137,7 @@ module ReportsObjGraphHelper
       section_question_count = 0
       section.questions.each do |question|
         q_id = question.id
-        if data_list[0][q_id].nil? or data_list[1][q_id].nil?
-          question = Question.find_by_id(q_id)
-          flash[:warning] = "Unexpected error with data (Check if data is incomplete)"
-          redirect_to "/reports/new" and return
-        end
+        check_for_incomplete_data(q_id, data_list)
         section_pre_total += data_list[0][q_id]
         section_post_total += data_list[1][q_id]
         pre_combined[0] += data_list[0][q_id]
@@ -154,4 +150,13 @@ module ReportsObjGraphHelper
     end
     return total_question_count
   end
+
+  def check_for_incomplete_data(q_id, data_list)
+    if data_list[0][q_id].nil? or data_list[1][q_id].nil?
+      question = Question.find_by_id(q_id)
+      flash[:warning] = "Unexpected error with data (Check if data is incomplete)"
+      redirect_to "/reports/new" and return
+    end
+  end
+
 end
