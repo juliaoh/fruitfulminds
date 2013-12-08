@@ -35,6 +35,7 @@ class ReportsController < ApplicationController
       flash[:warning] = "@course is not defined"
       return
     end
+    # initialize_fields_in_report and warn_incomplete_report in ReportHelper
     initialize_fields_in_report
     if warn_incomplete_report
       return
@@ -43,28 +44,25 @@ class ReportsController < ApplicationController
     generate_intro_text
     generate_summary
     generate_warnings
-
-
   end
 
   def calc_subtotals
     @presurvey_total = 0
     @postsurvey_total = 0
     @presurvey.total.values.each do |subtotal|
-      @presurvey_total += subtotal #adds number of students user_id is entering data for
+      @presurvey_total += subtotal
     end
-
     @postsurvey.total.values.each do |subtotal|
       @postsurvey_total += subtotal
     end
-
   end
 
   def generate_intro_text
-    @ambassadors = ""
-    @course.users.each do |user_id|
-      @ambassadors += User.find_by_id(user_id).name + ", "
-    end
+    # nothing below is used?
+    #@ambassadors = ""
+    #@course.users.each do |user_id|
+    #  @ambassadors += User.find_by_id(user_id).name + ", "
+    #end
 
     @college = User.find_by_id(@course.users[0]).college
     @college = @college.name
