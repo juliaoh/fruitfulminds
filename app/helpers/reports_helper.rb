@@ -85,4 +85,59 @@ module ReportsHelper
       index = index - 1
     end
   end
+
+  def get_all_questions_of_type(type)
+    @questions[type] = []
+    @curriculum.sections.each do |section_id|
+      section = Section.find_by_id(section_id)
+      next if section.stype != type
+      section.questions.each do |q_id|
+        question = Question.find_by_id(q_id)
+        @questions[type].push(question)
+      end
+    end
+  end
+
+  def calc_values(data, data_hash, combined_subtotal)
+    #helper function
+    #data expected to be from @presurvey.data[user.id] or @postsurvey.data[user.id]
+    return data_hash if data.nil?
+    data.keys.each do |q_id|
+      question = Question.find_by_id(q_id)
+      next if question.qtype != @type #skips if not type: 'Efficacy' or 'Multiple Choice'
+
+      #value is (ratio of correct answers entered to combined SUB_totals number of students) * 100
+      value = (data[q_id]/combined_subtotal.to_f) * 100
+      if data_hash.include?(q_id)
+        data_hash[q_id] += value
+      else
+        data_hash[q_id] = value
+      end
+    end
+    return data_hash
+  end
+
+  def extract_data_list(presurvey_data, postsurvey_data)
+    @course.users.each do |user|
+      user_pre_data = @presurvey.data[user.id]
+      user_post_data = @postsurvey.data[user.id]
+      #following code works because of invariant:
+      #pre&post surveys have the exact same questions
+      if not @presurvey.total[user.id].nil?
+        @presurvey_subtotal += @presurvey.total[user.id]
+      end
+      if not @postsurvey.total[user.id].nil?
+        @postsurvey_subtotal += @postsurvey.total[user.id]
+      end
+
+      #calc_values is in ReportsHelper
+      presurvey_data = calc_values(user_pre_data, presurvey_data, @presurvey_total)
+      postsurvey_data = calc_values(user_post_data, postsurvey_data, @postsurvey_total)
+    end
+
+    data = [presurvey_data, postsurvey_data]
+
+    return data
+  end
+
 end
