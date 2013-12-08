@@ -170,4 +170,47 @@ module ReportsGraphHelper
                                  )
 
   end
+
+
+
+    def format_objective_data(data_list)
+    #data_list is [{presurvey},{postsurvey}]
+    #pre/postsurvey are {q_id => value}
+    #this function will sum up the q_values for each section
+    #also returns combined_data which sums up q_values for all pre vs post
+    # returns [data, combined_data]
+    # format of data and combined data is [[presurvey],[postsurvey]]
+    # where pre/post are just a list of values e.g. data = [[2,4,5],[5,8,9]]
+
+    data = []
+    combined_data = []
+
+    @max = 0
+    @combined_max = 0
+    pre_data = []
+    post_data = []
+    pre_combined = [0]
+    post_combined = [0]
+
+    # what the heck does the bottom code do?
+    #questions = ""
+    #data_list[0].keys.each do |q_id|
+    #  questions += " " + Question.find_by_id(q_id).name + " qid: " + q_id.to_s
+    #end
+    #values = ""
+    #data_list[0].values.each do |v|
+    #  values += " " + v.to_s
+    #end
+
+    total_question_count = format_objective_data_helper(data_list, pre_combined, post_combined, pre_data, post_data)
+    pre_combined[0] /= total_question_count
+    post_combined[0] /= total_question_count
+    @max = [pre_data.compact.max, post_data.compact.max].max
+    @combined_max = [pre_combined[0], post_combined[0]].max
+    data = [pre_data, post_data]
+    combined_data = [pre_combined, post_combined]
+    return data, combined_data
+  end
+
+
 end
