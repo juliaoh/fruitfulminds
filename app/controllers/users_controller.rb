@@ -119,12 +119,6 @@ class UsersController < ApplicationController
     newcourse.users << user
   end
 
-  def destroy
-    @user = User.find_by_id(params[:id])
-    @user.destroy
-    redirect_to all_users_path and return
-  end
-
   def remove_course
     user = User.find_by_id(params[:user])
     course = Course.find_by_id(params[:course])
