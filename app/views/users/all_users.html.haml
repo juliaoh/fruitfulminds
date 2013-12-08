@@ -31,6 +31,7 @@
       %th Name
       %th Email
       %th College
+      %th Active Courses
       %th Edit
   %tbody
     - @inactive_users.each do |user|
@@ -38,6 +39,10 @@
         %td= user.name
         %td= user.email
         %td= user.college.name
+        %td 
+          - get_active_inactive(user)
+          - @active_courses.each do |course|
+            %li= course.name
         %td= link_to 'Edit', edit_user_path(user.id)
 
 %h3
@@ -47,8 +52,17 @@
     %tr
       %th Name
       %th Email
+      %th College
+      %th Active Courses
+      %th Edit
   %tbody
     - User.where(:profile => "admin").each do |user|
       %tr
         %td= user.name
         %td= user.email
+        %td= user.college.name
+        %td 
+          - get_active_inactive(user)
+          - @active_courses.each do |course|
+            %li= course.name
+        %td= link_to 'Edit', edit_user_path(user.id)

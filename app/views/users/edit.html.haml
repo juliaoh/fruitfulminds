@@ -8,8 +8,10 @@
   - if @user.pending == 2
     = "#{@user.name} (Inactive)"
 = form_tag user_path(@user), :method => :put do
-  = label :user, :name, "Name: #{@user.name}"
-  = label :user, :email, "Email: #{@user.email}"
+  = label_tag :name, "Name:"
+  = text_field_tag :name, "#{@user.name}"
+  = label_tag :email, "Email:"
+  = text_field_tag :email, "#{@user.email}"
   = label :college, :name, "College:"
   = select :college, :name, options_for_select(College.all.collect { |c| [c.name, c.id] }.sort, @college.id)
   %br
@@ -37,17 +39,17 @@
   = label_tag "School"
   = select_tag "school[#{@user.id}]", options_for_select(School.all.collect { |s| ["#{s.name}, #{s.city}, #{s.county}", s.id]}.sort), :style => "width: 325px;"
   = label_tag "Semester"
-  = select_tag "semester[#{@user.id}]", options_for_select(["Spring #{Time.now.year-1}", "Fall #{Time.now.year-1}", "Spring #{Time.now.year}", "Fall #{Time.now.year}", "Spring #{Time.now.year+1}", "Fall #{Time.now.year+1}"]), :style => "width: 125px;"
+  = select_tag "semester[#{@user.id}]", options_for_select(Course.get_future_semesters), :style => "width: 125px;"
   = label_tag "Curriculum"
   = select_tag "curriculum[#{@user.id}]", options_for_select(Curriculum.all.collect { |curriculum| [curriculum.name, curriculum.id] }.sort), :style => "width: 150px;"
   %br
   = submit_tag "Add"
 
-- if @user.pending == 1
+- if @user.pending == 1 and not @user.admin?
   %h4
     = "Deactivate User"
   = button_to "Deactivate User", deactivate_user_path({:user => @user}), :confirm => "Are you sure you want to deactivate #{@user.name}?"
-- if @user.pending == 2
+- if @user.pending == 2 and not @user.admin?
   %h4
     = "Activate User"
   = button_to "Activate User", activate_user_path({:user => @user})
