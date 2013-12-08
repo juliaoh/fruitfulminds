@@ -133,6 +133,7 @@ module ReportsObjGraphHelper
       section = Section.find_by_id(section_id)
       next if section.stype != 'Multiple Choice'
       section_pre_total, section_post_total, section_question_count = process_data_per_section(section, data_list, pre_combined, post_combined)
+      total_question_count += section_question_count
       pre_data.push(section_pre_total/section_question_count)
       post_data.push(section_post_total/section_question_count)
     end
@@ -148,20 +149,19 @@ module ReportsObjGraphHelper
   end
 
   def process_data_per_section(section, data_list, pre_combined, post_combined)
-	section_pre_total = 0
+    section_pre_total = 0
     section_post_total = 0
     section_question_count = 0
-	section.questions.each do |question|
-	  q_id = question.id
-	  check_for_incomplete_data(q_id, data_list)
-	  section_pre_total += data_list[0][q_id]
-	  section_post_total += data_list[1][q_id]
-	  pre_combined[0] += data_list[0][q_id]
-	  post_combined[0] += data_list[1][q_id]
-	  section_question_count += 1
-	  total_question_count += 1
-	end
-	return section_pre_total, section_post_total, section_question_count
+    section.questions.each do |question|
+      q_id = question.id
+      check_for_incomplete_data(q_id, data_list)
+      section_pre_total += data_list[0][q_id]
+      section_post_total += data_list[1][q_id]
+      pre_combined[0] += data_list[0][q_id]
+      post_combined[0] += data_list[1][q_id]
+      section_question_count += 1
+    end
+    return section_pre_total, section_post_total, section_question_count
   end
 
 end

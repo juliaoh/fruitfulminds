@@ -1,4 +1,8 @@
 module ReportsAssignTitlesHelper
+
+  include ReportsObjGraphHelper
+  include ReportsGraphHelper
+
   def assign_titles
     @main_title = "Fruitful Minds #{@school_name} #{@school_semester} Report"
     @school_intro_title = "Fruitful Minds at #{@school_name}"
