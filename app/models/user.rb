@@ -23,14 +23,6 @@ class User < ActiveRecord::Base
     Course.find_by_id(@pending_course_id)
   end
 
-  def courses_to_str
-    course_string = ""
-    courses.each do |course|
-      course_string += course.name + "\n"
-    end
-    return course_string
-  end
-
   def pending?
     pending == 0
   end

@@ -58,11 +58,6 @@ Background: Generate curric, courses, login
     | school1 | Alameda | Berkeley | district |
     | school2 | Rowland | Rowland  | district |
 
-
-  And the following school_semesters exist:
-    | school_id | name | year |
-    | 1         | Fall | 2011 |
-
   And the following static content exists:
     | intro_title | introduction | objectives_title | strength_weakness_intro | strength_intro | weakness_intro | eval_title | summary |
     | Intro Title | Intro Body   | Objective Title  | Sterngth-weakness Intro | Strength Intro | Weakness Intro | Eval Title | Summary |
