@@ -32,6 +32,8 @@ class AdminController < ApplicationController
       flash[:warning] = "Password must have 6 characters or more"
     elsif not valid_email? email
       flash[:warning] = "Not a valid email address"
+    elsif User.find_by_email(params[:user][:email])
+      flash[:warning] = "Email address is already taken"
     elsif not password.eql? confirm
       flash[:warning] = "Passwords did not match"
     else

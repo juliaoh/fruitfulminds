@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :courses
   has_secure_password
   validate :name, :presence => true
-  validate :email, :presence => true, :uniqueness => true
+  validates :email, :presence => true, :uniqueness => true
   validate :password, :presence => true, :on => :create, :length => {:minimum => 6}
   validate :profile, :presence => true, :inclusion => ["ambassador", "admin"]
   validate :pending, :presence => true, :inclusion => [0, 1, 2]
