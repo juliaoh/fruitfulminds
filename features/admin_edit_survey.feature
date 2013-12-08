@@ -5,24 +5,15 @@ Feature: Administrator survey creation
 
 Background: results are to be added to database
 
-  Given the following profiles exist:
-    | label      |
-    | admin      |
-    | ambassador |
-
-  And the following users exist:
-    | email              | password | name         | profile_id | school_semester_id |
-    | admin@gmail.com         | 123f5    | Admin         | 1          |                    |
-    | amirk88@gmail.com  | 123f5    | amir khodaei | 1          |     1              |
+  Given the following users exist:
+    | email              | password | name         | profile        | pending |
+    | admin@gmail.com    | 123f5    | Admin        | admin          |    1    |
+    | amirk88@gmail.com  | 123f5    | amir khodaei | ambassador     |    1    |
 
   And the following schools exist:
     | name 	| county    | city 	  | district |
     | "school1" | "Alameda" | "Berkeley"  | District |
 
-  And the following school_semesters exist:
-    | school_id | name | year |
-    |     1     | Fall | 2011 |
-    
   And the following curriculum exist:
     | name        |
     | "Test Survey" |
@@ -45,7 +36,6 @@ Scenario: edit question with no name results to a sad path
   And I fill in "surveyname" with ""
   And I press "Save Changes"
   Then I should see "There are blank fields"
-  Then I should be on the new survey template page
  
 @javascript
 Scenario: Add a section to the survey
