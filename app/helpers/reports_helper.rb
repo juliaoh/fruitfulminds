@@ -121,14 +121,9 @@ module ReportsHelper
     @course.users.each do |user|
       user_pre_data = @presurvey.data[user.id]
       user_post_data = @postsurvey.data[user.id]
-      #following code works because of invariant:
-      #pre&post surveys have the exact same questions
-      if not @presurvey.total[user.id].nil?
-        @presurvey_subtotal += @presurvey.total[user.id]
-      end
-      if not @postsurvey.total[user.id].nil?
-        @postsurvey_subtotal += @postsurvey.total[user.id]
-      end
+
+      #add_subtotals is a helper function defined below
+      add_subtotals(user)
 
       #calc_values is in ReportsHelper
       presurvey_data = calc_values(user_pre_data, presurvey_data, @presurvey_total)
@@ -136,8 +131,18 @@ module ReportsHelper
     end
 
     data = [presurvey_data, postsurvey_data]
-
     return data
+  end
+
+  def add_subtotals(user)
+    #following code works because of invariant:
+    #pre&post surveys have the exact same questions
+    if not @presurvey.total[user.id].nil?
+      @presurvey_subtotal += @presurvey.total[user.id]
+    end
+    if not @postsurvey.total[user.id].nil?
+      @postsurvey_subtotal += @postsurvey.total[user.id]
+    end
   end
 
 end
