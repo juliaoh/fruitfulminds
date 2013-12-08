@@ -50,11 +50,11 @@ module ReportsObjGraphHelper
   end
 
   def setup_improvement(combined_data)
-    @improvement = combined_data[1] - combined_data[0]
-    if not @improvement[0].nil?
-      @improvement = @improvement[0].round(2)
+    @improvement = combined_data[1][0] - combined_data[0][0]
+    if not @improvement.nil?
+      @improvement = @improvement.round(2)
     else
-      @improvement[0] = 0
+      @improvement = 0
     end
   end
 
@@ -123,6 +123,8 @@ module ReportsObjGraphHelper
     @max = [pre_data.compact.max, post_data.compact.max].max
     @combined_max = [pre_combined[0], post_combined[0]].max
     data = [pre_data, post_data]
+    params[:bob] = pre_combined[0]
+    params[:jenkins] = post_combined[0]
     combined_data = [pre_combined, post_combined]
     return data, combined_data
   end
