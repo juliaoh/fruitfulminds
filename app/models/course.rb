@@ -25,14 +25,14 @@ class Course < ActiveRecord::Base
   end
 
   def check_active
-    if compare_semester(get_time_of_year) == 1
+    if Course.compare_semester(semester, Course.get_time_of_year) == 1
       update_attributes!(:active => 0)
     else
       update_attributes!(:active => 1)
     end
   end
 
-  def get_time_of_year
+  def self.get_time_of_year
     if Time.now.year.month < 7
       month = "Spring"
     else
@@ -42,7 +42,7 @@ class Course < ActiveRecord::Base
   end
 
   def compare_name_and_semester(other)
-    temp = compare_semester(other.semester)
+    temp = Course.compare_semester(semester, other.semester)
     case
     when temp == 0
       name <=> other.name
@@ -51,7 +51,7 @@ class Course < ActiveRecord::Base
     end
   end
 
-  def compare_semester(other)
+  def self.compare_semester(semester, other)
     semesterA = semester.split(" ")
     semesterB = other.split(" ")
     case
@@ -62,5 +62,9 @@ class Course < ActiveRecord::Base
     else
       semesterA[0] <=> semesterB[0]
     end
+  end
+
+  def self.get_future_semesters
+    ["Spring #{Time.now.year}", "Fall #{Time.now.year}", "Spring #{Time.now.year+1}", "Fall #{Time.now.year+1}"].select { |sem| compare_semester(sem, get_time_of_year) < 1 }
   end
 end
