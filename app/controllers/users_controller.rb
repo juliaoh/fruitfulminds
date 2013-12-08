@@ -99,7 +99,7 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
     @college = @user.college
     @course = @user.courses[0] ## Deal with 1 course right now.
-    get_active_inactive(@user)
+    get_own_courses(@user)
   end
 
   def update

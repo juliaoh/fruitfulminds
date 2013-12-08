@@ -23,20 +23,6 @@ class User < ActiveRecord::Base
     Course.find_by_id(@pending_course_id)
   end
 
-  def courses
-    courses = Course.all
-    if not admin?
-      user_courses = []
-      courses.each do |course|
-        if course.user_ids.include?(id)
-          user_courses << course
-        end
-      end
-      courses = user_courses
-    end
-    courses
-  end
-
   def courses_to_str
     course_string = ""
     courses.each do |course|
