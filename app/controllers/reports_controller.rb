@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
   include ReportsHelper
+  include ReportsGraphHelper
   def new
     #New report page should only list the classes that the ambassador is part of
     #NOT SORTED YET
@@ -114,11 +115,9 @@ class ReportsController < ApplicationController
     if efficacy_data.nil? or objective_data.nil?
       flash[:warning] = "Not enough data"
       redirect_to "/reports/new" and return
-    #elsif efficacy_data[0].keys.length != @questions['Efficacy'].length or efficacy_data[1].keys.length != @questions['Efficacy'].length
     elsif test_enough_data(efficacy_data, 'Efficacy')
       flash[:warning] = "Not enough data"
       redirect_to "/reports/new" and return
-    #elsif objective_data[0].keys.length != @questions['Multiple Choice'].length or objective_data[1].keys.length != @questions['Multiple Choice'].length
     elsif test_enough_data(objective_data, 'Multiple Choice')
       flash[:warning] = "Not enough data"
       redirect_to "/reports/new" and return
@@ -299,70 +298,7 @@ class ReportsController < ApplicationController
     return total_question_count
   end
 
-  def generate_objective_graph(data_list)
-    #data_list is a list of hashes [{presurvey},{postsurvey}]
-    #hashes are {q_id => value}
-    #graph should be
-    #y-axis: % value
-    #x-axis SECTIONS (not q_id/questions)
 
-
-
-    if data_list.nil?
-      return
-    end
-    axes = []
-    labels = ""
-    graph_width = 100
-    @objectives.keys.each do |section_name|
-      if section_name.length > 12
-        section_name = section_name[0..11] + "..."
-      end
-      axes.push(section_name)
-      labels += section_name+"|"
-      graph_width += 83
-    end
-    labels.chomp('|')
-
-    data = []
-    combined_data = []
-    data, combined_data = format_objective_data(data_list)
-    if data.nil? or combined_data.nil?
-      return
-    end
-    @improvement = combined_data[1] - combined_data[0]
-    if not @improvement[0].nil?
-      @improvement = @improvement[0].round(2)
-    else
-      @improvement[0] = 0
-    end
-    prescore = combined_data[0]
-    postscore = combined_data[1]
-    size = graph_width.to_s + 'x300'
-    @nutrition_chart = Gchart.bar(:size => size,
-                                :title => "Survey Score in Nutrition Topics(%)",
-                                :legend => ['Pre', 'Post'],
-                                :bar_colors => '3399CC,99CCFF',
-                                :data => data,
-                                :bar_width_and_spacing => '30,0,23',
-                                :axis_with_labels => 'x,y',
-                                :axis_labels => [labels],
-                                :stacked => false,
-                                :axis_range => [nil, [0,@max,10]]
-                                )
-
-    @combined_chart = Gchart.bar(:size => '1000x300',
-                              :title => "Overall Combined Scores(%)",
-                              :legend => ['Pre-curriculum Results (' + prescore[0].round(2).to_s + '%)', 'Post-curriculum Results (' + postscore[0].round(2).to_s + '%)'],
-                              :bar_colors => 'FF3333,990000',
-                              :data => combined_data,
-                              :bar_width_and_spacing => '50,25,25',
-                              :axis_with_labels => 'y',
-                              :stacked => false,
-                              :axis_range => [[0,@combined_max,10]]
-                            )
-
-  end
 
   def generate_efficacy_graph(data_list)
     #data_list is a list of hashes [{presurvey},{postsurvey}]
