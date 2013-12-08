@@ -28,15 +28,7 @@ class AdminController < ApplicationController
   end
 
   def create_user(name, email, password, confirm)
-    if password.length < 6
-      flash[:warning] = "Password must have 6 characters or more"
-    elsif not valid_email? email
-      flash[:warning] = "Not a valid email address"
-    elsif User.find_by_email(params[:user][:email])
-      flash[:warning] = "Email address is already taken"
-    elsif not password.eql? confirm
-      flash[:warning] = "Passwords did not match"
-    else
+    if validate_creation(name,email,password,confirm)
       begin
         @user = User.create!(:name => name, :email => email, :password => password, :profile => "admin")
         flash[:notice] = "Successfully created new administrator."
@@ -44,8 +36,26 @@ class AdminController < ApplicationController
       rescue ActiveRecord::RecordInvalid
         flash[:warning] = "Registration Failed"
       end
+    else
+      redirect_to new_admin_path(:user => fields)
     end
-    redirect_to new_admin_path(:user => fields)
+  end
+
+  def validate_creation(name,email,password,confirm)
+    if password.length < 6
+      flash[:warning] = "Password must have 6 characters or more"
+      return false
+    elsif not valid_email? email
+      flash[:warning] = "Not a valid email address"
+      return false
+    elsif User.find_by_email(params[:user][:email])
+      flash[:warning] = "Email address is already taken"
+      return false
+    elsif not password.eql? confirm
+      flash[:warning] = "Passwords did not match"
+      return false
+    end
+    return true
   end
 
   def update
