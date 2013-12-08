@@ -1,5 +1,5 @@
-
 class ReportsController < ApplicationController
+  include ReportsHelper
   def new
     #New report page should only list the classes that the ambassador is part of
     @courses = @current_user.courses
@@ -13,7 +13,7 @@ class ReportsController < ApplicationController
       redirect_to "/reports/new" and return
     elsif @course.users.empty?
       flash[:warning] = "Course has no data or ambassador assigned"
-      redirect_to "/reports/new" and return 
+      redirect_to "/reports/new" and return
     end
     generate_report
   end
@@ -35,42 +35,9 @@ class ReportsController < ApplicationController
       flash[:warning] = "@course is not defined"
       return
     end
-    #A course is uniquely defined by
-    #1) School ID (number)
-    #2) Semester (string)
-    #3) Curriculum ID (number), curriculum corresponds to survey
-    #Example: 1, 'Fall 2013', 1 could correspond to Ascend Elementary, 'Fall 2013', 5th Grade Curriculum
-
-    #A course has
-    #a list of its ambassadors (list of user ids)
-    #presurvey data (id)
-    #postsurvey data (id)
-    #total_students (int)
-    @course_total = @course.total_students
-    @presurvey_subtotal = 0
-    @postsurvey_subtotal = 0
-    @school = School.find_by_id(@course.school_id)
-    @school_name = @school.name
-    @school_semester = @course.semester
-    @main_semester_title = @school_semester + " Report"
-    @static_contents = StaticContent.first
-    @curriculum = Curriculum.find_by_id(@course.curriculum_id)
-    @questions = {}
-    @warnings = []
-    @warning_flag = false
-    #presurvey.total & postsurvey.total are hashes of
-    #{user_id => {'total' => # of students user is entering data for}}
-    @presurvey = Presurvey.find_by_id(@course.presurvey_id)
-    @postsurvey = Postsurvey.find_by_id(@course.postsurvey_id)
-    if @presurvey.nil? and @postsurvey.nil?
-      flash[:warning] = "Empty presurvey and postsurvey results. Cannot generate report."
-      redirect_to "/reports/new" and return
-    elsif @presurvey.nil?
-      flash[:warning] = "Empty presurvey results. Cannot generate report."
-      redirect_to "/reports/new" and return
-    elsif @postsurvey.nil?
-      flash[:warning] = "Empty postsurvey results. Cannot generate report."
-      redirect_to "/reports/new" and return
+    initialize_fields_in_report
+    if warn_incomplete_report
+      return
     end
     calc_subtotals
     generate_intro_text
@@ -281,7 +248,7 @@ class ReportsController < ApplicationController
       values += " " + v.to_s
     end
 
-    total_question_count = format_objective_data_helper()
+    total_question_count = format_objective_data_helper(data_list, pre_combined, post_combined, pre_data, post_data)
     pre_combined[0] /= total_question_count
     post_combined[0] /= total_question_count
     @max = [pre_data.compact.max, post_data.compact.max].max
@@ -292,7 +259,7 @@ class ReportsController < ApplicationController
   end
 
 
-  def format_objective_data_helper
+  def format_objective_data_helper(data_list, pre_combined, post_combined, pre_data, post_data)
     total_question_count = 0
     @curriculum.sections.each do |section_id|
       section = Section.find_by_id(section_id)
