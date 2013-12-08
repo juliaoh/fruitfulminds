@@ -43,4 +43,46 @@ module ReportsHelper
     return false
   end
 
+  def populate_data(presurvey_data, postsurvey_data, data, comps)
+    presurvey_data.keys.each do |q_id|
+      #q_id is same for both presurvey & postsurvey questions
+      pre_value = presurvey_data[q_id]
+      post_value = postsurvey_data[q_id]
+      delta = post_value - pre_value
+      #not considered a weakness if starting value is 90%
+      possible_weakness = (((pre_value >= 80) and (post_value < 80)) or pre_value < 80)
+      if (pre_value >= 80 and post_value >= 80)
+        question = Question.find_by_id(q_id)
+        comps[question.name] = question.msg
+      end
+      info_list = [q_id, delta, possible_weakness]
+      data.push(info_list)
+    end
+  end
+
+  def populate_strengths(sorted_data, strengths)
+    sorted_data[0..4].each do |info_list|
+      question = Question.find_by_id(info_list[0])
+      if info_list[1] > 0 #infolist[1]  is the delta
+        strengths[question.name] = question.msg
+      end
+    end
+  end
+
+  def populate_weaknesses(sorted_data, weaknesses, strengths)
+    weak_count = 0
+    index = sorted_data.size - 1
+    while weak_count < 5 do #need 5 weaknesses
+      break if index < 0
+      info_list = sorted_data[index]
+      if info_list[2] #check if possible to be weakness
+        question = Question.find_by_id(info_list[0])
+        if not strengths.include?(question.name)
+          weaknesses[question.name] = question.msg #message
+          weak_count = weak_count + 1
+        end
+      end
+      index = index - 1
+    end
+  end
 end

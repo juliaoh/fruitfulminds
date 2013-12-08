@@ -2,7 +2,12 @@ class ReportsController < ApplicationController
   include ReportsHelper
   def new
     #New report page should only list the classes that the ambassador is part of
-    @courses = @current_user.courses
+    #NOT SORTED YET
+    if @current_user.admin?
+      @courses = Course.where(:active => 1)
+    else
+      @courses = @current_user.courses
+    end
   end
 
   def create
@@ -145,6 +150,9 @@ class ReportsController < ApplicationController
         @objective_str['N/A'] = 'Students show no strengths'
       end
       @objective_weak = objective_stats[1]
+      if @objective_weak.keys.length == 0
+        @objective_weak['N/A'] = 'Students show no weaknesses'
+      end
       @objective_comp = objective_stats[2]
       if @objective_comp.keys.length == 0
         @objective_comp['N/A'] = 'Students did not show competency in any areas of Fruitful Minds teaching prior to the lessons.'
@@ -420,6 +428,7 @@ class ReportsController < ApplicationController
     #presurvey.data & postsurvey.data are hashes of
     #{user => {q_id => value}}
     @type = type
+
     def calc_values(data, data_hash, combined_subtotal)
       #helper function
       #data expected to be from @presurvey.data[user.id] or @postsurvey.data[user.id]
@@ -486,46 +495,21 @@ class ReportsController < ApplicationController
     postsurvey_data = data_list[1]
     data = []
 
-    presurvey_data.keys.each do |q_id|
-      #q_id is same for both presurvey & postsurvey questions
-      pre_value = presurvey_data[q_id]
-      post_value = postsurvey_data[q_id]
-      delta = post_value - pre_value
-      #not considered a weakness if starting value is 90%
-      possible_weakness = (((pre_value >= 80) and (post_value < 80)) or pre_value < 80)
-      if (pre_value >= 80 and post_value >= 80)
-        question = Question.find_by_id(q_id)
-        comps[question.name] = question.msg
-      end
-      info_list = [q_id, delta, possible_weakness]
-      data.push(info_list)
-    end
+    #populate_data is in ReportsHelper
+    populate_data(presurvey_data, postsurvey_data, data, comps)
 
     #info_list is [q_id, delta, possible_weakness]
-    sorted_data = data.sort_by {|info_list| [info_list[1]]}
-    sorted_data[0..4].each do |info_list|
-      question = Question.find_by_id(info_list[0])
-      if info_list[1] > 0 #infolist[1]  is the delta
-        strengths[question.name] = question.msg
-      end
-    end
+    #sorts in descending order
+    sorted_data = data.sort_by {|info_list| [info_list[1]]}.reverse
 
-    weak_count = 0
-    index = sorted_data.size - 1
-    while weak_count < 5 do #need 5 weaknesses
-      break if index < 0
-      info_list = sorted_data[index]
-      if info_list[2] #check if possible to be weakness
-        question = Question.find_by_id(info_list[0])
-        weaknesses[question.name] = question.msg #message
-        weak_count = weak_count + 1
-      end
-      index = index - 1
-    end
+    #populate_strengths is in ReportsHelper
+    populate_strengths(sorted_data, strengths)
 
-    #returns a list of hashes [{q_name => str message},{q_name => weak messages}]
+    #populate_weaknesses is in ReportsHelper
+    populate_weaknesses(sorted_data, weaknesses, strengths)
+
+    #returns a list of hashes [{q_name => str message},{q_name => weak messages}
     #q_name should be something like "Section 6 Question 4"
-
     return [strengths, weaknesses, comps]
   end
 
