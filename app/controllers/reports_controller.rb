@@ -114,15 +114,21 @@ class ReportsController < ApplicationController
     if efficacy_data.nil? or objective_data.nil?
       flash[:warning] = "Not enough data"
       redirect_to "/reports/new" and return
-    elsif efficacy_data[0].keys.length != @questions['Efficacy'].length or efficacy_data[1].keys.length != @questions['Efficacy'].length
+    #elsif efficacy_data[0].keys.length != @questions['Efficacy'].length or efficacy_data[1].keys.length != @questions['Efficacy'].length
+    elsif test_enough_data(efficacy_data, 'Efficacy')
       flash[:warning] = "Not enough data"
       redirect_to "/reports/new" and return
-    elsif objective_data[0].keys.length != @questions['Multiple Choice'].length or objective_data[1].keys.length != @questions['Multiple Choice'].length
+    #elsif objective_data[0].keys.length != @questions['Multiple Choice'].length or objective_data[1].keys.length != @questions['Multiple Choice'].length
+    elsif test_enough_data(objective_data, 'Multiple Choice')
       flash[:warning] = "Not enough data"
       redirect_to "/reports/new" and return
     end
     efficacy_stats_handler(efficacy_data)
     objective_stats_handler(objective_data)
+  end
+
+  def test_enough_data(data, title)
+    (data[0].keys.length != @questions[title].length) or (data[1].keys.length != @questions[title].length)
   end
 
   def efficacy_stats_handler(efficacy_data)
