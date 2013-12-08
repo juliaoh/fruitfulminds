@@ -6,19 +6,17 @@ Feature: Generate a Report Summary
 
 Background: Generate report based on survey results
 
-  Given the following profiles exist:
-    | label      |
-    | admin      |
-    | ambassador |
-
   And the following curriculum exist:
     | name        |
     | curriculum1 |
 
-
   And the following MC sections exist:
     | name     | objective            | stype           | curriculum_id |
     | section1 | test objective       | Multiple Choice | 1             |
+
+  And the following Efficacy sections exist:
+    | name     | stype    | curriculum_id |
+    | section2 | Efficacy | 1             |
 
   And the following questions exist:
     | name     | qtype           | msg            | section_id |
@@ -37,7 +35,7 @@ Background: Generate report based on survey results
 
   And the following courses exist:
     | school_id | semester    | curriculum_id | total_students  | presurvey_id | postsurvey_id | active |
-    | 1         | Fall 2013   | 1             | 25              | 1            | 1             | true   |
+    | 1         | Fall 2013   | 1             | 25              | 1            | 1             | 1      |
 
   And the following users exist:
     | email              | password | name         | profile_id | school_semester_id |
@@ -60,11 +58,6 @@ Background: Generate report based on survey results
     | name    | county  | city     | district |
     | school1 | Alameda | Berkeley | district |
     | school2 | Rowland | Rowland  | district |
-
-
-  And the following school_semesters exist:
-    | school_id | name | year |
-    | 1         | Fall | 2013 |
 
   And the following static content exists:
     | intro_title | introduction | objectives_title | strength_weakness_intro | strength_intro | weakness_intro | eval_title | summary |
