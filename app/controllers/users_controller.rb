@@ -104,23 +104,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by_id(params[:id])
-    if warning_message(params)
+    if update_warning_message(params)
       return
     end
     @user.update_attributes!(:college_id => params[:college], :name => params[:name], :email => params[:email])
     flash[:notice] = "#{@user.name} has been updated."
     redirect_to all_users_path
-  end
-
-  def warning_message(params)
-    if not valid_email?(params[:email])
-      flash[:warning] = "Email address is invalid"
-      redirect_to edit_user_path and return true
-    elsif @user != User.find_by_email(params[:email])
-      flash[:warning] = "Email address is already taken"
-      redirect_to edit_user_path and return true
-    end
-    return false
   end
 
   def handle_user_course_update(user, newcourse)
