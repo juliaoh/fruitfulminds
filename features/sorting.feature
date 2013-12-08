@@ -9,6 +9,8 @@ Scenario: Sorting Happy Path -- everything sorted
   And I am logged in as "admin@gmail.com" with "123f5" as my password
   And I am on the pending users page
   Then I should see "Cherry" before I see "Grape"
+  And I should see "Coconut" before I see "Grape"
+  And I should see "Coconut" before I see "Cherry"
   And I am on the all users page
   Then I should see "Apple" before I see "Banana"
   And I am on the All Colleges page

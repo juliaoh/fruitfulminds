@@ -221,6 +221,7 @@ Given /^the sorting database is set up$/ do
       | admin@gmail.com         | 123f5    | Admin         | admin      | 1       | 1          |                   |                  |
       | banana@gmail.com        | 12323d   | Banana        | ambassador | 1       | 1          |                   |                  |
       | apple@gmail.com         | 2isd82   | Apple         | ambassador | 1       | 1          |                   |                  |
+      | coconut@gmail.com       | 2isd82   | Coconut       | ambassador | 0       | 1          | 1                 | Fall 2013        |
       | grape@gmail.com         | 2isd82   | Grape         | ambassador | 0       | 1          | 1                 | Fall 2013        |
       | cherry@gmail.com        | 2isd82   | Cherry        | ambassador | 0       | 1          | 1                 | Fall 2013        |
 

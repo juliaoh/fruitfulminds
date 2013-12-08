@@ -26,6 +26,7 @@ module NavigationHelpers
     when /^the new survey template page$/ then new_survey_template_path
     when /^the edit survey template page$/ then edit_survey_template_path
     when /^the logout page$/ then logout_path
+    when /^the edit user page for user (.*)$/ then edit_user_path($1)
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
