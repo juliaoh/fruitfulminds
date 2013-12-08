@@ -154,10 +154,11 @@ module UsersHelper
   end
 
   def update_warning_message(params)
+    curr_email_user = User.find_by_email(params[:email])
     if not valid_email?(params[:email])
       flash[:warning] = "Email address is invalid"
       redirect_to edit_user_path and return true
-    elsif @user != User.find_by_email(params[:email])
+    elsif not curr_email_user.nil? and @user != curr_email_user
       flash[:warning] = "Email address is already taken"
       redirect_to edit_user_path and return true
     end
