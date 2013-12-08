@@ -420,7 +420,7 @@ class ReportsController < ApplicationController
     #presurvey.data & postsurvey.data are hashes of
     #{user => {q_id => value}}
     @type = type
-    def calc_values(data, data_hash)
+    def calc_values(data, data_hash, combined_subtotal)
       #helper function
       #data expected to be from @presurvey.data[user.id] or @postsurvey.data[user.id]
       return data_hash if data.nil?
@@ -428,8 +428,8 @@ class ReportsController < ApplicationController
         question = Question.find_by_id(q_id)
         next if question.qtype != @type #skips if not type: 'Efficacy' or 'Multiple Choice'
 
-        #value is (ratio of correct answers entered to total number of students) * 100
-        value = (data[q_id]/@course_total.to_f) * 100
+        #value is (ratio of correct answers entered to combined SUB_totals number of students) * 100
+        value = (data[q_id]/combined_subtotal.to_f) * 100
         if data_hash.include?(q_id)
           data_hash[q_id] += value
         else
@@ -460,8 +460,8 @@ class ReportsController < ApplicationController
       if not @postsurvey.total[user.id].nil?
         @postsurvey_subtotal += @postsurvey.total[user.id]
       end
-      presurvey_data = calc_values(user_pre_data, presurvey_data)
-      postsurvey_data = calc_values(user_post_data, postsurvey_data)
+      presurvey_data = calc_values(user_pre_data, presurvey_data, @presurvey_total)
+      postsurvey_data = calc_values(user_post_data, postsurvey_data, @postsurvey_total)
     end
 
     data = [presurvey_data, postsurvey_data]
