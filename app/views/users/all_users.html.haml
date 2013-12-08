@@ -40,7 +40,7 @@
         %td= user.email
         %td= user.college.name
         %td 
-          - get_active_inactive(user)
+          - get_own_courses(user)
           - @active_courses.each do |course|
             %li= course.name
         %td= link_to 'Edit', edit_user_path(user.id)
@@ -62,7 +62,7 @@
         %td= user.email
         %td= user.college.name
         %td 
-          - get_active_inactive(user)
+          - get_own_courses(user)
           - @active_courses.each do |course|
             %li= course.name
         %td= link_to 'Edit', edit_user_path(user.id)
