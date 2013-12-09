@@ -60,8 +60,8 @@ Background: Generate report based on survey results
     | school2 | Rowland | Rowland  | district |
 
   And the following static content exists:
-    | intro_title | introduction | objectives_title | strength_weakness_intro | strength_intro | weakness_intro | eval_title | summary | behavior_title | behavior_intro | increase_header | decrease_header | comp_header | summary_header |
-    | Intro Title | Intro Body   | Objective Title  | Strength-weakness Intro | Strength Intro | Weakness Intro | Eval Title | Summary | Behavior Title | Behavior Intro | Increase Header | Decrease Header | Comp Header | Summary Header |
+    | intro_title | introduction | objectives_title | strength_weakness_intro | strength_intro | weakness_intro | eval_title | summary | behavior_title | behavior_intro | increase_header | decrease_header | comp_header | summary_header | comp_intro |
+    | Intro Title | Intro Body   | Objective Title  | Strength-weakness Intro | Strength Intro | Weakness Intro | Eval Title | Summary | Behavior Title | Behavior Intro | Increase Header | Decrease Header | Comp Header | Summary Header | Comp Intro |
 
   And I am logged in as amir
   And I am on the generate report page
@@ -91,7 +91,7 @@ Background: Generate report based on survey results
   Scenario: Add comment to report and generate
     Given I initiated the report generation for "school1"
     And I fill in "Ambassador Note" with "This is an ambassador comment"
-    #And I press "Add Comments and Generate pdf"
+    And I press "Add Comments and Generate pdf"
     #Given I am on the portal page
 
   Scenario: Leave comment box empty and generate report

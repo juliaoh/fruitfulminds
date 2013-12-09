@@ -7,18 +7,19 @@
   %thead
     %tr
       %th Name
-      %th Email
       %th College
       %th Active Courses
       %th Edit
   %tbody
     - @active_users.each do |user|
       %tr
-        %td= user.name
-        %td= user.email
+        %td
+          = user.name
+          %br
+            %em= user.email
         %td= user.college.name
         %td 
-          - get_active_inactive(user)
+          - get_own_courses(user)
           - @active_courses.each do |course|
             %li= course.name
         %td= link_to 'Edit', edit_user_path(user.id)
@@ -28,16 +29,17 @@
 %table#pending_users
   %thead
     %tr
-      %th Name
-      %th Email
+      %th Name/Email
       %th College
       %th Active Courses
       %th Edit
   %tbody
     - @inactive_users.each do |user|
       %tr
-        %td= user.name
-        %td= user.email
+        %td
+          = user.name
+          %br
+            %em= user.email
         %td= user.college.name
         %td 
           - get_own_courses(user)
@@ -50,16 +52,17 @@
 %table#pending_users
   %thead
     %tr
-      %th Name
-      %th Email
+      %th Name/Email
       %th College
       %th Active Courses
       %th Edit
   %tbody
     - User.where(:profile => "admin").each do |user|
       %tr
-        %td= user.name
-        %td= user.email
+        %td
+          = user.name
+          %br
+            %em= user.email
         %td= user.college.name
         %td 
           - get_own_courses(user)
