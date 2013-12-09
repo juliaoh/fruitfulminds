@@ -27,5 +27,6 @@ class User < ActiveRecord::Base
     pending == 0
   end
 
-
+  def pending_semester_select
+  end
 end

@@ -9,6 +9,7 @@
         %th School
         %th Semester
         %th Curriculum
+        %th Course Identifier
         %th Approve
         %th Disapprove
     %tbody
@@ -20,8 +21,9 @@
               %em= user.email
           %td= select_tag "college[#{user[:id]}]", options_for_select(College.all.collect { |s| ["#{s.name}", s.id ]}, :selected => user.college.id), :style => "width: 125px;"
           %td= select_tag "school[#{user[:id]}]", options_for_select(School.all.collect { |s| ["#{s.name}, #{s.city}, #{s.county}", s.id]}, :selected => user.pending_school_id), :style => "width: 325px;"
-          %td= select_tag "semester[#{user[:id]}]", options_for_select(["Spring #{Time.now.year-1}", "Fall #{Time.now.year-1}", "Spring #{Time.now.year}", "Fall #{Time.now.year}", "Spring #{Time.now.year+1}", "Fall #{Time.now.year+1}"], :selected => user.pending_semester), :style => "width: 125px;"
+          %td= select_tag "semester[#{user[:id]}]", options_for_select(Course.get_future_semesters, :selected => user.pending_semester), :style => "width: 125px;"
           %td= select_tag "curriculum[#{user[:id]}]", options_for_select([["None", nil]] + Curriculum.all.collect { |curriculum| [curriculum.name, curriculum.id] }), :style => "width: 150px;"
+          %td= text_field_tag "identifier[#{user[:id]}]"
           %td= check_box_tag "approves[#{user[:id]}]", 1, false, :id => "approves_#{user[:id]}", :style => "width: 30px;"
           %td= check_box_tag "disapproves[#{user[:id]}]", 1, false, :id => "disapproves_#{user[:id]}", :style => "width: 30px;"
   = submit_tag 'Update', :id => 'update_submit', :style => "margin: 10px;"
