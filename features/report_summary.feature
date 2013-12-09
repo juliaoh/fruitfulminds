@@ -88,7 +88,11 @@ Background: Generate report based on survey results
     And I should see "Ambassador Note"
 
   @javascript
-  Scenario: Add comment to report and generate
+  Scenario: Add comment to report and generate it twice
+    Given I initiated the report generation for "school1"
+    And I fill in "Ambassador Note" with "This is an ambassador comment"
+    And I press "Add Comments and Generate pdf"
+    And I am on the generate report page
     Given I initiated the report generation for "school1"
     And I fill in "Ambassador Note" with "This is an ambassador comment"
     And I press "Add Comments and Generate pdf"
