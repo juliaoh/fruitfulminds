@@ -146,7 +146,7 @@ module UsersHelper
 
   def remove_whitespace_from_identifiers(params)
     params[:identifier].each do |user, identifier|
-      params[:identifier][user] = identifier.lstrip.rstrip
+      params[:identifier][user] = identifier.split.join(" ")
     end
   end
 
