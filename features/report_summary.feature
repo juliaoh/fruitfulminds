@@ -96,7 +96,6 @@ Background: Generate report based on survey results
     Given I initiated the report generation for "school1"
     And I fill in "Ambassador Note" with "This is an ambassador comment"
     And I press "Add Comments and Generate pdf"
-    And I am on the test report page
 
   Scenario: Leave comment box empty and generate report
     Given I initiated the report generation for "school1"
