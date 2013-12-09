@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20131203074507) do
     t.integer  "presurvey_id",   :null => false
     t.integer  "postsurvey_id",  :null => false
     t.integer  "active",         :null => false
+    t.string   "identifier"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -13,7 +13,11 @@ class Course < ActiveRecord::Base
   after_create :check_active
 
   def name
-    school.name + ", " + school.city + ", " + school.county + ", " + semester
+    myname = school.name + ", " + school.city + ", " + school.county + ", " + semester
+    if identifier.to_s != ""
+      myname += ", " + identifier.to_s
+    end
+    return myname
   end
 
   def active?

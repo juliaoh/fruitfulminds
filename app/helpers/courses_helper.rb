@@ -1,7 +1,7 @@
 module CoursesHelper
 
-  def find_course_by_school_id_and_semester_and_curriculum_id (user, params)
-    Course.find_by_school_id_and_semester_and_curriculum_id(params[:school][user.id.to_s], params[:semester][user.id.to_s], params[:curriculum][user.id.to_s])
+  def find_course_by_school_id_and_semester_and_curriculum_id_and_identifier (user, params)
+    Course.find_by_school_id_and_semester_and_curriculum_id_and_identifier(params[:school][user.id.to_s], params[:semester][user.id.to_s], params[:curriculum][user.id.to_s], params[:identifier][user.id.to_s])
   end
 
   def create_course(user,params)
@@ -29,7 +29,8 @@ module CoursesHelper
                    :total_students => 0,
                    :presurvey_id => presurvey.id,
                    :postsurvey_id => postsurvey.id,
-                   :active => 1
+                   :active => 1,
+                   :identifier => params[:identifier][user.id.to_s]
                    )
   end
 
