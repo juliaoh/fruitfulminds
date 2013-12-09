@@ -86,11 +86,11 @@ class SurveyTemplateController < ApplicationController
     end
     @tmp_section = @survey_template.create_and_save_section(:name => section_name, :stype => section_type, :objective => section_obj)
   end
-  
-  def destroy
-    @template = Curriculum.find(params[:id])
-    @template.destroy
-    flash[:notice] = "Template successfully deleted."
-    redirect_to survey_template_index_path
-  end
+
+  #def destroy
+  #  @template = Curriculum.find(params[:id])
+  #  @template.destroy
+  #  flash[:notice] = "Template successfully deleted."
+  #  redirect_to survey_template_index_path
+  #end
 end

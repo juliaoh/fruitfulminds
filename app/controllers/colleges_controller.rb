@@ -37,10 +37,10 @@ class CollegesController < ApplicationController
     end
   end
 
-  def destroy
-    @college = College.find(params[:id])
-    @college.destroy
-    flash[:notice] = "Successfully deleted college."
-    redirect_to colleges_path
-  end
+  #def destroy
+  #  @college = College.find(params[:id])
+  #  @college.destroy
+  #  flash[:notice] = "Successfully deleted college."
+  #  redirect_to colleges_path
+  #end
 end
