@@ -28,9 +28,32 @@ module ReportsAssignTitlesHelper
     elsif test_enough_data(objective_data, 'Multiple Choice')
       flash[:warning] = "Not enough data"
       redirect_to "/reports/new" and return
+    elsif nan_data_test(objective_data, efficacy_data)
+      flash[:warning] = "Not enough data"
+      redirect_to "/reports/new" and return
     end
     efficacy_stats_handler(efficacy_data)
     objective_stats_handler(objective_data)
+  end
+
+  def nan_data_test(objective_data, efficacy_data)
+    if has_nan(objective_data[0].values) or has_nan(objective_data[1].values)
+      return true
+    elsif has_nan(efficacy_data[0].values) or has_nan(efficacy_data[1].values)
+      return true
+    end
+    return false
+  end
+
+  def has_nan(lst)
+    lst.each do |elem|
+      if elem.class == Float
+        if elem.nan?
+          return true
+        end
+      end
+    return false
+    end
   end
 
   def test_enough_data(data, title)
