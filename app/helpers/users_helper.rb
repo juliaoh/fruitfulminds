@@ -132,6 +132,7 @@ module UsersHelper
 
   def add_course_to_user!(user, params)
     if not params[:curriculum][user.id.to_s] == ""
+      remove_whitespace_from_identifiers(params)
       course = find_course_by_school_id_and_semester_and_curriculum_id_and_identifier(user, params)
       if course.nil?
         course = create_course(user,params)
@@ -140,6 +141,12 @@ module UsersHelper
       end
       course.users << user
       course.save!
+    end
+  end
+
+  def remove_whitespace_from_identifiers(params)
+    params[:identifier].each do |user, identifier|
+      params[:identifier][user] = identifier.lstrip.rstrip
     end
   end
 
