@@ -36,6 +36,14 @@ Feature: Admin approves/disapproves new users before they are given access to th
     And I should not see "approved_user@gmail.com"
     And I should see "Pending User was disapproved"
 
+  Scenario: Admin approves and disapproves a pending user at the same time
+    And I approve "Pending User"
+    And I disapprove "Pending User"
+    And I press "Update"
+    Then I should be on the pending users page
+    And I should see "Pending User had both the approved and disapproved check boxes marked and hence left unchanged."
+    
+
   Scenario: Admin approves all pending users
     And I approve "Pending User"
     And I approve "Pending User2"
