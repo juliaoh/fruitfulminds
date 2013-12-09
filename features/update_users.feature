@@ -32,4 +32,4 @@ Scenario: add course to user
 Scenario: delete course from user
   Given I am on the edit user page for user 2
   And I press "Remove"
-  Then I should not see "School1, Berkeley, Alameda, Fall 2013"
+  Then I should not see "school1, Berkeley, Alameda, Fall 2013"
