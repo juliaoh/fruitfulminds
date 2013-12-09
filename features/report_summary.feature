@@ -60,24 +60,39 @@ Background: Generate report based on survey results
     | school2 | Rowland | Rowland  | district |
 
   And the following static content exists:
-    | intro_title | introduction | objectives_title | strength_weakness_intro | strength_intro | weakness_intro | eval_title | summary |
-    | Intro Title | Intro Body   | Objective Title  | Sterngth-weakness Intro | Strength Intro | Weakness Intro | Eval Title | Summary |
+    | intro_title | introduction | objectives_title | strength_weakness_intro | strength_intro | weakness_intro | eval_title | summary | behavior_title | behavior_intro | increase_header | decrease_header | comp_header | summary_header |
+    | Intro Title | Intro Body   | Objective Title  | Strength-weakness Intro | Strength Intro | Weakness Intro | Eval Title | Summary | Behavior Title | Behavior Intro | Increase Header | Decrease Header | Comp Header | Summary Header |
 
   And I am logged in as amir
   And I am on the generate report page
+
   @javascript
   Scenario: See comment textbox on the report summary page
     Given I select "school1, Berkeley, Alameda, Fall 2013" from "course"
     And I press "Generate Report"
-    Then I should see summary of the report with static contents
+    And I should see "school1"
+    And I should see "Intro Title"
+    And I should see "Intro Body"
+    And I should see "Objective Title"
+    And I should see "Strength-weakness Intro"
+    And I should see "Strength Intro"
+    And I should see "Weakness Intro"
+    And I should see "Eval Title"
+    And I should see "Summary"
+    And I should see "Behavior Title"
+    And I should see "Behavior Intro"
+    And I should see "Increase Header"
+    And I should see "Decrease Header"
+    And I should see "Comp Header"
+    And I should see "Summary Header"
     And I should see "Ambassador Note"
 
-  Scenario: Add comment to report
-    Given I initiated the report generation for "school1, Berkeley, Alameda, Fall 2013"
+  @javascript
+  Scenario: Add comment to report and generate
+    Given I initiated the report generation for "school1"
     And I fill in "Ambassador Note" with "This is an ambassador comment"
     #And I press "Add Comments and Generate pdf"
-    #Then I should be on the portal page
-    #And I should see "PDF report was successfully generated"
+    #Given I am on the portal page
 
   Scenario: Leave comment box empty and generate report
     Given I initiated the report generation for "school1"

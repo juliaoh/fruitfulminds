@@ -135,9 +135,9 @@ class ReportsController < ApplicationController
   def save_report
     generate_report
     @report_note = session[:amb_note]
-    file = @school_name.gsub! /\s+/, '_'
+    file = @school_name.gsub /\s+/, '_'
     file = file.downcase
-    time = @school_semester.gsub! /\s+/, '_'
+    time = @school_semester.gsub /\s+/, '_'
     time = time.downcase
     @file_name = "#{file}_#{time}_#{@course.id}_report.pdf"
 
