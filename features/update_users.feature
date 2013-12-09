@@ -29,7 +29,11 @@ Scenario: add course to user
   And I press "Add"
   Then I should see "school1, Berkeley, Alameda, Fall 2014"
 
-Scenario: delete course from user
+Scenario: adding same course to user, then remove
   Given I am on the edit user page for user 2
+  And I select "school1, Berkeley, Alameda" from "school[2]"
+  And I select "Fall 2013" from "semester[2]"
+  And I select "curriculum1" from "curriculum[2]"
+  And I press "Add"
   And I press "Remove"
   Then I should not see "school1, Berkeley, Alameda, Fall 2013"
