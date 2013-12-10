@@ -19,18 +19,20 @@ module ReportsAssignTitlesHelper
   def generate_school_intro_second
     @school_intro_second = "    "
     sum_ambassadors = 0
+    plural_str = ""
+    a_str = " a"
+    if @colleges_and_ambassador_counts.values.sum != 1
+      plural_str = "s"
+      a_str = ""
+    end
     @colleges_and_ambassador_counts.keys.each do |college|
       num_ambassadors = @colleges_and_ambassador_counts[college]
       sum_ambassadors += num_ambassadors
-      student_str = "students"
-      if num_ambassadors == 1
-        student_str = "student"
-      end
-      @school_intro_second += "#{num_ambassadors} #{student_str} from #{college} and "
+      @school_intro_second += "#{num_ambassadors} student#{plural_str} from #{college} and "
     end
     #strip the last and
     @school_intro_second = @school_intro_second[0..(@school_intro_second.size-5)]
-    @school_intro_second += "#{was_were(sum_ambassadors)} selected as Fruitful Minds ambassadors"
+    @school_intro_second += "#{was_were(sum_ambassadors)} selected as#{a_str} Fruitful Minds ambassador#{plural_str}"
   end
 
   def assign_efficacy_titles
