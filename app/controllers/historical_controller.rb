@@ -56,7 +56,11 @@ class HistoricalController < ApplicationController
         @ambassador_note[report.id] = report.ambassador_message
         @report_links[report.id] = report.report_link
         school = School.find_by_id(course.school_id)
-        @schools[report.id] = "#{school.name}, #{school.city}, #{school.county}"
+        school_name = "#{school.name}, #{school.city}, #{school.county}"
+        if course.identifier
+          school_name +=  ", #{course.identifier}"
+        end
+        @schools[report.id] = school_name
         @semesters[report.id] = course.semester
       end
     end
