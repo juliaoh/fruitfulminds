@@ -69,8 +69,7 @@ class ReportsController < ApplicationController
     #  @ambassadors += User.find_by_id(user_id).name + ", "
     #end
 
-    @college = User.find_by_id(@course.users[0]).college
-    @college = @college.name
+    @colleges_and_ambassador_counts = populate_colleges()
 
     #@objectives is a hash of
     #Section name => objective description
@@ -92,7 +91,19 @@ class ReportsController < ApplicationController
 
     assign_titles
     @improvement_intro = "#{@presurvey_total} students took the pre-curriculum survey and #{@postsurvey_total} students took the post-curriculum survey. These were not necessarily the same students."
+  end
 
+  def populate_colleges
+    colleges = {}
+    @course.users.each do |user|
+      name = user.college.name
+      if not colleges.keys.include?(name)
+        colleges[name] = 1
+      else
+        colleges[name] += 1
+      end
+    end
+    return colleges
   end
 
   def generate_pdf
