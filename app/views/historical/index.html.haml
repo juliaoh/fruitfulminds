@@ -1,12 +1,29 @@
 - @subtitle = "Historical Report"
 - @menu = "Reports"
-- reports_ids = @delta.keys
+- report_ids = @deltas.keys
 
-%table
+:css
+  table.report_data {
+    border: 1px solid black;
+  }
+  table.report_data th {
+    border: 1px solid black;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  table.report_data td {
+    border: 1px solid black;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align:center;
+  }
+
+%table.report_data
   %tr
     %th School
     %th Semester
     %th Delta
+    %th Actual Report
   -report_ids.each do |report_id|
     %tr
       %td
@@ -15,3 +32,5 @@
         =@semesters[report_id]
       %td
         =@deltas[report_id]
+      %td
+        =link_to 'Link', @report_link[report_id]
