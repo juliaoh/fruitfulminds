@@ -7,13 +7,30 @@ module ReportsAssignTitlesHelper
     @main_title = "Fruitful Minds #{@school_name} #{@school_semester} Report"
     @school_intro_title = "Fruitful Minds at #{@school_name}"
     @school_intro = "Fruitful Minds held a nutrition lesson series at #{@school_name} during #{@school_semester}"
-    @school_intro_second = "    #{@course.users.size} students from #{@college} #{was_were(@course.users.size)} selected as Fruitful Minds ambassadors"
+    generate_school_intro_second
     @school_intro_third = "    During each lesson, class facilitators delivered the curriculum material through lectures, games, and various interactive activities."
     @strength_weakness_title = "Strengths and Weaknesses of FM Lessons at #{@school_name}"
     assign_efficacy_titles
 
     @ambassadorNoteTitle = "Ambassador Notes: "
 
+  end
+
+  def generate_school_intro_second
+    @school_intro_second = "    "
+    sum_ambassadors = 0
+    @colleges_and_ambassador_counts.keys.each do |college|
+      num_ambassadors = @colleges_and_ambassador_counts[college]
+      sum_ambassadors += num_ambassadors
+      student_str = "students"
+      if num_ambassadors == 1
+        student_str = "student"
+      end
+      @school_intro_second += "#{num_ambassadors} #{student_str} from #{college} and "
+    end
+    #strip the last and
+    @school_intro_second = @school_intro_second[0..(@school_intro_second.size-5)]
+    @school_intro_second += "#{was_were(sum_ambassadors)} selected as Fruitful Minds ambassadors"
   end
 
   def assign_efficacy_titles

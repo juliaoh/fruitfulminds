@@ -4,6 +4,7 @@ module ReportsHelper
     #1) School ID (number)
     #2) Semester (string)
     #3) Curriculum ID (number), curriculum corresponds to survey
+    #4) Unique identifier
     #Example: 1, 'Fall 2013', 1 could correspond to Ascend Elementary, 'Fall 2013', 5th Grade Curriculum
 
     #A course has
