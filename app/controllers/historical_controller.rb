@@ -26,7 +26,7 @@ class HistoricalController < ApplicationController
     @efficacy_weakness, @efficacy_strength, @efficacy_competency = {}, {}, {}
     @strength, @weakness, @competency = {}, {}, {}
     @ambassador_note, @report_link = {}, {}
-    @chosen_courses = Course.find(:all, :conditions => ["school.id in (?) and semester in (?)", chosen_schools, chosen_times])
+    @chosen_courses = Course.find(:all, :conditions => ["school_id in (?) and semester in (?)", chosen_schools, chosen_times])
     if @chosen_courses
       _extract_course_information
     else
@@ -40,15 +40,22 @@ class HistoricalController < ApplicationController
     # such as the delta, strength and weakness messages, etc
     @chosen_courses.each do |course|
       report = Report.find_by_course_id(course.id)
-      @deltas[report.id] = report.delta
-      @efficacy_weakness[report.id] = report.efficacy_weaknesses
-      @efficacy_strength[report.id] = report.efficacy_strengths
-      @efficacy_competency[report.id] = report.efficacy_competencies
-      @weakness[report.id] = report.weaknesses
-      @strength[report.id] = report.strengths
-      @competency[report.id] = report.competencies
-      @ambassador_note[report.id] = report.ambassador_message
-      @report_link[report.id] = report.report_link
+      flash[:notice] = Report.all[0].course_id
+      return
+      if report
+        @deltas[report.id] = report.delta
+        @efficacy_weakness[report.id] = report.efficacy_weaknesses
+        @efficacy_strength[report.id] = report.efficacy_strengths
+        @efficacy_competency[report.id] = report.efficacy_competencies
+        @weakness[report.id] = report.weaknesses
+        @strength[report.id] = report.strengths
+        @competency[report.id] = report.competencies
+        @ambassador_note[report.id] = report.ambassador_message
+        @report_link[report.id] = report.report_link
+      else
+        # @error += School.find_by_id(course.school_id) error message here
+        flash[:notice] = "fucked up"
+      end
     end
   end
 end

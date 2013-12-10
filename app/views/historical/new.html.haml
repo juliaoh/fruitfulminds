@@ -53,8 +53,8 @@
           %div#semesters_field
             %br
             -@times.each do |semester|
-              %input{type:'checkbox', class:'semester_checkbox', name:'semester[]', value:'PLACE HOLDER'}
-              =semester
+              %input{type:'checkbox', class:'semester_checkbox', name:'semester[]', value:semester[0]}
+              =semester[0]
               %br
           %input{id:'select_all_semesters_btn', type:'button', value:"Select All Semesters"}
           %input{id:'deselect_all_semesters_btn', type:'button', value:"Deselect All Semesters"}
