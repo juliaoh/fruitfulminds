@@ -1,1 +1,17 @@
+- @subtitle = "Historical Report"
+- @menu = "Reports"
+- reports_ids = @delta.keys
 
+%table
+  %tr
+    %th School
+    %th Semester
+    %th Delta
+  -report_ids.each do |report_id|
+    %tr
+      %td
+        =@schools[report_id]
+      %td
+        =@semesters[report_id]
+      %td
+        =@deltas[report_id]
