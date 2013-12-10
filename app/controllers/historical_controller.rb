@@ -19,11 +19,17 @@ class HistoricalController < ApplicationController
       flash[:notice] = "Please select a time."
       redirect_to new_historical_path and return
     end
+    chosen_results = params[:result_options]
+    @show_efficacy, @show_mc = false, false
+    if chosen_results
+      @show_efficacy = chosen_results.include? "efficacy"
+      @show_mc = chosen_results.include?  "mc"
+    end
     # initialize the dictionaries of information to return
     @deltas = {}
     @efficacy_weakness, @efficacy_strength, @efficacy_competency = {}, {}, {}
     @strength, @weakness, @competency = {}, {}, {}
-    @ambassador_note, @report_link = {}, {}
+    @ambassador_note, @report_links = {}, {}
     @schools, @semesters = {}, {}
     @chosen_courses = Course.find(:all, :conditions => ["school_id in (?) and semester in (?)", chosen_schools, chosen_times])
     if @chosen_courses
@@ -48,7 +54,7 @@ class HistoricalController < ApplicationController
         @strength[report.id] = report.strengths
         @competency[report.id] = report.competencies
         @ambassador_note[report.id] = report.ambassador_message
-        @report_link[report.id] = report.report_link
+        @report_links[report.id] = report.report_link
         school = School.find_by_id(course.school_id)
         @schools[report.id] = "#{school.name}, #{school.city}, #{school.county}"
         @semesters[report.id] = course.semester

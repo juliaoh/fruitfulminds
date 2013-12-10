@@ -24,11 +24,11 @@
     %th School
     %th Semester
     %th Delta
-    -if 'SHOW EFFIACY'
+    -if @show_efficacy
       %th Efficacy Strength
       %th Efficacy Weakness
       %th Efficacy Competency
-    -if 'SHOW MULTIPLE CHOICE'
+    -if @show_mc
       %th Multiple Choice Strength
       %th Multiple Choice Weakness
       %th Multiple Choice Competency
@@ -41,14 +41,14 @@
         =@semesters[report_id]
       %td
         =@deltas[report_id]
-      -if 'SHOW EFFIACY'
+      -if @show_efficacy
         %td
           =@efficacy_strength[report_id]
         %td
           =@efficacy_weakness[report_id]
         %td
           =@efficacy_competency[report_id]
-      -if 'SHOW MULTIPLE CHOICE'
+      -if @show_mc
         %td
           =@strength[report_id]
         %td
@@ -56,4 +56,4 @@
         %td
           =@competency[report_id]
       %td
-        =link_to 'Link', @report_link[report_id]
+        =link_to 'Link', @report_links[report_id]

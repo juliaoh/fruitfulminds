@@ -62,13 +62,12 @@
               
   Result options
   %div.result_options
-    %input{type:'checkbox', name:'result_options', value:'efficacy'}
+    %input{type:'checkbox', name:'result_options[]', value:'efficacy'}
     Efficacy messages
     %br
-    %input{type:'checkbox', name:'result_options', value:'mc'}
-    Multiple choice messages
+    %input{type:'checkbox', name:'result_options[]', value:'mc'}
+    Strength and Weakness messages
   
   %br
   =submit_tag "Generate Historical Report"
-//=label :course, "Course"
 
