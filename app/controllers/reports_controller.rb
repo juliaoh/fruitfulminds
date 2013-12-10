@@ -2,14 +2,12 @@ class ReportsController < ApplicationController
   include ReportsHelper
   include ReportsGraphHelper
   include ReportsAssignTitlesHelper
+  include ActiveCoursesHelper
   def new
     #New report page should only list the classes that the ambassador is part of
     #NOT SORTED YET
-    if @current_user.admin?
-      @courses = Course.where(:active => 1)
-    else
-      @courses = @current_user.courses
-    end
+    get_active_inactive(@current_user)
+    #@courses = @active_courses
   end
 
   def create
