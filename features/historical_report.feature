@@ -40,9 +40,9 @@ Background: Generate historical report based on previously stored results
     | 1         | Fall 2013   | 1             | 25              | 1            | 1             | true   |
 
   And the following users exist:
-    | email              | password | name         | profile_id | school_semester_id |
-    | amirk88@gmail.com  | 123f5    | amir khodaei | 1          |     1              |
-    | john@gmail.com     | 12345    | john smith   | 1          |     2              |
+    | email              | password | name         | profile_id | school_semester_id | profile |
+    | amirk88@gmail.com  | 123f5    | amir khodaei | 1          |     1              | admin   |
+    | john@gmail.com     | 12345    | john smith   | 1          |     2              | admin   |
 
   And the following users have courses:
     | user_id  | course_id  |
@@ -69,25 +69,14 @@ Background: Generate historical report based on previously stored results
   And I am logged in as amir
   And I am on the historical report page
 
+  @javascript
   Scenario: Show all historical results (Happy path)
-    Given I press "select_all_schools_btn"
-    And I press "select_all_semesters_btn"
-    And I press "Generate Historical Reports"
-    Then I should see "school1, Berkeley, Alameda" under "School"
-    And I should see "Fall 2013" under "Semester"
-    When I follow "Link"
-    Then I should be on the reports page
-
-  Scenario: Show based on time (Happy path)
-    Given I select "Fall 2013" from "Times"
-    And I select "All Schools" from "Schools"
-    And I press "Generate Historical Reports"
-    Then I should see "school1, Berkeley, Alameda" under "schools"
-    And I should see "Fall 2013" under "date range"
-    When I follow "Fall 2013"
-    Then I should be on the reports page
+    Given I press "Select All Schools"
+    And I press "Select All Semesters"
+    And I press "Generate Historical Report"
+    Then I should be on the historical results page
 
   Scenario: Show generate historical report with no selections (sad path)
-    When I press "Generate Historical Reports"
+    When I press "Generate Historical Report"
     Then I should be on the historical report page
-    And I should see "Please select schools and time ranges"
+    And I should see "Please select a school."
