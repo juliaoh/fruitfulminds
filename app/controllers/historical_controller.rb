@@ -5,7 +5,7 @@ class HistoricalController < ApplicationController
 
   def new
     @schools = get_school_names
-    @times = Course.all.collect { |t| ["#{t.semester}", t.id] }.uniq.sort
+    @times = Course.all.collect { |t| ["#{t.semester}"] }.uniq.sort
   end
 
   def index
