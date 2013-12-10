@@ -6,11 +6,9 @@ class HistoricalController < ApplicationController
   def new
     @schools = get_school_names
     @times = Course.all.collect { |t| ["#{t.semester}", t.id] }.uniq.sort
-    flash[:notice] = params
   end
 
-  def create
-    flash[:notice] = params
+  def index
     chosen_schools = params[:school]
     if not chosen_schools
       flash[:notice] = "Please select a school."
@@ -27,6 +25,7 @@ class HistoricalController < ApplicationController
     @strength, @weakness, @competency = {}, {}, {}
     @ambassador_note, @report_link = {}, {}
     @chosen_courses = Course.find(:all, :conditions => ["school_id in (?) and semester in (?)", chosen_schools, chosen_times])
+    @course = Course.find_by_id(1)
     if @chosen_courses
       _extract_course_information
     else
@@ -38,9 +37,13 @@ class HistoricalController < ApplicationController
   def _extract_course_information
     # extract the course information as requested
     # such as the delta, strength and weakness messages, etc
-    @chosen_courses.each do |course|
-      report = Report.find_by_course_id(course.id)
-      flash[:notice] = Report.all[0].course_id
+    report = Report.find_by_course_id(@course.id)
+    flash[:notice] = report.nil?
+    # flash[:notice] = @course.id
+     @chosen_courses.each do |course|
+      #report = Report.find_by_course_id(@course.id)
+      #flash[:notice] = report.nil?
+      #flash[:notice] = @course.nil?
       return
       if report
         @deltas[report.id] = report.delta
@@ -53,8 +56,7 @@ class HistoricalController < ApplicationController
         @ambassador_note[report.id] = report.ambassador_message
         @report_link[report.id] = report.report_link
       else
-        # @error += School.find_by_id(course.school_id) error message here
-        flash[:notice] = "fucked up"
+        # @error += School.find_by_id(course.school_id)
       end
     end
   end
