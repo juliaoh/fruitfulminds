@@ -58,8 +58,6 @@ class HistoricalController < ApplicationController
         school = School.find_by_id(course.school_id)
         @schools[report.id] = "#{school.name}, #{school.city}, #{school.county}"
         @semesters[report.id] = course.semester
-      else
-        # @error += School.find_by_id(course.school_id)
       end
     end
   end
