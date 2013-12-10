@@ -40,13 +40,13 @@ class HistoricalController < ApplicationController
     @chosen_courses.each do |course|
       report = Report.find_by_course_id(course.id)
       @deltas[report.id] = report.delta
-      @efficacy_weakness[report.id] = report.efficacy_weakness
-      @efficacy_strength[report.id] = report.efficacy_strength
-      @efficacy_competency[report.id] = report.efficacy_competency
-      @efficacy_weakness[report.id] = report.efficacy_weakness
-      @efficacy_weakness[report.id] = report.efficacy_weakness
-      @efficacy_weakness[report.id] = report.efficacy_weakness
-      @efficacy_weakness[report.id] = report.efficacy_weakness
+      @efficacy_weakness[report.id] = report.efficacy_weaknesses
+      @efficacy_strength[report.id] = report.efficacy_strengths
+      @efficacy_competency[report.id] = report.efficacy_competencies
+      @weakness[report.id] = report.weaknesses
+      @strength[report.id] = report.strengths
+      @competency[report.id] = report.competencies
+      @[report.id] = report.efficacy_weakness
 
   end
 end
