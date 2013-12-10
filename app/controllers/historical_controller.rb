@@ -9,20 +9,14 @@ class HistoricalController < ApplicationController
     flash[:notice] = params
   end
 
-  def show
-    flash[:notice] = params
-  end
-
   def create
     flash[:notice] = params
-    return
-    redirect_to new_historical_path and return
-    chosen_schools = params[:checked_schools]
+    chosen_schools = params[:school]
     if not chosen_schools
       flash[:notice] = "Please select a school."
       redirect_to new_historical_path and return
     end
-    chosen_times = params[:checked_times]
+    chosen_times = params[:semester]
     if not chosen_times
       flash[:notice] = "Please select a time."
       redirect_to new_historical_path and return
@@ -32,7 +26,7 @@ class HistoricalController < ApplicationController
     @efficacy_weakness, @efficacy_strength, @efficacy_competency = {}, {}, {}
     @strength, @weakness, @competency = {}, {}, {}
     @ambassador_note, @report_link = {}, {}
-    @chosen_courses = Course.find(:all, :conditions => ["school.id in (?) and semester in (?)", chosen_schools.keys, chosen_times.keys])
+    @chosen_courses = Course.find(:all, :conditions => ["school.id in (?) and semester in (?)", chosen_schools, chosen_times])
     if @chosen_courses
       _extract_course_information
     else
