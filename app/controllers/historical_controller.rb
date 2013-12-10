@@ -3,13 +3,8 @@ class HistoricalController < ApplicationController
   include SchoolsHelper
 
   def new
-    @schools = _get_school_names
+    @schools = get_school_names
     @times = Course.all.collect { |t| ["#{t.semester}", t.id] }.uniq.sort
-  end
-
-  def _get_school_names
-    # returns all the school names in the database in a list
-
   end
 
   def create
@@ -17,10 +12,12 @@ class HistoricalController < ApplicationController
     if not chosen_schools
       flash[:notice] = "Please select a school."
       redirect_to new_historical_path and return
+    end
     chosen_times = params[:checked_times]
     if not chosen_times
       flash[:notice] = "Please select a time."
       redirect_to new_historical_path and return
+    end
     # initialize the dictionaries of information to return
     @deltas = {}
     @efficacy_weakness, @efficacy_strength, @efficacy_competency = {}, {}, {}
@@ -46,7 +43,8 @@ class HistoricalController < ApplicationController
       @weakness[report.id] = report.weaknesses
       @strength[report.id] = report.strengths
       @competency[report.id] = report.competencies
-      @[report.id] = report.efficacy_weakness
-
+      @ambassador_note[report.id] = report.ambassador_message
+      @report_link[report.id] = report.report_link
+    end
   end
 end
