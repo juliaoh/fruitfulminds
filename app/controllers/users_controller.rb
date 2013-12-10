@@ -107,7 +107,7 @@ class UsersController < ApplicationController
     if update_warning_message(params)
       return
     end
-    @user.update_attributes!(:college_id => params[:college], :name => params[:name], :email => params[:email])
+    @user.update_attributes!(:college_id => params[:college][:name], :name => params[:name], :email => params[:email])
     flash[:notice] = "#{@user.name} has been updated."
     redirect_to all_users_path
   end

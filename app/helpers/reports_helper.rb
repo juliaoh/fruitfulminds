@@ -4,6 +4,7 @@ module ReportsHelper
     #1) School ID (number)
     #2) Semester (string)
     #3) Curriculum ID (number), curriculum corresponds to survey
+    #4) Unique identifier
     #Example: 1, 'Fall 2013', 1 could correspond to Ascend Elementary, 'Fall 2013', 5th Grade Curriculum
 
     #A course has
@@ -63,7 +64,7 @@ module ReportsHelper
   def populate_strengths(sorted_data, strengths)
     sorted_data[0..4].each do |info_list|
       question = Question.find_by_id(info_list[0])
-      if info_list[1] > 0 #infolist[1]  is the delta
+      if info_list[1] > 10 #infolist[1]  is the delta
         strengths[question.name] = question.msg
       end
     end
@@ -75,12 +76,10 @@ module ReportsHelper
     while weak_count < 5 do #need 5 weaknesses
       break if index < 0
       info_list = sorted_data[index]
-      if info_list[2] #check if possible to be weakness
+      if info_list[2] and info_list[1] < 10 #check if possible to be weakness
         question = Question.find_by_id(info_list[0])
-        if not strengths.include?(question.name)
-          weaknesses[question.name] = question.msg #message
-          weak_count = weak_count + 1
-        end
+        weaknesses[question.name] = question.msg #message
+        weak_count = weak_count + 1
       end
       index = index - 1
     end
