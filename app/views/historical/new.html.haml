@@ -43,7 +43,7 @@
           %div#schools_field
             %br
             -@schools.each do |school|
-              %input{type:'checkbox', class:'school_checkbox', name:'school', value:school[1]}
+              %input{type:'checkbox', class:'school_checkbox', name:'school[]', value:school[1]}
               =school[0]
               %br
           %input{id:'select_all_schools_btn', type:'button', value:"Select All Schools"}
@@ -53,7 +53,7 @@
           %div#semesters_field
             %br
             -@times.each do |semester|
-              %input{type:'checkbox', class:'semester_checkbox', name:'semester', value:'PLACE HOLDER'}
+              %input{type:'checkbox', class:'semester_checkbox', name:'semester[]', value:'PLACE HOLDER'}
               =semester
               %br
           %input{id:'select_all_semesters_btn', type:'button', value:"Select All Semesters"}
