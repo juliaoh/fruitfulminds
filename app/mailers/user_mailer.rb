@@ -6,7 +6,7 @@ class UserMailer < ActionMailer::Base
 
   def user_approved_email(user)
     @user = user
-    @url  = "http://fruitfulminds.herokuapp.com/login"
+    @url  = "http://fruitful-minds.herokuapp.com/login"
     mail(:to => user.email, :subject => "Welcome to fruitfulminds.com")
   end
 
