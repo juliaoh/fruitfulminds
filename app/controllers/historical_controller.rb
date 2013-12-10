@@ -1,13 +1,22 @@
 class HistoricalController < ApplicationController
   before_filter :admin_only
+  skip_before_filter :verify_authenticity_token, :only => [:new, :create]
   include SchoolsHelper
 
   def new
     @schools = get_school_names
     @times = Course.all.collect { |t| ["#{t.semester}", t.id] }.uniq.sort
+    flash[:notice] = params
+  end
+
+  def show
+    flash[:notice] = params
   end
 
   def create
+    flash[:notice] = params
+    return
+    redirect_to new_historical_path and return
     chosen_schools = params[:checked_schools]
     if not chosen_schools
       flash[:notice] = "Please select a school."
@@ -22,7 +31,8 @@ class HistoricalController < ApplicationController
     @deltas = {}
     @efficacy_weakness, @efficacy_strength, @efficacy_competency = {}, {}, {}
     @strength, @weakness, @competency = {}, {}, {}
-    @chosen_courses = Course.find(:all, :conditions => ["school in (?) and semester in (?)", chosen_schools.keys, chosen_times.keys])
+    @ambassador_note, @report_link = {}, {}
+    @chosen_courses = Course.find(:all, :conditions => ["school.id in (?) and semester in (?)", chosen_schools.keys, chosen_times.keys])
     if @chosen_courses
       _extract_course_information
     else
