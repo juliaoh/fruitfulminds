@@ -31,8 +31,8 @@ Given /^dataset1 is set up$/ do
 
 
     And the following courses exist:
-      | school_id | semester    | curriculum_id | total_students  | presurvey_id | postsurvey_id | active |
-      | 1         | Fall 2013   | 1             | 25              | 1            | 1             | 1      |
+      | school_id | semester    | curriculum_id | total_students  | presurvey_id | postsurvey_id | active | identifier |
+      | 1         | Fall 2013   | 1             | 25              | 1            | 1             | 1      | bob        |
 
     And the following users exist:
       | email                   | password | name          | profile    | pending | college_id | pending_school_id | pending_semester |

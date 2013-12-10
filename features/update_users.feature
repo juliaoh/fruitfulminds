@@ -34,6 +34,7 @@ Scenario: adding same course to user, then remove
   And I select "school1, Berkeley, Alameda" from "school[2]"
   And I select "Fall 2013" from "semester[2]"
   And I select "curriculum1" from "curriculum[2]"
+  And I fill in "identifier[2]" with "bob"
   And I press "Add"
   And I press "Remove"
   Then I should not see "school1, Berkeley, Alameda, Fall 2013"
