@@ -62,10 +62,6 @@ Background: Generate historical report based on previously stored results
     | school2 | Rowland | Rowland  | district |
 
 
-  And the following school_semesters exist:
-    | school_id | name | year |
-    | 1         | Fall | 2013 |
-
   And the following static content exists:
     | intro_title | introduction | objectives_title | strength_weakness_intro | strength_intro | weakness_intro | eval_title | summary |
     | Intro Title | Intro Body   | Objective Title  | Sterngth-weakness Intro | Strength Intro | Weakness Intro | Eval Title | Summary |
@@ -74,12 +70,12 @@ Background: Generate historical report based on previously stored results
   And I am on the historical report page
 
   Scenario: Show all historical results (Happy path)
-    Given I select "All Schools" from "Schools"
-    And I select "All Times" from "Time Ranges"
+    Given I press "select_all_schools_btn"
+    And I press "select_all_semesters_btn"
     And I press "Generate Historical Reports"
-    Then I should see "school1, Berkeley, Alameda" under "schools"
-    And I should see "Fall 2013" under "date range"
-    When I follow "Fall 2013"
+    Then I should see "school1, Berkeley, Alameda" under "School"
+    And I should see "Fall 2013" under "Semester"
+    When I follow "Link"
     Then I should be on the reports page
 
   Scenario: Show based on time (Happy path)

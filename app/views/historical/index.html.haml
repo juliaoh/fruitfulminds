@@ -12,6 +12,7 @@
     padding-right: 5px;
   }
   table.report_data td {
+    vertical-align:top;
     border: 1px solid black;
     padding-left: 10px;
     padding-right: 10px;
@@ -23,6 +24,14 @@
     %th School
     %th Semester
     %th Delta
+    -if 'SHOW EFFIACY'
+      %th Efficacy Strength
+      %th Efficacy Weakness
+      %th Efficacy Competency
+    -if 'SHOW MULTIPLE CHOICE'
+      %th Multiple Choice Strength
+      %th Multiple Choice Weakness
+      %th Multiple Choice Competency
     %th Actual Report
   -report_ids.each do |report_id|
     %tr
@@ -32,5 +41,19 @@
         =@semesters[report_id]
       %td
         =@deltas[report_id]
+      -if 'SHOW EFFIACY'
+        %td
+          =@efficacy_strength[report_id]
+        %td
+          =@efficacy_weakness[report_id]
+        %td
+          =@efficacy_competency[report_id]
+      -if 'SHOW MULTIPLE CHOICE'
+        %td
+          =@strength[report_id]
+        %td
+          =@weakness[report_id]
+        %td
+          =@competency[report_id]
       %td
         =link_to 'Link', @report_link[report_id]

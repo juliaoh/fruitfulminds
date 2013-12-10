@@ -14,6 +14,7 @@ module NavigationHelpers
       '/login'
     when /^the portal page$/
       '/portal'
+    when /^the historical report page/ then new_historical_path
     when /^the Add New School page$/ then new_school_path
     when /^the Add New College page$/ then new_college_path
     when /^the All Schools page$/ then schools_path
