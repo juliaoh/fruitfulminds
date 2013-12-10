@@ -199,7 +199,9 @@
             %p= "District: #{@school.district}"
             %p= "City: #{@school.city}"
             %p= "School Name: #{@school.name}"
-
+      
+      %div{style:'text-align:right'}
+        =link_to 'Tutorial Video', 'http://www.youtube.com/watch?v=9uj2YhS0JDs&feature=youtu.be&noredirect=1'
     #main
       - if flash[:notice]
         #notice.message= flash[:notice]
