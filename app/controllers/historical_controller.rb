@@ -24,8 +24,8 @@ class HistoricalController < ApplicationController
     @efficacy_weakness, @efficacy_strength, @efficacy_competency = {}, {}, {}
     @strength, @weakness, @competency = {}, {}, {}
     @ambassador_note, @report_link = {}, {}
+    @schools, @semesters = {}, {}
     @chosen_courses = Course.find(:all, :conditions => ["school_id in (?) and semester in (?)", chosen_schools, chosen_times])
-    @course = Course.find_by_id(1)
     if @chosen_courses
       _extract_course_information
     else
@@ -49,6 +49,9 @@ class HistoricalController < ApplicationController
         @competency[report.id] = report.competencies
         @ambassador_note[report.id] = report.ambassador_message
         @report_link[report.id] = report.report_link
+        school = School.find_by_id(course.school_id)
+        @schools[report.id] = "#{school.name}, #{school.city}, #{school.county}"
+        @semesters[report.id] = course.semester
       else
         # @error += School.find_by_id(course.school_id)
       end
