@@ -152,7 +152,7 @@ class ReportsController < ApplicationController
 
     report = Report.find_by_course_id(@course.id)
     if report.nil?
-      Report.create!({:delta => @improvement, :efficacy_strengths=> @efficacy_str, :efficacy_weaknesses=>@efficacy_weak, :efficacy_competencies=>@efficacy_comp, :strengths=>@objective_str, :weaknesses=>@objective_weak, :competencies=>@objective_comp, :ambassador_message=>@report_note, :report_link=>"/reports/#{@file_name}"}, :course_id=>@course.id)
+      Report.create!({:delta => @improvement, :efficacy_strengths=> @efficacy_str, :efficacy_weaknesses=>@efficacy_weak, :efficacy_competencies=>@efficacy_comp, :strengths=>@objective_str, :weaknesses=>@objective_weak, :competencies=>@objective_comp, :ambassador_message=>@report_note, :report_link=>"/reports/#{@file_name}", :course_id=>@course.id})
     else
       report.delta = @improvement
       report.efficacy_strengths = @efficacy_str

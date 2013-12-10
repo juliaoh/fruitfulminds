@@ -37,14 +37,8 @@ class HistoricalController < ApplicationController
   def _extract_course_information
     # extract the course information as requested
     # such as the delta, strength and weakness messages, etc
-    report = Report.find_by_course_id(@course.id)
-    flash[:notice] = report.nil?
-    # flash[:notice] = @course.id
      @chosen_courses.each do |course|
-      #report = Report.find_by_course_id(@course.id)
-      #flash[:notice] = report.nil?
-      #flash[:notice] = @course.nil?
-      return
+      report = Report.find_by_course_id(course.id)
       if report
         @deltas[report.id] = report.delta
         @efficacy_weakness[report.id] = report.efficacy_weaknesses
