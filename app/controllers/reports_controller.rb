@@ -43,6 +43,7 @@ class ReportsController < ApplicationController
     end
     # initialize_fields_in_report and warn_incomplete_report in ReportHelper
     initialize_fields_in_report
+    set_static_content
     if warn_incomplete_report
       return
     end
