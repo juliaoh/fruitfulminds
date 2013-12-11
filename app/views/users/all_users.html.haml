@@ -67,5 +67,6 @@
         %td 
           - get_own_courses(user)
           - @active_courses.each do |course|
-            %li= course.name
+            - if not course.nil?
+              %li= course.name
         %td= link_to 'Edit', edit_user_path(user.id)
