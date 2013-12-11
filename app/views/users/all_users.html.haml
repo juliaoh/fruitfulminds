@@ -58,6 +58,8 @@
       %th Edit
   %tbody
     - User.where(:profile => "admin").each do |user|
+      - if user.nil?
+        - next
       %tr
         %td
           = user.name
