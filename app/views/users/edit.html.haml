@@ -13,7 +13,8 @@
   = label_tag :email, "Email:"
   = text_field_tag :email, "#{@user.email}"
   = label :college, :name, "College:"
-  = select :college, :name, options_for_select(College.all.collect { |c| [c.name, c.id] }.sort, @college.id)
+  - if not @college.nil?
+    = select :college, :name, options_for_select(College.all.collect { |c| [c.name, c.id] }.sort, @college.id)
   %br
   = submit_tag 'Update User Info'
 %br
