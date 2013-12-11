@@ -12,13 +12,13 @@
 
 
 %h2= @main_title
-%h4= @static_contents[:intro_title]
-%p= @static_contents[:introduction]
+%h4= @intro_title
+%p= @introduction
 %h4= @school_intro_title
 %p= @school_intro
 %p= @school_intro_second
 %p= @school_intro_third
-%h4= @static_contents[:objectives_title]
+%h4= @objectives_title
 
 %table
   %tr
@@ -29,16 +29,16 @@
       %td= item1
       %td= item2
 
-%h4= @static_contents[:eval_title]
+%h4= @eval_title
 %p= @eval_intro_first
 %p= @eval_intro_second
 %p= @eval_intro_third
 %h4= image_tag @nutrition_chart
 %h4= image_tag @combined_chart
 %h4= @strength_weakness_title
-%p= @static_contents[:strength_weakness_intro]
+%p= @strength_weakness_intro
 
-%h4= @static_contents[:strength_intro]
+%h4= @strength_intro
 %table
   %tr
   - @objective_str.values.each do |strength|
@@ -46,7 +46,7 @@
       %ul
         %li= strength
 
-%h4= @static_contents[:weakness_intro]
+%h4= @weakness_intro
 %table
   %tr
   - @objective_weak.values.each do |weakness|
@@ -54,7 +54,7 @@
       %ul
         %li= weakness
 
-%h4= @static_contents[:comp_intro]
+%h4= @comp_intro
 %table
   %tr
   - @objective_comp.values.each do |comp|
@@ -63,15 +63,15 @@
         %li= comp
 
 %p
-%p= @static_contents[:summary]
+%p= @summary
 
-%h5= @static_contents[:behavior_title]
-%p= @static_contents[:behavior_intro]
+%h5= @behavior_title
+%p= @behavior_intro
 %h4= image_tag @efficacy_chart
 
 %p= @improvement_intro
 
-%h5= @static_contents[:increase_header]
+%h5= @increase_header
 %table
   %tr
   - @efficacy_str.values.each do |q_msg|
@@ -79,7 +79,7 @@
       %ul
         %li= q_msg
 
-%h5= @static_contents[:decrease_header]
+%h5= @decrease_header
 %table
   %tr
   - @efficacy_weak.values.each do |q_msg|
@@ -87,7 +87,7 @@
       %ul
         %li= q_msg
 
-%h5= @static_contents[:comp_header]
+%h5= @comp_header
 %table
   %tr
   - @efficacy_comp.values.each do |q_msg|
@@ -95,7 +95,7 @@
       %ul
         %li= q_msg
 
-%h5= @static_contents[:summary_header]
+%h5= @summary_header
 
 %table
   %tr

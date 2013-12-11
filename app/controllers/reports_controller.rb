@@ -3,6 +3,7 @@ class ReportsController < ApplicationController
   include ReportsGraphHelper
   include ReportsAssignTitlesHelper
   include ActiveCoursesHelper
+  include ReportsStaticContent
   def new
     #New report page should only list the classes that the ambassador is part of
     #NOT SORTED YET
