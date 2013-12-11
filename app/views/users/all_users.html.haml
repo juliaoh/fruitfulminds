@@ -65,7 +65,8 @@
           = user.name
           %br
             %em= user.email
-        %td= user.college.name
+        - if not user.college.nil?
+          %td= user.college.name
         %td 
           - get_own_courses(user)
           - @active_courses.each do |course|
