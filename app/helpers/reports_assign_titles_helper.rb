@@ -6,9 +6,9 @@ module ReportsAssignTitlesHelper
   def assign_titles
     @main_title = "Fruitful Minds #{@school_name} #{@school_semester} Report"
     @school_intro_title = "Fruitful Minds at #{@school_name}"
-    @school_intro = "Fruitful Minds held a nutrition lesson series at #{@school_name} during #{@school_semester}"
+    @school_intro = "Fruitful Minds held a nutrition lesson series at #{@school_name} during #{@school_semester}."
     generate_school_intro_second
-    @school_intro_third = "    During each lesson, class facilitators delivered the curriculum material through lectures, games, and various interactive activities."
+    @school_intro_third = "    During each lesson, class ambassadors delivered the curriculum material through lectures, games, and various interactive activities."
     @strength_weakness_title = "Strengths and Weaknesses of FM Lessons at #{@school_name}"
     assign_efficacy_titles
 
@@ -28,11 +28,11 @@ module ReportsAssignTitlesHelper
     @colleges_and_ambassador_counts.keys.each do |college|
       num_ambassadors = @colleges_and_ambassador_counts[college]
       sum_ambassadors += num_ambassadors
-      @school_intro_second += "#{num_ambassadors} student#{plural_str} from #{college} and "
+      @school_intro_second += "2-4 students from #{college} and "
     end
     #strip the last and
     @school_intro_second = @school_intro_second[0..(@school_intro_second.size-5)]
-    @school_intro_second += "#{was_were(sum_ambassadors)} selected as#{a_str} Fruitful Minds ambassador#{plural_str}"
+    @school_intro_second += "#{was_were(sum_ambassadors)} selected as#{a_str} Fruitful Minds ambassador#{plural_str}."
   end
 
   def assign_efficacy_titles
