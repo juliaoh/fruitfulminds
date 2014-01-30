@@ -61,7 +61,7 @@ class Course < ActiveRecord::Base
     case
     when semesterA[1].to_i + 1 < semesterB[1].to_i
       1
-    when semesterA[1].to_i + 1 > semesterB[1]
+    when semesterA[1].to_i + 1 > semesterB[1].to_i
       -1
     else
       semesterA[0] <=> semesterB[0]
