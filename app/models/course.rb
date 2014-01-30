@@ -59,9 +59,9 @@ class Course < ActiveRecord::Base
     semesterA = semester.split(" ")
     semesterB = other.split(" ")
     case
-    when semesterA[1] < semesterB[1]
+    when semesterA[1].to_i + 1 < semesterB[1].to_i
       1
-    when semesterA[1] > semesterB[1]
+    when semesterA[1].to_i + 1 > semesterB[1]
       -1
     else
       semesterA[0] <=> semesterB[0]
